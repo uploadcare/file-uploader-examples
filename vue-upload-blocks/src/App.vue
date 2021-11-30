@@ -1,17 +1,17 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
+  <img alt="Vue logo" src="./assets/logo.png" />
   <Uploader />
 </template>
 
 <script>
-import Uploader from './components/Uploader.vue'
+import Uploader from "./components/Uploader.vue";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    Uploader
-  }
-}
+    Uploader,
+  },
+};
 </script>
 
 <style>

@@ -1,9 +1,9 @@
 <template>
   <div class="wrapper">
     <div class="uploader">
-      <uc-simple-btn :class="classList"></uc-simple-btn>
+      <uc-simple-btn class="uc-wgt-common"></uc-simple-btn>
 
-      <uc-modal :class="classList" strokes>
+      <uc-modal class="uc-wgt-common" strokes>
         <uc-source-select>
           <uc-source-list wrap></uc-source-list>
           <uc-drop-area></uc-drop-area>
@@ -17,13 +17,13 @@
         <uc-cloud-image-editor></uc-cloud-image-editor>
       </uc-modal>
 
-      <uc-message-box :class="classList"></uc-message-box>
-      <uc-progress-bar :class="classList"></uc-progress-bar>
+      <uc-message-box class="uc-wgt-common"></uc-message-box>
+      <uc-progress-bar class="uc-wgt-common"></uc-progress-bar>
 
       <uc-data-output
         @data-output="handleUploaderEvent"
         fire-event
-        :class="classList"
+        class="uc-wgt-common"
       ></uc-data-output>
     </div>
     <div class="output">
@@ -38,7 +38,7 @@
 </template>
 
 <style>
-  @import "../../upload-blocks/uc-basic.css";
+@import "../../upload-blocks/uc-basic.css";
 </style>
 
 <script>
@@ -48,7 +48,6 @@ export default {
   name: "Uploader",
   data() {
     return {
-      classList: "uc-wgt-common uploader",
       files: [],
     };
   },
@@ -67,6 +66,13 @@ export default {
   flex-direction: column;
   grid-gap: 32px;
 }
+.output {
+  display: grid;
+  grid-gap: 8px;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  width: 100%;
+  max-width: 1000px;
+}
 .uploader {
   --cfg-pubkey: "demopublickey";
   --cfg-multiple: 1;
@@ -77,12 +83,5 @@ export default {
   --cfg-camera-mirror: 0;
   --cfg-source-list: "local, url, camera, draw, dropbox, gdrive, facebook";
   --cfg-max-files: 10;
-}
-.output {
-  display: grid;
-  grid-gap: 8px;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  width: 100%;
-  max-width: 1000px;
 }
 </style>
