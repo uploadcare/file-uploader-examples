@@ -37,10 +37,12 @@
   </div>
 </template>
 
+<style>
+  @import "../../upload-blocks/uc-basic.css";
+</style>
+
 <script>
-import "@uploadcare/upload-blocks";
-import "@uploadcare/upload-blocks";
-import "@uploadcare/upload-blocks/build/uc-basic.css";
+import "../../upload-blocks/upload-blocks.js";
 
 export default {
   name: "Uploader",
