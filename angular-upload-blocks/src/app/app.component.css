@@ -1,8 +1,10 @@
+// it will strip tag selectors
+/* @import '../upload-blocks/uc-basic.css'; */
+
 .wrapper {
   display: flex;
   flex-direction: column;
   grid-gap: 32px;
-  padding: 32px;
 }
 .output {
   display: grid;
