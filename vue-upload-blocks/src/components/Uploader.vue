@@ -20,11 +20,8 @@
   </div>
 </template>
 
-<style>
-@import "../../upload-blocks/uc-basic.css";
-</style>
-
 <script>
+import "../../upload-blocks/uc-basic.css";
 import "../../upload-blocks/upload-blocks.js";
 
 export default {
