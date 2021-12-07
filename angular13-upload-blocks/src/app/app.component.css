@@ -1,0 +1,25 @@
+@import '../upload-blocks/uc-basic.css';
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  grid-gap: 32px;
+}
+.output {
+  display: grid;
+  grid-gap: 8px;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  width: 100%;
+  max-width: 1000px;
+}
+.uploader {
+  --cfg-pubkey: "demopublickey";
+  --cfg-multiple: 1;
+  --cfg-confirm-upload: 1;
+  --cfg-img-only: 0;
+  --cfg-accept: "";
+  --cfg-store: 1;
+  --cfg-camera-mirror: 0;
+  --cfg-source-list: "local, url, camera, draw, dropbox, gdrive, facebook";
+  --cfg-max-files: 10;
+}
