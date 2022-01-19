@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "angular12-upload-blocks": {
+    "angular-upload-blocks": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:application": {
@@ -17,16 +17,13 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/angular12-upload-blocks",
+            "outputPath": "dist/angular-upload-blocks",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
-            "assets": [
-              "src/favicon.ico",
-              "src/assets"
-            ],
-            "styles": ["src/styles.css", "src/upload-blocks/uc-basic.css"],
+            "assets": ["src/favicon.ico", "src/assets"],
+            "styles": ["src/styles.css", "node_modules/@uploadcare/upload-blocks/build/uc-basic.css"],
             "scripts": []
           },
           "configurations": {
@@ -66,10 +63,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "angular12-upload-blocks:build:production"
+              "browserTarget": "angular-upload-blocks:build:production"
             },
             "development": {
-              "browserTarget": "angular12-upload-blocks:build:development"
+              "browserTarget": "angular-upload-blocks:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -77,7 +74,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "angular12-upload-blocks:build"
+            "browserTarget": "angular-upload-blocks:build"
           }
         },
         "test": {
@@ -87,18 +84,13 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.spec.json",
             "karmaConfig": "karma.conf.js",
-            "assets": [
-              "src/favicon.ico",
-              "src/assets"
-            ],
-            "styles": [
-              "src/styles.css"
-            ],
+            "assets": ["src/favicon.ico", "src/assets"],
+            "styles": ["src/styles.css"],
             "scripts": []
           }
         }
       }
     }
   },
-  "defaultProject": "angular12-upload-blocks"
+  "defaultProject": "angular-upload-blocks"
 }

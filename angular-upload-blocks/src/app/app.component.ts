@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import '../upload-blocks/upload-blocks.js';
+import '@uploadcare/upload-blocks';
 
 @Component({
   selector: 'app-root',

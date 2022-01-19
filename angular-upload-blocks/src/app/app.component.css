@@ -1,6 +1,3 @@
-// it will strip tag selectors
-/* @import '../upload-blocks/uc-basic.css'; */
-
 .wrapper {
   display: flex;
   flex-direction: column;
@@ -14,6 +11,7 @@
   max-width: 1000px;
 }
 .uploader {
+  --ctx-name: 'my-uploader';
   --cfg-pubkey: "demopublickey";
   --cfg-multiple: 1;
   --cfg-confirm-upload: 1;
