@@ -12,9 +12,9 @@ function App() {
   return (
     <div className="wrapper">
       <div className="uploader">
-        <uc-simple-btn class="uc-wgt-common"></uc-simple-btn>
+        <uc-simple-btn className="uc-wgt-common"></uc-simple-btn>
 
-        <uc-modal strokes class="uc-wgt-common">
+        <uc-modal strokes className="uc-wgt-common">
           <uc-activity-icon slot="heading"></uc-activity-icon>
           <uc-activity-caption slot="heading"></uc-activity-caption>
           <uc-start-from>
@@ -29,12 +29,12 @@ function App() {
           <uc-confirmation-dialog></uc-confirmation-dialog>
         </uc-modal>
 
-        <uc-message-box class="uc-wgt-common"></uc-message-box>
-        <uc-progress-bar class="uc-wgt-common"></uc-progress-bar>
+        <uc-message-box className="uc-wgt-common"></uc-message-box>
+        <uc-progress-bar className="uc-wgt-common"></uc-progress-bar>
 
         <uc-data-output
           fire-event
-          class="uc-wgt-common"
+          className="uc-wgt-common"
           onDataOutput={handleUploaderEvent}
         ></uc-data-output>
       </div>
