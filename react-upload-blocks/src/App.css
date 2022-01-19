@@ -12,6 +12,7 @@
   max-width: 1000px;
 }
 .uploader {
+  --ctx-name: 'my-uploader';
   --cfg-pubkey: "demopublickey";
   --cfg-multiple: 1;
   --cfg-confirm-upload: 1;
