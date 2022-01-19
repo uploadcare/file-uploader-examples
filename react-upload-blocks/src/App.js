@@ -1,9 +1,11 @@
 import "./App.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "@uploadcare/upload-blocks/build/uc-basic.css";
-import "@uploadcare/upload-blocks";
 
 function App() {
+  useEffect(() => {
+    import("@uploadcare/upload-blocks");
+  }, []);
   const [files, setFiles] = useState([]);
   const handleUploaderEvent = (e) => {
     const { data } = e.detail;
