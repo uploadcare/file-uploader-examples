@@ -13,7 +13,7 @@ function cssOptions(options) {
       )
       .join("");
 
-    result[`--ctx-${kebabKey}`] = typeof value === "string" ? `"value"` : value;
+    result[`--ctx-${kebabKey}`] = typeof value === "string" ? `"${value}"` : value;
   }
   return result;
 }
