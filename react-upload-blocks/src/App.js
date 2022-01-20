@@ -1,7 +1,9 @@
-import "./App.css";
 import { useState } from "react";
-import "@uploadcare/upload-blocks/build/uc-basic.css";
-import "@uploadcare/upload-blocks";
+import "@uploadcare/uploader/build/regular/uc-uploader.css";
+import "@uploadcare/uploader/build/regular/uc-uploader.min.js";
+import st from "./App.module.css";
+// Order of css imports is important. User styles should be loaded after the main theme
+// Or config selector should be more specific.
 
 function App() {
   const [files, setFiles] = useState([]);
@@ -9,36 +11,19 @@ function App() {
     const { data } = e.detail;
     setFiles(data);
   };
+  const uploaderClassList = ["uc-wgt-common", st.uploader].join(" ");
+
   return (
-    <div className="wrapper">
-      <div className="uploader">
-        <uc-simple-btn class="uc-wgt-common"></uc-simple-btn>
+    <div className={st.wrapper}>
+      <uc-uploader class={uploaderClassList}></uc-uploader>
 
-        <uc-modal strokes class="uc-wgt-common">
-          <uc-activity-icon slot="heading"></uc-activity-icon>
-          <uc-activity-caption slot="heading"></uc-activity-caption>
-          <uc-start-from>
-            <uc-source-list wrap></uc-source-list>
-            <uc-drop-area></uc-drop-area>
-          </uc-start-from>
-          <uc-upload-list></uc-upload-list>
-          <uc-camera-source></uc-camera-source>
-          <uc-url-source></uc-url-source>
-          <uc-external-source></uc-external-source>
-          <uc-upload-details></uc-upload-details>
-          <uc-confirmation-dialog></uc-confirmation-dialog>
-        </uc-modal>
+      <uc-data-output
+        fire-event
+        class={uploaderClassList}
+        onDataOutput={handleUploaderEvent}
+      ></uc-data-output>
 
-        <uc-message-box class="uc-wgt-common"></uc-message-box>
-        <uc-progress-bar class="uc-wgt-common"></uc-progress-bar>
-
-        <uc-data-output
-          fire-event
-          class="uc-wgt-common"
-          onDataOutput={handleUploaderEvent}
-        ></uc-data-output>
-      </div>
-      <div className="output">
+      <div className={st.output}>
         {files.map((file) => (
           <img
             key={file.uuid}
