@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import '@uploadcare/upload-blocks';
+import '@uploadcare/uploader/build/regular/uc-uploader.min.js';
 
 @Component({
   selector: 'app-root',

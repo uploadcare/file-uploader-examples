@@ -10,8 +10,7 @@
   width: 100%;
   max-width: 1000px;
 }
-.uploader {
-  --ctx-name: 'my-uploader';
+.uploader-cfg {
   --cfg-pubkey: "demopublickey";
   --cfg-multiple: 1;
   --cfg-confirm-upload: 1;
@@ -19,6 +18,6 @@
   --cfg-accept: "";
   --cfg-store: 1;
   --cfg-camera-mirror: 0;
-  --cfg-source-list: "local, url, camera, draw, dropbox, gdrive, facebook";
+  --cfg-source-list: "local, url, camera, draw, dropbox, gdrive";
   --cfg-max-files: 10;
 }
