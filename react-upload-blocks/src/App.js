@@ -1,7 +1,7 @@
 import "./App.css";
 import { useState } from "react";
 import "@uploadcare/upload-blocks/build/uc-basic.css";
-import "@uploadcare/upload-blocks";
+import "@uploadcare/upload-blocks/build/upload-blocks.jsdoc.js";
 
 function App() {
   const [files, setFiles] = useState([]);
