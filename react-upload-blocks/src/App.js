@@ -3,43 +3,15 @@ import { useState } from "react";
 import "@uploadcare/upload-blocks/build/uc-basic.css";
 import "@uploadcare/upload-blocks";
 
-function cssOptions(options) {
-  let result = {};
-  for (let [key, value] of Object.entries(options)) {
-    let kebabKey = key
-      .split("")
-      .map((char) =>
-        char.toUpperCase() === char ? `-${char.toLowerCase()}` : char
-      )
-      .join("");
-
-    result[`--ctx-${kebabKey}`] = typeof value === "string" ? `"${value}"` : value;
-  }
-  return result;
-}
-
 function App() {
   const [files, setFiles] = useState([]);
   const handleUploaderEvent = (e) => {
     const { data } = e.detail;
     setFiles(data);
   };
-  const options = cssOptions({
-    name: "my-uploader",
-    pubkey: "demopublickey",
-    multiple: 1,
-    confirmUpload: 1,
-    imgOnly: 0,
-    accept: "",
-    store: 1,
-    cameraMirror: 0,
-    sourceList: "local, url, camera, draw, dropbox, gdrive, facebook",
-    maxFiles: 10,
-  });
-
   return (
     <div className="wrapper">
-      <div style={options}>
+      <div className="uploader">
         <uc-simple-btn class="uc-wgt-common"></uc-simple-btn>
 
         <uc-modal strokes class="uc-wgt-common">
