@@ -11,7 +11,7 @@ function App() {
     const { data } = e.detail;
     setFiles(data);
   };
-  const uploaderClassList = ["uc-wgt-common", st.uploader].join(" ");
+  const uploaderClassList = ["uc-wgt-common", st.uploaderCfg].join(" ");
 
   return (
     <div className={st.wrapper}>

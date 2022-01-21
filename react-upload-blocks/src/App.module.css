@@ -11,7 +11,7 @@
   width: 100%;
   max-width: 1000px;
 }
-.uploader {
+.uploaderCfg {
   --cfg-pubkey: "demopublickey";
   --cfg-multiple: 1;
   --cfg-confirm-upload: 1;
