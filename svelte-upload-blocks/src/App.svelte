@@ -33,6 +33,7 @@
     display: flex;
     flex-direction: column;
     grid-gap: 32px;
+    padding: 32px;
   }
   .output {
     display: grid;
