@@ -1,32 +1,12 @@
 <template>
   <div class="wrapper">
-    <div class="uploader">
-      <uc-simple-btn class="uc-wgt-common"></uc-simple-btn>
+    <uc-uploader class="uploader-cfg uc-wgt-common"></uc-uploader>
 
-      <uc-modal strokes class="uc-wgt-common">
-        <uc-activity-icon slot="heading"></uc-activity-icon>
-        <uc-activity-caption slot="heading"></uc-activity-caption>
-        <uc-start-from>
-          <uc-source-list wrap></uc-source-list>
-          <uc-drop-area></uc-drop-area>
-        </uc-start-from>
-        <uc-upload-list></uc-upload-list>
-        <uc-camera-source></uc-camera-source>
-        <uc-url-source></uc-url-source>
-        <uc-external-source></uc-external-source>
-        <uc-upload-details></uc-upload-details>
-        <uc-confirmation-dialog></uc-confirmation-dialog>
-      </uc-modal>
-
-      <uc-message-box class="uc-wgt-common"></uc-message-box>
-      <uc-progress-bar class="uc-wgt-common"></uc-progress-bar>
-
-      <uc-data-output
-        @data-output="handleUploaderEvent"
-        fire-event
-        class="uc-wgt-common"
-      ></uc-data-output>
-    </div>
+    <uc-data-output
+      @data-output="handleUploaderEvent"
+      fire-event
+      class="uploader-cfg uc-wgt-common"
+    ></uc-data-output>
     <div class="output">
       <img
         v-for="file in files"
@@ -39,8 +19,8 @@
 </template>
 
 <script>
-import "@uploadcare/upload-blocks/build/uc-basic.css";
-import "@uploadcare/upload-blocks";
+import "@uploadcare/uploader/build/regular/uc-uploader.css";
+import "@uploadcare/uploader/build/regular/uc-uploader.min.js";
 
 export default {
   name: "Uploader",
@@ -63,6 +43,7 @@ export default {
   display: flex;
   flex-direction: column;
   grid-gap: 32px;
+  padding: 32px;
 }
 .output {
   display: grid;
@@ -71,8 +52,7 @@ export default {
   width: 100%;
   max-width: 1000px;
 }
-.uploader {
-  --ctx-name: "my-uploader";
+.uploader-cfg {
   --cfg-pubkey: "demopublickey";
   --cfg-multiple: 1;
   --cfg-confirm-upload: 1;
@@ -80,7 +60,7 @@ export default {
   --cfg-accept: "";
   --cfg-store: 1;
   --cfg-camera-mirror: 0;
-  --cfg-source-list: "local, url, camera, draw, dropbox, gdrive, facebook";
+  --cfg-source-list: "local, url, camera, draw, dropbox, gdrive";
   --cfg-max-files: 10;
 }
 </style>
