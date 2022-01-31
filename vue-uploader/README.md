@@ -1,4 +1,4 @@
-# vue-upload-blocks
+# vue-uploader
 
 ## Project setup
 

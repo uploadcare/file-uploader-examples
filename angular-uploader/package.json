@@ -1,5 +1,5 @@
 {
-  "name": "angular-upload-blocks",
+  "name": "angular-uploader",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",

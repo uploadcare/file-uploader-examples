@@ -1,6 +1,6 @@
 # Upload Blocks examples
 
-* [Svelte](https://codesandbox.io/s/github/uploadcare/upload-blocks-examples/tree/main/svelte-upload-blocks)
-* [Angular](https://codesandbox.io/s/github/uploadcare/upload-blocks-examples/tree/main/angular-upload-blocks)
-* [React](https://codesandbox.io/s/github/uploadcare/upload-blocks-examples/tree/main/react-upload-blocks)
-* [Vue](https://codesandbox.io/s/github/uploadcare/upload-blocks-examples/tree/main/vue-upload-blocks)
+* [Svelte](https://codesandbox.io/s/github/uploadcare/jsdk-examples/tree/main/svelte-uploader)
+* [Angular](https://codesandbox.io/s/github/uploadcare/jsdk-examples/tree/main/angular-uploader)
+* [React](https://codesandbox.io/s/github/uploadcare/jsdk-examples/tree/main/react-uploader)
+* [Vue](https://codesandbox.io/s/github/uploadcare/jsdk-examples/tree/main/vue-uploader)

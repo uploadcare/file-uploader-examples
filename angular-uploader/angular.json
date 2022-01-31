@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "angular-upload-blocks": {
+    "angular-uploader": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:application": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/angular-upload-blocks",
+            "outputPath": "dist/angular-uploader",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -63,10 +63,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "angular-upload-blocks:build:production"
+              "browserTarget": "angular-uploader:build:production"
             },
             "development": {
-              "browserTarget": "angular-upload-blocks:build:development"
+              "browserTarget": "angular-uploader:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -74,7 +74,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "angular-upload-blocks:build"
+            "browserTarget": "angular-uploader:build"
           }
         },
         "test": {
@@ -92,5 +92,5 @@
       }
     }
   },
-  "defaultProject": "angular-upload-blocks"
+  "defaultProject": "angular-uploader"
 }
