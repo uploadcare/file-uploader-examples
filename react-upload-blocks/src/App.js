@@ -12,13 +12,15 @@ function App() {
     setFiles(data);
   };
 
+  const classNames = ["uc-wgt-common", st.uploaderCfg].join(" ");
+
   return (
     <div className={st.wrapper}>
-      <uc-uploader class={["uc-wgt-common", st.uploaderCfg]}></uc-uploader>
+      <uc-uploader class={classNames}></uc-uploader>
 
       <uc-data-output
         fire-event
-        class={["uc-wgt-common", st.uploaderCfg]}
+        class={classNames}
         onDataOutput={handleUploaderEvent}
       ></uc-data-output>
 
