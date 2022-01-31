@@ -1,4 +1,8 @@
-# Upload Blocks examples
+# JSDK examples
+
+Below are links to CodeSandbox.
+
+Uploader:
 
 * [Svelte](https://codesandbox.io/s/github/uploadcare/jsdk-examples/tree/main/svelte-uploader)
 * [Angular](https://codesandbox.io/s/github/uploadcare/jsdk-examples/tree/main/angular-uploader)
