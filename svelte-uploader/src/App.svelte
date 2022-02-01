@@ -43,6 +43,7 @@
     max-width: 1000px;
   }
   .uploader-cfg {
+    /* DO NOT FORGET TO USE YOUR OWN PUBLIC KEY */
     --cfg-pubkey: "demopublickey";
     --cfg-multiple: 1;
     --cfg-confirm-upload: 1;
@@ -50,7 +51,7 @@
     --cfg-accept: "";
     --cfg-store: 1;
     --cfg-camera-mirror: 0;
-    --cfg-source-list: "local, url, camera, draw, dropbox, gdrive";
+    --cfg-source-list: "local, url, camera, dropbox, gdrive";
     --cfg-max-files: 10;
   }
 </style>
