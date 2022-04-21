@@ -3,7 +3,7 @@ import * as UC from "@uploadcare/uc-blocks";
 
 // Order of css imports is important. User styles should be loaded after the main theme
 // Or config selector should be more specific.
-import "@uploadcare/uc-blocks/blocks/themes/uc-basic/index.css";
+import "@uploadcare/uc-blocks/web/uc-basic.min.css";
 import st from "./App.module.css";
 
 UC.registerBlocks(UC);

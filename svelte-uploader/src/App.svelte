@@ -1,5 +1,5 @@
 <script>
-  import "@uploadcare/uc-blocks/blocks/themes/uc-basic/index.css";
+  import "@uploadcare/uc-blocks/web/uc-basic.min.css";
   import * as UC from "@uploadcare/uc-blocks";
 
   UC.registerBlocks(UC);
