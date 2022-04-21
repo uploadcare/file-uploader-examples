@@ -1,12 +1,13 @@
 <template>
   <div class="wrapper">
-    <uc-uploader class="uploader-cfg uc-wgt-common"></uc-uploader>
+    <uc-file-uploader-regular class="uploader-cfg uc-wgt-common"></uc-file-uploader-regular>
 
     <uc-data-output
       @data-output="handleUploaderEvent"
       fire-event
       class="uploader-cfg uc-wgt-common"
     ></uc-data-output>
+
     <div class="output">
       <img
         v-for="file in files"
@@ -19,8 +20,9 @@
 </template>
 
 <script>
-import "@uploadcare/uploader/build/regular/uc-uploader.css";
-import "@uploadcare/uploader/build/regular/uc-uploader.min.js";
+import * as UC from "@uploadcare/uc-blocks";
+
+UC.registerBlocks(UC);
 
 export default {
   name: "Uploader",
@@ -39,6 +41,8 @@ export default {
 </script>
 
 <style scoped>
+@import url("@uploadcare/uc-blocks/solutions/file-uploader/regular/index.css");
+
 .wrapper {
   display: flex;
   flex-direction: column;
@@ -53,6 +57,8 @@ export default {
   max-width: 1000px;
 }
 .uploader-cfg {
+  --ctx-name: 'uploader';
+
   /* DO NOT FORGET TO USE YOUR OWN PUBLIC KEY */
   --cfg-pubkey: "demopublickey";
   --cfg-multiple: 1;
