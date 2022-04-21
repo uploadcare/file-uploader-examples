@@ -1,4 +1,4 @@
-# JSDK examples
+# uc-blocks examples
 
 Here are examples of using `@uploadcare/uploader` on CodeSandbox:
 
