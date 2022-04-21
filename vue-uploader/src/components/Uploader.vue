@@ -20,6 +20,7 @@
 </template>
 
 <script>
+import "@uploadcare/uc-blocks/web/uc-basic.min.css";
 import * as UC from "@uploadcare/uc-blocks";
 
 UC.registerBlocks(UC);
@@ -41,8 +42,6 @@ export default {
 </script>
 
 <style scoped>
-@import url("@uploadcare/uc-blocks/web/uc-basic.min.css");
-
 .wrapper {
   display: flex;
   flex-direction: column;
