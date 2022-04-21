@@ -1,3 +1,5 @@
+@import url('@uploadcare/uc-blocks/solutions/file-uploader/regular/index.css');
+
 .wrapper {
   display: flex;
   flex-direction: column;
@@ -12,7 +14,9 @@
   max-width: 1000px;
 }
 .uploader-cfg {
-  // DO NOT FORGET TO USE YOUR OWN PUBLIC KEY
+  --ctx-name: 'uploader';
+
+   /* DO NOT FORGET TO USE YOUR OWN PUBLIC KEY */
   --cfg-pubkey: "demopublickey";
   --cfg-multiple: 1;
   --cfg-confirm-upload: 1;

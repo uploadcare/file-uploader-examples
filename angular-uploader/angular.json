@@ -23,7 +23,7 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
             "assets": ["src/favicon.ico", "src/assets"],
-            "styles": ["src/styles.css", "node_modules/@uploadcare/uploader/build/regular/uc-uploader.css"],
+            "styles": ["src/styles.css"],
             "scripts": []
           },
           "configurations": {

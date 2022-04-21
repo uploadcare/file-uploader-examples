@@ -1,6 +1,6 @@
 # uc-blocks examples
 
-Here are examples of using `@uploadcare/uploader` on CodeSandbox:
+Here are examples of using `@uploadcare/uc-blocks` on CodeSandbox:
 
 * [Svelte](https://codesandbox.io/s/github/uploadcare/jsdk-examples/tree/main/svelte-uploader)
 * [Angular](https://codesandbox.io/s/github/uploadcare/jsdk-examples/tree/main/angular-uploader)
