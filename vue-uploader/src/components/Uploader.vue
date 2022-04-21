@@ -41,7 +41,7 @@ export default {
 </script>
 
 <style scoped>
-@import url("@uploadcare/uc-blocks/solutions/file-uploader/regular/index.css");
+@import url("@uploadcare/uc-blocks/blocks/themes/uc-basic/index.css");
 
 .wrapper {
   display: flex;

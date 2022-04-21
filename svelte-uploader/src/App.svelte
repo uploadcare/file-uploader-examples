@@ -1,6 +1,8 @@
 <script>
-  import "@uploadcare/uploader/build/regular/uc-uploader.css";
-  import "@uploadcare/uploader/build/regular/uc-uploader.min.js";
+  import "@uploadcare/uc-blocks/blocks/themes/uc-basic/index.css";
+  import * as UC from "@uploadcare/uc-blocks";
+
+  UC.registerBlocks(UC);
 
   let files = [];
   function handleUploaderEvent(e) {
@@ -10,7 +12,7 @@
 </script>
 
 <div class="wrapper">
-  <uc-uploader class="uploader-cfg uc-wgt-common" />
+  <uc-file-uploader-regular class="uploader-cfg uc-wgt-common" />
 
   <uc-data-output
     fire-event
@@ -43,6 +45,8 @@
     max-width: 1000px;
   }
   .uploader-cfg {
+    --ctx-name: 'uploader';
+
     /* DO NOT FORGET TO USE YOUR OWN PUBLIC KEY */
     --cfg-pubkey: "demopublickey";
     --cfg-multiple: 1;
