@@ -12,7 +12,9 @@
   max-width: 1000px;
 }
 .uploaderCfg {
-  // DO NOT FORGET TO USE YOUR OWN PUBLIC KEY
+  --ctx-name: 'uploader';
+
+  /* DO NOT FORGET TO USE YOUR OWN PUBLIC KEY */
   --cfg-pubkey: "demopublickey";
   --cfg-multiple: 1;
   --cfg-confirm-upload: 1;
