@@ -9,10 +9,7 @@ const examples = fg.sync("./examples/*", {
 
 for (const examplePath of examples) {
   const exampleName = path.relative("./examples", examplePath);
-  const publicFolderName = ["dist", "public"].find((name) =>
-    fs.existsSync(path.resolve(path.join(examplePath, name)))
-  );
-  const distPath = path.resolve(path.join(examplePath, publicFolderName));
+  const distPath = path.resolve(path.join(examplePath, "dist"));
   const newPath = path.resolve(`./public/${exampleName}`);
   fs.cpSync(distPath, newPath, { recursive: true });
 }
@@ -31,11 +28,10 @@ const html = /*html*/ `
       .map((examplePath) => path.relative("./examples", examplePath))
       .map(
         (example) => /*html*/ `<li><a href="./${example}/">${example}</a></li>`
-      )
-      .join("\n    ")}
+      ).join('\n    ')}
   </ul>
 </body>
 </html>
 `;
 
-fs.writeFileSync(path.resolve(`./public/index.html`), html);
+fs.writeFileSync(path.resolve(`./public/index.html`), html)
