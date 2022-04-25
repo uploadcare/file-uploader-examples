@@ -4,8 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "bump": "npm-check-updates /@uploadcare/ -u --deep",
+    "bootstrap": "lerna bootstrap"
   },
   "author": "",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "lerna": "^4.0.0",
+    "npm-check-updates": "^12.5.9"
+  }
 }
