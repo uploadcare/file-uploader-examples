@@ -1,4 +1,4 @@
-
+# uc-blocks ❤️ Svelte
 
 [![Edit svelte-uploader](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/github/uploadcare/uc-blocks-examples/tree/main/examples/svelte-uploader/)
 
