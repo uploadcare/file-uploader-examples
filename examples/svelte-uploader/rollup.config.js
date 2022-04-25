@@ -5,6 +5,7 @@ import livereload from "rollup-plugin-livereload";
 import { terser } from "rollup-plugin-terser";
 import postcss from 'rollup-plugin-postcss'
 import atImport from 'postcss-import'
+import copy from 'rollup-plugin-copy'
 
 const production = !process.env.ROLLUP_WATCH;
 
@@ -39,9 +40,14 @@ export default {
     sourcemap: true,
     format: "iife",
     name: "app",
-    file: "public/build/bundle.js",
+    file: "dist/bundle.js",
   },
   plugins: [
+    copy({
+      targets: [
+        { src: 'public/**', dest: 'dist/' },
+      ]
+    }),
     svelte({
       compilerOptions: {
         // enable run-time checks when not in production

@@ -16,11 +16,10 @@ jobs:
           npm ci
           npm run bootstrap
           npm run build
-          rm -rf ./**/node_modules/**
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4.3.0
         with:
           branch: gh-pages
           clean: true
-          folder: ./
+          folder: ./public

@@ -1,16 +1,20 @@
 {
   "name": "uc-blocks-examples",
+  "type": "module",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "bump": "npm-check-updates /@uploadcare/ -u --deep",
     "bootstrap": "lerna bootstrap",
-    "build": "lerna run build"
+    "build:examples": "lerna run build",
+    "build:pages": "node pages.js",
+    "build": "npm run build:examples && npm run build:pages"
   },
   "author": "",
   "license": "MIT",
   "devDependencies": {
+    "fast-glob": "^3.2.11",
     "lerna": "^4.0.0",
     "npm-check-updates": "^12.5.9"
   }

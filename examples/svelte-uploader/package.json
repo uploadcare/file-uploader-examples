@@ -12,6 +12,7 @@
     "@rollup/plugin-node-resolve": "^13.2.1",
     "postcss-import": "^14.1.0",
     "rollup": "^2.70.2",
+    "rollup-plugin-copy": "^3.4.0",
     "rollup-plugin-livereload": "^2.0.5",
     "rollup-plugin-postcss": "^4.0.2",
     "rollup-plugin-svelte": "^7.1.0",
