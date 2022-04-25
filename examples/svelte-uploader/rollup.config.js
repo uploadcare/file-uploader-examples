@@ -40,7 +40,7 @@ export default {
     sourcemap: true,
     format: "iife",
     name: "app",
-    file: "dist/bundle.js",
+    file: "public/bundle.js",
   },
   plugins: [
     svelte({
@@ -72,7 +72,7 @@ export default {
 
     // Watch the `public` directory and refresh the
     // browser on changes when not in production
-    !production && livereload("dist"),
+    !production && livereload("public"),
 
     // If we're building for production (npm run build
     // instead of npm run dev), minify
