@@ -78,8 +78,8 @@ export default {
     // instead of npm run dev), minify
     production && terser(),
 
-    production && html({
-      publicPath: '/uc-blocks-examples/svelte-uploader/'
+    html({
+      publicPath: production ? '/uc-blocks-examples/svelte-uploader/' : '/'
     })
   ],
   watch: {
