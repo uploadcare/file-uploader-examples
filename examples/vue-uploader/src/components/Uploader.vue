@@ -12,6 +12,11 @@
 </template>
 
 <script>
+/*
+ * Use minified version because codesandbox can't bundle raw css with relative imports.
+ * It's better to use '@uploadcare/uc-blocks/blocks/themes/uc-basic/index.css' instead
+ */
+import '@uploadcare/uc-blocks/web/uc-basic.min.css'
 import * as UC from "@uploadcare/uc-blocks";
 
 UC.registerBlocks(UC);
@@ -33,12 +38,6 @@ export default {
 </script>
 
 <style scoped>
-/*
- * Use minified version because codesandbox can't bundle raw css with relative imports.
- * It's better to use '@uploadcare/uc-blocks/blocks/themes/uc-basic/index.css' instead
- */
-@import url("@uploadcare/uc-blocks/web/uc-basic.min.css");
-
 .wrapper {
   display: flex;
   flex-direction: column;
