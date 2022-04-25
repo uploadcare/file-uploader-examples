@@ -1,4 +1,4 @@
-@import url('@uploadcare/uc-blocks/web/uc-basic.min.css');
+@import url('@uploadcare/uc-blocks/blocks/themes/uc-basic/index.css');
 
 .wrapper {
   display: flex;
