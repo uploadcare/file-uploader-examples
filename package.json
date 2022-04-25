@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "bump": "npm-check-updates /@uploadcare/ -u --deep",
-    "bootstrap": "lerna bootstrap"
+    "bootstrap": "lerna bootstrap",
+    "build": "lerna run build"
   },
   "author": "",
   "license": "MIT",
