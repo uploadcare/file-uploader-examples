@@ -14,6 +14,7 @@ jobs:
       - name: Install and Build 🔧
         run: |
           npm ci
+          npm run bootstrap
           npm run build
 
       - name: Deploy 🚀
