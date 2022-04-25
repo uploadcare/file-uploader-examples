@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.css": "/static/css/main.93ac9234.css",
-    "main.js": "/static/js/main.9ec48a5a.js",
-    "index.html": "/index.html",
-    "main.93ac9234.css.map": "/static/css/main.93ac9234.css.map",
-    "main.9ec48a5a.js.map": "/static/js/main.9ec48a5a.js.map"
+    "main.css": "https://uploadcare.github.io/uc-blocks-examples/react-uploader/static/css/main.93ac9234.css",
+    "main.js": "https://uploadcare.github.io/uc-blocks-examples/react-uploader/static/js/main.9ec48a5a.js",
+    "index.html": "https://uploadcare.github.io/uc-blocks-examples/react-uploader/index.html",
+    "main.93ac9234.css.map": "https://uploadcare.github.io/uc-blocks-examples/react-uploader/static/css/main.93ac9234.css.map",
+    "main.9ec48a5a.js.map": "https://uploadcare.github.io/uc-blocks-examples/react-uploader/static/js/main.9ec48a5a.js.map"
   },
   "entrypoints": [
     "static/css/main.93ac9234.css",
