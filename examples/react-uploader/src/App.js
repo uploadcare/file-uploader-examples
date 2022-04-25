@@ -1,9 +1,14 @@
 import { useState, useCallback, useRef, useEffect } from "react";
 import * as UC from "@uploadcare/uc-blocks";
 
-// Order of css imports is important. User styles should be loaded after the main theme
-// Or config selector should be more specific.
-import "@uploadcare/uc-blocks/blocks/themes/uc-basic/index.css";
+/*
+ * Order of css imports is important. User styles should be loaded after the main theme
+ * Or config selector should be more specific.
+ *
+ * Use minified version because codesandbox can't bundle raw css with relative imports.
+ * It's better to use '@uploadcare/uc-blocks/blocks/themes/uc-basic/index.css' instead
+ */
+import "@uploadcare/uc-blocks/web/uc-basic.min.css";
 import st from "./App.module.css";
 
 UC.registerBlocks(UC);

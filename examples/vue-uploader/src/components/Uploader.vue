@@ -2,19 +2,11 @@
   <div class="wrapper">
     <uc-file-uploader-regular class="uploader-cfg uc-wgt-common"></uc-file-uploader-regular>
 
-    <uc-data-output
-      @data-output="handleUploaderEvent"
-      fire-event
-      class="uploader-cfg uc-wgt-common"
-    ></uc-data-output>
+    <uc-data-output @data-output="handleUploaderEvent" fire-event class="uploader-cfg uc-wgt-common"></uc-data-output>
 
     <div class="output">
-      <img
-        v-for="file in files"
-        :key="file.uuid"
-        :src="`https://ucarecdn.com/${file.uuid}/-/preview/-/scale_crop/400x400/`"
-        width="200"
-      />
+      <img v-for="file in files" :key="file.uuid"
+        :src="`https://ucarecdn.com/${file.uuid}/-/preview/-/scale_crop/400x400/`" width="200" />
     </div>
   </div>
 </template>
@@ -41,7 +33,11 @@ export default {
 </script>
 
 <style scoped>
-@import url("@uploadcare/uc-blocks/blocks/themes/uc-basic/index.css");
+/*
+ * Use minified version because codesandbox can't bundle raw css with relative imports.
+ * It's better to use '@uploadcare/uc-blocks/blocks/themes/uc-basic/index.css' instead
+ */
+@import url("@uploadcare/uc-blocks/web/uc-basic.min.css");
 
 .wrapper {
   display: flex;
@@ -49,6 +45,7 @@ export default {
   grid-gap: 32px;
   padding: 32px;
 }
+
 .output {
   display: grid;
   grid-gap: 8px;
@@ -56,6 +53,7 @@ export default {
   width: 100%;
   max-width: 1000px;
 }
+
 .uploader-cfg {
   --ctx-name: 'uploader';
 

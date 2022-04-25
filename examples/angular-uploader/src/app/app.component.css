@@ -1,4 +1,8 @@
-@import url('@uploadcare/uc-blocks/blocks/themes/uc-basic/index.css');
+/*
+ * Use minified version because codesandbox can't bundle raw css with relative imports.
+ * It's better to use '@uploadcare/uc-blocks/blocks/themes/uc-basic/index.css' instead
+ */
+@import url("@uploadcare/uc-blocks/web/uc-basic.min.css");
 
 .wrapper {
   display: flex;
@@ -14,9 +18,9 @@
   max-width: 1000px;
 }
 .uploader-cfg {
-  --ctx-name: 'uploader';
+  --ctx-name: "uploader";
 
-   /* DO NOT FORGET TO USE YOUR OWN PUBLIC KEY */
+  /* DO NOT FORGET TO USE YOUR OWN PUBLIC KEY */
   --cfg-pubkey: "demopublickey";
   --cfg-multiple: 1;
   --cfg-confirm-upload: 1;

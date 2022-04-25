@@ -1,5 +1,9 @@
 <script>
-  import "@uploadcare/uc-blocks/blocks/themes/uc-basic/index.css";
+  /*
+   * Use minified version because codesandbox can't bundle raw css with relative imports.
+   * It's better to use '@uploadcare/uc-blocks/blocks/themes/uc-basic/index.css' instead
+   */
+  import "@uploadcare/uc-blocks/web/uc-basic.min.css";
   import * as UC from "@uploadcare/uc-blocks";
 
   UC.registerBlocks(UC);
@@ -45,7 +49,7 @@
     max-width: 1000px;
   }
   .uploader-cfg {
-    --ctx-name: 'uploader';
+    --ctx-name: "uploader";
 
     /* DO NOT FORGET TO USE YOUR OWN PUBLIC KEY */
     --cfg-pubkey: "demopublickey";
