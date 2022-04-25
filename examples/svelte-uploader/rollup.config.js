@@ -79,7 +79,7 @@ export default {
     production && terser(),
 
     production && html({
-      publicPath: '/svelte-uploader/'
+      publicPath: '/uc-blocks-examples/svelte-uploader/'
     })
   ],
   watch: {

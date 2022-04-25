@@ -1,5 +1,5 @@
 module.exports = {
-  publicPath: "/vue-uploader/",
+  publicPath: "/uc-blocks-examples/vue-uploader/",
   chainWebpack: (config) => {
     config.module
       .rule("vue")
