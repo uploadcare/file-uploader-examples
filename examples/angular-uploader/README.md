@@ -1,5 +1,7 @@
 # uc-blocks ❤️ Angular
 
+[![Edit angular-uploader](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/github/uploadcare/uc-blocks-examples/tree/main/examples/angular-uploader/)
+
 ## Integration notes
 
 ### Set NgModule schema

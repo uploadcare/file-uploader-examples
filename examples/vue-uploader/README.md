@@ -1,5 +1,7 @@
 # uc-blocks ❤️ Vue
 
+[![Edit vue-uploader](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/github/uploadcare/uc-blocks-examples/tree/main/examples/vue-uploader/)
+
 ## Integration notes
 
 Since uc-block is based on custom elements, you need to let Vue know that
