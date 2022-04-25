@@ -1,8 +1,8 @@
 # uc-blocks examples
 
-Here are examples of using `@uploadcare/uc-blocks` on CodeSandbox:
+Deployed example applications here - https://uploadcare.github.io/uc-blocks-examples/
 
-* [Svelte](https://codesandbox.io/s/github/uploadcare/uc-blocks-examples/tree/main/svelte-uploader)
-* [Angular](https://codesandbox.io/s/github/uploadcare/uc-blocks-examples/tree/main/angular-uploader)
-* [React](https://codesandbox.io/s/github/uploadcare/uc-blocks-examples/tree/main/react-uploader)
-* [Vue](https://codesandbox.io/s/github/uploadcare/uc-blocks-examples/tree/main/vue-uploader)
+* [Svelte](./examples/svelte-uploader/)
+* [Angular](./examples/angular-uploader/)
+* [React](./examples/react-uploader/)
+* [Vue](./examples/vue-uploader/)
