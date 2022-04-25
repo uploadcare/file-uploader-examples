@@ -1,4 +1,5 @@
 module.exports = {
+  publicPath: "/vue-uploader/",
   chainWebpack: (config) => {
     config.module
       .rule("vue")

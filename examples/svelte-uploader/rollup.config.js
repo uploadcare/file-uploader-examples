@@ -5,7 +5,7 @@ import livereload from "rollup-plugin-livereload";
 import { terser } from "rollup-plugin-terser";
 import postcss from 'rollup-plugin-postcss'
 import atImport from 'postcss-import'
-import copy from 'rollup-plugin-copy'
+import html from '@rollup/plugin-html'
 
 const production = !process.env.ROLLUP_WATCH;
 
@@ -43,11 +43,6 @@ export default {
     file: "dist/bundle.js",
   },
   plugins: [
-    copy({
-      targets: [
-        { src: 'public/**', dest: 'dist/' },
-      ]
-    }),
     svelte({
       compilerOptions: {
         // enable run-time checks when not in production
@@ -77,11 +72,15 @@ export default {
 
     // Watch the `public` directory and refresh the
     // browser on changes when not in production
-    !production && livereload("public"),
+    !production && livereload("dist"),
 
     // If we're building for production (npm run build
     // instead of npm run dev), minify
     production && terser(),
+
+    production && html({
+      publicPath: '/svelte-uploader/'
+    })
   ],
   watch: {
     clearScreen: false,

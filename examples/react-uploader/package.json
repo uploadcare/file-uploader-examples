@@ -14,7 +14,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "BUILD_PATH='./dist' react-scripts build",
+    "build": "PUBLIC_URL='https://uploadcare.github.io/uc-blocks-examples/react-uploader/' BUILD_PATH='./dist' react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
