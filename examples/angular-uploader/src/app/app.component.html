@@ -1,11 +1,11 @@
 <div class="wrapper">
-  <uc-file-uploader-regular class="uploader-cfg uc-wgt-common"></uc-file-uploader-regular>
+  <lr-file-uploader-regular class="uploader-cfg lr-wgt-common"></lr-file-uploader-regular>
 
-  <uc-data-output
+  <lr-data-output
     (data-output)="handleUploaderEvent($event)"
     fire-event
-    class="uploader-cfg uc-wgt-common"
-  ></uc-data-output>
+    class="uploader-cfg lr-wgt-common"
+  ></lr-data-output>
   <div class="output">
     <img
       *ngFor="let file of files"

@@ -7,7 +7,7 @@ module.exports = {
       .tap((options) => {
         options.compilerOptions = {
           ...(options.compilerOptions || {}),
-          isCustomElement: (tag) => tag.startsWith("uc-"),
+          isCustomElement: (tag) => tag.startsWith("lr-"),
         };
         return options;
       });

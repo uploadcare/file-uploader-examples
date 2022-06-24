@@ -1,12 +1,12 @@
 <script>
   /*
    * Use minified version because codesandbox can't bundle raw css with relative imports.
-   * It's better to use '@uploadcare/uc-blocks/blocks/themes/uc-basic/index.css' instead
+   * It's better to use '@uploadcare/uc-blocks/blocks/themes/lr-basic/index.css' instead
    */
-  import "@uploadcare/uc-blocks/web/uc-basic.min.css";
-  import * as UC from "@uploadcare/uc-blocks";
+  import "@uploadcare/uc-blocks/web/lr-basic.min.css";
+  import * as LR from "@uploadcare/uc-blocks";
 
-  UC.registerBlocks(UC);
+  LR.registerBlocks(LR);
 
   let files = [];
   function handleUploaderEvent(e) {
@@ -16,11 +16,11 @@
 </script>
 
 <div class="wrapper">
-  <uc-file-uploader-regular class="uploader-cfg uc-wgt-common" />
+  <lr-file-uploader-regular class="uploader-cfg lr-wgt-common" />
 
-  <uc-data-output
+  <lr-data-output
     fire-event
-    class="uploader-cfg uc-wgt-common"
+    class="uploader-cfg lr-wgt-common"
     on:data-output={handleUploaderEvent}
   />
   <div class="output">

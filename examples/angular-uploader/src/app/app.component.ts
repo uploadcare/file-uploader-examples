@@ -1,8 +1,8 @@
 import { Component, ViewEncapsulation } from '@angular/core';
-import * as UC from '@uploadcare/uc-blocks';
+import * as LR from '@uploadcare/uc-blocks';
 import type { UploadcareFile } from '@uploadcare/uc-blocks/submodules/upload-client/upload-client.js';
 
-UC.registerBlocks(UC);
+LR.registerBlocks(LR);
 
 @Component({
   selector: 'app-root',

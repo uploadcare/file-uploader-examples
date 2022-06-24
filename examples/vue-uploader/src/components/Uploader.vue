@@ -1,8 +1,8 @@
 <template>
   <div class="wrapper">
-    <uc-file-uploader-regular class="uploader-cfg uc-wgt-common"></uc-file-uploader-regular>
+    <lr-file-uploader-regular class="uploader-cfg lr-wgt-common"></lr-file-uploader-regular>
 
-    <uc-data-output @data-output="handleUploaderEvent" fire-event class="uploader-cfg uc-wgt-common"></uc-data-output>
+    <lr-data-output @data-output="handleUploaderEvent" fire-event class="uploader-cfg lr-wgt-common"></lr-data-output>
 
     <div class="output">
       <img v-for="file in files" :key="file.uuid"
@@ -14,12 +14,12 @@
 <script>
 /*
  * Use minified version because codesandbox can't bundle raw css with relative imports.
- * It's better to use '@uploadcare/uc-blocks/blocks/themes/uc-basic/index.css' instead
+ * It's better to use '@uploadcare/uc-blocks/blocks/themes/lr-basic/index.css' instead
  */
-import '@uploadcare/uc-blocks/web/uc-basic.min.css'
-import * as UC from "@uploadcare/uc-blocks";
+import '@uploadcare/uc-blocks/web/lr-basic.min.css'
+import * as LR from "@uploadcare/uc-blocks";
 
-UC.registerBlocks(UC);
+LR.registerBlocks(LR);
 
 export default {
   name: "Uploader",
