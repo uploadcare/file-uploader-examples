@@ -25,3 +25,11 @@
   --cfg-source-list: "local, url, camera, dropbox, gdrive";
   --cfg-max-files: 10;
 }
+.button {
+  width: 200px;
+  height: 50px;
+  padding: 10px;
+  background: gold;
+  border-radius: 10px;
+  cursor: pointer;
+}
