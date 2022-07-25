@@ -31,7 +31,6 @@ function App() {
   const onClick = () => {
       console.log('open modal', outputRef)
       outputRef.current.initFlow()
-      window.opa = outputRef.current
   }
   const ctxName = 'my-context'
 
