@@ -34,8 +34,8 @@ function App() {
   }
   const ctxName = 'my-context'
 
-  // 1) not working with force ctx-name to each element
-  // 2) modal opened, but uploads not working, also tab-list not clickable
+  // 1) BUG - needed force ctx-name to each element
+  // 2) BUG - modal opened, but uploads not working, also tab-list not clickable
   return (
     <div className={classNames}>
         <button className={st.button} onClick={onClick}>upload</button>
