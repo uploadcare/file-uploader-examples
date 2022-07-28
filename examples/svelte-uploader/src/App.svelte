@@ -19,9 +19,9 @@
   <lr-file-uploader-regular class="uploader-cfg lr-wgt-common" />
 
   <lr-data-output
-    fire-event
+    use-event
     class="uploader-cfg lr-wgt-common"
-    on:data-output={handleUploaderEvent}
+    on:lr-data-output={handleUploaderEvent}
   />
   <div class="output">
     {#each files as file}

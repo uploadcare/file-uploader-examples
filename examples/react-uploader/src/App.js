@@ -1,5 +1,6 @@
 import { useState, useCallback, useRef, useEffect } from "react";
 import * as LR from "@uploadcare/uc-blocks";
+import { FileUploaderInline } from "@uploadcare/uc-blocks/solutions/file-uploader/inline/FileUploaderInline.js";
 
 /*
  * Order of css imports is important. User styles should be loaded after the main theme
@@ -11,7 +12,7 @@ import * as LR from "@uploadcare/uc-blocks";
 import "@uploadcare/uc-blocks/web/lr-basic.min.css";
 import st from "./App.module.css";
 
-LR.registerBlocks(LR);
+LR.registerBlocks({ ...LR, FileUploaderInline });
 
 function App() {
   let dataOutputRef = useRef();
@@ -23,9 +24,9 @@ function App() {
 
   useEffect(() => {
     let el = dataOutputRef.current;
-    el.addEventListener("data-output", handleUploaderEvent);
+    el.addEventListener("lr-data-output", handleUploaderEvent);
     return () => {
-      el.removeEventListener("data-output", handleUploaderEvent);
+      el.removeEventListener("lr-data-output", handleUploaderEvent);
     };
   }, [handleUploaderEvent]);
 
@@ -33,11 +34,11 @@ function App() {
 
   return (
     <div className={st.wrapper}>
-      <lr-file-uploader-regular class={classNames}></lr-file-uploader-regular>
+      <lr-file-uploader-inline class={classNames}></lr-file-uploader-inline>
 
       <lr-data-output
         ref={dataOutputRef}
-        fire-event
+        use-event
         class={classNames}
         onEvent={handleUploaderEvent}
       ></lr-data-output>

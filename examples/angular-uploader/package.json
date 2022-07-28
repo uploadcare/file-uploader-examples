@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build --deploy-url /uc-blocks-examples/angular-uploader/",
+    "build": "ng build --base-href /uc-blocks-examples/angular-uploader/",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
@@ -18,7 +18,7 @@
     "@angular/platform-browser": "~13.3.4",
     "@angular/platform-browser-dynamic": "~13.3.4",
     "@angular/router": "~13.3.4",
-    "@uploadcare/uc-blocks": "^0.4.0",
+    "@uploadcare/uc-blocks": "^0.6.0",
     "rxjs": "~7.5.5",
     "tslib": "^2.3.1",
     "zone.js": "~0.11.5"

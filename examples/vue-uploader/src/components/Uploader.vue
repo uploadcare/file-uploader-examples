@@ -2,7 +2,7 @@
   <div class="wrapper">
     <lr-file-uploader-regular class="uploader-cfg lr-wgt-common"></lr-file-uploader-regular>
 
-    <lr-data-output @data-output="handleUploaderEvent" fire-event class="uploader-cfg lr-wgt-common"></lr-data-output>
+    <lr-data-output @lr-data-output="handleUploaderEvent" use-event class="uploader-cfg lr-wgt-common"></lr-data-output>
 
     <div class="output">
       <img v-for="file in files" :key="file.uuid"
