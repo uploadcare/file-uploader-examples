@@ -6,7 +6,7 @@
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.1.1",
     "@testing-library/user-event": "^14.1.1",
-    "@uploadcare/uc-blocks": "^0.6.0",
+    "@uploadcare/uc-blocks": "^0.7.1",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-scripts": "5.0.1",
@@ -14,6 +14,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "build:local": "BUILD_PATH='./dist' react-scripts build",
     "build": "PUBLIC_URL='https://uploadcare.github.io/uc-blocks-examples/react-uploader/' BUILD_PATH='./dist' react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

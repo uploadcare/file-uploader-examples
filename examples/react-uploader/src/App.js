@@ -1,6 +1,5 @@
 import { useState, useCallback, useRef, useEffect } from "react";
 import * as LR from "@uploadcare/uc-blocks";
-import { FileUploaderInline } from "@uploadcare/uc-blocks/solutions/file-uploader/inline/FileUploaderInline.js";
 
 /*
  * Order of css imports is important. User styles should be loaded after the main theme
@@ -12,7 +11,7 @@ import { FileUploaderInline } from "@uploadcare/uc-blocks/solutions/file-uploade
 import "@uploadcare/uc-blocks/web/lr-basic.min.css";
 import st from "./App.module.css";
 
-LR.registerBlocks({ ...LR, FileUploaderInline });
+LR.registerBlocks(LR);
 
 function App() {
   let dataOutputRef = useRef();
@@ -34,7 +33,7 @@ function App() {
 
   return (
     <div className={st.wrapper}>
-      <lr-file-uploader-inline class={classNames}></lr-file-uploader-inline>
+      <lr-file-uploader-regular class={classNames}></lr-file-uploader-regular>
 
       <lr-data-output
         ref={dataOutputRef}
