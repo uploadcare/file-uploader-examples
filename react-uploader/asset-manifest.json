@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "https://uploadcare.github.io/uc-blocks-examples/react-uploader/static/css/main.b6da2a1f.css",
-    "main.js": "https://uploadcare.github.io/uc-blocks-examples/react-uploader/static/js/main.b72e5927.js",
+    "main.css": "https://uploadcare.github.io/uc-blocks-examples/react-uploader/static/css/main.770542d0.css",
+    "main.js": "https://uploadcare.github.io/uc-blocks-examples/react-uploader/static/js/main.18a48d30.js",
     "index.html": "https://uploadcare.github.io/uc-blocks-examples/react-uploader/index.html",
-    "main.b6da2a1f.css.map": "https://uploadcare.github.io/uc-blocks-examples/react-uploader/static/css/main.b6da2a1f.css.map",
-    "main.b72e5927.js.map": "https://uploadcare.github.io/uc-blocks-examples/react-uploader/static/js/main.b72e5927.js.map"
+    "main.770542d0.css.map": "https://uploadcare.github.io/uc-blocks-examples/react-uploader/static/css/main.770542d0.css.map",
+    "main.18a48d30.js.map": "https://uploadcare.github.io/uc-blocks-examples/react-uploader/static/js/main.18a48d30.js.map"
   },
   "entrypoints": [
-    "static/css/main.b6da2a1f.css",
-    "static/js/main.b72e5927.js"
+    "static/css/main.770542d0.css",
+    "static/js/main.18a48d30.js"
   ]
 }
