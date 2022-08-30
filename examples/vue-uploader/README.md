@@ -12,7 +12,7 @@ It is done by specifying the `compilerOptions.isCustomElement` like this:
 compilerOptions.isCustomElement = (tag) => tag.startsWith("uc-")
 ```
 
-All uc-blocks elements are prefixed with `uc-`.
+All uc-blocks elements are prefixed with `lr-`.
 
 See more about custom elements in the [Vue documentation](https://vuejs.org/guide/extras/web-components.html#using-custom-elements-in-vue).
 
