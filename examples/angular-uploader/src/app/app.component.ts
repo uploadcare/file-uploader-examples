@@ -1,5 +1,5 @@
 import { Component, ViewEncapsulation } from '@angular/core';
-import * as LR from '@uploadcare/uc-blocks';
+import * as LR from '@uploadcare/blocks';
 import type { UploadcareFile } from '@uploadcare/upload-client';
 
 LR.registerBlocks(LR);

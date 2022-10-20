@@ -1,14 +1,14 @@
 import { useState, useCallback, useRef, useEffect } from "react";
-import * as LR from "@uploadcare/uc-blocks";
+import * as LR from "@uploadcare/blocks";
 
 /*
  * Order of css imports is important. User styles should be loaded after the main theme
  * Or config selector should be more specific.
  *
  * Use minified version because codesandbox can't bundle raw css with relative imports.
- * It's better to use '@uploadcare/uc-blocks/blocks/themes/lr-basic/index.css' instead
+ * It's better to use '@uploadcare/blocks/blocks/themes/lr-basic/index.css' instead
  */
-import "@uploadcare/uc-blocks/web/lr-basic.min.css";
+import "@uploadcare/blocks/web/lr-basic.min.css";
 import st from "./App.module.css";
 
 LR.registerBlocks(LR);

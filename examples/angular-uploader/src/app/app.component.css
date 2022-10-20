@@ -1,8 +1,8 @@
 /*
  * Use minified version because codesandbox can't bundle raw css with relative imports.
- * It's better to use '@uploadcare/uc-blocks/blocks/themes/lr-basic/index.css' instead
+ * It's better to use '@uploadcare/blocks/blocks/themes/lr-basic/index.css' instead
  */
-@import url("@uploadcare/uc-blocks/web/lr-basic.min.css");
+@import url("@uploadcare/blocks/web/lr-basic.min.css");
 
 .wrapper {
   display: flex;
