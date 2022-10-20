@@ -6,6 +6,7 @@ import { terser } from "rollup-plugin-terser";
 import postcss from 'rollup-plugin-postcss'
 import atImport from 'postcss-import'
 import html from '@rollup/plugin-html'
+import path from 'path'
 
 const production = !process.env.ROLLUP_WATCH;
 
@@ -79,7 +80,7 @@ export default {
     production && terser(),
 
     html({
-      publicPath: production ? '/uc-blocks-examples/svelte-uploader/' : '/'
+      publicPath: production ? path.join(process.env.BASE_PATH, 'svelte-uploader', '/') : '/'
     })
   ],
   watch: {
