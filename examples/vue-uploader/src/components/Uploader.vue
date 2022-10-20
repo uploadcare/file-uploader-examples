@@ -14,10 +14,10 @@
 <script>
 /*
  * Use minified version because codesandbox can't bundle raw css with relative imports.
- * It's better to use '@uploadcare/uc-blocks/blocks/themes/lr-basic/index.css' instead
+ * It's better to use '@uploadcare/blocks/blocks/themes/lr-basic/index.css' instead
  */
-import '@uploadcare/uc-blocks/web/lr-basic.min.css'
-import * as LR from "@uploadcare/uc-blocks";
+import '@uploadcare/blocks/web/lr-basic.min.css'
+import * as LR from "@uploadcare/blocks";
 
 LR.registerBlocks(LR);
 
