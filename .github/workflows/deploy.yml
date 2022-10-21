@@ -13,7 +13,7 @@ jobs:
 
       - name: Install and Build 🔧
         env:
-          BASE_PATH: '/uc-blocks-examples/'
+          BASE_PATH: '/blocks-examples/'
         run: |
           npm ci
           npm run build
