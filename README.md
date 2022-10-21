@@ -1,6 +1,6 @@
 # @uploadcare/blocks examples
 
-Deployed example applications here - https://uploadcare.github.io/uc-blocks-examples/
+Deployed example applications here - https://uploadcare.github.io/blocks-examples/
 
 Examples list:
 
