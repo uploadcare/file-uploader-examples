@@ -12,6 +12,8 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Install and Build 🔧
+        env:
+          BASE_PATH: '/uc-blocks-examples/'
         run: |
           npm ci
           npm run build

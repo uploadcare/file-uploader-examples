@@ -1,5 +1,6 @@
 {
-  "name": "uc-blocks-examples",
+  "name": "blocks-examples",
+  "private": true,
   "type": "module",
   "version": "1.0.0",
   "description": "",
@@ -9,15 +10,15 @@
   ],
   "scripts": {
     "bump": "npm-check-updates /@uploadcare/ -u --deep",
+    "build": "BASE_PATH=\"${BASE_PATH:=/}\" npm run build:examples && npm run build:pages",
     "build:examples": "npm run build --workspaces",
     "build:pages": "node pages.js",
-    "build": "npm run build:examples && npm run build:pages"
+    "serve": "npx serve ./public/"
   },
   "author": "",
   "license": "MIT",
   "devDependencies": {
     "fast-glob": "^3.2.11",
-    "npm-check-updates": "^12.5.9",
-    "@uploadcare/uc-blocks": "file:../jsdk"
+    "npm-check-updates": "^12.5.9"
   }
 }

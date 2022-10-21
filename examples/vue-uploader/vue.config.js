@@ -1,5 +1,7 @@
+const path = require('path')
+
 module.exports = {
-  publicPath: "/uc-blocks-examples/vue-uploader/",
+  publicPath: path.join(process.env.BASE_PATH, 'vue-uploader', '/'),
   chainWebpack: (config) => {
     config.module
       .rule("vue")
