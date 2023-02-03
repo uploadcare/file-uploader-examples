@@ -8,3 +8,4 @@ Examples list:
 * [Angular](./examples/angular-uploader/)
 * [React](./examples/react-uploader/)
 * [Vue](./examples/vue-uploader/)
+* [Composition](./examples/composition/)

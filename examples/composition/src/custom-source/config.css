@@ -1,0 +1,5 @@
+:host {
+  --cfg-pubkey: 'demopublickey';
+  --cfg-source-list: 'unsplash';
+  --cfg-unsplash-token: "VHt039vCvlgYs9GKZNk7IL3iYojG2v0Zz8lNRjipm3M";
+}
