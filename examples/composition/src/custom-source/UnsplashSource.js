@@ -17,6 +17,7 @@ const getRandomImages = async (token) => {
 
 export class UnsplashSource extends UploaderBlock {
   activityType = "unsplash";
+  _currentItemId = null
 
   init$ = {
     handleNext: () => {
@@ -40,7 +41,7 @@ export class UnsplashSource extends UploaderBlock {
     this._items.push(...items);
     for (const item of items) {
       this._splide.add(
-        /* HTML */ `<li class="splide__slide"><img src="${item.url}" /></li>`
+        /* HTML */ `<li data-id="${item.id}" class="splide__slide"><img src="${item.url}" /></li>`
       );
     }
   }
@@ -58,6 +59,11 @@ export class UnsplashSource extends UploaderBlock {
     this._splide.on("move", () => {
       this._items.shift();
     });
+
+    this._splide.on("active", ({slide}) => {
+      const itemId = slide.dataset.id;
+      this._currentItemId = itemId;
+    })
   }
 
   unmount() {
@@ -72,7 +78,8 @@ export class UnsplashSource extends UploaderBlock {
   }
 
   pick() {
-    const item = this._items[0];
+    const item = this._items.find(item => item.id === this._currentItemId)
+
     this.uploadCollection.add({
       externalUrl: item.rawUrl,
     });

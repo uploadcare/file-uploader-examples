@@ -1,15 +1,25 @@
+<!-- It's not so easy to load external CSS file as a static asset in Angular -->
+<!-- Moreover Angular binds dynamic attributes async and we can't catch `css-src` value on connectedCallback -->
+<!-- TODO: we should make a feature of awaiting for css-src before render of ShadowWrapper -->
 <div class="wrapper">
-  <lr-file-uploader-regular class="uploader-cfg lr-wgt-common"></lr-file-uploader-regular>
+  <lr-file-uploader-regular
+    class="uploader-cfg"
+    css-src="https://unpkg.com/@uploadcare/blocks@0.15.2/web/file-uploader-regular.min.css"
+  >
+    <lr-data-output
+      (lr-data-output)="handleUploaderEvent($event)"
+      use-event
+      hidden
+      class="uploader-cfg"
+    ></lr-data-output>
+  </lr-file-uploader-regular>
 
-  <lr-data-output
-    (lr-data-output)="handleUploaderEvent($event)"
-    use-event
-    class="uploader-cfg lr-wgt-common"
-  ></lr-data-output>
   <div class="output">
     <img
       *ngFor="let file of files"
-      src="https://ucarecdn.com/{{ file.uuid }}/-/preview/-/scale_crop/400x400/"
+      src="https://ucarecdn.com/{{ file.uuid }}/{{
+        file.cdnUrlModifiers || ''
+      }}-/preview/-/scale_crop/400x400/"
       width="200"
     />
   </div>

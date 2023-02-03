@@ -26,22 +26,3 @@ export class AppModule {}
 ```
 
 See [Angular docs](https://angular.io/api/core/NgModule#schemas) for more information.
-
-### Disable emulated view encapsulation
-
-Angular's emulated view encapsulattion don't support custom elements, it brakes our styles.
-To disable it, set `@Component`'s `encapsulation` property to `ViewEncapsulation.ShadowDom` or `ViewEncapsulation.None`:
-
-```typescript
-import { Component, ViewEncapsulation } from '@angular/core';
-
-@Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css'],
-  encapsulation: ViewEncapsulation.ShadowDom // or ViewEncapsulation.None
-})
-export class AppComponent {}
-```
-
-See [Angular docs](https://angular.io/guide/view-encapsulation#view-encapsulation) for more information.

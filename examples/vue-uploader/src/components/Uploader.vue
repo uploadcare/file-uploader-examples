@@ -1,12 +1,26 @@
 <template>
   <div class="wrapper">
-    <lr-file-uploader-regular class="uploader-cfg lr-wgt-common"></lr-file-uploader-regular>
-
-    <lr-data-output @lr-data-output="handleUploaderEvent" use-event class="uploader-cfg lr-wgt-common"></lr-data-output>
+    <lr-file-uploader-regular
+      class="uploader-cfg"
+      :css-src="`https://unpkg.com/@uploadcare/blocks@${PACKAGE_VERSION}/web/file-uploader-regular.min.css`"
+    >
+      <lr-data-output
+        @lr-data-output="handleUploaderEvent"
+        use-event
+        hidden
+        class="uploader-cfg"
+      ></lr-data-output>
+    </lr-file-uploader-regular>
 
     <div class="output">
-      <img v-for="file in files" :key="file.uuid"
-        :src="`https://ucarecdn.com/${file.uuid}/-/preview/-/scale_crop/400x400/`" width="200" />
+      <img
+        v-for="file in files"
+        :key="file.uuid"
+        :src="`https://ucarecdn.com/${file.uuid}/${
+          file.cdnUrlModifiers || ''
+        }-/preview/-/scale_crop/400x400/`"
+        width="200"
+      />
     </div>
   </div>
 </template>
@@ -16,13 +30,17 @@
  * Use minified version because codesandbox can't bundle raw css with relative imports.
  * It's better to use '@uploadcare/blocks/blocks/themes/lr-basic/index.css' instead
  */
-import '@uploadcare/blocks/web/lr-basic.min.css'
+import "@uploadcare/blocks/web/lr-basic.min.css";
 import * as LR from "@uploadcare/blocks";
+import { PACKAGE_VERSION } from "@uploadcare/blocks/env";
 
 LR.registerBlocks(LR);
 
 export default {
   name: "Uploader",
+  setup() {
+    return { PACKAGE_VERSION };
+  },
   data() {
     return {
       files: [],
@@ -54,7 +72,7 @@ export default {
 }
 
 .uploader-cfg {
-  --ctx-name: 'uploader';
+  --ctx-name: "uploader";
 
   /* DO NOT FORGET TO USE YOUR OWN PUBLIC KEY */
   --cfg-pubkey: "demopublickey";
