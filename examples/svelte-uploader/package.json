@@ -20,7 +20,7 @@
     "svelte": "^3.47.0"
   },
   "dependencies": {
-    "@uploadcare/blocks": "^0.13.0",
+    "@uploadcare/blocks": "^0.15.2",
     "sirv-cli": "^2.0.2"
   }
 }
