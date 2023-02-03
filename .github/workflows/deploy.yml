@@ -13,7 +13,8 @@ jobs:
 
       - name: Install and Build 🔧
         env:
-          BASE_PATH: '/blocks-examples/'
+          VITE_UNSPLASH_TOKEN: ${{ secrets.UNSPLASH_TOKEN }}
+          BASE_PATH: "/blocks-examples/"
         run: |
           npm ci
           npm run build
