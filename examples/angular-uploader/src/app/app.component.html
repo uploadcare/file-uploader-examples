@@ -1,5 +1,7 @@
 <div class="wrapper">
-  <lr-file-uploader-regular class="uploader-cfg lr-wgt-common"></lr-file-uploader-regular>
+  <lr-file-uploader-regular
+    class="uploader-cfg lr-wgt-common"
+  ></lr-file-uploader-regular>
 
   <lr-data-output
     (lr-data-output)="handleUploaderEvent($event)"
@@ -9,7 +11,9 @@
   <div class="output">
     <img
       *ngFor="let file of files"
-      src="https://ucarecdn.com/{{ file.uuid }}/-/preview/-/scale_crop/400x400/"
+      src="https://ucarecdn.com/{{ file.uuid }}/{{
+        file.cdnUrlModifiers || ''
+      }}-/preview/-/scale_crop/400x400/"
       width="200"
     />
   </div>

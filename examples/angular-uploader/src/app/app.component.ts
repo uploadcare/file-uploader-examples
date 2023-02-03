@@ -4,6 +4,11 @@ import type { UploadcareFile } from '@uploadcare/upload-client';
 
 LR.registerBlocks(LR);
 
+// TODO: this type should be exported from @uploadcare/blocks
+type UploadcareBlocksFile = UploadcareFile & {
+  cdnUrlModifiers: string | null;
+}
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -11,7 +16,7 @@ LR.registerBlocks(LR);
   encapsulation: ViewEncapsulation.ShadowDom,
 })
 export class AppComponent {
-  files: UploadcareFile[] = [];
+  files: UploadcareBlocksFile[] = [];
 
   handleUploaderEvent(e: Event) {
     const { data: files } = (e as CustomEvent).detail;

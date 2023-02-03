@@ -26,7 +26,7 @@
   <div class="output">
     {#each files as file}
       <img
-        src="https://ucarecdn.com/{file.uuid}/-/preview/-/scale_crop/400x400/"
+        src="https://ucarecdn.com/{file.uuid}/{file.cdnUrlModifiers || ''}-/preview/-/scale_crop/400x400/"
         width="200"
         alt="Uploadcare uploaded file"
       />

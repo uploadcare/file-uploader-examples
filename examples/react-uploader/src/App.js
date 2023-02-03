@@ -46,7 +46,7 @@ function App() {
         {files.map((file) => (
           <img
             key={file.uuid}
-            src={`https://ucarecdn.com/${file.uuid}/-/preview/-/scale_crop/400x400/`}
+            src={`https://ucarecdn.com/${file.uuid}/${file.cdnUrlModifiers || ''}-/preview/-/scale_crop/400x400/`}
             width="200"
             alt="Preview"
           />
