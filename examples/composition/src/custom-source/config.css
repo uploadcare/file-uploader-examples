@@ -1,5 +1,4 @@
 :host {
   --cfg-pubkey: 'demopublickey';
   --cfg-source-list: 'unsplash';
-  --cfg-unsplash-token: "";
 }
