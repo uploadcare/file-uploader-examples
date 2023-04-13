@@ -2,21 +2,33 @@ import { useState, useCallback, useRef, useEffect } from "react";
 import * as LR from "@uploadcare/blocks";
 import st from "./App.module.css";
 import { PACKAGE_VERSION } from "@uploadcare/blocks/env";
+
 LR.registerBlocks(LR);
 
 function App() {
-  let dataOutputRef = useRef();
-  const [files, setFiles] = useState([]);
-  const handleUploaderEvent = useCallback((e) => {
+  const dataOutputRef = useRef<LR.DataOutput>();
+  // TODO: We need to export all data output types
+  const [files, setFiles] = useState<any[]>([]);
+
+  // TODO: We need to export all the event types
+  const handleUploaderEvent = useCallback((e: CustomEvent<any>) => {
     const { data } = e.detail;
     setFiles(data);
   }, []);
 
   useEffect(() => {
-    let el = dataOutputRef.current;
-    el.addEventListener("lr-data-output", handleUploaderEvent);
+    const el = dataOutputRef.current;
+
+    // TODO: Augment global custom event types
+    el?.addEventListener(
+      "lr-data-output",
+      handleUploaderEvent as EventListenerOrEventListenerObject
+    );
     return () => {
-      el.removeEventListener("lr-data-output", handleUploaderEvent);
+      el?.removeEventListener(
+        "lr-data-output",
+        handleUploaderEvent as EventListenerOrEventListenerObject
+      );
     };
   }, [handleUploaderEvent]);
 
