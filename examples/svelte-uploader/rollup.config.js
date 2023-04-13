@@ -7,6 +7,7 @@ import postcss from 'rollup-plugin-postcss'
 import atImport from 'postcss-import'
 import html from '@rollup/plugin-html'
 import path from 'path'
+import childProcess from 'child_process'
 
 const production = !process.env.ROLLUP_WATCH;
 
@@ -20,7 +21,7 @@ function serve() {
   return {
     writeBundle() {
       if (server) return;
-      server = require("child_process").spawn(
+      server = childProcess.spawn(
         "npm",
         ["run", "start", "--", "--dev"],
         {
