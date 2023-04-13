@@ -19,6 +19,6 @@
   "license": "MIT",
   "devDependencies": {
     "fast-glob": "^3.2.11",
-    "npm-check-updates": "^12.5.9"
+    "npm-check-updates": "^16.10.8"
   }
 }
