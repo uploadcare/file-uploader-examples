@@ -87,5 +87,8 @@
       }
     }
   },
-  "defaultProject": "angular-uploader"
+  "defaultProject": "angular-uploader",
+  "cli": {
+    "analytics": false
+  }
 }
