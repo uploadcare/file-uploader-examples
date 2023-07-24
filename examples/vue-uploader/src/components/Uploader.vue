@@ -10,7 +10,7 @@
     ></lr-config>
     <lr-file-uploader-regular
       ctx-name="my-uploader"
-      :css-src="`https://unpkg.com/@uploadcare/blocks@${PACKAGE_VERSION}/web/file-uploader-regular.min.css`"
+      :css-src="`https://unpkg.com/@uploadcare/blocks@${PACKAGE_VERSION}/web/lr-file-uploader-regular.min.css`"
     >
     </lr-file-uploader-regular>
     <lr-data-output

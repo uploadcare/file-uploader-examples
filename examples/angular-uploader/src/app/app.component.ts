@@ -17,7 +17,7 @@ type UploadcareBlocksFile = UploadcareFile & {
 })
 export class AppComponent {
   files: UploadcareBlocksFile[] = [];
-  cssSrc = `https://unpkg.com/@uploadcare/blocks@${PACKAGE_VERSION}/web/file-uploader-regular.min.css`
+  cssSrc = `https://unpkg.com/@uploadcare/blocks@${PACKAGE_VERSION}/web/lr-file-uploader-regular.min.css`
 
   handleUploaderEvent(e: Event) {
     const { data: files } = (e as CustomEvent).detail;
