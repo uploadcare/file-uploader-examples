@@ -2,17 +2,25 @@
 <!-- Moreover Angular binds dynamic attributes async and we can't catch `css-src` value on connectedCallback -->
 <!-- TODO: we should make a feature of awaiting for css-src before render of ShadowWrapper -->
 <div class="wrapper">
+  <lr-config
+    ctx-name="my-uploader"
+    pubkey="demopublickey"
+    multiple="true"
+    multipleMax="10"
+    confirmUpload="true"
+    sourceList="local, url, camera, dropbox, gdrive"
+  ></lr-config>
   <lr-file-uploader-regular
-    class="uploader-cfg"
-    css-src="https://unpkg.com/@uploadcare/blocks@0.15.2/web/file-uploader-regular.min.css"
+    ctx-name="my-uploader"
+    [attr.css-src]="cssSrc"
   >
-    <lr-data-output
-      (lr-data-output)="handleUploaderEvent($event)"
-      use-event
-      hidden
-      class="uploader-cfg"
-    ></lr-data-output>
   </lr-file-uploader-regular>
+  <lr-data-output
+    ctx-name="my-uploader"
+    (lr-data-output)="handleUploaderEvent($event)"
+    use-event
+    hidden
+  ></lr-data-output>
 
   <div class="output">
     <img

@@ -9,7 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@uploadcare/blocks": "^0.20.1",
+    "@uploadcare/blocks": "0.25.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },

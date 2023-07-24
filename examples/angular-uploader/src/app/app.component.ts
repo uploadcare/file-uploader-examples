@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import * as LR from '@uploadcare/blocks';
 import type { UploadcareFile } from '@uploadcare/upload-client';
+import { PACKAGE_VERSION } from '@uploadcare/blocks';
 
 LR.registerBlocks(LR);
 
@@ -16,6 +17,7 @@ type UploadcareBlocksFile = UploadcareFile & {
 })
 export class AppComponent {
   files: UploadcareBlocksFile[] = [];
+  cssSrc = `https://unpkg.com/@uploadcare/blocks@${PACKAGE_VERSION}/web/file-uploader-regular.min.css`
 
   handleUploaderEvent(e: Event) {
     const { data: files } = (e as CustomEvent).detail;
