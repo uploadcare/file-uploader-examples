@@ -14,4 +14,7 @@ module.exports = {
         return options;
       });
   },
+  devServer: {
+    disableHostCheck: true,
+  },
 };
