@@ -1,4 +1,3 @@
-import styles from "./style.css?inline";
 import { ShadowWrapper } from "@uploadcare/blocks";
 
 export class CustomFileUploader extends ShadowWrapper {
@@ -23,5 +22,3 @@ export class CustomFileUploader extends ShadowWrapper {
     <lr-progress-bar-common></lr-progress-bar-common>
   `;
 }
-
-CustomFileUploader.shadowStyles = styles;
