@@ -15,7 +15,7 @@ export class CustomFileUploader extends ShadowWrapper {
       <lr-camera-source></lr-camera-source>
       <lr-url-source></lr-url-source>
       <lr-external-source></lr-external-source>
-      <lr-cloud-image-editor></lr-cloud-image-editor>
+      <lr-cloud-image-editor-activity></lr-cloud-image-editor-activity>
       <lr-unsplash-source></lr-unsplash-source>
     </lr-modal>
 
