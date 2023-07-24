@@ -1,16 +1,25 @@
 <template>
   <div class="wrapper">
+    <lr-config
+      ctx-name="my-uploader"
+      pubkey="demopublickey"
+      :multiple="true"
+      :multipleMax="10"
+      :confirmUpload="true"
+      sourceList="local, url, camera, dropbox, gdrive"
+    ></lr-config>
     <lr-file-uploader-regular
-      class="uploader-cfg"
+      ctx-name="my-uploader"
       :css-src="`https://unpkg.com/@uploadcare/blocks@${PACKAGE_VERSION}/web/file-uploader-regular.min.css`"
     >
-      <lr-data-output
-        @lr-data-output="handleUploaderEvent"
-        use-event
-        hidden
-        class="uploader-cfg"
-      ></lr-data-output>
     </lr-file-uploader-regular>
+    <lr-data-output
+      ctx-name="my-uploader"
+      @lr-data-output="handleUploaderEvent"
+      use-event
+      hidden
+      class="uploader-cfg"
+    ></lr-data-output>
 
     <div class="output">
       <img
@@ -32,7 +41,7 @@
  */
 import "@uploadcare/blocks/web/lr-basic.min.css";
 import * as LR from "@uploadcare/blocks";
-import { PACKAGE_VERSION } from "@uploadcare/blocks/env";
+import { PACKAGE_VERSION } from "@uploadcare/blocks";
 
 LR.registerBlocks(LR);
 
@@ -69,20 +78,5 @@ export default {
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   width: 100%;
   max-width: 1000px;
-}
-
-.uploader-cfg {
-  --ctx-name: "uploader";
-
-  /* DO NOT FORGET TO USE YOUR OWN PUBLIC KEY */
-  --cfg-pubkey: "demopublickey";
-  --cfg-multiple: 1;
-  --cfg-confirm-upload: 1;
-  --cfg-img-only: 0;
-  --cfg-accept: "";
-  --cfg-store: 1;
-  --cfg-camera-mirror: 0;
-  --cfg-source-list: "local, url, camera, dropbox, gdrive";
-  --cfg-max-files: 10;
 }
 </style>
