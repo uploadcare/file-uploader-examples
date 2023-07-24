@@ -58,9 +58,11 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
+              "disableHostCheck": true,
               "browserTarget": "angular-uploader:build:production"
             },
             "development": {
+              "disableHostCheck": true,
               "browserTarget": "angular-uploader:build:development"
             }
           },
