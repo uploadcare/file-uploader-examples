@@ -6,7 +6,8 @@ import { PACKAGE_VERSION } from "@uploadcare/blocks";
 LR.registerBlocks(LR);
 
 function App() {
-  const dataOutputRef = useRef<LR.DataOutput>();
+  const dataOutputRef = useRef<JSX.IntrinsicElements["lr-data-output"]>();
+  const configRef = useRef<JSX.IntrinsicElements["lr-config"]>();
   // TODO: We need to export all data output types
   const [files, setFiles] = useState<any[]>([]);
 
@@ -16,9 +17,24 @@ function App() {
     setFiles(data);
   }, []);
 
+  useEffect(() => {
+    if (!configRef.current) {
+      return;
+    }
+    configRef.current.metadata = {
+      foo: "bar",
+    };
+    // or async
+    // configRef.current.metadata = async () => {
+    //   const metadata = await getAsyncMetadata();
+    //   return metadata
+    // }
+  }, []);
+
   return (
     <div className={st.wrapper}>
       <lr-config
+        ref={configRef}
         ctx-name="my-uploader"
         pubkey="demopublickey"
         multiple={true}
