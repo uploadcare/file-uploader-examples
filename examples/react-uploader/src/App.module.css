@@ -1,13 +1,83 @@
-.wrapper {
-  display: flex;
-  flex-direction: column;
-  grid-gap: 32px;
-  padding: 32px;
+.app {
+  padding: 16px 24px;
+  max-width: 480px;
+  margin: 0 auto;
 }
-.output {
-  display: grid;
-  grid-gap: 8px;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+
+.header {
+  margin-bottom: 48px;
+}
+
+.viewTitle {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 400;
+  color: #9393a6;
+}
+
+.input {
+  box-sizing: border-box;
   width: 100%;
-  max-width: 1000px;
+  padding: 8px 12px;
+  font-family: monospace;
+  font-size: 16px;
+  border: 1px solid #CBCDD7;
+  border-radius: 8px;
+  background: #fcfcfe;
+  box-shadow: 0 0 16px 0 rgba(199, 215, 255, .5);
+  color: #323236;
+}
+
+.input:focus {
+  outline: 3px solid rgb(152, 203, 255);
+  border-color: rgb(0, 89, 200);
+}
+
+.field {
+  margin-top: 24px;
+}
+
+.field:last-child {
+  margin-top: 48px;
+}
+
+.label {
+  position: relative;
+  z-index: 1;
+  display: block;
+  margin-bottom: 8px;
+  color: #9393a6;
+}
+
+.button {
+  font-size: 16px;
+  font-family: monospace;
+  line-height: 1;
+  padding: 10px 12px;
+  border: 1px solid #CBCDD7;
+  border-radius: 8px;
+  box-shadow: 0 0 16px 0 rgba(199, 215, 255, .5);
+  background: #0059C8;
+  color: #fff;
+  cursor: pointer;
+}
+
+.button:hover, .button:focus {
+  outline: 3px solid rgb(152, 203, 255);
+}
+
+.button:active {
+  border-color: rgb(0, 89, 200);
+}
+
+.result {
+  font-size: 14px;
+  line-height: 18px;
+  font-family: monospace;
+  white-space: pre-wrap;
+}
+
+.fileUploader {
+  --l10n-upload-file: 'Attach photo';
+  --l10n-upload-files: 'Attach photos';
 }
