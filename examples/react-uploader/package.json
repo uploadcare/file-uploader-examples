@@ -4,12 +4,13 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --force",
     "build": "tsc && vite build",
     "preview": "vite preview"
   },
   "dependencies": {
-    "@uploadcare/blocks": "0.25.6",
+    "@uploadcare/blocks": "0.27.6",
+    "classnames": "2.3.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
