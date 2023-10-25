@@ -12,7 +12,17 @@
 
 .themeToggle {
   :global(.react-toggle-track) {
-    background-color: #292c34 !important;
+    box-shadow: 0 0 16px 0 var(--ui-control-box-shadow-color);
+    background-color: var(--ui-control-background-color);
+    border: 1px solid var(--ui-control-border-color-default);
+    transition: none;
+  }
+
+  &:global(.react-toggle:hover .react-toggle-track),
+  &:global(.react-toggle--checked:hover .react-toggle-track) {
+    background-color: var(--ui-control-background-color);
+    border: 1px solid var(--ui-control-border-color-default);
+    outline: 2px solid var(--ui-control-outline-color-focus);
   }
 
   :global(.react-toggle-track-check), :global(.react-toggle-track-x) {
@@ -31,7 +41,15 @@
   }
 
   :global(.react-toggle-thumb) {
-    border-color: #292c34;
+    top: 2px;
+    left: 2px;
+    background: var(--ui-control-background-color);
+    border-color: var(--ui-control-border-color-default);
+    transition: left 0.25s ease;
+  }
+
+  &:global(.react-toggle--checked .react-toggle-thumb) {
+    left: 28px;
   }
 
   &:global(.react-toggle--active .react-toggle-thumb),
