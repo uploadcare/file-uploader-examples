@@ -6,6 +6,7 @@ import { File } from '../types';
 
 import st from './FileUploader.module.scss';
 import cssOverrides from './FileUploader.overrides.css?inline';
+import cs from 'classnames';
 
 LR.FileUploaderRegular.shadowStyles = cssOverrides;
 
@@ -16,9 +17,10 @@ type FileUploaderProps = {
   files: File[];
   onChange: (files: File[]) => void;
   maxAllowedFiles: number;
+  theme: 'light' | 'dark';
 }
 
-export default function FileUploader({ files, uploaderClassName, onChange, maxAllowedFiles }: FileUploaderProps) {
+export default function FileUploader({ files, uploaderClassName, onChange, maxAllowedFiles, theme }: FileUploaderProps) {
   const [resetCounter, setResetCounter] = useState(0);
 
   const handleRemoveClick = useCallback(
@@ -68,7 +70,7 @@ export default function FileUploader({ files, uploaderClassName, onChange, maxAl
       <lr-file-uploader-regular
         ctx-name={`uploader-ctx-${resetCounter}`}
         css-src={`https://unpkg.com/@uploadcare/blocks@${PACKAGE_VERSION}/web/lr-file-uploader-regular.min.css`}
-        class={uploaderClassName}
+        class={cs(uploaderClassName, { [st.darkModeEnabled]: theme === 'dark' })}
       ></lr-file-uploader-regular>
 
       <div className={st.previews}>

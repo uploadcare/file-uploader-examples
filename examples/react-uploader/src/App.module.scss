@@ -48,7 +48,7 @@
   margin: 0;
   font-size: 16px;
   font-weight: 400;
-  color: #9393a6;
+  color: var(--ui-text-color);
 }
 
 .input {
@@ -57,15 +57,20 @@
   padding: 8px 12px;
   font-family: monospace;
   font-size: 16px;
-  border: 1px solid #CBCDD7;
+  border: 1px solid var(--ui-control-border-color-default);
   border-radius: 8px;
-  background: #fcfcfe;
-  box-shadow: 0 0 16px 0 rgba(199, 215, 255, .5);
-  color: #323236;
+  background: var(--ui-control-background-color);
+  box-shadow: 0 0 16px 0 var(--ui-control-box-shadow-color);
+  color: var(--ui-control-text-color);
 
   &:focus {
-    outline: 3px solid rgb(152, 203, 255);
-    border-color: #0059C8;
+    outline: 3px solid var(--ui-control-outline-color-focus);
+    border-color: var(--ui-control-border-color-focus);
+  }
+
+  // trying to prevent scrollbar overflowing textarea borders =/
+  &::-webkit-scrollbar-corner {
+    display: none;
   }
 }
 
@@ -82,7 +87,7 @@
   z-index: 1;
   display: block;
   margin-bottom: 8px;
-  color: #9393a6;
+  color: var(--ui-text-color);
 }
 
 .button {
@@ -90,19 +95,19 @@
   font-family: monospace;
   line-height: 1;
   padding: 10px 12px;
-  border: 1px solid #CBCDD7;
+  border: 1px solid var(--ui-control-border-color-default);
   border-radius: 8px;
-  box-shadow: 0 0 16px 0 rgba(199, 215, 255, .5);
-  background: #0059C8;
-  color: #fff;
+  box-shadow: 0 0 16px 0 var(--ui-control-box-shadow-color);
+  background: var(--ui-action-button-background);
+  color: var(--ui-action-button-text-color);
   cursor: pointer;
 
   &:hover, &:focus {
-    outline: 3px solid rgb(152, 203, 255);
+    outline: 3px solid var(--ui-control-outline-color-focus);
   }
 
   &:active {
-    border-color: rgb(0, 89, 200);
+    border-color: var(--ui-control-border-color-focus);
   }
 }
 

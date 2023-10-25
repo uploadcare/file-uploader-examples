@@ -1,6 +1,6 @@
 import * as LR from '@uploadcare/blocks';
 import cs from 'classnames';
-import { ChangeEventHandler, FormEventHandler, useCallback, useState } from 'react';
+import { ChangeEventHandler, FormEventHandler, useCallback, useEffect, useState } from 'react';
 import Toggle from 'react-toggle';
 import 'react-toggle/style.css';
 
@@ -45,17 +45,30 @@ export default function App() {
     });
   }, [title, text, photos, setSentFormObject]);
 
+  const [theme, setTheme] = useState<'light' | 'dark'>('light');
+
+  const handleThemeChange = useCallback<ChangeEventHandler<HTMLInputElement>>(e => {
+    setTheme(e.target.checked ? 'light' : 'dark');
+  }, [setTheme]);
+
+  useEffect(() => {
+    document.body.classList.remove('theme--light');
+    document.body.classList.remove('theme--dark');
+    document.body.classList.add(`theme--${theme}`);
+  }, [theme]);
+
   return (
     <div className={st.app}>
       <header className={st.header}>
         <h1 className={st.viewTitle}>New blog post</h1>
         <Toggle
-          defaultChecked={true}
+          checked={theme === 'light'}
           className={st.themeToggle}
           icons={{
             checked: <img src={sunImage} width="16" height="16"/>,
             unchecked: <img src={moonImage} width="14" height="14"/>,
           }}
+          onChange={handleThemeChange}
         />
       </header>
 
@@ -90,6 +103,7 @@ export default function App() {
               files={photos}
               onChange={setPhotos}
               maxAllowedFiles={10}
+              theme={theme}
             />
           </div>
 

@@ -1,18 +1,14 @@
 :host lr-simple-btn button {
-  background-color: #f00;
-}
-
-:host lr-simple-btn button {
   height: auto;
   padding: 10px 12px !important;
   font-family: monospace;
   line-height: 1;
   font-size: 16px;
-  border: 1px solid #CBCDD7;
+  border: 1px solid var(--ui-control-border-color-default);
   border-radius: 8px;
-  background: #fcfcfe;
-  box-shadow: 0 0 16px 0 rgba(199, 215, 255, .5);
-  color: #323236;
+  background: var(--ui-control-background-color);
+  box-shadow: 0 0 16px 0 var(--ui-control-box-shadow-color);
+  color: var(--ui-control-text-color);
 }
 
 :host lr-simple-btn lr-icon {
@@ -21,10 +17,10 @@
 
 :host lr-simple-btn button:hover,
 :host lr-simple-btn button:focus {
-  background: #fcfcfe;
-  outline: 3px solid rgb(152, 203, 255);
+  background: var(--ui-control-background-color);
+  outline: 3px solid var(--ui-control-outline-color-focus);
 }
 
 :host lr-simple-btn button:active {
-  border-color: rgb(0, 89, 200);
+  border-color: var(--ui-control-border-color-focus);
 }
