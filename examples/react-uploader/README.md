@@ -1,41 +1,59 @@
-# Blocks ❤️ React
+<p align="center">
+  <a href="https://uploadcare.com/?ref=github-react-example-readme">
+    <picture>
+      <source media="(prefers-color-scheme: light)" srcset="./assets/media/logo-safespace-transparent.svg">
+      <source media="(prefers-color-scheme: dark)" srcset="./assets/media/logo-transparent-inverted.svg">
+      <img width=250 alt="Uploadcare logo" src="./assets/media/logo-safespace-transparent.svg">
+    </picture>
+  </a>
+</p>
+<p align="center">
+  <a href="https://uploadcare.com?ref=github-readme">Website</a> • 
+  <a href="https://uploadcare.com/docs/start/quickstart?ref=github-readme">Quick Start</a> • 
+  <a href="https://uploadcare.com/docs?ref=github-readme">Docs</a> • 
+  <a href="https://uploadcare.com/blog?ref=github-readme">Blog</a> • 
+  <a href="https://discord.gg/mKWRgRsVz8?ref=github-readme">Discord</a> •
+  <a href="https://twitter.com/Uploadcare?ref=github-readme">Twitter</a>
+</p>
+
+# React File Uploader with Uploadcare Blocks
 
 [![Edit react-uploader](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/github/uploadcare/blocks-examples/tree/main/examples/react-uploader/)
 
-## Integration notes
+This is an example project of implementing a file uploader in a React application with [Uploadcare Blocks](https://github.com/uploadcare/blocks).
 
-Please, read [File Uploader documentation](https://uploadcare.com/docs/file-uploader/) first.
-
-It is easy to use Blocks in React app, because they are native to the Web. 
-However, you need to understand that they are not native to React.
-
-So, if you integrate Blocks with React, you need to decide which part of your solution will encapsulate non-React code.
-
-In this example we have created [FileUploader](./src/FileUploader/FileUploader.tsx) component 
-which provides React-friendly API for the rest of the app. There are Blocks inside of this component and nowhere else.
-
-### Installation
+## Installation
 
 All you need to do is to install [`@uploadcare/blocks`](https://www.npmjs.com/package/@uploadcare/blocks) from npm
 via your favorite Node package manager.
 
 The package provides TypeScript types, so you do not need to install `@types/anything` if you need a proper typing.
 
-[Read more about installation]((https://uploadcare.com/docs/file-uploader/installation/)) in the File Uploader documentation.
+[Read more about installation]((https://uploadcare.com/docs/file-uploader/installation/)) in the Uploadcare documentation.
+
+## Configutration
+
+Please, read the [File Uploader documentation](https://uploadcare.com/docs/file-uploader/).
+
+## Integration notes
+
+Blocks are native to the Web but not to React. It's easy to use Blocks in a React app, but note that a part of your solution will encapsulate non-React code.
+
+In this example we created a [FileUploader](./src/FileUploader/FileUploader.tsx) component 
+which provides React-friendly API for the rest of the app. There are Blocks inside of this component and nowhere else.
 
 ### Non-React things you should know about
 
-The most common way to “communicate” with File Uploader written via Blocks is by [events](https://uploadcare.com/docs/file-uploader/data-and-events/).
-You will find them in the example. This may not be the way React apps live nowadays, but it's easy to handle using 
+1. Communicate with Blocks File Uploader with [events](https://uploadcare.com/docs/file-uploader/data-and-events/).
+You will find them in the example. It's easy to handle using 
 hooks like [`useEffect`](https://react.dev/reference/react/useEffect).
 
-Another one thing to note is the attributes. 
-Please note, some attributes required by Blocks are kebab-cased, not camelCased as usual for React world.
+2. Use `class` attribute instead of `className`.
 
-Plus, due to the fact that Blocks are native to Web, we use `class` attribute instead of `className`.
+3. Some attributes required by Blocks are kebab-cased, not camelCased as usual for React world.
 
-Finally, you are able to invoke [[some methods of File Uploader](https://uploadcare.com/docs/file-uploader/api/) 
-to control its behavior. This is also non common to React world, but feel free to use them if you need.
+4. You are able to invoke [[some methods of File Uploader](https://uploadcare.com/docs/file-uploader/api/) 
+to control its behavior.
 
 ### Styling
 
@@ -45,3 +63,11 @@ If your styling solution may provide class string or style object, feel free to 
 Otherwise you may go “full override” way and pass a string with styles to a File Uploader type of your choice.
 
 [Read more about styling](https://uploadcare.com/docs/file-uploader/styling/) in the File Uploader docs.
+
+## Contribution
+
+You’re always welcome to contribute:
+* Create [issues](https://github.com/uploadcare/blocks/issues) every time you feel something is missing or goes wrong.
+* Provide your feedback or drop us a support request at <a href="mailto:hello@uploadcare.com">hello@uploadcare.com</a>.
+* Ask questions on [Stack Overflow](https://stackoverflow.com/questions/tagged/uploadcare) with "uploadcare" tag if others can have these questions as well.
+* Star this repo if you like it ⭐️
