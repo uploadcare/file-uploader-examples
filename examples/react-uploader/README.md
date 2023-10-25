@@ -29,7 +29,7 @@ via your favorite Node package manager.
 
 The package provides TypeScript types, so you do not need to install `@types/anything` if you need a proper typing.
 
-[Read more about installation]((https://uploadcare.com/docs/file-uploader/installation/)) in the Uploadcare documentation.
+[Read more about installation](https://uploadcare.com/docs/file-uploader/installation/) in the Uploadcare documentation.
 
 ## Configutration
 
@@ -45,15 +45,14 @@ which provides React-friendly API for the rest of the app. There are Blocks insi
 ### Non-React things you should know about
 
 1. Communicate with Blocks File Uploader with [events](https://uploadcare.com/docs/file-uploader/data-and-events/).
-You will find them in the example. It's easy to handle using 
-hooks like [`useEffect`](https://react.dev/reference/react/useEffect).
+   You will find them in the example. It's easy to handle using hooks like [`useEffect`](https://react.dev/reference/react/useEffect).
 
 2. Use `class` attribute instead of `className`.
 
 3. Some attributes required by Blocks are kebab-cased, not camelCased as usual for React world.
 
-4. You are able to invoke [[some methods of File Uploader](https://uploadcare.com/docs/file-uploader/api/) 
-to control its behavior.
+4. You are able to invoke [some methods of File Uploader](https://uploadcare.com/docs/file-uploader/api/) 
+   to control its behavior.
 
 ### Styling
 
@@ -67,6 +66,7 @@ Otherwise you may go “full override” way and pass a string with styles to a 
 ## Contribution
 
 You’re always welcome to contribute:
+
 * Create [issues](https://github.com/uploadcare/blocks/issues) every time you feel something is missing or goes wrong.
 * Provide your feedback or drop us a support request at <a href="mailto:hello@uploadcare.com">hello@uploadcare.com</a>.
 * Ask questions on [Stack Overflow](https://stackoverflow.com/questions/tagged/uploadcare) with "uploadcare" tag if others can have these questions as well.
