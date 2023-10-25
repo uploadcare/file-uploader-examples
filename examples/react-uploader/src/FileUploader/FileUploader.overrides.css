@@ -1,3 +1,12 @@
+/*
+  Note: File Uploader styles are scoped due to ShadowDOM usage.
+  There are two ways to override them. This file is used for one of them.
+  Another one is to set a custom class to File Uploader,
+  and use CSS variables to update styles.
+
+  See more: https://uploadcare.com/docs/file-uploader/styling/
+ */
+
 :host lr-simple-btn button {
   height: auto;
   padding: 10px 12px !important;

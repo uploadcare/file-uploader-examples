@@ -118,6 +118,12 @@
   white-space: pre-wrap;
 }
 
+/*
+  Note: Localization of File Uploader is done via CSS variables.
+  You can change any piece of text of File Uploader this way.
+
+  See more: https://uploadcare.com/docs/file-uploader/localization/
+ */
 .fileUploader {
   // TODO: rewrite other texts related to plural nouns
   --l10n-upload-file: 'Upload photo';
