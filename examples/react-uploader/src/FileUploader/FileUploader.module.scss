@@ -1,0 +1,58 @@
+.previews {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  width: 100%;
+  margin-top: 12px;
+}
+
+/*
+  Note: We set this class manually when we want File Uploader to join the dark side.
+  The main option here is `darkmore`. The rest ones are used to tune the theme to match the website.
+
+  See more: https://uploadcare.com/docs/file-uploader/styling/#base-values
+ */
+.darkModeEnabled {
+  --darkmode: 1;
+
+  --h-accent: 33.3;
+  --s-accent: 100%;
+  --l-accent: 60.78%;
+
+  --clr-btn-bgr-primary: var(--ui-action-button-background);
+  --clr-btn-txt-primary: var(--ui-action-button-text-color);
+}
+
+.preview {
+  position: relative;
+}
+
+.previewRemoveButton {
+  position: absolute;
+  right: -8px;
+  top: -8px;
+  width: 18px;
+  height: 18px;
+  padding: 0;
+  font-size: 16px;
+  line-height: 1;
+  font-family: monospace;
+  border: 1px solid var(--ui-control-border-color-default);
+  border-radius: 8px;
+  background: var(--ui-control-background-color);
+  box-shadow: 0 0 16px 0 var(--ui-control-box-shadow-color);
+  color: var(--ui-control-text-color);
+  cursor: pointer;
+
+  &:hover, &:focus {
+    background: var(--ui-control-background-color);
+    outline: 1px solid var(--ui-control-outline-color-focus);
+  }
+}
+
+.previewImage {
+  width: 100px;
+  height: 100px;
+  border-radius: 8px;
+  object-fit: cover;
+}
