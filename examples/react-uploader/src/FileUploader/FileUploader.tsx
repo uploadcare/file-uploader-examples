@@ -80,34 +80,36 @@ export default function FileUploader({ files, uploaderClassName, onChange, maxAl
 
   return (
     <div className={st.root}>
-      {/*
-         Note: `lr-config` is the main block we use to configure File Uploader.
-         It's important to all the context-related blocks to have the same `ctx-name` attribute.
+      <React.Fragment key={resetCounter}>
+        {/*
+           Note: `lr-config` is the main block we use to configure File Uploader.
+           It's important to all the context-related blocks to have the same `ctx-name` attribute.
 
-         See more: https://uploadcare.com/docs/file-uploader/configuration/
-         Available options: https://uploadcare.com/docs/file-uploader/options/
+           See more: https://uploadcare.com/docs/file-uploader/configuration/
+           Available options: https://uploadcare.com/docs/file-uploader/options/
 
-         Also note: Some options currently are not available via `lr-config`,
-         but may be set via CSS properties. E.g. `darkmode`.
+           Also note: Some options currently are not available via `lr-config`,
+           but may be set via CSS properties. E.g. `darkmode`.
 
-         Here they are: https://github.com/uploadcare/blocks/blob/main/blocks/themes/lr-basic/config.css
-      */}
-      <lr-config
-        ctx-name={`uploader-ctx-${resetCounter}`}
-        pubkey="demopublickey"
-        multiple={isMultipleAllowed}
-        sourceList="local, url, camera, dropbox, gdrive"
-        multipleMax={maxAllowedFiles}
-        confirmUpload={false}
-        removeCopyright={true}
-        imgOnly={true}
-      ></lr-config>
+           Here they are: https://github.com/uploadcare/blocks/blob/main/blocks/themes/lr-basic/config.css
+        */}
+        <lr-config
+          ctx-name={`uploader-ctx-${resetCounter}`}
+          pubkey="demopublickey"
+          multiple={isMultipleAllowed}
+          sourceList="local, url, camera, dropbox, gdrive"
+          multipleMax={maxAllowedFiles}
+          confirmUpload={false}
+          removeCopyright={true}
+          imgOnly={true}
+        ></lr-config>
 
-      <lr-file-uploader-regular
-        ctx-name={`uploader-ctx-${resetCounter}`}
-        css-src={`https://unpkg.com/@uploadcare/blocks@${PACKAGE_VERSION}/web/lr-file-uploader-regular.min.css`}
-        class={cs(uploaderClassName, { [st.darkModeEnabled]: theme === 'dark' })}
-      ></lr-file-uploader-regular>
+        <lr-file-uploader-regular
+          ctx-name={`uploader-ctx-${resetCounter}`}
+          css-src={`https://unpkg.com/@uploadcare/blocks@${PACKAGE_VERSION}/web/lr-file-uploader-regular.min.css`}
+          class={cs(uploaderClassName, { [st.darkModeEnabled]: theme === 'dark' })}
+        ></lr-file-uploader-regular>
+      </React.Fragment>
 
       <div className={st.previews}>
         {files.map((file) => (
