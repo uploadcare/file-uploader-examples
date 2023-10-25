@@ -119,7 +119,16 @@
 }
 
 .fileUploader {
-  // TODO: rename
-  --l10n-upload-file: 'Attach photo';
-  --l10n-upload-files: 'Attach photos';
+  // TODO: rewrite other texts related to plural nouns
+  --l10n-upload-file: 'Upload photo';
+  --l10n-upload-files: 'Upload photos';
+  --l10n-choose-file: 'Choose photo';
+  --l10n-choose-files: 'Choose photos';
+  --l10n-drop-files-here: 'Drop photos here';
+  --l10n-select-file-source: 'Select photo source';
+  --l10n-edit-image: 'Edit photo';
+  --l10n-no-files: 'No photos selected';
+  --l10n-caption-edit-file: 'Edit photo';
+  --l10n-files-count-allowed: 'Only {{count}} photos are allowed';
+  --l10n-files-max-size-limit-error: 'Photo is too big. Max photo size is {{maxFileSize}}.';
 }
