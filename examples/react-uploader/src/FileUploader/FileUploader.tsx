@@ -4,7 +4,7 @@ import { PACKAGE_VERSION } from '@uploadcare/blocks';
 
 import { File } from '../types';
 
-import st from './FileUploader.module.css';
+import st from './FileUploader.module.scss';
 import cssOverrides from './FileUploader.overrides.css?inline';
 
 LR.FileUploaderRegular.shadowStyles = cssOverrides;

@@ -26,12 +26,11 @@
   box-shadow: 0 0 16px 0 rgba(199, 215, 255, .5);
   color: #323236;
   cursor: pointer;
-}
 
-.previewRemoveButton:hover,
-.previewRemoveButton:focus {
-  background: rgba(253, 253, 255, 0.85);
-  outline: 1px solid rgb(152, 203, 255);
+  &:hover, &:focus {
+    background: rgba(253, 253, 255, 0.85);
+    outline: 1px solid rgb(152, 203, 255);
+  }
 }
 
 .previewImage {

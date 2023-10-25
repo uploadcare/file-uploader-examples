@@ -1,10 +1,15 @@
 import * as LR from '@uploadcare/blocks';
 import cs from 'classnames';
 import { ChangeEventHandler, FormEventHandler, useCallback, useState } from 'react';
+import Toggle from 'react-toggle';
+import 'react-toggle/style.css';
+
+import sunImage from './assets/sun.png';
+import moonImage from './assets/moon.png';
 
 import FileUploader from './FileUploader/FileUploader';
 
-import st from './App.module.css';
+import st from './App.module.scss';
 import MOCK_DATA from './mocks';
 import { File } from './types';
 
@@ -44,6 +49,14 @@ export default function App() {
     <div className={st.app}>
       <header className={st.header}>
         <h1 className={st.viewTitle}>New blog post</h1>
+        <Toggle
+          defaultChecked={true}
+          className={st.themeToggle}
+          icons={{
+            checked: <img src={sunImage} width="16" height="16"/>,
+            unchecked: <img src={moonImage} width="14" height="14"/>,
+          }}
+        />
       </header>
 
       {!sentFormObject && (

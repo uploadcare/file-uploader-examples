@@ -6,6 +6,42 @@
 
 .header {
   margin-bottom: 48px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.themeToggle {
+  :global(.react-toggle-track) {
+    background-color: #292c34 !important;
+  }
+
+  :global(.react-toggle-track-check), :global(.react-toggle-track-x) {
+    width: auto;
+    height: auto;
+    display: flex;
+    align-items: center;
+  }
+
+  :global(.react-toggle-track-check) {
+    left: 6px;
+  }
+
+  :global(.react-toggle-track-x) {
+    right: 8px;
+  }
+
+  :global(.react-toggle-thumb) {
+    border-color: #292c34;
+  }
+
+  &:global(.react-toggle--active .react-toggle-thumb),
+  &:global(.react-toggle:active .react-toggle-thumb) {
+    box-shadow: none;
+  }
+
+  &:global(.react-toggle--focus .react-toggle-thumb) {
+    box-shadow: none;
+  }
 }
 
 .viewTitle {
@@ -26,19 +62,19 @@
   background: #fcfcfe;
   box-shadow: 0 0 16px 0 rgba(199, 215, 255, .5);
   color: #323236;
-}
 
-.input:focus {
-  outline: 3px solid rgb(152, 203, 255);
-  border-color: rgb(0, 89, 200);
+  &:focus {
+    outline: 3px solid rgb(152, 203, 255);
+    border-color: #0059C8;
+  }
 }
 
 .field {
   margin-top: 24px;
-}
 
-.field:last-child {
-  margin-top: 48px;
+  &:last-child {
+    margin-top: 48px;
+  }
 }
 
 .label {
@@ -60,14 +96,14 @@
   background: #0059C8;
   color: #fff;
   cursor: pointer;
-}
 
-.button:hover, .button:focus {
-  outline: 3px solid rgb(152, 203, 255);
-}
+  &:hover, &:focus {
+    outline: 3px solid rgb(152, 203, 255);
+  }
 
-.button:active {
-  border-color: rgb(0, 89, 200);
+  &:active {
+    border-color: rgb(0, 89, 200);
+  }
 }
 
 .result {
@@ -78,6 +114,7 @@
 }
 
 .fileUploader {
+  // TODO: rename
   --l10n-upload-file: 'Attach photo';
   --l10n-upload-files: 'Attach photos';
 }
