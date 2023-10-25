@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import * as LR from '@uploadcare/blocks';
-import { PACKAGE_VERSION } from '@uploadcare/blocks';
+import blocksStyles from '@uploadcare/blocks/web/lr-file-uploader-regular.min.css?url';
 
 import { File } from '../types';
 
@@ -106,7 +106,7 @@ export default function FileUploader({ files, uploaderClassName, onChange, maxAl
 
         <lr-file-uploader-regular
           ctx-name={`uploader-ctx-${resetCounter}`}
-          css-src={`https://unpkg.com/@uploadcare/blocks@${PACKAGE_VERSION}/web/lr-file-uploader-regular.min.css`}
+          css-src={blocksStyles}
           class={cs(uploaderClassName, { [st.darkModeEnabled]: theme === 'dark' })}
         ></lr-file-uploader-regular>
       </React.Fragment>
