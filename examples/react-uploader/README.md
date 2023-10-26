@@ -22,6 +22,20 @@
 
 This is an example project of implementing a file uploader in a React application with [Uploadcare Blocks](https://github.com/uploadcare/blocks).
 
+## Run this demo locally
+
+```bash
+# close this repo and go to the cloned folder
+
+$ cd examples/react-uploader
+
+$ npm install
+# or `yarn install`, if you wish
+
+$ npm run dev
+# or `yarn dev`
+```
+
 ## Installation
 
 All you need to do is to install [`@uploadcare/blocks`](https://www.npmjs.com/package/@uploadcare/blocks) from npm
