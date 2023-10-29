@@ -23,11 +23,10 @@ type FileUploaderProps = {
   uploaderClassName: string;
   files: OutputFileEntry[];
   onChange: (files: OutputFileEntry[]) => void;
-  maxAllowedFiles: number;
   theme: 'light' | 'dark';
 }
 
-export default function FileUploader({ files, uploaderClassName, onChange, maxAllowedFiles, theme }: FileUploaderProps) {
+export default function FileUploader({ files, uploaderClassName, onChange, theme }: FileUploaderProps) {
   /*
     Note: Here we use a counter to reset File Uploader state.
     It's not necessary though. We use it here to show users
@@ -74,10 +73,6 @@ export default function FileUploader({ files, uploaderClassName, onChange, maxAl
     };
   }, [files, onChange]);
 
-  // TODO: remove because it does not work
-  maxAllowedFiles = maxAllowedFiles - files.length;
-
-  const isMultipleAllowed = maxAllowedFiles > 1;
 
   return (
     <div className={st.root}>
@@ -97,9 +92,8 @@ export default function FileUploader({ files, uploaderClassName, onChange, maxAl
         <lr-config
           ctx-name={`uploader-ctx-${resetCounter}`}
           pubkey="demopublickey"
-          multiple={isMultipleAllowed}
+          multiple={true}
           sourceList="local, url, camera, dropbox, gdrive"
-          multipleMax={maxAllowedFiles}
           confirmUpload={false}
           removeCopyright={true}
           imgOnly={true}

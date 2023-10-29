@@ -103,7 +103,6 @@ export default function App() {
               uploaderClassName={st.fileUploader}
               files={photos}
               onChange={setPhotos}
-              maxAllowedFiles={10}
               theme={theme}
             />
           </div>
