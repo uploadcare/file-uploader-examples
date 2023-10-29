@@ -1,8 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import * as LR from '@uploadcare/blocks';
+import { OutputFileEntry } from '@uploadcare/blocks';
 import blocksStyles from '@uploadcare/blocks/web/lr-file-uploader-regular.min.css?url';
-
-import { File } from '../types';
 
 import st from './FileUploader.module.scss';
 import cssOverrides from './FileUploader.overrides.css?inline';
@@ -22,8 +21,8 @@ LR.registerBlocks(LR);
 
 type FileUploaderProps = {
   uploaderClassName: string;
-  files: File[];
-  onChange: (files: File[]) => void;
+  files: OutputFileEntry[];
+  onChange: (files: OutputFileEntry[]) => void;
   maxAllowedFiles: number;
   theme: 'light' | 'dark';
 }
@@ -42,16 +41,17 @@ export default function FileUploader({ files, uploaderClassName, onChange, maxAl
   const [resetCounter, setResetCounter] = useState(0);
 
   const handleRemoveClick = useCallback(
-    (uuid: File['uuid']) => onChange(files.filter(f => f.uuid !== uuid)),
+    (uuid: OutputFileEntry['uuid']) => onChange(files.filter(f => f.uuid !== uuid)),
     [files, onChange],
   );
 
   useEffect(() => {
     const resetUploaderState = () => setResetCounter(v => v + 1);
 
-    const handleUploadEvent = (e: CustomEvent<{ data: File[] }>) => {
+    const handleUploadEvent = (e: CustomEvent<{ data: OutputFileEntry[] }>) => {
       if (e.detail?.data) {
-        onChange([...files, ...e.detail.data]);
+        const newUploadedFiles = e.detail.data.filter(file => file.isUploaded && !files.find(f => f.uuid === file.uuid));
+        onChange([...files, ...newUploadedFiles]);
       }
     };
 
@@ -74,6 +74,7 @@ export default function FileUploader({ files, uploaderClassName, onChange, maxAl
     };
   }, [files, onChange]);
 
+  // TODO: remove because it does not work
   maxAllowedFiles = maxAllowedFiles - files.length;
 
   const isMultipleAllowed = maxAllowedFiles > 1;
@@ -119,8 +120,8 @@ export default function FileUploader({ files, uploaderClassName, onChange, maxAl
               key={file.uuid}
               src={`https://ucarecdn.com/${file.uuid}/-/preview/-/resize/x200/`}
               width="100"
-              alt={file.originalFilename}
-              title={file.originalFilename}
+              alt={file.originalFilename || ''}
+              title={file.originalFilename || ''}
             />
 
             <button

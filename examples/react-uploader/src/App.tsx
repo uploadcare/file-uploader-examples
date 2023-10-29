@@ -1,4 +1,5 @@
 import * as LR from '@uploadcare/blocks';
+import { OutputFileEntry } from '@uploadcare/blocks';
 import cs from 'classnames';
 import { ChangeEventHandler, FormEventHandler, useCallback, useEffect, useState } from 'react';
 import Toggle from 'react-toggle';
@@ -11,19 +12,19 @@ import FileUploader from './FileUploader/FileUploader';
 
 import st from './App.module.scss';
 import MOCK_DATA from './mocks';
-import { File } from './types';
 
 LR.registerBlocks(LR);
 
 type FormType = {
   title: string;
   text: string;
-  photos: File[];
+  photos: OutputFileEntry[];
 }
 
 export default function App() {
   const [title, setTitle] = useState<FormType['title']>(MOCK_DATA.title);
   const [text, setText] = useState<FormType['text']>(MOCK_DATA.text);
+  // @ts-expect-error OutputFileEntry type does not match the real types of data returned from File Uploader
   const [photos, setPhotos] = useState<FormType['photos']>(MOCK_DATA.photos);
 
   const [sentFormObject, setSentFormObject] = useState<FormType | null>(null);
