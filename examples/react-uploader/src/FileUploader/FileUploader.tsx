@@ -73,7 +73,6 @@ export default function FileUploader({ files, uploaderClassName, onChange, theme
     };
   }, [files, onChange]);
 
-
   return (
     <div className={st.root}>
       <React.Fragment key={resetCounter}>
@@ -112,7 +111,7 @@ export default function FileUploader({ files, uploaderClassName, onChange, theme
             <img
               className={st.previewImage}
               key={file.uuid}
-              src={`https://ucarecdn.com/${file.uuid}/-/preview/-/resize/x200/`}
+              src={`${file.cdnUrl}/-/preview/-/resize/x200/`}
               width="100"
               alt={file.originalFilename || ''}
               title={file.originalFilename || ''}
