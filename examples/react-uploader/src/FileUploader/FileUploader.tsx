@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import * as LR from '@uploadcare/blocks';
 import { OutputFileEntry } from '@uploadcare/blocks';
 import blocksStyles from '@uploadcare/blocks/web/lr-file-uploader-regular.min.css?url';
@@ -27,12 +27,33 @@ type FileUploaderProps = {
 }
 
 export default function FileUploader({ files, uploaderClassName, onChange, theme }: FileUploaderProps) {
+  const [uploadedFiles, setUploadedFiles] = useState<OutputFileEntry[]>([]);
   const ctxProviderRef = useRef<LR.UploadCtxProvider>();
 
   const handleRemoveClick = useCallback(
     (uuid: OutputFileEntry['uuid']) => onChange(files.filter(f => f.uuid !== uuid)),
     [files, onChange],
   );
+
+  useEffect(() => {
+    const handleUploadEvent = (e: CustomEvent<{ data: OutputFileEntry[] }>) => {
+      if (e.detail?.data) {
+        setUploadedFiles([...e.detail.data]);
+      }
+    };
+
+    /*
+      Note: Event binding is the main way to get data and other info from File Uploader.
+      There plenty of events you may use.
+
+      See more: https://uploadcare.com/docs/file-uploader/data-and-events/#events
+     */
+    window.addEventListener('LR_DATA_OUTPUT', handleUploadEvent);
+
+    return () => {
+      window.removeEventListener('LR_DATA_OUTPUT', handleUploadEvent);
+    };
+  }, [setUploadedFiles]);
 
   useEffect(() => {
     /*
@@ -47,31 +68,19 @@ export default function FileUploader({ files, uploaderClassName, onChange, theme
      */
     const resetUploaderState = () => ctxProviderRef.current?.uploadCollection.clearAll();
 
-    const handleUploadEvent = (e: CustomEvent<{ data: OutputFileEntry[] }>) => {
-      if (e.detail?.data) {
-        const newUploadedFiles = e.detail.data.filter(file => file.isUploaded && !files.find(f => f.uuid === file.uuid));
-        onChange([...files, ...newUploadedFiles]);
-      }
-    };
-
     const handleDoneFlow = () => {
       resetUploaderState();
+
+      onChange([...files, ...uploadedFiles]);
+      setUploadedFiles([]);
     };
 
-    /*
-      Note: Event binding is the main way to get data and other info from File Uploader.
-      There plenty of events you may use.
-
-      See more: https://uploadcare.com/docs/file-uploader/data-and-events/#events
-     */
-    window.addEventListener('LR_DATA_OUTPUT', handleUploadEvent);
     window.addEventListener('LR_DONE_FLOW', handleDoneFlow);
 
     return () => {
-      window.removeEventListener('LR_DATA_OUTPUT', handleUploadEvent);
       window.removeEventListener('LR_DONE_FLOW', handleDoneFlow);
     };
-  }, [files, onChange]);
+  }, [files, onChange, uploadedFiles, setUploadedFiles]);
 
   return (
     <div className={st.root}>
