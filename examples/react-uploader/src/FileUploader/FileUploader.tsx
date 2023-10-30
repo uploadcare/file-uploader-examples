@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useRef } from 'react';
 import * as LR from '@uploadcare/blocks';
 import { OutputFileEntry } from '@uploadcare/blocks';
 import blocksStyles from '@uploadcare/blocks/web/lr-file-uploader-regular.min.css?url';
@@ -27,17 +27,7 @@ type FileUploaderProps = {
 }
 
 export default function FileUploader({ files, uploaderClassName, onChange, theme }: FileUploaderProps) {
-  /*
-    Note: Here we use a counter to reset File Uploader state.
-    It's not necessary though. We use it here to show users
-    a fresh version of File Uploader every time they open it.
-
-    Another way is to sync File Uploader state with an external store.
-    You can manipulate File Uploader using API calls like `addFileFromObject`, etc.
-
-    See more: https://uploadcare.com/docs/file-uploader/api/
-   */
-  const [resetCounter, setResetCounter] = useState(0);
+  const ctxProviderRef = useRef<LR.UploadCtxProvider>();
 
   const handleRemoveClick = useCallback(
     (uuid: OutputFileEntry['uuid']) => onChange(files.filter(f => f.uuid !== uuid)),
@@ -45,7 +35,17 @@ export default function FileUploader({ files, uploaderClassName, onChange, theme
   );
 
   useEffect(() => {
-    const resetUploaderState = () => setResetCounter(v => v + 1);
+    /*
+      Note: Here we use provider's API to reset File Uploader state.
+      It's not necessary though. We use it here to show users
+      a fresh version of File Uploader every time they open it.
+
+      Another way is to sync File Uploader state with an external store.
+      You can manipulate File Uploader using API calls like `addFileFromObject`, etc.
+
+      See more: https://uploadcare.com/docs/file-uploader/api/
+     */
+    const resetUploaderState = () => ctxProviderRef.current?.uploadCollection.clearAll();
 
     const handleUploadEvent = (e: CustomEvent<{ data: OutputFileEntry[] }>) => {
       if (e.detail?.data) {
@@ -75,35 +75,38 @@ export default function FileUploader({ files, uploaderClassName, onChange, theme
 
   return (
     <div className={st.root}>
-      <React.Fragment key={resetCounter}>
-        {/*
-           Note: `lr-config` is the main block we use to configure File Uploader.
-           It's important to all the context-related blocks to have the same `ctx-name` attribute.
+      {/*
+         Note: `lr-config` is the main block we use to configure File Uploader.
+         It's important to all the context-related blocks to have the same `ctx-name` attribute.
 
-           See more: https://uploadcare.com/docs/file-uploader/configuration/
-           Available options: https://uploadcare.com/docs/file-uploader/options/
+         See more: https://uploadcare.com/docs/file-uploader/configuration/
+         Available options: https://uploadcare.com/docs/file-uploader/options/
 
-           Also note: Some options currently are not available via `lr-config`,
-           but may be set via CSS properties. E.g. `darkmode`.
+         Also note: Some options currently are not available via `lr-config`,
+         but may be set via CSS properties. E.g. `darkmode`.
 
-           Here they are: https://github.com/uploadcare/blocks/blob/main/blocks/themes/lr-basic/config.css
-        */}
-        <lr-config
-          ctx-name={`uploader-ctx-${resetCounter}`}
-          pubkey="demopublickey"
-          multiple={true}
-          sourceList="local, url, camera, dropbox, gdrive"
-          confirmUpload={false}
-          removeCopyright={true}
-          imgOnly={true}
-        ></lr-config>
+         Here they are: https://github.com/uploadcare/blocks/blob/main/blocks/themes/lr-basic/config.css
+      */}
+      <lr-config
+        ctx-name="my-uploader"
+        pubkey="demopublickey"
+        multiple={true}
+        sourceList="local, url, camera, dropbox, gdrive"
+        confirmUpload={false}
+        removeCopyright={true}
+        imgOnly={true}
+      ></lr-config>
 
-        <lr-file-uploader-regular
-          ctx-name={`uploader-ctx-${resetCounter}`}
-          css-src={blocksStyles}
-          class={cs(uploaderClassName, { [st.darkModeEnabled]: theme === 'dark' })}
-        ></lr-file-uploader-regular>
-      </React.Fragment>
+      <lr-file-uploader-regular
+        ctx-name="my-uploader"
+        css-src={blocksStyles}
+        class={cs(uploaderClassName, { [st.darkModeEnabled]: theme === 'dark' })}
+      ></lr-file-uploader-regular>
+
+      <lr-upload-ctx-provider
+        ctx-name="my-uploader"
+        ref={ctxProviderRef}
+      />
 
       <div className={st.previews}>
         {files.map((file) => (
