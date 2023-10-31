@@ -24,7 +24,6 @@ type FormType = {
 export default function App() {
   const [title, setTitle] = useState<FormType['title']>(MOCK_DATA.title);
   const [text, setText] = useState<FormType['text']>(MOCK_DATA.text);
-  // @ts-expect-error OutputFileEntry type does not match the real types of data returned from File Uploader
   const [photos, setPhotos] = useState<FormType['photos']>(MOCK_DATA.photos);
 
   const [sentFormObject, setSentFormObject] = useState<FormType | null>(null);

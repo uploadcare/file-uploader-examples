@@ -1,4 +1,12 @@
-export default {
+import { OutputFileEntry } from '@uploadcare/blocks';
+
+type MocksType = {
+  title: string;
+  text: string;
+  photos: OutputFileEntry[];
+}
+
+const mocks: MocksType = {
   title: 'A Romantic Weekend Getaway in Paris',
   text: `Paris, often referred to as the "City of Love" and the "City of Lights," is a dream destination for many travelers around the world. With its rich history, stunning architecture, delectable cuisine, and an unmistakable romantic atmosphere, Paris offers an unforgettable experience. In this blog post, we'll take you on a journey through our recent weekend trip to Paris, where we gazed at the iconic Eiffel Tower, indulged in heavenly croissants, and immersed ourselves in the city's captivating charm.
 
@@ -54,7 +62,16 @@ export default {
       },
       metadata: {},
       s3Bucket: null,
-      cdnUrlModifiers: null
+      defaultEffects: null,
+      file: null,
+      externalUrl: null,
+      cdnUrlModifiers: null,
+      validationErrorMessage: null,
+      uploadError: null,
+      isUploaded: true,
+      isValid: true,
+      fullPath: null,
+      uploadProgress: 100
     },
     {
       uuid: '9732c6a8-7199-418d-9e02-2a384a953363',
@@ -104,7 +121,16 @@ export default {
       },
       metadata: {},
       s3Bucket: null,
-      cdnUrlModifiers: null
+      defaultEffects: null,
+      file: null,
+      externalUrl: null,
+      cdnUrlModifiers: null,
+      validationErrorMessage: null,
+      uploadError: null,
+      isUploaded: true,
+      isValid: true,
+      fullPath: null,
+      uploadProgress: 100
     },
     {
       uuid: '7708b679-644d-40ba-8b53-5d91bac5125d',
@@ -154,7 +180,16 @@ export default {
       },
       metadata: {},
       s3Bucket: null,
-      cdnUrlModifiers: null
+      defaultEffects: null,
+      file: null,
+      externalUrl: null,
+      cdnUrlModifiers: null,
+      validationErrorMessage: null,
+      uploadError: null,
+      isUploaded: true,
+      isValid: true,
+      fullPath: null,
+      uploadProgress: 100
     },
     {
       uuid: '695dd86e-6095-4e04-9dab-89c082fdba57',
@@ -204,7 +239,16 @@ export default {
       },
       metadata: {},
       s3Bucket: null,
-      cdnUrlModifiers: null
+      defaultEffects: null,
+      file: null,
+      externalUrl: null,
+      cdnUrlModifiers: null,
+      validationErrorMessage: null,
+      uploadError: null,
+      isUploaded: true,
+      isValid: true,
+      fullPath: null,
+      uploadProgress: 100
     },
     {
       uuid: '8cbf5c6f-2e3b-4ad4-8321-2c2a7a7200cd',
@@ -254,7 +298,16 @@ export default {
       },
       metadata: {},
       s3Bucket: null,
-      cdnUrlModifiers: null
+      defaultEffects: null,
+      file: null,
+      externalUrl: null,
+      cdnUrlModifiers: null,
+      validationErrorMessage: null,
+      uploadError: null,
+      isUploaded: true,
+      isValid: true,
+      fullPath: null,
+      uploadProgress: 100
     },
     {
       uuid: '69ebc69c-f24a-481c-a71f-ecf8fe4f80be',
@@ -304,7 +357,18 @@ export default {
       },
       metadata: {},
       s3Bucket: null,
-      cdnUrlModifiers: null
+      defaultEffects: null,
+      file: null,
+      externalUrl: null,
+      cdnUrlModifiers: null,
+      validationErrorMessage: null,
+      uploadError: null,
+      isUploaded: true,
+      isValid: true,
+      fullPath: null,
+      uploadProgress: 100
     }
   ]
 }
+
+export default mocks;
