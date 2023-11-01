@@ -1,0 +1,166 @@
+.app {
+  padding: 16px 24px;
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+.header {
+  margin-bottom: 48px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.themeToggle {
+  :global(.react-toggle-track) {
+    box-shadow: 0 0 16px 0 var(--ui-control-box-shadow-color);
+    background-color: var(--ui-control-background-color);
+    border: 1px solid var(--ui-control-border-color-default);
+    transition: none;
+  }
+
+  &:global(.react-toggle:hover .react-toggle-track),
+  &:global(.react-toggle--checked:hover .react-toggle-track) {
+    background-color: var(--ui-control-background-color);
+    border: 1px solid var(--ui-control-border-color-default);
+    outline: 2px solid var(--ui-control-outline-color-focus);
+  }
+
+  :global(.react-toggle-track-check), :global(.react-toggle-track-x) {
+    width: auto;
+    height: auto;
+    display: flex;
+    align-items: center;
+  }
+
+  :global(.react-toggle-track-check) {
+    left: 6px;
+  }
+
+  :global(.react-toggle-track-x) {
+    right: 8px;
+  }
+
+  :global(.react-toggle-thumb) {
+    top: 2px;
+    left: 2px;
+    background: var(--ui-control-background-color);
+    border-color: var(--ui-control-border-color-default);
+    transition: left 0.25s ease;
+  }
+
+  &:global(.react-toggle--checked .react-toggle-thumb) {
+    left: 28px;
+  }
+
+  &:global(.react-toggle--active .react-toggle-thumb),
+  &:global(.react-toggle:active .react-toggle-thumb) {
+    box-shadow: none;
+  }
+
+  &:global(.react-toggle--focus .react-toggle-thumb) {
+    box-shadow: none;
+  }
+}
+
+.viewTitle {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--ui-text-color);
+}
+
+.input {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 8px 12px;
+  font-family: monospace;
+  font-size: 16px;
+  border: 1px solid var(--ui-control-border-color-default);
+  border-radius: 8px;
+  background: var(--ui-control-background-color);
+  box-shadow: 0 0 16px 0 var(--ui-control-box-shadow-color);
+  color: var(--ui-control-text-color);
+
+  &:focus {
+    outline: 3px solid var(--ui-control-outline-color-focus);
+    border-color: var(--ui-control-border-color-focus);
+  }
+
+  // trying to prevent scrollbar overflowing textarea borders =/
+  &::-webkit-scrollbar-corner {
+    display: none;
+  }
+}
+
+.field {
+  margin-top: 24px;
+
+  &:last-child {
+    margin-top: 48px;
+  }
+}
+
+.label {
+  position: relative;
+  z-index: 1;
+  display: block;
+  margin-bottom: 8px;
+  color: var(--ui-text-color);
+}
+
+.button {
+  font-size: 16px;
+  font-family: monospace;
+  line-height: 1;
+  padding: 10px 12px;
+  border: 1px solid var(--ui-control-border-color-default);
+  border-radius: 8px;
+  box-shadow: 0 0 16px 0 var(--ui-control-box-shadow-color);
+  background: var(--ui-action-button-background);
+  color: var(--ui-action-button-text-color);
+  cursor: pointer;
+
+  &:hover, &:focus {
+    outline: 3px solid var(--ui-control-outline-color-focus);
+  }
+
+  &:active {
+    border-color: var(--ui-control-border-color-focus);
+  }
+}
+
+.result {
+  font-size: 14px;
+  line-height: 18px;
+  font-family: monospace;
+  white-space: pre-wrap;
+}
+
+/*
+  Note: Localization of File Uploader is done via CSS variables.
+  You can change any piece of text of File Uploader this way.
+
+  See more: https://uploadcare.com/docs/file-uploader/localization/
+ */
+.fileUploader {
+  --l10n-locale-name: 'en-US';
+
+  --l10n-photo__one: 'photo';
+  --l10n-photo__many: 'photos';
+  --l10n-photo__other: 'photos';
+
+  --l10n-upload-file: 'Upload photo';
+  --l10n-upload-files: 'Upload photos';
+  --l10n-choose-file: 'Choose photo';
+  --l10n-choose-files: 'Choose photos';
+  --l10n-drop-files-here: 'Drop photos here';
+  --l10n-select-file-source: 'Select photo source';
+  --l10n-edit-image: 'Edit photo';
+  --l10n-no-files: 'No photos selected';
+  --l10n-caption-edit-file: 'Edit photo';
+  --l10n-files-count-allowed: 'Only {{count}} {{plural:photo(count)}} allowed';
+  --l10n-files-max-size-limit-error: 'Photo is too big. Max photo size is {{maxFileSize}}.';
+  --l10n-header-uploading: 'Uploading {{count}} {{plural:photo(count)}}';
+  --l10n-header-succeed: '{{count}} {{plural:photo(count)}} uploaded';
+  --l10n-header-total: '{{count}} {{plural:photo(count)}} selected';
+}

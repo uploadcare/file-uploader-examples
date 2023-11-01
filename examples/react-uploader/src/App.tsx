@@ -1,76 +1,124 @@
-import { useState, useCallback, useRef, useEffect } from "react";
-import * as LR from "@uploadcare/blocks";
-import st from "./App.module.css";
-import { PACKAGE_VERSION } from "@uploadcare/blocks";
+import * as LR from '@uploadcare/blocks';
+import { OutputFileEntry } from '@uploadcare/blocks';
+import cs from 'classnames';
+import { ChangeEventHandler, FormEventHandler, useCallback, useEffect, useState } from 'react';
+import Toggle from 'react-toggle';
+import 'react-toggle/style.css';
+
+import sunImage from './assets/sun.png';
+import moonImage from './assets/moon.png';
+
+import FileUploader from './FileUploader/FileUploader';
+
+import st from './App.module.scss';
+import MOCK_DATA from './mocks';
 
 LR.registerBlocks(LR);
 
-function App() {
-  const dataOutputRef = useRef<JSX.IntrinsicElements["lr-data-output"]>();
-  const configRef = useRef<JSX.IntrinsicElements["lr-config"]>();
-  // TODO: We need to export all data output types
-  const [files, setFiles] = useState<any[]>([]);
+type FormType = {
+  title: string;
+  text: string;
+  photos: OutputFileEntry[];
+}
 
-  // TODO: We need to export all the event types
-  const handleUploaderEvent = useCallback((e: CustomEvent<any>) => {
-    const { data } = e.detail;
-    setFiles(data);
-  }, []);
+export default function App() {
+  const [title, setTitle] = useState<FormType['title']>(MOCK_DATA.title);
+  const [text, setText] = useState<FormType['text']>(MOCK_DATA.text);
+  const [photos, setPhotos] = useState<FormType['photos']>(MOCK_DATA.photos);
+
+  const [sentFormObject, setSentFormObject] = useState<FormType | null>(null);
+
+  const handleTitleChange = useCallback<ChangeEventHandler<HTMLInputElement>>(
+    e => setTitle(e.target.value),
+    [setTitle],
+  );
+  const handleTextChange = useCallback<ChangeEventHandler<HTMLTextAreaElement>>(
+    e => setText(e.target.value),
+    [setText],
+  );
+  const handleFormSubmit = useCallback<FormEventHandler<HTMLFormElement>>((e) => {
+    e.preventDefault();
+    setSentFormObject({
+      title,
+      text,
+      photos,
+    });
+  }, [title, text, photos, setSentFormObject]);
+
+  const [theme, setTheme] = useState<'light' | 'dark'>('light');
+
+  const handleThemeChange = useCallback<ChangeEventHandler<HTMLInputElement>>(e => {
+    setTheme(e.target.checked ? 'light' : 'dark');
+  }, [setTheme]);
 
   useEffect(() => {
-    if (!configRef.current) {
-      return;
-    }
-    configRef.current.metadata = {
-      foo: "bar",
-    };
-    // or async
-    // configRef.current.metadata = async () => {
-    //   const metadata = await getAsyncMetadata();
-    //   return metadata
-    // }
-  }, []);
+    document.body.classList.remove('theme--light');
+    document.body.classList.remove('theme--dark');
+    document.body.classList.add(`theme--${theme}`);
+  }, [theme]);
 
   return (
-    <div className={st.wrapper}>
-      <lr-config
-        ref={configRef}
-        ctx-name="my-uploader"
-        pubkey="demopublickey"
-        multiple={true}
-        confirm-upload={true}
-        source-list="local, url, camera, dropbox, gdrive"
-        multiple-max={10}
-      ></lr-config>
+    <div className={st.app}>
+      <header className={st.header}>
+        <h1 className={st.viewTitle}>New blog post</h1>
+        <Toggle
+          checked={theme === 'light'}
+          className={st.themeToggle}
+          icons={{
+            checked: <img src={sunImage} width="16" height="16"/>,
+            unchecked: <img src={moonImage} width="14" height="14"/>,
+          }}
+          onChange={handleThemeChange}
+        />
+      </header>
 
-      <lr-file-uploader-regular
-        ctx-name="my-uploader"
-        css-src={`https://unpkg.com/@uploadcare/blocks@${PACKAGE_VERSION}/web/lr-file-uploader-regular.min.css`}
-      ></lr-file-uploader-regular>
+      {!sentFormObject && (
+        <form className={st.form} onSubmit={handleFormSubmit}>
+          <div className={st.field}>
+            <label className={st.label} htmlFor="title">Title</label>
+            <input
+              className={cs(st.input, st.titleInput)}
+              type="text"
+              id="title"
+              value={title}
+              onChange={handleTitleChange}
+            />
+          </div>
 
-      <lr-data-output
-        ctx-name="my-uploader"
-        ref={dataOutputRef}
-        use-event
-        hidden
-        class={st.uploaderCfg}
-        onEvent={handleUploaderEvent}
-      ></lr-data-output>
+          <div className={st.field}>
+            <label className={st.label} htmlFor="text">Text</label>
+            <textarea
+              className={st.input}
+              id="text"
+              rows={10}
+              value={text}
+              onChange={handleTextChange}
+            />
+          </div>
 
-      <div className={st.output}>
-        {files.map((file) => (
-          <img
-            key={file.uuid}
-            src={`https://ucarecdn.com/${file.uuid}/${
-              file.cdnUrlModifiers || ""
-            }-/preview/-/scale_crop/400x400/`}
-            width="200"
-            alt="Preview"
-          />
-        ))}
-      </div>
+          <div className={st.field}>
+            <label className={st.label}>Photos</label>
+            <FileUploader
+              uploaderClassName={st.fileUploader}
+              files={photos}
+              onChange={setPhotos}
+              theme={theme}
+            />
+          </div>
+
+          <div className={st.field}>
+            <button className={st.button} type="submit">Publish</button>
+          </div>
+        </form>
+      )}
+
+      {!!sentFormObject && (
+        <pre className={st.result}>
+          <code>
+            {JSON.stringify(sentFormObject, null, 2)}
+          </code>
+        </pre>
+      )}
     </div>
   );
 }
-
-export default App;
