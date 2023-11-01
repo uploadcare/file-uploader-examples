@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite --force",
-    "build": "tsc && vite build",
+    "build": "tsc && vite build --base=\"${BASE_PATH}react-uploader/\"",
     "preview": "vite preview"
   },
   "dependencies": {
