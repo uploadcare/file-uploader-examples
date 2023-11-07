@@ -1,4 +1,3 @@
-import * as LR from '@uploadcare/blocks';
 import { OutputFileEntry } from '@uploadcare/blocks';
 import cs from 'classnames';
 import { ChangeEventHandler, FormEventHandler, useCallback, useEffect, useState } from 'react';
@@ -12,8 +11,6 @@ import FileUploader from './FileUploader/FileUploader';
 
 import st from './App.module.scss';
 import MOCK_DATA from './mocks';
-
-LR.registerBlocks(LR);
 
 type FormType = {
   title: string;
