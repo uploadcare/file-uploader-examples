@@ -1,19 +1,19 @@
 {
-	"name": "svelte-uploader",
-	"version": "0.0.1",
-	"private": true,
-	"type": "module",
-	"scripts": {
-		"dev": "vite dev",
-		"build": "vite build",
-		"preview": "vite preview"
-	},
-	"dependencies": {
-		"@uploadcare/blocks": "0.29.1"
-	},
-	"devDependencies": {
-		"@sveltejs/vite-plugin-svelte": "^2.4.2",
-		"svelte": "^4.0.5",
-		"vite": "^4.4.5"
-	}
+  "name": "svelte-uploader",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite dev",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@uploadcare/blocks": "0.29.1"
+  },
+  "devDependencies": {
+    "@sveltejs/vite-plugin-svelte": "^2.4.2",
+    "svelte": "^4.0.5",
+    "vite": "^4.4.5"
+  }
 }
