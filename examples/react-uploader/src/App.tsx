@@ -1,5 +1,4 @@
 import { OutputFileEntry } from '@uploadcare/blocks';
-import cs from 'classnames';
 import { ChangeEventHandler, FormEventHandler, useCallback, useEffect, useState } from 'react';
 import Toggle from 'react-toggle';
 import 'react-toggle/style.css';
@@ -74,7 +73,7 @@ export default function App() {
           <div className={st.field}>
             <label className={st.label} htmlFor="title">Title</label>
             <input
-              className={cs(st.input, st.titleInput)}
+              className={st.input}
               type="text"
               id="title"
               value={title}
