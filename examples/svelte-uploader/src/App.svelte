@@ -44,7 +44,12 @@
         checked={theme === 'light'}
         on:change={handleThemeChange}
       >
-      <img src={theme === 'light' ? sunImage : moonImage} width="18" height="18"/>
+      <img
+        src={theme === 'light' ? sunImage : moonImage}
+        width="18"
+        height="18"
+        alt={`Switch to ${theme === 'light' ? 'dark' : 'light'} theme`}
+      />
     </label>
   </header>
 
@@ -71,7 +76,7 @@
       </div>
 
       <div class="field">
-        <label class="label">Photos</label>
+        <p class="label">Photos</p>
         <FileUploader
           uploaderClassName="file-uploader"
           bind:files={photos}
