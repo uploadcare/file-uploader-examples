@@ -68,7 +68,7 @@
       window.removeEventListener('LR_DATA_OUTPUT', handleUploadEvent);
       window.removeEventListener('LR_DONE_FLOW', handleDoneFlow);
     };
-  })
+  });
 </script>
 
 <div class="root">

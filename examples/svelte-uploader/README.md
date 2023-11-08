@@ -1,47 +1,75 @@
-# Svelte + Vite
+<p align="center">
+  <a href="https://uploadcare.com/?ref=github-svelte-example-readme">
+    <picture>
+      <source media="(prefers-color-scheme: light)" srcset="https://ucarecdn.com/1b4714cd-53be-447b-bbde-e061f1e5a22f/logo-safespace-transparent.svg">
+      <source media="(prefers-color-scheme: dark)" srcset="https://ucarecdn.com/3b610a0a-780c-4750-a8b4-3bf4a8c90389/logo-transparent-inverted.svg">
+      <img width=250 alt="Uploadcare logo" src="https://ucarecdn.com/1b4714cd-53be-447b-bbde-e061f1e5a22f/logo-safespace-transparent.svg">
+    </picture>
+  </a>
+</p>
+<p align="center">
+  <a href="https://uploadcare.com?ref=github-readme">Website</a> • 
+  <a href="https://uploadcare.com/docs/start/quickstart?ref=github-readme">Quick Start</a> • 
+  <a href="https://uploadcare.com/docs?ref=github-readme">Docs</a> • 
+  <a href="https://uploadcare.com/blog?ref=github-readme">Blog</a> • 
+  <a href="https://discord.gg/mKWRgRsVz8?ref=github-readme">Discord</a> •
+  <a href="https://twitter.com/Uploadcare?ref=github-readme">Twitter</a>
+</p>
 
-This template should help get you started developing with Svelte in Vite.
+# Svelte File Uploader with Uploadcare Blocks
 
-## Recommended IDE Setup
+[![Edit svelte-uploader](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/github/uploadcare/blocks-examples/tree/main/examples/svelte-uploader/)
 
-[VS Code](https://code.visualstudio.com/) + [Svelte](https://marketplace.visualstudio.com/items?itemName=svelte.svelte-vscode).
+This is an example project of implementing a file uploader in a Svelte application with [Uploadcare Blocks](https://github.com/uploadcare/blocks).
 
-## Need an official Svelte framework?
+## Run this demo locally
 
-Check out [SvelteKit](https://github.com/sveltejs/kit#readme), which is also powered by Vite. Deploy anywhere with its serverless-first approach and adapt to various platforms, with out of the box support for TypeScript, SCSS, and Less, and easily-added support for mdsvex, GraphQL, PostCSS, Tailwind CSS, and more.
+```bash
+# close this repo and go to the cloned folder
 
-## Technical considerations
+$ cd examples/svelte-uploader
 
-**Why use this over SvelteKit?**
+$ npm install
+# or `yarn install`, if you wish
 
-- It brings its own routing solution which might not be preferable for some users.
-- It is first and foremost a framework that just happens to use Vite under the hood, not a Vite app.
-
-This template contains as little as possible to get started with Vite + Svelte, while taking into account the developer experience with regards to HMR and intellisense. It demonstrates capabilities on par with the other `create-vite` templates and is a good starting point for beginners dipping their toes into a Vite + Svelte project.
-
-Should you later need the extended capabilities and extensibility provided by SvelteKit, the template has been structured similarly to SvelteKit so that it is easy to migrate.
-
-**Why `global.d.ts` instead of `compilerOptions.types` inside `jsconfig.json` or `tsconfig.json`?**
-
-Setting `compilerOptions.types` shuts out all other types not explicitly listed in the configuration. Using triple-slash references keeps the default TypeScript setting of accepting type information from the entire workspace, while also adding `svelte` and `vite/client` type information.
-
-**Why include `.vscode/extensions.json`?**
-
-Other templates indirectly recommend extensions via the README, but this file allows VS Code to prompt the user to install the recommended extension upon opening the project.
-
-**Why enable `checkJs` in the JS template?**
-
-It is likely that most cases of changing variable types in runtime are likely to be accidental, rather than deliberate. This provides advanced typechecking out of the box. Should you like to take advantage of the dynamically-typed nature of JavaScript, it is trivial to change the configuration.
-
-**Why is HMR not preserving my local component state?**
-
-HMR state preservation comes with a number of gotchas! It has been disabled by default in both `svelte-hmr` and `@sveltejs/vite-plugin-svelte` due to its often surprising behavior. You can read the details [here](https://github.com/sveltejs/svelte-hmr/tree/master/packages/svelte-hmr#preservation-of-local-state).
-
-If you have state that's important to retain within a component, consider creating an external store which would not be replaced by HMR.
-
-```js
-// store.js
-// An extremely simple external store
-import { writable } from 'svelte/store'
-export default writable(0)
+$ npm run dev
+# or `yarn dev`
 ```
+
+## Installation
+
+All you need to do is to install [`@uploadcare/blocks`](https://www.npmjs.com/package/@uploadcare/blocks) from npm
+via your favorite Node package manager.
+
+The package provides TypeScript types, so you do not need to install `@types/anything` if you need a proper typing.
+
+[Read more about installation](https://uploadcare.com/docs/file-uploader/installation/) in the Uploadcare documentation.
+
+## Configuration
+
+Please, read the [File Uploader documentation](https://uploadcare.com/docs/file-uploader/).
+
+## Integration notes
+
+Blocks are native to the Web, which makes them native to Svelte too.
+
+In this example we created a [FileUploader](./src/lib/FileUploader/FileUploader.svelte) component
+which provides Svelte-friendly API for the rest of the app. There are Blocks inside of this component and nowhere else.
+
+### Styling
+
+If your styling solution may provide class string or style object, feel free to use them on blocks like
+`lr-file-uploader-regular` and override default class using CSS variables.
+
+Otherwise you may go “full override” way and pass a string with styles to a File Uploader type of your choice.
+
+[Read more about styling](https://uploadcare.com/docs/file-uploader/styling/) in the File Uploader docs.
+
+## Contribution
+
+You’re always welcome to contribute:
+
+* Create [issues](https://github.com/uploadcare/blocks/issues) every time you feel something is missing or goes wrong.
+* Provide your feedback or drop us a support request at <a href="mailto:hello@uploadcare.com">hello@uploadcare.com</a>.
+* Ask questions on [Stack Overflow](https://stackoverflow.com/questions/tagged/uploadcare) with "uploadcare" tag if others can have these questions as well.
+* Star this repo if you like it ⭐️
