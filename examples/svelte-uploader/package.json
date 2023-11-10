@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite dev",
-    "build": "tsc && vite build --base=\"${BASE_PATH}svelte-uploader/\"",
+    "build": "vite build --base=\"${BASE_PATH}svelte-uploader/\"",
     "preview": "vite preview"
   },
   "dependencies": {
