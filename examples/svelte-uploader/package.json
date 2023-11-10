@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite dev",
-    "build": "vite build",
+    "build": "tsc && vite build --base=\"${BASE_PATH}svelte-uploader/\"",
     "preview": "vite preview"
   },
   "dependencies": {
@@ -13,6 +13,7 @@
   },
   "devDependencies": {
     "@sveltejs/vite-plugin-svelte": "^2.4.2",
+    "sass": "^1.69.5",
     "svelte": "^4.0.5",
     "vite": "^4.4.5"
   }
