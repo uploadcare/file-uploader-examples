@@ -45,7 +45,7 @@ The package provides TypeScript types, so you do not need to install `@types/any
 
 [Read more about installation](https://uploadcare.com/docs/file-uploader/installation/) in the Uploadcare documentation.
 
-## Configutration
+## Configuration
 
 Please, read the [File Uploader documentation](https://uploadcare.com/docs/file-uploader/).
 

@@ -1,6 +1,4 @@
-import * as LR from '@uploadcare/blocks';
 import { OutputFileEntry } from '@uploadcare/blocks';
-import cs from 'classnames';
 import { ChangeEventHandler, FormEventHandler, useCallback, useEffect, useState } from 'react';
 import Toggle from 'react-toggle';
 import 'react-toggle/style.css';
@@ -12,8 +10,6 @@ import FileUploader from './FileUploader/FileUploader';
 
 import st from './App.module.scss';
 import MOCK_DATA from './mocks';
-
-LR.registerBlocks(LR);
 
 type FormType = {
   title: string;
@@ -77,7 +73,7 @@ export default function App() {
           <div className={st.field}>
             <label className={st.label} htmlFor="title">Title</label>
             <input
-              className={cs(st.input, st.titleInput)}
+              className={st.input}
               type="text"
               id="title"
               value={title}
