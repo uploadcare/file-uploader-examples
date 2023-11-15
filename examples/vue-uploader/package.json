@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "vite build --base=\"${BASE_PATH}vue-uploader/\"",
     "preview": "vite preview"
   },
   "dependencies": {
