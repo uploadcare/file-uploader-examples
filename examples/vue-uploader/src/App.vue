@@ -2,9 +2,15 @@
 import sunImage from './assets/sun.png';
 import moonImage from './assets/moon.png';
 
+import FileUploader from './components/FileUploader.options.vue';
+
 import MOCK_DATA from './mocks';
 
 export default {
+  components: {
+    FileUploader,
+  },
+
   data() {
     return {
       title: MOCK_DATA.title,
@@ -91,7 +97,11 @@ export default {
 
       <div class="field">
         <p class="label">Photos</p>
-        <!-- TODO: implement FileUploader here -->
+        <FileUploader
+          uploader-class-name="file-uploader"
+          v-model:files="photos"
+          :theme="theme"
+        />
       </div>
 
       <div class="field">
