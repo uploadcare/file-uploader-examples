@@ -1,13 +1,14 @@
-<script>
+<script setup>
 /*
-  Note: This is a Vue component built using Options API.
-  If you prefer Composition API, check FileUploader.composition.vue file.
+  Note: This is a Vue component built using Composition API.
+  If you prefer Options API, check FileUploader.options.vue file.
 
   See more: https://vuejs.org/guide/introduction.html#api-styles
  */
 
 import * as LR from '@uploadcare/blocks';
 import blocksStyles from '@uploadcare/blocks/web/lr-file-uploader-regular.min.css?url';
+import { onBeforeUnmount, onMounted, ref } from 'vue';
 
 import cssOverrides from './FileUploader.overrides.css?inline';
 
@@ -23,75 +24,70 @@ LR.FileUploaderRegular.shadowStyles = cssOverrides;
 
 LR.registerBlocks(LR);
 
-export default {
-  props: {
-    uploaderClassName: String,
-    files: {
-      type: Array,
-      required: true,
-    },
-    theme: {
-      validator(value) {
-        return ['light', 'dark'].includes(value);
-      }
-    },
+const props = defineProps({
+  uploaderClassName: String,
+  files: {
+    type: Array,
+    required: true,
   },
-
-  emits: ['update:files'],
-
-  data() {
-    return {
-      blocksStyles,
-      uploadedFiles: [],
+  theme: {
+    validator(value) {
+      return ['light', 'dark'].includes(value);
     }
   },
+});
 
-  methods: {
-    resetUploaderState() {
-      /*
-        Note: Here we use provider's API to reset File Uploader state.
-        It's not necessary though. We use it here to show users
-        a fresh version of File Uploader every time they open it.
+const emit = defineEmits(['update:files']);
 
-        Another way is to sync File Uploader state with an external store.
-        You can manipulate File Uploader using API calls like `addFileFromObject`, etc.
+const uploadedFiles = ref([]);
+const ctxProviderRef = ref(null);
 
-        See more: https://uploadcare.com/docs/file-uploader/api/
-       */
-      this.$refs.ctxProviderRef.uploadCollection.clearAll();
-    },
-    handleRemoveClick(uuid) {
-      this.$emit('update:files', this.files.filter(f => f.uuid !== uuid));
-    },
-    handleUploadEvent(e) {
-      if (e.detail?.data) {
-        this.uploadedFiles = e.detail.data;
-      }
-    },
-    handleDoneFlow() {
-      this.resetUploaderState();
+function resetUploaderState() {
+  /*
+    Note: Here we use provider's API to reset File Uploader state.
+    It's not necessary though. We use it here to show users
+    a fresh version of File Uploader every time they open it.
 
-      this.$emit('update:files', [...this.files, ...this.uploadedFiles]);
-      this.uploadedFiles = [];
-    },
-  },
+    Another way is to sync File Uploader state with an external store.
+    You can manipulate File Uploader using API calls like `addFileFromObject`, etc.
 
-  mounted() {
-    /*
-      Note: Event binding is the main way to get data and other info from File Uploader.
-      There plenty of events you may use.
+    See more: https://uploadcare.com/docs/file-uploader/api/
+   */
+  ctxProviderRef.value.uploadCollection.clearAll();
+}
 
-      See more: https://uploadcare.com/docs/file-uploader/data-and-events/#events
-     */
-    window.addEventListener('LR_DATA_OUTPUT', this.handleUploadEvent);
-    window.addEventListener('LR_DONE_FLOW', this.handleDoneFlow);
-  },
+function handleRemoveClick(uuid) {
+  emit('update:files', props.files.filter(f => f.uuid !== uuid));
+}
 
-  beforeUnmount() {
-    window.removeEventListener('LR_DATA_OUTPUT', this.handleUploadEvent);
-    window.removeEventListener('LR_DONE_FLOW', this.handleDoneFlow);
+function handleUploadEvent(e) {
+  if (e.detail?.data) {
+    uploadedFiles.value = e.detail.data;
   }
 }
+
+function handleDoneFlow() {
+  resetUploaderState();
+
+  emit('update:files', [...props.files, ...uploadedFiles.value]);
+  uploadedFiles.value = [];
+}
+
+onMounted(() => {
+  /*
+    Note: Event binding is the main way to get data and other info from File Uploader.
+    There plenty of events you may use.
+
+    See more: https://uploadcare.com/docs/file-uploader/data-and-events/#events
+   */
+  window.addEventListener('LR_DATA_OUTPUT', handleUploadEvent);
+  window.addEventListener('LR_DONE_FLOW', handleDoneFlow);
+});
+
+onBeforeUnmount(() => {
+  window.removeEventListener('LR_DATA_OUTPUT', handleUploadEvent);
+  window.removeEventListener('LR_DONE_FLOW', handleDoneFlow);
+});
 </script>
 
 <template>
