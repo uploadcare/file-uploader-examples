@@ -8,6 +8,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@uploadcare/blocks": "0.29.1",
     "vue": "^3.3.4"
   },
   "devDependencies": {
