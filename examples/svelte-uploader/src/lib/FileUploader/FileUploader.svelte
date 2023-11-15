@@ -26,15 +26,15 @@
   let ctxProviderRef;
 
   /*
-     Note: Here we use provider's API to reset File Uploader state.
-     It's not necessary though. We use it here to show users
-     a fresh version of File Uploader every time they open it.
+    Note: Here we use provider's API to reset File Uploader state.
+    It's not necessary though. We use it here to show users
+    a fresh version of File Uploader every time they open it.
 
-     Another way is to sync File Uploader state with an external store.
-     You can manipulate File Uploader using API calls like `addFileFromObject`, etc.
+    Another way is to sync File Uploader state with an external store.
+    You can manipulate File Uploader using API calls like `addFileFromObject`, etc.
 
-     See more: https://uploadcare.com/docs/file-uploader/api/
-    */
+    See more: https://uploadcare.com/docs/file-uploader/api/
+   */
   const resetUploaderState = () => ctxProviderRef.uploadCollection.clearAll();
 
   const handleRemoveClick = uuid => {
@@ -73,16 +73,16 @@
 
 <div class="root">
   <!--
-     Note: `lr-config` is the main block we use to configure File Uploader.
-     It's important to all the context-related blocks to have the same `ctx-name` attribute.
+    Note: `lr-config` is the main block we use to configure File Uploader.
+    It's important to all the context-related blocks to have the same `ctx-name` attribute.
 
-     See more: https://uploadcare.com/docs/file-uploader/configuration/
-     Available options: https://uploadcare.com/docs/file-uploader/options/
+    See more: https://uploadcare.com/docs/file-uploader/configuration/
+    Available options: https://uploadcare.com/docs/file-uploader/options/
 
-     Also note: Some options currently are not available via `lr-config`,
-     but may be set via CSS properties. E.g. `darkmode`.
+    Also note: Some options currently are not available via `lr-config`,
+    but may be set via CSS properties. E.g. `darkmode`.
 
-     Here they are: https://github.com/uploadcare/blocks/blob/main/blocks/themes/lr-basic/config.css
+    Here they are: https://github.com/uploadcare/blocks/blob/main/blocks/themes/lr-basic/config.css
   -->
   <lr-config
     ctx-name="my-uploader"
@@ -186,5 +186,4 @@
     border-radius: 8px;
     object-fit: cover;
   }
-
 </style>
