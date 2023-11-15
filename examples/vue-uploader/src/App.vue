@@ -2,7 +2,7 @@
 import sunImage from './assets/sun.png';
 import moonImage from './assets/moon.png';
 
-import FileUploader from './components/FileUploader.options.vue';
+import FileUploader from './components/FileUploader/FileUploader.options.vue';
 
 import MOCK_DATA from './mocks';
 
