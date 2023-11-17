@@ -25,7 +25,7 @@ This is an example project of implementing a file uploader in a React applicatio
 ## Run this demo locally
 
 ```bash
-# close this repo and go to the cloned folder
+# clone this repo and go to the cloned folder
 
 $ cd examples/react-uploader
 
