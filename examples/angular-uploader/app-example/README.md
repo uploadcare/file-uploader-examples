@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://uploadcare.com/?ref=github-react-example-readme">
+  <a href="https://uploadcare.com/?ref=github-angular-example-readme">
     <picture>
       <source media="(prefers-color-scheme: light)" srcset="https://ucarecdn.com/1b4714cd-53be-447b-bbde-e061f1e5a22f/logo-safespace-transparent.svg">
       <source media="(prefers-color-scheme: dark)" srcset="https://ucarecdn.com/3b610a0a-780c-4750-a8b4-3bf4a8c90389/logo-transparent-inverted.svg">
@@ -16,18 +16,18 @@
   <a href="https://twitter.com/Uploadcare?ref=github-readme">Twitter</a>
 </p>
 
-# React File Uploader with Uploadcare Blocks
+# Angular File Uploader with Uploadcare Blocks
 
-[![Edit react-uploader](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/github/uploadcare/blocks-examples/tree/main/examples/react-uploader/)
+[![Edit angular-uploader](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/github/uploadcare/blocks-examples/tree/main/examples/angular-uploader/app-example/)
 
-This is an example project of implementing a file uploader in a React application with [Uploadcare Blocks](https://github.com/uploadcare/blocks).
+This is an example project of implementing a file uploader in an Angular application with [Uploadcare Blocks](https://github.com/uploadcare/blocks).
 
 ## Run this demo locally
 
 ```bash
 # clone this repo and go to the cloned folder
 
-$ cd examples/react-uploader
+$ cd examples/angular-uploader
 
 $ npm install
 # or `yarn install`, if you wish
@@ -41,8 +41,6 @@ $ npm run dev
 All you need to do is to install [`@uploadcare/blocks`](https://www.npmjs.com/package/@uploadcare/blocks) from npm
 via your favorite Node package manager.
 
-The package provides TypeScript types, so you do not need to install `@types/anything` if you need a proper typing.
-
 [Read more about installation](https://uploadcare.com/docs/file-uploader/installation/) in the Uploadcare documentation.
 
 ## Configuration
@@ -51,26 +49,22 @@ Please, read the [File Uploader documentation](https://uploadcare.com/docs/file-
 
 ## Integration notes
 
-Blocks are native to the Web but not to React. It's easy to use Blocks in a React app, but note that a part of your solution will encapsulate non-React code.
+### Angular + Web Components
 
-In this example we created a [FileUploader](./src/FileUploader/FileUploader.tsx) component 
-which provides React-friendly API for the rest of the app. There are Blocks inside of this component and nowhere else.
+Blocks are native to the Web but not to Angular. However, Angular does everything to make solutions based on Web Components
+to work properly with it. 
 
-### Non-React things you should know about
+To help Angular to figure out where you're using Web Components, you have to set
+`schemas` property of the file uploader component to `[CUSTOM_ELEMENTS_SCHEMA]`, where `CUSTOM_ELEMENTS_SCHEMA` 
+is a special schema imported from `@angular/core`.
+In this example we have done it inside [the file-uploader component](./src/app/file-uploader/file-uploader.component.ts).
 
-1. Communicate with Blocks File Uploader with [events](https://uploadcare.com/docs/file-uploader/data-and-events/).
-   You will find them in the example. It's easy to handle using hooks like [`useEffect`](https://react.dev/reference/react/useEffect).
-
-2. Use `class` attribute instead of `className`.
-
-3. Some attributes required by Blocks are kebab-cased, not camelCased as usual for React world.
-
-4. You are able to invoke [some methods of File Uploader](https://uploadcare.com/docs/file-uploader/api/) 
-   to control its behavior.
+You may like to read [custom element schemas](https://angular.dev/guide/components/advanced-configuration#custom-element-schemas) doc, 
+if you want to know more about using custom elements in Angular.
 
 ### Styling
 
-If your styling solution may provide class string or style object, feel free to use them on blocks like 
+If your styling solution may provide class string or style object, feel free to use them on blocks like
 `lr-file-uploader-regular` and override default class using CSS variables.
 
 Otherwise you may go “full override” way and pass a string with styles to a File Uploader type of your choice.

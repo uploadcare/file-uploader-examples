@@ -18,7 +18,7 @@
 
 # Svelte File Uploader with Uploadcare Blocks
 
-[![Edit svelte-uploader](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/github/uploadcare/blocks-examples/tree/main/examples/svelte-uploader/)
+[![Edit svelte-uploader](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/github/uploadcare/blocks-examples/tree/main/examples/svelte-uploader/app-example/)
 
 This is an example project of implementing a file uploader in a Svelte application with [Uploadcare Blocks](https://github.com/uploadcare/blocks).
 
@@ -53,7 +53,7 @@ Please, read the [File Uploader documentation](https://uploadcare.com/docs/file-
 
 Blocks are native to the Web, which makes them native to Svelte too.
 
-In this example we created a [FileUploader](./src/lib/FileUploader/FileUploader.svelte) component
+In this example we created a [FileUploader](srcib/FileUploader/FileUploader.svelte) component
 which provides Svelte-friendly API for the rest of the app. There are Blocks inside of this component and nowhere else.
 
 ### Styling

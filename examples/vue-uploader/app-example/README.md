@@ -18,7 +18,7 @@
 
 # Vue File Uploader with Uploadcare Blocks
 
-[![Edit vue-uploader](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/github/uploadcare/blocks-examples/tree/main/examples/vue-uploader/)
+[![Edit vue-uploader](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/github/uploadcare/blocks-examples/tree/main/examples/vue-uploader/app-example/)
 
 This is an example project of implementing a file uploader in a Vue application with [Uploadcare Blocks](https://github.com/uploadcare/blocks).
 
@@ -58,22 +58,22 @@ to work properly with it.
 
 To help Vue to figure out where you're using Web Components, you have to specify 
 [`compilerOptions.isCustomElement` option](https://vuejs.org/api/application.html#app-config-compileroptions). 
-In this example we have done it inside [the Vite config file](./vite.config.js).
+In this example we have done it inside [the Vite config file](vite.config.js).
 
 You may like to read [Vue and Web Components](https://vuejs.org/guide/extras/web-components.html) doc, 
 if you want to know more about using custom elements in Vue.
 
 ### Options API vs. Composition API
 
-In this example we created a [FileUploader](./src/components/FileUploader) component
+In this example we created a [FileUploader](srcomponents/FileUploader) component
 which provides Vue-friendly API for the rest of the app. There are Blocks inside of this component and nowhere else.
 
 However, Vue 3 supports two different API styles: Options API and Composition API. We do not know which one you prefer,
 so we have implemented the example twice.
 
 By default we use Options API because the whole app is built with it. But you're free to switch the `import` path 
-in [App.vue](./src/App.vue) from [FileUploader.options.vue](./src/components/FileUploader/FileUploader.options.vue)
-to [FileUploader.composition.vue](./src/components/FileUploader/FileUploader.composition.vue) to ensure that it works too.
+in [App.vue](srcpp.vue) from [FileUploader.options.vue](srcomponents/FileUploader/FileUploader.options.vue)
+to [FileUploader.composition.vue](srcomponents/FileUploader/FileUploader.composition.vue) to ensure that it works too.
 
 ### Styling
 
