@@ -27,7 +27,7 @@ This is an example project of implementing a file uploader in a Vue application 
 ```bash
 # clone this repo and go to the cloned folder
 
-$ cd examples/vue-uploader
+$ cd examples/vue-uploader/app-example
 
 $ npm install
 # or `yarn install`, if you wish

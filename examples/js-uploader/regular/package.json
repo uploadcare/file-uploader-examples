@@ -1,0 +1,23 @@
+{
+  "name": "html-js-uploader",
+  "version": "1.0.0",
+  "description": "Uploading files with HTML and JS using Uploadcare",
+  "main": "index.html",
+  "scripts": {
+    "start": "serve",
+    "build": "echo This is a static template, there is no bundler or bundling involved!"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/uploadcare/blocks"
+  },
+  "author": "Uploadcare",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/uploadcare/blocks/issues"
+  },
+  "homepage": "https://github.com/uploadcare/blocks#readme",
+  "devDependencies": {
+    "serve": "^11.2.0"
+  }
+}

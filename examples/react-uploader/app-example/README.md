@@ -27,7 +27,7 @@ This is an example project of implementing a file uploader in a React applicatio
 ```bash
 # clone this repo and go to the cloned folder
 
-$ cd examples/react-uploader
+$ cd examples/react-uploader/app-example
 
 $ npm install
 # or `yarn install`, if you wish
