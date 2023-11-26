@@ -113,6 +113,7 @@
     border: 1px solid var(--ui-control-border-color-default);
     border-radius: 100%;
     cursor: pointer;
+    user-select: none;
 
     &:hover {
       background-color: var(--ui-control-background-color);
