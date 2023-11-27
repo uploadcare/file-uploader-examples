@@ -64,8 +64,8 @@ export default {
       this.$emit('update:files', this.files.filter(f => f.uuid !== uuid));
     },
     handleUploadEvent(e) {
-      if (e.detail?.data) {
-        this.uploadedFiles = e.detail.data;
+      if (e.detail) {
+        this.uploadedFiles = e.detail;
       }
     },
     handleDoneFlow() {
@@ -83,13 +83,13 @@ export default {
 
       See more: https://uploadcare.com/docs/file-uploader/data-and-events/#events
      */
-    window.addEventListener('LR_DATA_OUTPUT', this.handleUploadEvent);
-    window.addEventListener('LR_DONE_FLOW', this.handleDoneFlow);
+    this.$refs.ctxProviderRef.addEventListener('data-output', this.handleUploadEvent);
+    this.$refs.ctxProviderRef.addEventListener('done-flow', this.handleDoneFlow);
   },
 
   beforeUnmount() {
-    window.removeEventListener('LR_DATA_OUTPUT', this.handleUploadEvent);
-    window.removeEventListener('LR_DONE_FLOW', this.handleDoneFlow);
+    this.$refs.ctxProviderRef.removeEventListener('data-output', this.handleUploadEvent);
+    this.$refs.ctxProviderRef.removeEventListener('done-flow', this.handleDoneFlow);
   }
 }
 </script>

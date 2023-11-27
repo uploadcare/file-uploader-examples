@@ -61,8 +61,8 @@ function handleRemoveClick(uuid) {
 }
 
 function handleUploadEvent(e) {
-  if (e.detail?.data) {
-    uploadedFiles.value = e.detail.data;
+  if (e.detail) {
+    uploadedFiles.value = e.detail;
   }
 }
 
@@ -80,13 +80,13 @@ onMounted(() => {
 
     See more: https://uploadcare.com/docs/file-uploader/data-and-events/#events
    */
-  window.addEventListener('LR_DATA_OUTPUT', handleUploadEvent);
-  window.addEventListener('LR_DONE_FLOW', handleDoneFlow);
+  ctxProviderRef.value.addEventListener('data-output', handleUploadEvent);
+  ctxProviderRef.value.addEventListener('done-flow', handleDoneFlow);
 });
 
 onBeforeUnmount(() => {
-  window.removeEventListener('LR_DATA_OUTPUT', handleUploadEvent);
-  window.removeEventListener('LR_DONE_FLOW', handleDoneFlow);
+  ctxProviderRef.value.removeEventListener('data-output', handleUploadEvent);
+  ctxProviderRef.value.removeEventListener('done-flow', handleDoneFlow);
 });
 </script>
 
