@@ -1,27 +1,81 @@
-# AngularUploader
+<p align="center">
+  <a href="https://uploadcare.com/?ref=github-angular-example-readme">
+    <picture>
+      <source media="(prefers-color-scheme: light)" srcset="https://ucarecdn.com/1b4714cd-53be-447b-bbde-e061f1e5a22f/logo-safespace-transparent.svg">
+      <source media="(prefers-color-scheme: dark)" srcset="https://ucarecdn.com/3b610a0a-780c-4750-a8b4-3bf4a8c90389/logo-transparent-inverted.svg">
+      <img width="250" alt="Uploadcare logo" src="https://ucarecdn.com/1b4714cd-53be-447b-bbde-e061f1e5a22f/logo-safespace-transparent.svg">
+    </picture>
+  </a>
+</p>
+<p align="center">
+  <a href="https://uploadcare.com?ref=github-readme">Website</a> • 
+  <a href="https://uploadcare.com/docs/start/quickstart?ref=github-readme">Quick Start</a> • 
+  <a href="https://uploadcare.com/docs?ref=github-readme">Docs</a> • 
+  <a href="https://uploadcare.com/blog?ref=github-readme">Blog</a> • 
+  <a href="https://discord.gg/mKWRgRsVz8?ref=github-readme">Discord</a> •
+  <a href="https://twitter.com/Uploadcare?ref=github-readme">Twitter</a>
+</p>
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.0.3.
+# Angular File Uploader with Uploadcare Blocks
 
-## Development server
+[![Edit angular-uploader](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/github/uploadcare/blocks-examples/tree/main/examples/angular-uploader/)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+This is an example project of implementing a file uploader in an Angular application with [Uploadcare Blocks](https://github.com/uploadcare/blocks).
 
-## Code scaffolding
+## Run this demo locally
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+```bash
+# clone this repo and go to the cloned folder
 
-## Build
+$ cd examples/angular-uploader
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+$ npm install
+# or `yarn install`, if you wish
 
-## Running unit tests
+$ npm run dev
+# or `yarn dev`
+```
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Installation
 
-## Running end-to-end tests
+All you need to do is to install [`@uploadcare/blocks`](https://www.npmjs.com/package/@uploadcare/blocks) from npm
+via your favorite Node package manager.
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+[Read more about installation](https://uploadcare.com/docs/file-uploader/installation/) in the Uploadcare documentation.
 
-## Further help
+## Configuration
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Please, read the [File Uploader documentation](https://uploadcare.com/docs/file-uploader/).
+
+## Integration notes
+
+### Angular + Web Components
+
+Blocks are native to the Web but not to Angular. However, Angular does everything to make solutions based on Web Components
+to work properly with it. 
+
+To help Angular to figure out where you're using Web Components, you have to set
+`schemas` property of the file uploader component to `[CUSTOM_ELEMENTS_SCHEMA]`, where `CUSTOM_ELEMENTS_SCHEMA` 
+is a special schema imported from `@angular/core`.
+In this example we have done it inside [the file-uploader component](./src/app/file-uploader/file-uploader.component.ts).
+
+You may like to read [custom element schemas](https://angular.dev/guide/components/advanced-configuration#custom-element-schemas) doc, 
+if you want to know more about using custom elements in Angular.
+
+### Styling
+
+If your styling solution may provide class string or style object, feel free to use them on blocks like
+`lr-file-uploader-regular` and override default class using CSS variables.
+
+Otherwise you may go “full override” way and pass a string with styles to a File Uploader type of your choice.
+
+[Read more about styling](https://uploadcare.com/docs/file-uploader/styling/) in the File Uploader docs.
+
+## Contribution
+
+You’re always welcome to contribute:
+
+* Create [issues](https://github.com/uploadcare/blocks/issues) every time you feel something is missing or goes wrong.
+* Provide your feedback or drop us a support request at <a href="mailto:hello@uploadcare.com">hello@uploadcare.com</a>.
+* Ask questions on [Stack Overflow](https://stackoverflow.com/questions/tagged/uploadcare) with "uploadcare" tag if others can have these questions as well.
+* Star this repo if you like it ⭐️
