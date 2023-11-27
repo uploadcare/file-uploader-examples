@@ -32,7 +32,7 @@ LR.registerBlocks(LR);
   imports: [],
   templateUrl: './file-uploader.component.html',
   styleUrl: './file-uploader.component.scss',
-  schemas: [CUSTOM_ELEMENTS_SCHEMA]
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class FileUploaderComponent {
   @Input({ required: true }) theme!: 'light' | 'dark';
@@ -41,9 +41,19 @@ export class FileUploaderComponent {
   @Output() filesChange = new EventEmitter<OutputFileEntry[]>();
 
   uploadedFiles: OutputFileEntry[] = [];
-  @ViewChild('ctxProvider') ctxProviderRef!: ElementRef<typeof LR.UploadCtxProvider.prototype>;
+  @ViewChild('ctxProvider', { static: true }) ctxProviderRef!: ElementRef<typeof LR.UploadCtxProvider.prototype>;
 
   blocksStyles = blocksStyles;
+
+  ngOnInit() {
+    this.ctxProviderRef.nativeElement.addEventListener('data-output', this.handleUploadEvent);
+    this.ctxProviderRef.nativeElement.addEventListener('done-flow', this.handleDoneFlow);
+  }
+
+  ngOnDestroy() {
+    this.ctxProviderRef.nativeElement.removeEventListener('data-output', this.handleUploadEvent);
+    this.ctxProviderRef.nativeElement.removeEventListener('done-flow', this.handleDoneFlow);
+  }
 
   /*
     Note: Here we use provider's API to reset File Uploader state.
@@ -57,21 +67,24 @@ export class FileUploaderComponent {
    */
   resetUploaderState() {
     this.ctxProviderRef.nativeElement.uploadCollection.clearAll();
+
+    this.ctxProviderRef.nativeElement.removeEventListener('data-output', this.handleUploadEvent);
+    this.ctxProviderRef.nativeElement.removeEventListener('done-flow', this.handleDoneFlow);
   }
 
   handleRemoveClick(uuid: OutputFileEntry['uuid']) {
     this.filesChange.emit(this.files.filter(f => f.uuid !== uuid));
   }
 
-  @HostListener('window:LR_DATA_OUTPUT', ['$event'])
-  handleUploadEvent(e: CustomEvent<{ data: OutputFileEntry[] }>) {
-    if (e.detail?.data) {
-      this.uploadedFiles = e.detail.data;
+  handleUploadEvent = (e: Event) => {
+    if (!(e instanceof CustomEvent)) return;
+
+    if (e.detail) {
+      this.uploadedFiles = e.detail as OutputFileEntry[];
     }
   }
 
-  @HostListener('window:LR_DONE_FLOW', ['$event'])
-  handleDoneFlow() {
+  handleDoneFlow = () => {
     this.resetUploaderState();
 
     this.filesChange.emit([...this.files, ...this.uploadedFiles]);
