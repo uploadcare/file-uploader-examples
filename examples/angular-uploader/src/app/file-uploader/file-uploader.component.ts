@@ -46,6 +46,12 @@ export class FileUploaderComponent {
   blocksStyles = blocksStyles;
 
   ngOnInit() {
+    /*
+      Note: Event binding is the main way to get data and other info from File Uploader.
+      There plenty of events you may use.
+
+      See more: https://uploadcare.com/docs/file-uploader/data-and-events/#events
+     */
     this.ctxProviderRef.nativeElement.addEventListener('data-output', this.handleUploadEvent);
     this.ctxProviderRef.nativeElement.addEventListener('done-flow', this.handleDoneFlow);
   }
