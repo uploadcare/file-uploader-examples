@@ -25,8 +25,8 @@ type FormType = {
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  title= new FormControl<string>(MOCK_DATA.title, { nonNullable: true });
-  text= new FormControl<string>(MOCK_DATA.text, { nonNullable: true });
+  title = new FormControl<string>(MOCK_DATA.title, { nonNullable: true });
+  text = new FormControl<string>(MOCK_DATA.text, { nonNullable: true });
   photos = MOCK_DATA.photos;
 
   sentFormObject: FormType | null = null;
