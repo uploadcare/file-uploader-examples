@@ -67,9 +67,6 @@ export class FileUploaderComponent {
    */
   resetUploaderState() {
     this.ctxProviderRef.nativeElement.uploadCollection.clearAll();
-
-    this.ctxProviderRef.nativeElement.removeEventListener('data-output', this.handleUploadEvent);
-    this.ctxProviderRef.nativeElement.removeEventListener('done-flow', this.handleDoneFlow);
   }
 
   handleRemoveClick(uuid: OutputFileEntry['uuid']) {
