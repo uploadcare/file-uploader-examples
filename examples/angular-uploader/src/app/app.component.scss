@@ -1,4 +1,3 @@
-
 .app {
   padding: 16px 24px;
   max-width: 480px;
@@ -115,7 +114,7 @@
 
   See more: https://uploadcare.com/docs/file-uploader/localization/
  */
-:global(.file-uploader) {
+:host ::ng-deep .file-uploader {
   --l10n-locale-name: 'en-US';
 
   --l10n-photo__one: 'photo';

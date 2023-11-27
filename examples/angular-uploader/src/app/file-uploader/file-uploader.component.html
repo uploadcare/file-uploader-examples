@@ -1,0 +1,55 @@
+<div class="root">
+  <!--
+    Note: `lr-config` is the main block we use to configure File Uploader.
+    It's important to all the context-related blocks to have the same `ctx-name` attribute.
+
+    See more: https://uploadcare.com/docs/file-uploader/configuration/
+    Available options: https://uploadcare.com/docs/file-uploader/options/
+
+    Also note: Some options currently are not available via `lr-config`,
+    but may be set via CSS properties. E.g. `darkmode`.
+
+    Here they are: https://github.com/uploadcare/blocks/blob/main/blocks/themes/lr-basic/config.css
+  -->
+  <lr-config
+    ctx-name="my-uploader"
+    pubkey="demopublickey"
+    multiple="true"
+    sourceList="local, url, camera, dropbox, gdrive"
+    confirmUpload="false"
+    removeCopyright="true"
+    imgOnly="true"
+  ></lr-config>
+
+  <lr-file-uploader-regular
+    ctx-name="my-uploader"
+    [attr.css-src]="blocksStyles"
+    [class]="uploaderClassName"
+    [class.dark-mode-enabled]="theme === 'dark'"
+  ></lr-file-uploader-regular>
+
+  <lr-upload-ctx-provider
+    ctx-name="my-uploader"
+    #ctxProvider
+  ></lr-upload-ctx-provider>
+
+  <div class="previews">
+    @for (file of files; track file.cdnUrl) {
+      <div class="preview">
+        <img
+          class="preview-image"
+          src="{{ file.cdnUrl + '/-/preview/-/resize/x200/' }}"
+          width="100"
+          [alt]="file.originalFilename"
+          [title]="file.originalFilename"
+        />
+
+        <button
+          class="preview-remove-button"
+          type="button"
+          (click)="handleRemoveClick(file.uuid)"
+        >×</button>
+      </div>
+    }
+  </div>
+</div>

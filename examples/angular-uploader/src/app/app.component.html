@@ -41,7 +41,11 @@
 
       <div class="field">
         <p class="label">Photos</p>
-        <!-- File Uploader will be here! -->
+        <file-uploader
+          uploaderClassName="file-uploader"
+          [theme]="theme"
+          [(files)]="photos"
+        ></file-uploader>
       </div>
 
       <div class="field">

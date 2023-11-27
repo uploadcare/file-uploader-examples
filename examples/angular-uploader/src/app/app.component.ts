@@ -3,6 +3,8 @@ import { JsonPipe } from '@angular/common';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { OutputFileEntry } from '@uploadcare/blocks';
 
+import { FileUploaderComponent } from './file-uploader/file-uploader.component';
+
 import MOCK_DATA from '../mocks';
 
 type FormType = {
@@ -15,6 +17,7 @@ type FormType = {
   selector: 'app',
   standalone: true,
   imports: [
+    FileUploaderComponent,
     ReactiveFormsModule,
     JsonPipe,
   ],
@@ -30,7 +33,7 @@ export class AppComponent {
 
   theme: 'light' | 'dark' = 'light'
 
-  handleFormSubmit = (e: SubmitEvent) => {
+  handleFormSubmit(e: SubmitEvent) {
     e.preventDefault();
 
     this.sentFormObject = {
@@ -40,7 +43,7 @@ export class AppComponent {
     };
   }
 
-  handleThemeChange = (e: Event) => {
+  handleThemeChange(e: Event) {
     if (!(e.target instanceof HTMLInputElement)) return;
 
     this.theme = e.target.checked ? 'light' : 'dark';
