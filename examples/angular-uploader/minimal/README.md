@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://uploadcare.com/?ref=github-angular-example-readme">
+  <a href="https://uploadcare.com/?ref=github-angular-minimal-example-readme">
     <picture>
       <source media="(prefers-color-scheme: light)" srcset="https://ucarecdn.com/1b4714cd-53be-447b-bbde-e061f1e5a22f/logo-safespace-transparent.svg">
       <source media="(prefers-color-scheme: dark)" srcset="https://ucarecdn.com/3b610a0a-780c-4750-a8b4-3bf4a8c90389/logo-transparent-inverted.svg">
@@ -18,7 +18,7 @@
 
 # Angular File Uploader with Uploadcare Blocks
 
-[![Edit angular-uploader](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/github/uploadcare/blocks-examples/tree/main/examples/angular-uploader/app-example/)
+[![Edit angular-uploader](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/github/uploadcare/blocks-examples/tree/main/examples/angular-uploader/minimal/)
 
 This is an example project of implementing a file uploader in an Angular application with [Uploadcare Blocks](https://github.com/uploadcare/blocks).
 

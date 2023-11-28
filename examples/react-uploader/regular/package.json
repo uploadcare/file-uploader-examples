@@ -2,38 +2,24 @@
   "name": "react-regular",
   "version": "0.1.0",
   "private": true,
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/uploadcare/blocks-examples"
+  "type": "module",
+  "scripts": {
+    "start": "npm run dev",
+    "dev": "vite --force",
+    "build": "tsc && vite build --base=\"${BASE_PATH}react-uploader/regular/\"",
+    "preview": "vite preview"
   },
-  "author": "Uploadcare",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/uploadcare/blocks-examples/issues"
-  },
-  "homepage": "https://github.com/uploadcare/blocks-examples#readme",
-  "main": "src/index.js",
   "dependencies": {
-    "loader-utils": "3.2.1",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
-    "react-scripts": "5.0.1",
-    "@uploadcare/blocks": "0.30.0"
+    "@uploadcare/blocks": "0.30.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
-    "@babel/runtime": "7.13.8",
-    "typescript": "4.1.3"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
-  },
-  "browserslist": [
-    ">0.2%",
-    "not dead",
-    "not ie <= 11",
-    "not op_mini all"
-  ]
+    "@types/react": "^18.0.35",
+    "@types/react-dom": "^18.0.11",
+    "@vitejs/plugin-react": "^3.1.0",
+    "prop-types": "15.8.1",
+    "typescript": "^5.0.4",
+    "vite": "^4.2.1"
+  }
 }
