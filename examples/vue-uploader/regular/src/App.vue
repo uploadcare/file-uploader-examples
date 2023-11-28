@@ -9,7 +9,7 @@ LR.registerBlocks(LR);
     <!-- Uploadcare Uploader Configuration -->
     <lr-config
       ctx-name="my-uploader"
-      pubkey="2b7f257e8ea0817ba746"
+      pubkey="demopublickey"
       sourceList="local, url, camera, dropbox"
     ></lr-config>
 
