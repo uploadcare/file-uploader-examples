@@ -3,10 +3,23 @@
   "private": true,
   "type": "module",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "workspaces": [
-    "examples/*"
+    "examples/angular-uploader/app-example",
+    "examples/composition/custom-source",
+    "examples/js-uploader/minimal",
+    "examples/js-uploader/regular",
+    "examples/next-uploader/minimal",
+    "examples/next-uploader/regular",
+    "examples/react-uploader/app-example",
+    "examples/react-uploader/minimal",
+    "examples/react-uploader/regular",
+    "examples/svelte-uploader/app-example",
+    "examples/svelte-uploader/minimal",
+    "examples/svelte-uploader/regular",
+    "examples/vue-uploader/app-example",
+    "examples/vue-uploader/minimal",
+    "examples/vue-uploader/regular"
   ],
   "scripts": {
     "bump": "npm-check-updates /@uploadcare/ -u --deep",

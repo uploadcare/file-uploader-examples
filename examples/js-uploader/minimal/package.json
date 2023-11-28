@@ -1,7 +1,7 @@
 {
-  "name": "html-js-uploader",
-  "version": "1.0.0",
-  "description": "Uploading files with HTML and JS using Uploadcare",
+  "name": "js-minimal",
+  "version": "0.1.0",
+  "private": true,
   "main": "index.html",
   "scripts": {
     "start": "serve",

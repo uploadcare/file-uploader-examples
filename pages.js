@@ -1,16 +1,16 @@
-import fg from "fast-glob";
-import fs from "fs";
-import path from "path";
+import fs from 'fs';
+import path from 'path';
+import fg from 'fast-glob';
 
-const examples = fg.sync("./examples/*", {
+const examplePaths = fg.sync('./examples/*/*', {
   onlyFiles: false,
   markDirectories: true,
 });
 
-for (const examplePath of examples) {
-  const exampleName = path.relative("./examples", examplePath);
-  const distPath = path.resolve(path.join(examplePath, "dist"));
-  const newPath = path.resolve(`./public/${exampleName}`);
+for (const examplePath of examplePaths) {
+  const exampleDir = path.relative('./examples', examplePath);
+  const distPath = path.resolve(examplePath, 'dist');
+  const newPath = path.resolve(`./public/${exampleDir}`);
   fs.cpSync(distPath, newPath, { recursive: true });
 }
 
@@ -24,11 +24,10 @@ const html = /*html*/ `
 </head>
 <body>
   <ul>
-    ${examples
-      .map((examplePath) => path.relative("./examples", examplePath))
-      .map(
-        (example) => /*html*/ `<li><a href="./${example}/">${example}</a></li>`
-      ).join('\n    ')}
+    ${examplePaths
+      .map((examplePath) => path.relative('./examples', examplePath))
+      .map(exampleDir => /*html*/ `<li><a href="./${exampleDir}/">${exampleDir}</a></li>`)
+      .join('\n    ')}
   </ul>
 </body>
 </html>

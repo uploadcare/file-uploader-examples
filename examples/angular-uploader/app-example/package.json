@@ -1,6 +1,7 @@
 {
-  "name": "angular-uploader",
-  "version": "0.0.0",
+  "name": "angular-app-example",
+  "version": "0.1.0",
+  "private": true,
   "scripts": {
     "ng": "ng",
     "start": "NG_CLI_ANALYTICS=\"false\" ng serve --disable-host-check",

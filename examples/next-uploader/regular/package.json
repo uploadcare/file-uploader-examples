@@ -1,6 +1,7 @@
 {
-  "name": "nextjs-uploader",
-  "version": "1.0.0",
+  "name": "next-regular",
+  "version": "0.1.0",
+  "private": true,
   "scripts": {
     "dev": "next",
     "build": "next build",

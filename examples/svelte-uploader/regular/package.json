@@ -1,6 +1,7 @@
 {
-  "name": "svelte",
-  "version": "1.0.0",
+  "name": "svelte-regular",
+  "version": "0.1.0",
+  "private": true,
   "devDependencies": {
     "npm-run-all": "^4.1.5",
     "rollup": "^1.10.1",
@@ -24,6 +25,5 @@
   "keywords": [
     "svelte",
     "starter"
-  ],
-  "description": "Svelte example starter project"
+  ]
 }
