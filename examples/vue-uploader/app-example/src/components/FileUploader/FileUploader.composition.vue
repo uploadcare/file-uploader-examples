@@ -106,7 +106,7 @@ onBeforeUnmount(() => {
     -->
     <lr-config
       ctx-name="my-uploader"
-      pubkey="demopublickey"
+      pubkey="2b7f257e8ea0817ba746"
       multiple
       sourceList="local, url, camera, dropbox, gdrive"
       confirmUpload

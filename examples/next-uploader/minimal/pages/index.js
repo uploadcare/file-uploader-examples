@@ -1,4 +1,4 @@
-import * as LR from "@uploadcare/blocks";
+import * as LR from '@uploadcare/blocks';
 
 LR.registerBlocks(LR);
 
@@ -7,7 +7,7 @@ function App() {
     <div>
       <lr-config
         ctx-name="my-uploader"
-        pubkey="f7f8d4e0f5616dba10ef"
+        pubkey="2b7f257e8ea0817ba746"
       ></lr-config>
       <lr-file-uploader-minimal
         css-src="https://cdn.jsdelivr.net/npm/@uploadcare/blocks@0.30.0/web/lr-file-uploader-minimal.min.css"
