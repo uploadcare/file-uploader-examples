@@ -5,7 +5,7 @@
 
 <main>
   <div>
-  <lr-config ctx-name="my-uploader" pubkey="demopublickey">
+  <lr-config ctx-name="my-uploader" pubkey="2b7f257e8ea0817ba746">
   </lr-config>
   <lr-file-uploader-minimal
     css-src="https://cdn.jsdelivr.net/npm/@uploadcare/blocks@0.30.0/web/lr-file-uploader-minimal.min.css"

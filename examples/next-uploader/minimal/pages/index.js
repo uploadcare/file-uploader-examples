@@ -1,5 +1,7 @@
 import * as LR from '@uploadcare/blocks';
 
+import blocksStyles from '@uploadcare/blocks/web/lr-file-uploader-minimal.min.css';
+
 LR.registerBlocks(LR);
 
 function App() {
@@ -10,7 +12,7 @@ function App() {
         pubkey="2b7f257e8ea0817ba746"
       ></lr-config>
       <lr-file-uploader-minimal
-        css-src="https://cdn.jsdelivr.net/npm/@uploadcare/blocks@0.30.0/web/lr-file-uploader-minimal.min.css"
+        css-src={blocksStyles}
         ctx-name="my-uploader"
       ></lr-file-uploader-minimal>
     </div>
