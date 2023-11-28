@@ -6,7 +6,7 @@
   "scripts": {
     "start": "npm run dev",
     "dev": "vite dev",
-    "build": "vite build --base=\"${BASE_PATH}svelte-uploader/\"",
+    "build": "vite build --base=\"${BASE_PATH}svelte-uploader/app-example/\"",
     "preview": "vite preview"
   },
   "dependencies": {

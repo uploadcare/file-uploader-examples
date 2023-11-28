@@ -2,28 +2,20 @@
   "name": "svelte-minimal",
   "version": "0.1.0",
   "private": true,
-  "devDependencies": {
-    "npm-run-all": "^4.1.5",
-    "rollup": "^1.10.1",
-    "rollup-plugin-commonjs": "^9.3.4",
-    "rollup-plugin-node-resolve": "^4.2.3",
-    "rollup-plugin-svelte": "^6.1.1",
-    "rollup-plugin-terser": "^4.0.4",
-    "sirv-cli": "^0.3.1"
+  "type": "module",
+  "scripts": {
+    "start": "npm run dev",
+    "dev": "vite dev",
+    "build": "vite build --base=\"${BASE_PATH}svelte-uploader/minimal/\"",
+    "preview": "vite preview"
   },
   "dependencies": {
-    "svelte": "^3.32.3",
     "@uploadcare/blocks": "0.30.0"
   },
-  "scripts": {
-    "build": "rollup -c",
-    "autobuild": "rollup -c -w",
-    "dev": "run-p start:dev autobuild",
-    "start": "sirv public",
-    "start:dev": "sirv public --dev"
-  },
-  "keywords": [
-    "svelte",
-    "starter"
-  ]
+  "devDependencies": {
+    "@sveltejs/vite-plugin-svelte": "^2.4.2",
+    "sass": "^1.69.5",
+    "svelte": "^4.0.5",
+    "vite": "^4.4.5"
+  }
 }

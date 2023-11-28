@@ -8,12 +8,12 @@
   </a>
 </p>
 <p align="center">
-  <a href="https://uploadcare.com?ref=github-readme">Website</a> • 
-  <a href="https://uploadcare.com/docs/start/quickstart?ref=github-readme">Quick Start</a> • 
-  <a href="https://uploadcare.com/docs?ref=github-readme">Docs</a> • 
-  <a href="https://uploadcare.com/blog?ref=github-readme">Blog</a> • 
-  <a href="https://discord.gg/mKWRgRsVz8?ref=github-readme">Discord</a> •
-  <a href="https://twitter.com/Uploadcare?ref=github-readme">Twitter</a>
+  <a href="https://uploadcare.com?ref=github-angular-app-example-readme">Website</a> • 
+  <a href="https://uploadcare.com/docs/start/quickstart?ref=github-angular-app-example-readme">Quick Start</a> • 
+  <a href="https://uploadcare.com/docs?ref=github-angular-app-example-readme">Docs</a> • 
+  <a href="https://uploadcare.com/blog?ref=github-angular-app-example-readme">Blog</a> • 
+  <a href="https://discord.gg/mKWRgRsVz8?ref=github-angular-app-example-readme">Discord</a> •
+  <a href="https://twitter.com/Uploadcare?ref=github-angular-app-example-readme">Twitter</a>
 </p>
 
 # Angular File Uploader with Uploadcare Blocks
@@ -27,7 +27,7 @@ This is an example project of implementing a file uploader in an Angular applica
 ```bash
 # clone this repo and go to the cloned folder
 
-$ cd examples/angular-uploader
+$ cd examples/angular-uploader/app-example
 
 $ npm install
 # or `yarn install`, if you wish

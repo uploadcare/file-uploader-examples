@@ -8,12 +8,12 @@
   </a>
 </p>
 <p align="center">
-  <a href="https://uploadcare.com?ref=github-react-minimal-example-readme">Website</a> • 
-  <a href="https://uploadcare.com/docs/start/quickstart?ref=github-react-minimal-example-readme">Quick Start</a> • 
-  <a href="https://uploadcare.com/docs?ref=github-react-minimal-example-readme">Docs</a> • 
-  <a href="https://uploadcare.com/blog?ref=github-react-minimal-example-readme">Blog</a> • 
-  <a href="https://discord.gg/mKWRgRsVz8?ref=github-react-minimal-example-readme">Discord</a> •
-  <a href="https://twitter.com/Uploadcare?ref=github-react-minimal-example-readme">Twitter</a>
+  <a href="https://uploadcare.com?ref=github-react-regular-example-readme">Website</a> • 
+  <a href="https://uploadcare.com/docs/start/quickstart?ref=github-react-regular-example-readme">Quick Start</a> • 
+  <a href="https://uploadcare.com/docs?ref=github-react-regular-example-readme">Docs</a> • 
+  <a href="https://uploadcare.com/blog?ref=github-react-regular-example-readme">Blog</a> • 
+  <a href="https://discord.gg/mKWRgRsVz8?ref=github-react-regular-example-readme">Discord</a> •
+  <a href="https://twitter.com/Uploadcare?ref=github-react-regular-example-readme">Twitter</a>
 </p>
 
 # React File Uploader with Uploadcare Blocks
@@ -27,7 +27,7 @@ This is an example project of implementing a file uploader in a React applicatio
 ```bash
 # clone this repo and go to the cloned folder
 
-$ cd examples/react-uploader/minimal
+$ cd examples/react-uploader/regular
 
 $ npm install
 # or `yarn install`, if you wish
