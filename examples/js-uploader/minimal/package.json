@@ -5,7 +5,7 @@
   "main": "index.html",
   "scripts": {
     "start": "serve",
-    "build": "echo This is a static template, there is no bundler or bundling involved!"
+    "build": "rm -rf dist && mkdir dist && cp index.html dist"
   },
   "repository": {
     "type": "git",
