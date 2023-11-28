@@ -6,7 +6,7 @@
   "scripts": {
     "start": "npm run dev",
     "dev": "vite --force",
-    "build": "tsc && vite build --base=\"${BASE_PATH}react-uploader/\"",
+    "build": "tsc && vite build --base=\"${BASE_PATH}react-uploader/app-example/\"",
     "preview": "vite preview"
   },
   "dependencies": {

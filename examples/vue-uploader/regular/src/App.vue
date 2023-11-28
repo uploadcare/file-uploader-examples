@@ -1,22 +1,29 @@
-<script setup lang="ts">
-import * as LR from "@uploadcare/blocks";
+<script>
+import * as LR from '@uploadcare/blocks';
+import blocksStyles from '@uploadcare/blocks/web/lr-file-uploader-regular.min.css?url';
 
 LR.registerBlocks(LR);
+
+export default {
+  data() {
+    return {
+      blocksStyles,
+    }
+  },
+}
 </script>
 
 <template>
   <div>
-    <!-- Uploadcare Uploader Configuration -->
     <lr-config
       ctx-name="my-uploader"
       pubkey="2b7f257e8ea0817ba746"
       sourceList="local, url, camera, dropbox"
     ></lr-config>
 
-    <!-- Uploadcare Uploader -->
     <lr-file-uploader-regular
-      css-src="https://cdn.jsdelivr.net/npm/@uploadcare/blocks@0.30.0/web/lr-file-uploader-regular.min.css"
       ctx-name="my-uploader"
+      :css-src="blocksStyles"
     ></lr-file-uploader-regular>
   </div>
 </template>

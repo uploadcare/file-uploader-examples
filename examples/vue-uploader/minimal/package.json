@@ -1,32 +1,20 @@
 {
   "name": "vue-minimal",
-  "private": true,
   "version": "0.1.0",
-  "type": "module",
+  "private": true,
   "scripts": {
-    "dev": "volar-preview-vite",
-    "build": "vue-tsc && vite build",
+    "start": "npm run dev",
+    "dev": "vite",
+    "build": "vite build --base=\"${BASE_PATH}vue-uploader/minimal/\"",
     "preview": "vite preview"
   },
   "dependencies": {
-    "@uploadcare/blocks": "^0.30.0",
-    "vue": "^3.3.8"
+    "@uploadcare/blocks": "0.30.0",
+    "vue": "^3.3.4"
   },
   "devDependencies": {
-    "@codesandbox/vue-preview": "^0.1.1-alpha.16",
-    "@vitejs/plugin-vue": "^4.4.1",
-    "typescript": "^5.2.2",
-    "vite": "^4.5.0",
-    "vue-tsc": "^1.8.22"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/uploadcare/blocks-examples"
-  },
-  "author": "Uploadcare",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/uploadcare/blocks-examples/issues"
-  },
-  "homepage": "https://github.com/uploadcare/blocks-examples#readme"
+    "@vitejs/plugin-vue": "^4.4.0",
+    "sass": "^1.69.5",
+    "vite": "^4.4.11"
+  }
 }

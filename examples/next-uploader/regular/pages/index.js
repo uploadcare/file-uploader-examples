@@ -13,8 +13,8 @@ export default function App() {
         sourceList="local, url, camera, dropbox"
       ></lr-config>
       <lr-file-uploader-regular
-        css-src={blocksStyles}
         ctx-name="my-uploader"
+        css-src={blocksStyles}
       ></lr-file-uploader-regular>
     </div>
   );
