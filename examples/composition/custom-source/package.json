@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build --base \"${BASE_PATH}composition/\"",
+    "build": "vite build --base \"${BASE_PATH}composition/custom-source/\"",
     "preview": "vite preview"
   },
   "devDependencies": {
