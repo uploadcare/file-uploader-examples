@@ -17,7 +17,6 @@ LR.registerBlocks(LR);
     <lr-file-uploader-regular
       css-src="https://cdn.jsdelivr.net/npm/@uploadcare/blocks@0.30.0/web/lr-file-uploader-regular.min.css"
       ctx-name="my-uploader"
-      class="my-config"
     ></lr-file-uploader-regular>
   </div>
 </template>
