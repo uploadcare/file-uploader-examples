@@ -1,25 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Uploadcare HTML/JS Example</title>
-  <meta name="description" content="Uploading files with HTML and JS using Uploadcare" />
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Uploadcare HTML/JS Example</title>
+    <meta name="description" content="Uploading files with HTML and JS using Uploadcare"/>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 </head>
 <body>
 <script type="module">
-  import * as LR from "https://cdn.jsdelivr.net/npm/@uploadcare/blocks@0.25.0/web/lr-file-uploader-regular.min.js";
-  LR.registerBlocks(LR);
+    import * as LR from "https://cdn.jsdelivr.net/npm/@uploadcare/blocks@0.25.0/web/lr-file-uploader-regular.min.js";
+
+    LR.registerBlocks(LR);
 </script>
 <lr-config
-        ctx-name="my-uploader"
-        pubkey="2b7f257e8ea0817ba746"
-        source-list="local, url, camera, dropbox"
+    ctx-name="my-uploader"
+    pubkey="2b7f257e8ea0817ba746"
+    source-list="local, url, camera, dropbox"
 ></lr-config>
 <lr-file-uploader-regular
-        css-src="https://cdn.jsdelivr.net/npm/@uploadcare/blocks@0.25.0/web/lr-file-uploader-regular.min.css"
-        ctx-name="my-uploader"
-        class="my-config"
+    css-src="https://cdn.jsdelivr.net/npm/@uploadcare/blocks@0.25.0/web/lr-file-uploader-regular.min.css"
+    ctx-name="my-uploader"
+    class="my-config"
 >
 </lr-file-uploader-regular>
 </body>
