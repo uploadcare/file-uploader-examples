@@ -3,14 +3,14 @@
   "version": "1.0.0",
   "description": "React example starter project","repository": {
   "type": "git",
-  "url": "git+https://github.com/uploadcare/blocks"
+  "url": "git+https://github.com/uploadcare/blocks-examples"
 },
   "author": "Uploadcare",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/uploadcare/blocks/issues"
+    "url": "https://github.com/uploadcare/blocks-examples/issues"
   },
-  "homepage": "https://github.com/uploadcare/blocks#readme",
+  "homepage": "https://github.com/uploadcare/blocks-examples#readme",
   "main": "src/index.js",
   "dependencies": {
     "loader-utils": "3.2.1",

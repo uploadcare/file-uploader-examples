@@ -38,7 +38,7 @@ $ npm run dev
 
 You’re always welcome to contribute:
 
-* Create [issues](https://github.com/uploadcare/blocks/issues) every time you feel something is missing or goes wrong.
+* Create [issues](https://github.com/uploadcare/blocks-examples/issues) every time you feel something is missing or goes wrong.
 * Provide your feedback or drop us a support request at <a href="mailto:hello@uploadcare.com">hello@uploadcare.com</a>.
 * Ask questions on [Stack Overflow](https://stackoverflow.com/questions/tagged/uploadcare) with "uploadcare" tag if others can have these questions as well.
 * Star this repo if you like it ⭐️
