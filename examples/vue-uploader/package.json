@@ -3,12 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "start": "npm run dev",
     "dev": "vite",
     "build": "vite build --base=\"${BASE_PATH}vue-uploader/\"",
     "preview": "vite preview"
   },
   "dependencies": {
-    "@uploadcare/blocks": "0.29.1",
+    "@uploadcare/blocks": "0.30.0",
     "vue": "^3.3.4"
   },
   "devDependencies": {

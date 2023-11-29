@@ -1,34 +1,58 @@
-<!-- It's not so easy to load external CSS file as a static asset in Angular -->
-<!-- Moreover Angular binds dynamic attributes async and we can't catch `css-src` value on connectedCallback -->
-<!-- TODO: we should make a feature of awaiting for css-src before render of ShadowWrapper -->
-<div class="wrapper">
-  <lr-config
-    ctx-name="my-uploader"
-    pubkey="demopublickey"
-    multiple="true"
-    multipleMax="10"
-    confirmUpload="true"
-    sourceList="local, url, camera, dropbox, gdrive"
-  ></lr-config>
-  <lr-file-uploader-regular
-    ctx-name="my-uploader"
-    [attr.css-src]="cssSrc"
-  >
-  </lr-file-uploader-regular>
-  <lr-data-output
-    ctx-name="my-uploader"
-    (lr-data-output)="handleUploaderEvent($event)"
-    use-event
-    hidden
-  ></lr-data-output>
+<div class="app">
+  <header class="header">
+    <h1 class="view-title">New blog post</h1>
 
-  <div class="output">
-    <img
-      *ngFor="let file of files"
-      src="https://ucarecdn.com/{{ file.uuid }}/{{
-        file.cdnUrlModifiers || ''
-      }}-/preview/-/scale_crop/400x400/"
-      width="200"
-    />
-  </div>
+    <label class="theme-toggle">
+      <input
+        type="checkbox"
+        [checked]="theme === 'light'"
+        (change)="handleThemeChange($event)"
+      >
+      <img
+        [src]="theme === 'light' ? 'assets/sun.png' : 'assets/moon.png'"
+        width="18"
+        height="18"
+        alt="Switch to {{theme === 'light' ? 'dark' : 'light'}} theme"
+      />
+    </label>
+  </header>
+
+  @if (!sentFormObject) {
+    <form class="form" (submit)="handleFormSubmit($event)">
+      <div class="field">
+        <label class="label" for="title">Title</label>
+        <input
+          class="input"
+          type="text"
+          id="title"
+          [formControl]="title"
+        />
+      </div>
+
+      <div class="field">
+        <label class="label" for="text">Text</label>
+        <textarea
+          class="input"
+          id="text"
+          rows="10"
+          [formControl]="text"
+        ></textarea>
+      </div>
+
+      <div class="field">
+        <p class="label">Photos</p>
+        <file-uploader
+          uploaderClassName="file-uploader"
+          [theme]="theme"
+          [(files)]="photos"
+        ></file-uploader>
+      </div>
+
+      <div class="field">
+        <button class="button" type="submit">Publish</button>
+      </div>
+    </form>
+  } @else {
+    <pre class="result"><code>{{ sentFormObject | json }}</code></pre>
+  }
 </div>

@@ -42,8 +42,8 @@
   };
 
   const handleUploadEvent = e => {
-    if (e.detail?.data) {
-      uploadedFiles = e.detail.data;
+    if (e.detail) {
+      uploadedFiles = e.detail;
     }
   };
 
@@ -61,12 +61,12 @@
 
       See more: https://uploadcare.com/docs/file-uploader/data-and-events/#events
      */
-    window.addEventListener('LR_DATA_OUTPUT', handleUploadEvent);
-    window.addEventListener('LR_DONE_FLOW', handleDoneFlow);
+    ctxProviderRef.addEventListener('data-output', handleUploadEvent);
+    ctxProviderRef.addEventListener('done-flow', handleDoneFlow);
 
     return () => {
-      window.removeEventListener('LR_DATA_OUTPUT', handleUploadEvent);
-      window.removeEventListener('LR_DONE_FLOW', handleDoneFlow);
+      ctxProviderRef.removeEventListener('data-output', handleUploadEvent);
+      ctxProviderRef.removeEventListener('done-flow', handleDoneFlow);
     };
   });
 </script>

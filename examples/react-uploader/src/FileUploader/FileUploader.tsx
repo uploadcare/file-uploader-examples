@@ -36,9 +36,9 @@ export default function FileUploader({ files, uploaderClassName, onChange, theme
   );
 
   useEffect(() => {
-    const handleUploadEvent = (e: CustomEvent<{ data: OutputFileEntry[] }>) => {
-      if (e.detail?.data) {
-        setUploadedFiles([...e.detail.data]);
+    const handleUploadEvent = (e: CustomEvent<OutputFileEntry[]>) => {
+      if (e.detail) {
+        setUploadedFiles([...e.detail]);
       }
     };
 
@@ -48,10 +48,10 @@ export default function FileUploader({ files, uploaderClassName, onChange, theme
 
       See more: https://uploadcare.com/docs/file-uploader/data-and-events/#events
      */
-    window.addEventListener('LR_DATA_OUTPUT', handleUploadEvent);
+    ctxProviderRef.current?.addEventListener('data-output', handleUploadEvent);
 
     return () => {
-      window.removeEventListener('LR_DATA_OUTPUT', handleUploadEvent);
+      ctxProviderRef.current?.removeEventListener('data-output', handleUploadEvent);
     };
   }, [setUploadedFiles]);
 
@@ -75,10 +75,10 @@ export default function FileUploader({ files, uploaderClassName, onChange, theme
       setUploadedFiles([]);
     };
 
-    window.addEventListener('LR_DONE_FLOW', handleDoneFlow);
+    ctxProviderRef.current?.addEventListener('done-flow', handleDoneFlow);
 
     return () => {
-      window.removeEventListener('LR_DONE_FLOW', handleDoneFlow);
+      ctxProviderRef.current?.removeEventListener('done-flow', handleDoneFlow);
     };
   }, [files, onChange, uploadedFiles, setUploadedFiles]);
 
