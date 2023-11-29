@@ -6,7 +6,7 @@
   "main": "index.js",
   "workspaces": [
     "examples/angular-uploader",
-    "examples/composition/custom-source",
+    "examples/composition",
     "examples/js-uploader/minimal",
     "examples/js-uploader/regular",
     "examples/next-uploader/minimal",
