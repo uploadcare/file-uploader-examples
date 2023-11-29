@@ -3,12 +3,12 @@ import { ChangeEventHandler, FormEventHandler, useCallback, useEffect, useState 
 import Toggle from 'react-toggle';
 import 'react-toggle/style.css';
 
-import sunImage from './assets/sun.png';
-import moonImage from './assets/moon.png';
+import sunImage from '../assets/sun.png';
+import moonImage from '../assets/moon.png';
 
 import FileUploader from './FileUploader/FileUploader';
 
-import st from './App.module.scss';
+import st from './FormView.module.scss';
 import MOCK_DATA from './mocks';
 
 type FormType = {
@@ -17,7 +17,7 @@ type FormType = {
   photos: OutputFileEntry[];
 }
 
-export default function App() {
+export default function FormView() {
   const [title, setTitle] = useState<FormType['title']>(MOCK_DATA.title);
   const [text, setText] = useState<FormType['text']>(MOCK_DATA.text);
   const [photos, setPhotos] = useState<FormType['photos']>(MOCK_DATA.photos);
@@ -41,7 +41,7 @@ export default function App() {
     });
   }, [title, text, photos, setSentFormObject]);
 
-  const [theme, setTheme] = useState<'light' | 'dark'>('light');
+  const [theme, setTheme] = useState<'light' | 'dark'>(document.body.classList.contains('theme--dark') ? 'dark' : 'light');
 
   const handleThemeChange = useCallback<ChangeEventHandler<HTMLInputElement>>(e => {
     setTheme(e.target.checked ? 'light' : 'dark');
@@ -54,7 +54,7 @@ export default function App() {
   }, [theme]);
 
   return (
-    <div className={st.app}>
+    <div className={st.root}>
       <header className={st.header}>
         <h1 className={st.viewTitle}>New blog post</h1>
         <Toggle

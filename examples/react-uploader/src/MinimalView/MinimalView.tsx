@@ -5,7 +5,7 @@ import blocksStyles from '@uploadcare/blocks/web/lr-file-uploader-minimal.min.cs
 
 LR.registerBlocks(LR);
 
-export default function App() {
+export default function MinimalView() {
   return (
     <div>
       <lr-config

@@ -5,7 +5,7 @@ import blocksStyles from '@uploadcare/blocks/web/lr-file-uploader-regular.min.cs
 
 LR.registerBlocks(LR);
 
-export default function App() {
+export default function RegularView() {
   return (
     <div>
       <lr-config
