@@ -1,10 +1,9 @@
 import * as LR from '@uploadcare/blocks';
-
-import blocksStyles from '@uploadcare/blocks/web/lr-file-uploader-minimal.min.css';
+import { PACKAGE_VERSION } from '@uploadcare/blocks';
 
 LR.registerBlocks(LR);
 
-function App() {
+function Minimal() {
   return (
     <div>
       <lr-config
@@ -13,10 +12,10 @@ function App() {
       ></lr-config>
       <lr-file-uploader-minimal
         ctx-name="my-uploader"
-        css-src={blocksStyles}
+        css-src={`https://cdn.jsdelivr.net/npm/@uploadcare/blocks@${PACKAGE_VERSION}/web/lr-file-uploader-minimal.min.css`}
       ></lr-file-uploader-minimal>
     </div>
   );
 }
 
-export default App;
+export default Minimal;

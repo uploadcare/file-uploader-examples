@@ -9,7 +9,7 @@ const nextConfig = {
 
 module.exports = (phase) => {
   if (phase === PHASE_PRODUCTION_BUILD) {
-    return nextConfig
+    return nextConfig;
   }
 
   return {};

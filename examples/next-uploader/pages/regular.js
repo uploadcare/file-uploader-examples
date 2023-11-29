@@ -1,12 +1,11 @@
 import * as LR from '@uploadcare/blocks';
-
-import blocksStyles from '@uploadcare/blocks/web/lr-file-uploader-regular.min.css';
+import { PACKAGE_VERSION } from '@uploadcare/blocks';
 
 LR.registerBlocks(LR);
 
-export default function App() {
+function Regular() {
   return (
-    <div className="App">
+    <div>
       <lr-config
         ctx-name="my-uploader"
         pubkey="2b7f257e8ea0817ba746"
@@ -14,8 +13,10 @@ export default function App() {
       ></lr-config>
       <lr-file-uploader-regular
         ctx-name="my-uploader"
-        css-src={blocksStyles}
+        css-src={`https://cdn.jsdelivr.net/npm/@uploadcare/blocks@${PACKAGE_VERSION}/web/lr-file-uploader-regular.min.css`}
       ></lr-file-uploader-regular>
     </div>
   );
 }
+
+export default Regular;
