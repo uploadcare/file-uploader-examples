@@ -5,23 +5,12 @@
   "scripts": {
     "dev": "next",
     "build": "next build",
-    "start": "next start",
-    "post-update": "yarn upgrade --latest"
+    "start": "next start"
   },
   "dependencies": {
     "@uploadcare/blocks": "0.30.0",
     "next": "^13.5.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/uploadcare/blocks-examples"
-  },
-  "author": "Uploadcare",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/uploadcare/blocks-examples/issues"
-  },
-  "homepage": "https://github.com/uploadcare/blocks-examples#readme"
+  }
 }

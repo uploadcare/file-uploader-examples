@@ -2,21 +2,10 @@
   "name": "js-regular",
   "version": "0.1.0",
   "private": true,
-  "main": "index.html",
   "scripts": {
     "start": "serve",
     "build": "rm -rf dist && mkdir dist && cp index.html dist"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/uploadcare/blocks-examples"
-  },
-  "author": "Uploadcare",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/uploadcare/blocks-examples/issues"
-  },
-  "homepage": "https://github.com/uploadcare/blocks-examples#readme",
   "devDependencies": {
     "serve": "^11.2.0"
   }
