@@ -6,11 +6,11 @@ import blocksStyles from '@uploadcare/blocks/web/lr-file-uploader-regular.min.cs
 LR.registerBlocks(LR);
 
 @Component({
-  selector: 'app',
+  selector: 'regular-view',
   standalone: true,
-  templateUrl: './app.component.html',
+  templateUrl: './regular-view.component.html',
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
-export class AppComponent {
+export class RegularViewComponent {
   blocksStyles = blocksStyles;
 }

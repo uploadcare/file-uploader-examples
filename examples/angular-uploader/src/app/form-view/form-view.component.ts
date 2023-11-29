@@ -5,7 +5,7 @@ import { OutputFileEntry } from '@uploadcare/blocks';
 
 import { FileUploaderComponent } from './file-uploader/file-uploader.component';
 
-import MOCK_DATA from '../mocks';
+import MOCK_DATA from './mocks';
 
 type FormType = {
   title: string;
@@ -14,24 +14,24 @@ type FormType = {
 }
 
 @Component({
-  selector: 'app',
+  selector: 'form-view',
   standalone: true,
   imports: [
     FileUploaderComponent,
     ReactiveFormsModule,
     JsonPipe,
   ],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  templateUrl: './form-view.component.html',
+  styleUrl: './form-view.component.scss'
 })
-export class AppComponent {
+export class FormViewComponent {
   title = new FormControl<string>(MOCK_DATA.title, { nonNullable: true });
   text = new FormControl<string>(MOCK_DATA.text, { nonNullable: true });
   photos = MOCK_DATA.photos;
 
   sentFormObject: FormType | null = null;
 
-  theme: 'light' | 'dark' = 'light'
+  theme: 'light' | 'dark' = document.body.classList.contains('theme--dark') ? 'dark' : 'light';
 
   handleFormSubmit(e: SubmitEvent) {
     e.preventDefault();

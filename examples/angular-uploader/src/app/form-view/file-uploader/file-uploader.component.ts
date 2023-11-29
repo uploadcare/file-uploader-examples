@@ -3,7 +3,6 @@ import {
   CUSTOM_ELEMENTS_SCHEMA,
   ElementRef,
   EventEmitter,
-  HostListener,
   Input,
   Output,
   ViewChild
@@ -13,16 +12,6 @@ import { OutputFileEntry } from '@uploadcare/blocks';
 import blocksStyles from '@uploadcare/blocks/web/lr-file-uploader-regular.min.css?url';
 
 import cssOverrides from './file-uploader.overrides.css?raw';
-
-/*
-  Note: File Uploader styles are scoped due to ShadowDOM usage.
-  There are two ways to override them. One way is used on the line below,
-  another one is to set a custom class to File Uploader,
-  and use CSS variables to update styles.
-
-  See more: https://uploadcare.com/docs/file-uploader/styling/
- */
-LR.FileUploaderRegular.shadowStyles = cssOverrides;
 
 LR.registerBlocks(LR);
 
@@ -47,6 +36,16 @@ export class FileUploaderComponent {
 
   ngOnInit() {
     /*
+    Note: File Uploader styles are scoped due to ShadowDOM usage.
+    There are two ways to override them. One way is used on the line below,
+    another one is to set a custom class to File Uploader,
+    and use CSS variables to update styles.
+
+    See more: https://uploadcare.com/docs/file-uploader/styling/
+   */
+    LR.FileUploaderRegular.shadowStyles = cssOverrides;
+
+    /*
       Note: Event binding is the main way to get data and other info from File Uploader.
       There plenty of events you may use.
 
@@ -57,6 +56,12 @@ export class FileUploaderComponent {
   }
 
   ngOnDestroy() {
+    /*
+      Note: We're resetting styles here just to be sure they do not affect other examples.
+      You probably do not need to do it in your app.
+     */
+    LR.FileUploaderRegular.shadowStyles = '';
+
     this.ctxProviderRef.nativeElement.removeEventListener('data-output', this.handleUploadEvent);
     this.ctxProviderRef.nativeElement.removeEventListener('done-flow', this.handleDoneFlow);
   }

@@ -5,9 +5,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "workspaces": [
-    "examples/angular-uploader/app-example",
-    "examples/angular-uploader/minimal",
-    "examples/angular-uploader/regular",
+    "examples/angular-uploader",
     "examples/composition/custom-source",
     "examples/js-uploader/minimal",
     "examples/js-uploader/regular",

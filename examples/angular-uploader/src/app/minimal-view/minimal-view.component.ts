@@ -6,11 +6,11 @@ import blocksStyles from '@uploadcare/blocks/web/lr-file-uploader-minimal.min.cs
 LR.registerBlocks(LR);
 
 @Component({
-  selector: 'app',
+  selector: 'minimal-view',
   standalone: true,
-  templateUrl: './app.component.html',
+  templateUrl: './minimal-view.component.html',
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
-export class AppComponent {
+export class MinimalViewComponent {
   blocksStyles = blocksStyles;
 }
