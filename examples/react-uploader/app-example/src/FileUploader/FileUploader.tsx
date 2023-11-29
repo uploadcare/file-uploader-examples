@@ -28,7 +28,7 @@ type FileUploaderProps = {
 
 export default function FileUploader({ files, uploaderClassName, onChange, theme }: FileUploaderProps) {
   const [uploadedFiles, setUploadedFiles] = useState<OutputFileEntry[]>([]);
-  const ctxProviderRef = useRef<LR.UploadCtxProvider>();
+  const ctxProviderRef = useRef<typeof LR.UploadCtxProvider.prototype & LR.UploadCtxProvider>(null);
 
   const handleRemoveClick = useCallback(
     (uuid: OutputFileEntry['uuid']) => onChange(files.filter(f => f.uuid !== uuid)),
