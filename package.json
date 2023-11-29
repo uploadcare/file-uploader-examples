@@ -10,9 +10,7 @@
     "examples/js-uploader",
     "examples/next-uploader",
     "examples/react-uploader",
-    "examples/svelte-uploader/app-example",
-    "examples/svelte-uploader/minimal",
-    "examples/svelte-uploader/regular",
+    "examples/svelte-uploader",
     "examples/vue-uploader/app-example",
     "examples/vue-uploader/minimal",
     "examples/vue-uploader/regular"
