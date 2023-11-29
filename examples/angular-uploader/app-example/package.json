@@ -5,7 +5,6 @@
   "scripts": {
     "ng": "ng",
     "start": "NG_CLI_ANALYTICS=\"false\" ng serve --disable-host-check",
-    "build": "ng build --base-href \"${BASE_PATH}angular-uploader/app-example/\"",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
