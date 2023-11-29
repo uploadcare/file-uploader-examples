@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://uploadcare.com?ref=github-js-minimal-example-readme">
+  <a href="https://uploadcare.com?ref=github-js-example-readme">
     <picture>
       <source media="(prefers-color-scheme: light)" srcset="https://ucarecdn.com/1b4714cd-53be-447b-bbde-e061f1e5a22f/logo-safespace-transparent.svg">
       <source media="(prefers-color-scheme: dark)" srcset="https://ucarecdn.com/3b610a0a-780c-4750-a8b4-3bf4a8c90389/logo-transparent-inverted.svg">
@@ -8,17 +8,17 @@
   </a>
 </p>
 <p align="center">
-  <a href="https://uploadcare.com?ref=github-js-minimal-example-readme">Website</a> • 
-  <a href="https://uploadcare.com/docs/start/quickstart?ref=github-js-minimal-example-readme">Quick Start</a> • 
-  <a href="https://uploadcare.com/docs?ref=github-js-minimal-example-readme">Docs</a> • 
-  <a href="https://uploadcare.com/blog?ref=github-js-minimal-example-readme">Blog</a> • 
-  <a href="https://discord.gg/mKWRgRsVz8?ref=github-js-minimal-example-readme">Discord</a> •
-  <a href="https://twitter.com/Uploadcare?ref=github-js-minimal-example-readme">Twitter</a>
+  <a href="https://uploadcare.com?ref=github-js-example-readme">Website</a> • 
+  <a href="https://uploadcare.com/docs/start/quickstart?ref=github-js-example-readme">Quick Start</a> • 
+  <a href="https://uploadcare.com/docs?ref=github-js-example-readme">Docs</a> • 
+  <a href="https://uploadcare.com/blog?ref=github-js-example-readme">Blog</a> • 
+  <a href="https://discord.gg/mKWRgRsVz8?ref=github-js-example-readme">Discord</a> •
+  <a href="https://twitter.com/Uploadcare?ref=github-js-example-readme">Twitter</a>
 </p>
 
 # JS File Uploader with Uploadcare Blocks
 
-[![Edit react-uploader](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/github/uploadcare/blocks-examples/tree/main/examples/js-uploader/minimal/)
+[![Edit js-uploader](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/github/uploadcare/blocks-examples/tree/main/examples/js-uploader/)
 
 ## Contribution
 

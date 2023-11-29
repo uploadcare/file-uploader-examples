@@ -1,10 +1,10 @@
 {
-  "name": "js-minimal",
+  "name": "js-uploader",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "start": "serve",
-    "build": "rm -rf dist && mkdir dist && cp index.html dist"
+    "build": "rm -rf dist && mkdir dist && cp minimal.html regular.html dist"
   },
   "devDependencies": {
     "serve": "^11.2.0"

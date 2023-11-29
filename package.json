@@ -7,8 +7,7 @@
   "workspaces": [
     "examples/angular-uploader",
     "examples/composition",
-    "examples/js-uploader/minimal",
-    "examples/js-uploader/regular",
+    "examples/js-uploader",
     "examples/next-uploader/minimal",
     "examples/next-uploader/regular",
     "examples/react-uploader/app-example",

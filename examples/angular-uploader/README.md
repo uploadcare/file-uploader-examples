@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://uploadcare.com/?ref=github-angular-app-example-readme">
+  <a href="https://uploadcare.com/?ref=github-angular-example-readme">
     <picture>
       <source media="(prefers-color-scheme: light)" srcset="https://ucarecdn.com/1b4714cd-53be-447b-bbde-e061f1e5a22f/logo-safespace-transparent.svg">
       <source media="(prefers-color-scheme: dark)" srcset="https://ucarecdn.com/3b610a0a-780c-4750-a8b4-3bf4a8c90389/logo-transparent-inverted.svg">
@@ -8,17 +8,17 @@
   </a>
 </p>
 <p align="center">
-  <a href="https://uploadcare.com?ref=github-angular-app-example-readme">Website</a> • 
-  <a href="https://uploadcare.com/docs/start/quickstart?ref=github-angular-app-example-readme">Quick Start</a> • 
-  <a href="https://uploadcare.com/docs?ref=github-angular-app-example-readme">Docs</a> • 
-  <a href="https://uploadcare.com/blog?ref=github-angular-app-example-readme">Blog</a> • 
-  <a href="https://discord.gg/mKWRgRsVz8?ref=github-angular-app-example-readme">Discord</a> •
-  <a href="https://twitter.com/Uploadcare?ref=github-angular-app-example-readme">Twitter</a>
+  <a href="https://uploadcare.com?ref=github-angular-example-readme">Website</a> • 
+  <a href="https://uploadcare.com/docs/start/quickstart?ref=github-angular-example-readme">Quick Start</a> • 
+  <a href="https://uploadcare.com/docs?ref=github-angular-example-readme">Docs</a> • 
+  <a href="https://uploadcare.com/blog?ref=github-angular-example-readme">Blog</a> • 
+  <a href="https://discord.gg/mKWRgRsVz8?ref=github-angular-example-readme">Discord</a> •
+  <a href="https://twitter.com/Uploadcare?ref=github-angular-example-readme">Twitter</a>
 </p>
 
 # Angular File Uploader with Uploadcare Blocks
 
-[![Edit angular-uploader](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/github/uploadcare/blocks-examples/tree/main/examples/angular-uploader/app-example/)
+[![Edit angular-uploader](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/github/uploadcare/blocks-examples/tree/main/examples/angular-uploader/)
 
 This is an example project of implementing a file uploader in an Angular application with [Uploadcare Blocks](https://github.com/uploadcare/blocks).
 
@@ -27,7 +27,7 @@ This is an example project of implementing a file uploader in an Angular applica
 ```bash
 # clone this repo and go to the cloned folder
 
-$ cd examples/angular-uploader/app-example
+$ cd examples/angular-uploader
 
 $ npm install
 # or `yarn install`, if you wish
@@ -57,7 +57,7 @@ to work properly with it.
 To help Angular to figure out where you're using Web Components, you have to set
 `schemas` property of the file uploader component to `[CUSTOM_ELEMENTS_SCHEMA]`, where `CUSTOM_ELEMENTS_SCHEMA` 
 is a special schema imported from `@angular/core`.
-In this example we have done it inside [the file-uploader component](./src/app/file-uploader/file-uploader.component.ts).
+In this example we have done it inside every component. E.g. [the file-uploader component](./src/app/form-view/file-uploader/file-uploader.component.ts).
 
 You may like to read [custom element schemas](https://angular.dev/guide/components/advanced-configuration#custom-element-schemas) doc, 
 if you want to know more about using custom elements in Angular.
