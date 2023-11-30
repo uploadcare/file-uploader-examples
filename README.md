@@ -1,19 +1,19 @@
 <p align="center">
-  <a href="https://uploadcare.com/?ref=github-readme">
+  <a href="https://uploadcare.com/?ref=github-blocks-examples-readme">
     <picture>
-      <source media="(prefers-color-scheme: light)" srcset="./assets/media/logo-safespace-transparent.svg">
-      <source media="(prefers-color-scheme: dark)" srcset="./assets/media/logo-transparent-inverted.svg">
-      <img width=250 alt="Uploadcare logo" src="./assets/media/logo-safespace-transparent.svg">
+      <source media="(prefers-color-scheme: light)" srcset="https://ucarecdn.com/1b4714cd-53be-447b-bbde-e061f1e5a22f/logo-safespace-transparent.svg">
+      <source media="(prefers-color-scheme: dark)" srcset="https://ucarecdn.com/3b610a0a-780c-4750-a8b4-3bf4a8c90389/logo-transparent-inverted.svg">
+      <img width="250" alt="Uploadcare logo" src="https://ucarecdn.com/1b4714cd-53be-447b-bbde-e061f1e5a22f/logo-safespace-transparent.svg">
     </picture>
   </a>
 </p>
 <p align="center">
-  <a href="https://uploadcare.com?ref=github-readme">Website</a> • 
-  <a href="https://uploadcare.com/docs/start/quickstart?ref=github-readme">Quick Start</a> • 
-  <a href="https://uploadcare.com/docs?ref=github-readme">Docs</a> • 
-  <a href="https://uploadcare.com/blog?ref=github-readme">Blog</a> • 
-  <a href="https://discord.gg/mKWRgRsVz8?ref=github-readme">Discord</a> •
-  <a href="https://twitter.com/Uploadcare?ref=github-readme">Twitter</a>
+  <a href="https://uploadcare.com?ref=github-blocks-examples-readme">Website</a> • 
+  <a href="https://uploadcare.com/docs/start/quickstart?ref=github-blocks-examples-readme">Quick Start</a> • 
+  <a href="https://uploadcare.com/docs?ref=github-blocks-examples-readme">Docs</a> • 
+  <a href="https://uploadcare.com/blog?ref=github-blocks-examples-readme">Blog</a> • 
+  <a href="https://discord.gg/mKWRgRsVz8?ref=github-blocks-examples-readme">Discord</a> •
+  <a href="https://twitter.com/Uploadcare?ref=github-blocks-examples-readme">Twitter</a>
 </p>
 
 # 📦 Uploadcare Blocks Examples
