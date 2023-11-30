@@ -134,10 +134,6 @@
     input {
       display: none;
     }
-
-    img {
-      display: block;
-    }
   }
 
   .view-title {
