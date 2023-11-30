@@ -3,7 +3,6 @@ import {
   CUSTOM_ELEMENTS_SCHEMA,
   ElementRef,
   EventEmitter,
-  HostListener,
   Input,
   Output,
   ViewChild
@@ -41,7 +40,9 @@ export class FileUploaderComponent {
   @Output() filesChange = new EventEmitter<OutputFileEntry[]>();
 
   uploadedFiles: OutputFileEntry[] = [];
-  @ViewChild('ctxProvider', { static: true }) ctxProviderRef!: ElementRef<typeof LR.UploadCtxProvider.prototype>;
+  @ViewChild('ctxProvider', { static: true }) ctxProviderRef!: ElementRef<
+    InstanceType<LR.UploadCtxProvider>
+  >;
 
   blocksStyles = blocksStyles;
 
@@ -52,13 +53,25 @@ export class FileUploaderComponent {
 
       See more: https://uploadcare.com/docs/file-uploader/data-and-events/#events
      */
-    this.ctxProviderRef.nativeElement.addEventListener('data-output', this.handleUploadEvent);
-    this.ctxProviderRef.nativeElement.addEventListener('done-flow', this.handleDoneFlow);
+    this.ctxProviderRef.nativeElement.addEventListener(
+      'data-output',
+      this.handleUploadEvent
+    );
+    this.ctxProviderRef.nativeElement.addEventListener(
+      'done-flow',
+      this.handleDoneFlow
+    );
   }
 
   ngOnDestroy() {
-    this.ctxProviderRef.nativeElement.removeEventListener('data-output', this.handleUploadEvent);
-    this.ctxProviderRef.nativeElement.removeEventListener('done-flow', this.handleDoneFlow);
+    this.ctxProviderRef.nativeElement.removeEventListener(
+      'data-output',
+      this.handleUploadEvent
+    );
+    this.ctxProviderRef.nativeElement.removeEventListener(
+      'done-flow',
+      this.handleDoneFlow
+    );
   }
 
   /*
@@ -76,21 +89,17 @@ export class FileUploaderComponent {
   }
 
   handleRemoveClick(uuid: OutputFileEntry['uuid']) {
-    this.filesChange.emit(this.files.filter(f => f.uuid !== uuid));
+    this.filesChange.emit(this.files.filter((f) => f.uuid !== uuid));
   }
 
-  handleUploadEvent = (e: Event) => {
-    if (!(e instanceof CustomEvent)) return;
-
-    if (e.detail) {
-      this.uploadedFiles = e.detail as OutputFileEntry[];
-    }
-  }
+  handleUploadEvent = (e: LR.EventMap['data-output']) => {
+    this.uploadedFiles = e.detail;
+  };
 
   handleDoneFlow = () => {
     this.resetUploaderState();
 
     this.filesChange.emit([...this.files, ...this.uploadedFiles]);
     this.uploadedFiles = [];
-  }
+  };
 }
