@@ -47,3 +47,11 @@ body.theme--dark {
   --ui-action-button-background: #ffa637;
   --ui-action-button-text-color: #000;
 }
+
+a {
+  text-decoration: none;
+}
+
+img, svg {
+  display: block;
+}
