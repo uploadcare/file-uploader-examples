@@ -13,12 +13,14 @@
     "build": "BASE_PATH=\"${BASE_PATH:=/}\" npm run build:examples && npm run build:pages",
     "build:examples": "npm run build --workspaces",
     "build:pages": "node pages.js",
-    "serve": "npx serve ./public/"
+    "serve": "npx serve ./public/",
+    "format": "npx prettier . --write"
   },
   "author": "",
   "license": "MIT",
   "devDependencies": {
     "fast-glob": "^3.2.11",
-    "npm-check-updates": "^16.10.8"
+    "npm-check-updates": "^16.10.8",
+    "prettier": "3.1.0"
   }
 }
