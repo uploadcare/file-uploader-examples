@@ -60,7 +60,7 @@ Please, read the [File Uploader documentation](https://uploadcare.com/docs/file-
 
 Blocks are native to the Web but not to React. It's easy to use Blocks in a React app, but note that a part of your solution will encapsulate non-React code.
 
-E.g. in one of the examples we created a [FileUploader](src/FormView/FileUploader/FileUploader.tsx) component 
+E.g. in one of the examples we created a [FileUploader](src/components/FileUploader/FileUploader.tsx) component 
 which provides React-friendly API for the rest of the view. There are Blocks inside of this component and nowhere else.
 
 ### Non-React things you should know about

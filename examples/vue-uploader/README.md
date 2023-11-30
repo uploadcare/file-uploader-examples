@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://uploadcare.com?ref=github-vue-app-example-readme">
+  <a href="https://uploadcare.com?ref=github-vue-example-readme">
     <picture>
       <source media="(prefers-color-scheme: light)" srcset="https://ucarecdn.com/1b4714cd-53be-447b-bbde-e061f1e5a22f/logo-safespace-transparent.svg">
       <source media="(prefers-color-scheme: dark)" srcset="https://ucarecdn.com/3b610a0a-780c-4750-a8b4-3bf4a8c90389/logo-transparent-inverted.svg">
@@ -8,17 +8,17 @@
   </a>
 </p>
 <p align="center">
-  <a href="https://uploadcare.com?ref=github-vue-app-example-readme">Website</a> • 
-  <a href="https://uploadcare.com/docs/start/quickstart?ref=github-vue-app-example-readme">Quick Start</a> • 
-  <a href="https://uploadcare.com/docs?ref=github-vue-app-example-readme">Docs</a> • 
-  <a href="https://uploadcare.com/blog?ref=github-vue-app-example-readme">Blog</a> • 
-  <a href="https://discord.gg/mKWRgRsVz8?ref=github-vue-app-example-readme">Discord</a> •
-  <a href="https://twitter.com/Uploadcare?ref=github-vue-app-example-readme">Twitter</a>
+  <a href="https://uploadcare.com?ref=github-vue-example-readme">Website</a> • 
+  <a href="https://uploadcare.com/docs/start/quickstart?ref=github-vue-example-readme">Quick Start</a> • 
+  <a href="https://uploadcare.com/docs?ref=github-vue-example-readme">Docs</a> • 
+  <a href="https://uploadcare.com/blog?ref=github-vue-example-readme">Blog</a> • 
+  <a href="https://discord.gg/mKWRgRsVz8?ref=github-vue-example-readme">Discord</a> •
+  <a href="https://twitter.com/Uploadcare?ref=github-vue-example-readme">Twitter</a>
 </p>
 
 # Vue File Uploader with Uploadcare Blocks
 
-[![Edit vue-uploader](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/github/uploadcare/blocks-examples/tree/main/examples/vue-uploader/app-example/)
+[![Edit vue-uploader](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/github/uploadcare/blocks-examples/tree/main/examples/vue-uploader/)
 
 This is an example project of implementing a file uploader in a Vue application with [Uploadcare Blocks](https://github.com/uploadcare/blocks).
 
@@ -27,7 +27,7 @@ This is an example project of implementing a file uploader in a Vue application 
 ```bash
 # clone this repo and go to the cloned folder
 
-$ cd examples/vue-uploader/app-example
+$ cd examples/vue-uploader
 
 $ npm install
 # or `yarn install`, if you wish
@@ -65,15 +65,15 @@ if you want to know more about using custom elements in Vue.
 
 ### Options API vs. Composition API
 
-In this example we created a [FileUploader](srcomponents/FileUploader) component
-which provides Vue-friendly API for the rest of the app. There are Blocks inside of this component and nowhere else.
+One of the examples, “Real-life form”, contains a [FileUploader](src/components/FileUploader) component
+which provides Vue-friendly API for the rest of the example. There are Blocks inside of this component and nowhere else.
 
 However, Vue 3 supports two different API styles: Options API and Composition API. We do not know which one you prefer,
 so we have implemented the example twice.
 
 By default we use Options API because the whole app is built with it. But you're free to switch the `import` path 
-in [App.vue](srcpp.vue) from [FileUploader.options.vue](srcomponents/FileUploader/FileUploader.options.vue)
-to [FileUploader.composition.vue](srcomponents/FileUploader/FileUploader.composition.vue) to ensure that it works too.
+in [FormView.vue](src/views/FormView/FormView.vue) from [FileUploader.options.vue](src/components/FileUploader/FileUploader.options.vue)
+to [FileUploader.composition.vue](src/components/FileUploader/FileUploader.composition.vue) to ensure that it works too.
 
 ### Styling
 

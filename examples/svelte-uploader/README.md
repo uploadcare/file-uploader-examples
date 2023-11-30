@@ -53,7 +53,7 @@ Please, read the [File Uploader documentation](https://uploadcare.com/docs/file-
 
 Blocks are native to the Web, which makes them native to Svelte too.
 
-E.g. in this example we created a [FileUploader](src/lib/FormView/FileUploader/FileUploader.svelte) component
+E.g. in this example we created a [FileUploader](src/lib/FileUploader/FileUploader.svelte) component
 which provides Svelte-friendly API for the rest of the view. There are Blocks inside of this component and nowhere else.
 
 ### Styling

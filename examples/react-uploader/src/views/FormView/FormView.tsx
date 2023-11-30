@@ -3,10 +3,10 @@ import { ChangeEventHandler, FormEventHandler, useCallback, useEffect, useState 
 import Toggle from 'react-toggle';
 import 'react-toggle/style.css';
 
-import sunImage from '../assets/sun.png';
-import moonImage from '../assets/moon.png';
+import sunImage from '../../assets/sun.png';
+import moonImage from '../../assets/moon.png';
 
-import FileUploader from './FileUploader/FileUploader';
+import FileUploader from '../../components/FileUploader/FileUploader';
 
 import st from './FormView.module.scss';
 import MOCK_DATA from './mocks';

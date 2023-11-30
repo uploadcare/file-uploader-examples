@@ -57,7 +57,7 @@ to work properly with it.
 To help Angular to figure out where you're using Web Components, you have to set
 `schemas` property of the file uploader component to `[CUSTOM_ELEMENTS_SCHEMA]`, where `CUSTOM_ELEMENTS_SCHEMA` 
 is a special schema imported from `@angular/core`.
-In this example we have done it inside every component. E.g. [the file-uploader component](./src/app/form-view/file-uploader/file-uploader.component.ts).
+In this example we have done it inside every component. E.g. [the file-uploader component](./src/app/components/file-uploader/file-uploader.component.ts).
 
 You may like to read [custom element schemas](https://angular.dev/guide/components/advanced-configuration#custom-element-schemas) doc, 
 if you want to know more about using custom elements in Angular.

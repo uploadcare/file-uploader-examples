@@ -1,11 +1,11 @@
 import React from 'react';
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 
-import Layout from './Layout/Layout';
+import Layout from './components/Layout/Layout';
 
-import FormView from './FormView/FormView';
-import MinimalView from './MinimalView/MinimalView';
-import RegularView from './RegularView/RegularView';
+import FormView from './views/FormView/FormView';
+import MinimalView from './views/MinimalView/MinimalView';
+import RegularView from './views/RegularView/RegularView';
 
 function App() {
   return (

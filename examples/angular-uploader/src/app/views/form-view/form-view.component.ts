@@ -3,7 +3,7 @@ import { JsonPipe } from '@angular/common';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { OutputFileEntry } from '@uploadcare/blocks';
 
-import { FileUploaderComponent } from './file-uploader/file-uploader.component';
+import { FileUploaderComponent } from '../../components/file-uploader/file-uploader.component';
 
 import MOCK_DATA from './mocks';
 
