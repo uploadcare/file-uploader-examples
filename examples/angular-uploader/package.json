@@ -5,6 +5,7 @@
   "scripts": {
     "ng": "ng",
     "start": "NG_CLI_ANALYTICS=\"false\" ng serve --disable-host-check",
+    "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
