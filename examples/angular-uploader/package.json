@@ -16,7 +16,7 @@
     "@angular/forms": "^17.0.0",
     "@angular/platform-browser": "^17.0.0",
     "@angular/platform-browser-dynamic": "^17.0.0",
-    "@uploadcare/blocks": "0.30.0",
+    "@uploadcare/blocks": "0.30.1",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.2"
   },
