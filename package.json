@@ -11,9 +11,7 @@
     "examples/next-uploader",
     "examples/react-uploader",
     "examples/svelte-uploader",
-    "examples/vue-uploader/app-example",
-    "examples/vue-uploader/minimal",
-    "examples/vue-uploader/regular"
+    "examples/vue-uploader"
   ],
   "scripts": {
     "bump": "npm-check-updates /@uploadcare/ -u --deep",

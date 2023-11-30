@@ -1,93 +1,103 @@
-<script setup>
+<script>
 /*
-  Note: This is a Vue component built using Composition API.
-  If you prefer Options API, check FileUploader.options.vue file.
+  Note: This is a Vue component built using Options API.
+  If you prefer Composition API, check FileUploader.composition.vue file.
 
   See more: https://vuejs.org/guide/introduction.html#api-styles
  */
 
 import * as LR from '@uploadcare/blocks';
 import blocksStyles from '@uploadcare/blocks/web/lr-file-uploader-regular.min.css?url';
-import { onBeforeUnmount, onMounted, ref } from 'vue';
 
 import cssOverrides from './FileUploader.overrides.css?inline';
 
-/*
-  Note: File Uploader styles are scoped due to ShadowDOM usage.
-  There are two ways to override them. One way is used on the line below,
-  another one is to set a custom class to File Uploader,
-  and use CSS variables to update styles.
-
-  See more: https://uploadcare.com/docs/file-uploader/styling/
- */
-LR.FileUploaderRegular.shadowStyles = cssOverrides;
-
 LR.registerBlocks(LR);
 
-const props = defineProps({
-  uploaderClassName: String,
-  files: {
-    type: Array,
-    required: true,
+export default {
+  props: {
+    uploaderClassName: String,
+    files: {
+      type: Array,
+      required: true,
+    },
+    theme: {
+      validator(value) {
+        return ['light', 'dark'].includes(value);
+      }
+    },
   },
-  theme: {
-    validator(value) {
-      return ['light', 'dark'].includes(value);
+
+  emits: ['update:files'],
+
+  data() {
+    return {
+      blocksStyles,
+      uploadedFiles: [],
     }
   },
-});
 
-const emit = defineEmits(['update:files']);
+  methods: {
+    resetUploaderState() {
+      /*
+        Note: Here we use provider's API to reset File Uploader state.
+        It's not necessary though. We use it here to show users
+        a fresh version of File Uploader every time they open it.
 
-const uploadedFiles = ref([]);
-const ctxProviderRef = ref(null);
+        Another way is to sync File Uploader state with an external store.
+        You can manipulate File Uploader using API calls like `addFileFromObject`, etc.
 
-function resetUploaderState() {
-  /*
-    Note: Here we use provider's API to reset File Uploader state.
-    It's not necessary though. We use it here to show users
-    a fresh version of File Uploader every time they open it.
+        See more: https://uploadcare.com/docs/file-uploader/api/
+       */
+      this.$refs.ctxProviderRef.uploadCollection.clearAll();
+    },
+    handleRemoveClick(uuid) {
+      this.$emit('update:files', this.files.filter(f => f.uuid !== uuid));
+    },
+    handleUploadEvent(e) {
+      if (e.detail) {
+        this.uploadedFiles = e.detail;
+      }
+    },
+    handleDoneFlow() {
+      this.resetUploaderState();
 
-    Another way is to sync File Uploader state with an external store.
-    You can manipulate File Uploader using API calls like `addFileFromObject`, etc.
+      this.$emit('update:files', [...this.files, ...this.uploadedFiles]);
+      this.uploadedFiles = [];
+    },
+  },
 
-    See more: https://uploadcare.com/docs/file-uploader/api/
-   */
-  ctxProviderRef.value.uploadCollection.clearAll();
-}
+  mounted() {
+    /*
+      Note: File Uploader styles are scoped due to ShadowDOM usage.
+      There are two ways to override them. One way is used on the line below,
+      another one is to set a custom class to File Uploader,
+      and use CSS variables to update styles.
 
-function handleRemoveClick(uuid) {
-  emit('update:files', props.files.filter(f => f.uuid !== uuid));
-}
+      See more: https://uploadcare.com/docs/file-uploader/styling/
+     */
+    LR.FileUploaderRegular.shadowStyles = cssOverrides;
 
-function handleUploadEvent(e) {
-  if (e.detail) {
-    uploadedFiles.value = e.detail;
+    /*
+      Note: Event binding is the main way to get data and other info from File Uploader.
+      There plenty of events you may use.
+
+      See more: https://uploadcare.com/docs/file-uploader/data-and-events/#events
+     */
+    this.$refs.ctxProviderRef.addEventListener('data-output', this.handleUploadEvent);
+    this.$refs.ctxProviderRef.addEventListener('done-flow', this.handleDoneFlow);
+  },
+
+  beforeUnmount() {
+    /*
+      Note: We're resetting styles here just to be sure they do not affect other examples.
+      You probably do not need to do it in your app.
+     */
+    LR.FileUploaderRegular.shadowStyles = '';
+
+    this.$refs.ctxProviderRef.removeEventListener('data-output', this.handleUploadEvent);
+    this.$refs.ctxProviderRef.removeEventListener('done-flow', this.handleDoneFlow);
   }
 }
-
-function handleDoneFlow() {
-  resetUploaderState();
-
-  emit('update:files', [...props.files, ...uploadedFiles.value]);
-  uploadedFiles.value = [];
-}
-
-onMounted(() => {
-  /*
-    Note: Event binding is the main way to get data and other info from File Uploader.
-    There plenty of events you may use.
-
-    See more: https://uploadcare.com/docs/file-uploader/data-and-events/#events
-   */
-  ctxProviderRef.value.addEventListener('data-output', handleUploadEvent);
-  ctxProviderRef.value.addEventListener('done-flow', handleDoneFlow);
-});
-
-onBeforeUnmount(() => {
-  ctxProviderRef.value.removeEventListener('data-output', handleUploadEvent);
-  ctxProviderRef.value.removeEventListener('done-flow', handleDoneFlow);
-});
 </script>
 
 <template>

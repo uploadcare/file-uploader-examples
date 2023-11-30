@@ -1,8 +1,8 @@
 <script>
-import sunImage from './assets/sun.png';
-import moonImage from './assets/moon.png';
+import sunImage from '../../assets/sun.png';
+import moonImage from '../../assets/moon.png';
 
-import FileUploader from './components/FileUploader/FileUploader.options.vue';
+import FileUploader from '../../components/FileUploader/FileUploader.options.vue';
 
 import MOCK_DATA from './mocks';
 
@@ -19,7 +19,7 @@ export default {
 
       sentFormObject: null,
 
-      theme: 'light',
+      theme: document.body.classList.contains('theme--dark') ? 'dark' : 'light',
 
       sunImage,
       moonImage,
@@ -56,51 +56,51 @@ export default {
 
       <label class="theme-toggle">
         <input
-          type="checkbox"
-          v-model="theme"
-          true-value="light"
-          false-value="dark"
+            type="checkbox"
+            v-model="theme"
+            true-value="light"
+            false-value="dark"
         />
         <img
-          :src="theme === 'light' ? sunImage : moonImage"
-          width="18"
-          height="18"
-          :alt="`Switch to ${theme === 'light' ? 'dark' : 'light'} theme`"
+            :src="theme === 'light' ? sunImage : moonImage"
+            width="18"
+            height="18"
+            :alt="`Switch to ${theme === 'light' ? 'dark' : 'light'} theme`"
         />
       </label>
     </header>
 
     <form
-      class="form"
-      v-if="!sentFormObject"
-      @submit.prevent="handleFormSubmit"
+        class="form"
+        v-if="!sentFormObject"
+        @submit.prevent="handleFormSubmit"
     >
       <div class="field">
         <label class="label" for="title">Title</label>
         <input
-          class="input"
-          type="text"
-          id="title"
-          v-model="title"
+            class="input"
+            type="text"
+            id="title"
+            v-model="title"
         />
       </div>
 
       <div class="field">
         <label class="label" for="text">Text</label>
         <textarea
-          class="input"
-          id="text"
-          rows="10"
-          v-model="text"
+            class="input"
+            id="text"
+            rows="10"
+            v-model="text"
         ></textarea>
       </div>
 
       <div class="field">
         <p class="label">Photos</p>
         <FileUploader
-          uploader-class-name="file-uploader"
-          v-model:files="photos"
-          :theme="theme"
+            uploader-class-name="file-uploader"
+            v-model:files="photos"
+            :theme="theme"
         />
       </div>
 
@@ -110,8 +110,8 @@ export default {
     </form>
 
     <pre
-      class="result"
-      v-if="!!sentFormObject"
+        class="result"
+        v-if="!!sentFormObject"
     ><code>{{ JSON.stringify(sentFormObject, null, 2) }}</code></pre>
   </div>
 </template>
