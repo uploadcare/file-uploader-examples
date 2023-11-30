@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" focusable="false" viewBox="0 0 18 18">
+  <circle cx="9" cy="9" r="9" fill="url(#gradient)"></circle>
+  <defs>
+    <radialGradient id="gradient" cx="0" cy="0" r="1" gradientTransform="rotate(149.216 9.368 7.42) scale(17.5848 20.2492)" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFC700"></stop>
+      <stop offset="1" stop-color="#FFEDAB"></stop>
+    </radialGradient>
+  </defs>
+</svg>
