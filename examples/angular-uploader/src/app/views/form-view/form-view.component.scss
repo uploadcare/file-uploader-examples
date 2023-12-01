@@ -1,4 +1,4 @@
-.app {
+.root {
   padding: 16px 24px;
   max-width: 480px;
   margin: 0 auto;
@@ -10,59 +10,27 @@
   justify-content: space-between;
 }
 
-.themeToggle {
-  :global(.react-toggle-track) {
-    box-shadow: 0 0 16px 0 var(--ui-control-box-shadow-color);
-    background-color: var(--ui-control-background-color);
-    border: 1px solid var(--ui-control-border-color-default);
-    transition: none;
-  }
+.theme-toggle {
+  padding: 6px;
+  box-shadow: 0 0 16px 0 var(--ui-control-box-shadow-color);
+  background-color: var(--ui-control-background-color);
+  border: 1px solid var(--ui-control-border-color-default);
+  border-radius: 100%;
+  cursor: pointer;
+  user-select: none;
 
-  &:global(.react-toggle:hover .react-toggle-track),
-  &:global(.react-toggle--checked:hover .react-toggle-track) {
+  &:hover {
     background-color: var(--ui-control-background-color);
     border: 1px solid var(--ui-control-border-color-default);
     outline: 2px solid var(--ui-control-outline-color-focus);
   }
 
-  :global(.react-toggle-track-check), :global(.react-toggle-track-x) {
-    width: auto;
-    height: auto;
-    display: flex;
-    align-items: center;
-  }
-
-  :global(.react-toggle-track-check) {
-    left: 6px;
-  }
-
-  :global(.react-toggle-track-x) {
-    right: 8px;
-  }
-
-  :global(.react-toggle-thumb) {
-    top: 2px;
-    left: 2px;
-    background: var(--ui-control-background-color);
-    border-color: var(--ui-control-border-color-default);
-    transition: left 0.25s ease;
-  }
-
-  &:global(.react-toggle--checked .react-toggle-thumb) {
-    left: 28px;
-  }
-
-  &:global(.react-toggle--active .react-toggle-thumb),
-  &:global(.react-toggle:active .react-toggle-thumb) {
-    box-shadow: none;
-  }
-
-  &:global(.react-toggle--focus .react-toggle-thumb) {
-    box-shadow: none;
+  input {
+    display: none;
   }
 }
 
-.viewTitle {
+.view-title {
   margin: 0;
   font-size: 16px;
   font-weight: 400;
@@ -142,7 +110,7 @@
 
   See more: https://uploadcare.com/docs/file-uploader/localization/
  */
-.fileUploader {
+:host ::ng-deep .file-uploader {
   --l10n-locale-name: 'en-US';
 
   --l10n-photo__one: 'photo';

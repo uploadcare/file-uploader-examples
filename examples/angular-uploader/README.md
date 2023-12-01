@@ -8,12 +8,12 @@
   </a>
 </p>
 <p align="center">
-  <a href="https://uploadcare.com?ref=github-readme">Website</a> • 
-  <a href="https://uploadcare.com/docs/start/quickstart?ref=github-readme">Quick Start</a> • 
-  <a href="https://uploadcare.com/docs?ref=github-readme">Docs</a> • 
-  <a href="https://uploadcare.com/blog?ref=github-readme">Blog</a> • 
-  <a href="https://discord.gg/mKWRgRsVz8?ref=github-readme">Discord</a> •
-  <a href="https://twitter.com/Uploadcare?ref=github-readme">Twitter</a>
+  <a href="https://uploadcare.com?ref=github-angular-example-readme">Website</a> • 
+  <a href="https://uploadcare.com/docs/start/quickstart?ref=github-angular-example-readme">Quick Start</a> • 
+  <a href="https://uploadcare.com/docs?ref=github-angular-example-readme">Docs</a> • 
+  <a href="https://uploadcare.com/blog?ref=github-angular-example-readme">Blog</a> • 
+  <a href="https://discord.gg/mKWRgRsVz8?ref=github-angular-example-readme">Discord</a> •
+  <a href="https://twitter.com/Uploadcare?ref=github-angular-example-readme">Twitter</a>
 </p>
 
 # Angular File Uploader with Uploadcare Blocks
@@ -57,7 +57,7 @@ to work properly with it.
 To help Angular to figure out where you're using Web Components, you have to set
 `schemas` property of the file uploader component to `[CUSTOM_ELEMENTS_SCHEMA]`, where `CUSTOM_ELEMENTS_SCHEMA` 
 is a special schema imported from `@angular/core`.
-In this example we have done it inside [the file-uploader component](./src/app/file-uploader/file-uploader.component.ts).
+In this example we have done it inside every component. E.g. [the file-uploader component](./src/app/components/file-uploader/file-uploader.component.ts).
 
 You may like to read [custom element schemas](https://angular.dev/guide/components/advanced-configuration#custom-element-schemas) doc, 
 if you want to know more about using custom elements in Angular.

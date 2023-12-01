@@ -7,16 +7,6 @@ import st from './FileUploader.module.scss';
 import cssOverrides from './FileUploader.overrides.css?inline';
 import cs from 'classnames';
 
-/*
-  Note: File Uploader styles are scoped due to ShadowDOM usage.
-  There are two ways to override them. One way is used on the line below,
-  another one is to set a custom class to File Uploader,
-  and use CSS variables to update styles.
-
-  See more: https://uploadcare.com/docs/file-uploader/styling/
- */
-LR.FileUploaderRegular.shadowStyles = cssOverrides;
-
 LR.registerBlocks(LR);
 
 type FileUploaderProps = {
@@ -28,12 +18,32 @@ type FileUploaderProps = {
 
 export default function FileUploader({ files, uploaderClassName, onChange, theme }: FileUploaderProps) {
   const [uploadedFiles, setUploadedFiles] = useState<OutputFileEntry[]>([]);
-  const ctxProviderRef = useRef<LR.UploadCtxProvider>();
+  const ctxProviderRef = useRef<typeof LR.UploadCtxProvider.prototype & LR.UploadCtxProvider>(null);
 
   const handleRemoveClick = useCallback(
     (uuid: OutputFileEntry['uuid']) => onChange(files.filter(f => f.uuid !== uuid)),
     [files, onChange],
   );
+
+  useEffect(() => {
+    /*
+      Note: File Uploader styles are scoped due to ShadowDOM usage.
+      There are two ways to override them. One way is used on the line below,
+      another one is to set a custom class to File Uploader,
+      and use CSS variables to update styles.
+
+      See more: https://uploadcare.com/docs/file-uploader/styling/
+     */
+    LR.FileUploaderRegular.shadowStyles = cssOverrides;
+
+    return () => {
+      /*
+        Note: We're resetting styles here just to be sure they do not affect other examples.
+        You probably do not need to do it in your app.
+       */
+      LR.FileUploaderRegular.shadowStyles = '';
+    }
+  }, []);
 
   useEffect(() => {
     const handleUploadEvent = (e: CustomEvent<OutputFileEntry[]>) => {
@@ -98,7 +108,7 @@ export default function FileUploader({ files, uploaderClassName, onChange, theme
       */}
       <lr-config
         ctx-name="my-uploader"
-        pubkey="demopublickey"
+        pubkey="2b7f257e8ea0817ba746"
         multiple={true}
         sourceList="local, url, camera, dropbox, gdrive"
         confirmUpload={false}

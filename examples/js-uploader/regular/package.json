@@ -1,0 +1,12 @@
+{
+  "name": "js-regular",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "start": "serve",
+    "build": "rm -rf dist && mkdir dist && cp index.html dist"
+  },
+  "devDependencies": {
+    "serve": "^11.2.0"
+  }
+}

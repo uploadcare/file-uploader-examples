@@ -1,10 +1,13 @@
-name: Build and Deploy
+name: Build
 on:
   push:
     branches:
       - main
+  pull_request:
+    branches:
+      - main
 jobs:
-  build-and-deploy:
+  build:
     concurrency: ci-${{ github.ref }}
     runs-on: ubuntu-latest
     steps:
@@ -14,14 +17,6 @@ jobs:
       - name: Install and Build 🔧
         env:
           VITE_UNSPLASH_TOKEN: ${{ secrets.UNSPLASH_TOKEN }}
-          BASE_PATH: "/blocks-examples/"
         run: |
           npm ci
           npm run build
-
-      - name: Deploy 🚀
-        uses: JamesIves/github-pages-deploy-action@v4.3.0
-        with:
-          branch: gh-pages
-          clean: true
-          folder: ./public
