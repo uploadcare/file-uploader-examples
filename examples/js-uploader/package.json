@@ -3,10 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "start": "serve",
+    "start": "serve -p 8080",
     "build": "rm -rf dist && mkdir dist && cp index.html minimal.html regular.html dist"
   },
-  "devDependencies": {
-    "serve": "^11.2.0"
+  "dependencies": {
+    "@codesandbox/nodebox": "^0.1.8",
+    "serve": "14.2.1"
   }
 }
