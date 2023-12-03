@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next",
     "build": "next build",
-    "start": "next start"
+    "start": "npm run dev"
   },
   "dependencies": {
     "@uploadcare/blocks": "0.30.0",
