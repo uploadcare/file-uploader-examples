@@ -15,6 +15,10 @@ function Regular() {
         ctx-name="my-uploader"
         css-src={`https://cdn.jsdelivr.net/npm/@uploadcare/blocks@${PACKAGE_VERSION}/web/lr-file-uploader-regular.min.css`}
       ></lr-file-uploader-regular>
+
+      <p>
+        <a href="/">← All Next.js Examples</a>
+      </p>
     </div>
   );
 }

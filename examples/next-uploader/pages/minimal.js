@@ -14,6 +14,10 @@ function Minimal() {
         ctx-name="my-uploader"
         css-src={`https://cdn.jsdelivr.net/npm/@uploadcare/blocks@${PACKAGE_VERSION}/web/lr-file-uploader-minimal.min.css`}
       ></lr-file-uploader-minimal>
+
+      <p>
+        <a href="/">← All Next.js Examples</a>
+      </p>
     </div>
   );
 }
