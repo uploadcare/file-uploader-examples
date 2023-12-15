@@ -1,0 +1,13 @@
+{
+  "name": "js-uploader",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "start": "serve -p 8080",
+    "build": "rm -rf dist && mkdir dist && cp index.html minimal.html regular.html dist"
+  },
+  "dependencies": {
+    "@codesandbox/nodebox": "^0.1.8",
+    "serve": "14.2.1"
+  }
+}

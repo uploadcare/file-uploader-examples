@@ -1,21 +1,22 @@
 {
   "name": "svelte-uploader",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "private": true,
   "type": "module",
   "scripts": {
     "start": "npm run dev",
     "dev": "vite dev",
-    "build": "vite build --base=\"${BASE_PATH}svelte-uploader/\"",
+    "build": "vite build",
     "preview": "vite preview"
   },
   "dependencies": {
     "@uploadcare/blocks": "0.30.1"
   },
   "devDependencies": {
-    "@sveltejs/vite-plugin-svelte": "^2.4.2",
-    "sass": "^1.69.5",
+    "@sveltejs/kit": "^1.20.4",
+    "sass": "1.69.5",
     "svelte": "^4.0.5",
+    "svelte-preprocess": "5.1.1",
     "vite": "^4.4.5"
   }
 }

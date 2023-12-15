@@ -1,8 +1,10 @@
 <script>
-  import sunImage from './assets/sun.png';
-  import moonImage from './assets/moon.png';
+  import { browser } from '$app/environment';
 
-  import FileUploader from './lib/FileUploader/FileUploader.svelte';
+  import sunImage from '../../assets/sun.png';
+  import moonImage from '../../assets/moon.png';
+
+  import FileUploader from '$lib/FileUploader/FileUploader.svelte';
 
   import MOCK_DATA from './mocks';
 
@@ -23,14 +25,22 @@
 
   let theme = 'light';
 
+  $: {
+    if (browser) {
+      theme = document.body.classList.contains('theme--dark') ? 'dark' : 'light';
+    }
+  }
+
   const handleThemeChange = e => {
     theme = e.target.checked ? 'light' : 'dark';
   }
 
   $: {
-    document.body.classList.remove('theme--light');
-    document.body.classList.remove('theme--dark');
-    document.body.classList.add(`theme--${theme}`);
+    if (browser) {
+      document.body.classList.remove('theme--light');
+      document.body.classList.remove('theme--dark');
+      document.body.classList.add(`theme--${theme}`);
+    }
   }
 </script>
 
@@ -40,15 +50,15 @@
 
     <label class="theme-toggle">
       <input
-        type="checkbox"
-        checked={theme === 'light'}
-        on:change={handleThemeChange}
+          type="checkbox"
+          checked={theme === 'light'}
+          on:change={handleThemeChange}
       >
       <img
-        src={theme === 'light' ? sunImage : moonImage}
-        width="18"
-        height="18"
-        alt={`Switch to ${theme === 'light' ? 'dark' : 'light'} theme`}
+          src={theme === 'light' ? sunImage : moonImage}
+          width="18"
+          height="18"
+          alt={`Switch to ${theme === 'light' ? 'dark' : 'light'} theme`}
       />
     </label>
   </header>
@@ -58,29 +68,29 @@
       <div class="field">
         <label class="label" for="title">Title</label>
         <input
-          class="input"
-          type="text"
-          id="title"
-          bind:value={title}
+            class="input"
+            type="text"
+            id="title"
+            bind:value={title}
         />
       </div>
 
       <div class="field">
         <label class="label" for="text">Text</label>
         <textarea
-          class="input"
-          id="text"
-          rows={10}
-          bind:value={text}
+            class="input"
+            id="text"
+            rows={10}
+            bind:value={text}
         ></textarea>
       </div>
 
       <div class="field">
         <p class="label">Photos</p>
         <FileUploader
-          uploaderClassName="file-uploader"
-          bind:files={photos}
-          theme={theme}
+            uploaderClassName="file-uploader"
+            bind:files={photos}
+            theme={theme}
         />
       </div>
 
@@ -123,10 +133,6 @@
 
     input {
       display: none;
-    }
-
-    img {
-      display: block;
     }
   }
 

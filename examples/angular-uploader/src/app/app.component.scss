@@ -1,138 +1,70 @@
-.app {
-  padding: 16px 24px;
-  max-width: 480px;
-  margin: 0 auto;
-}
-
-.header {
-  margin-bottom: 48px;
-  display: flex;
-  justify-content: space-between;
-}
-
-.theme-toggle {
-  padding: 6px;
-  box-shadow: 0 0 16px 0 var(--ui-control-box-shadow-color);
-  background-color: var(--ui-control-background-color);
-  border: 1px solid var(--ui-control-border-color-default);
-  border-radius: 100%;
-  cursor: pointer;
-  user-select: none;
-
-  &:hover {
-    background-color: var(--ui-control-background-color);
-    border: 1px solid var(--ui-control-border-color-default);
-    outline: 2px solid var(--ui-control-outline-color-focus);
-  }
-
-  input {
-    display: none;
-  }
-
-  img {
-    display: block;
-  }
-}
-
-.view-title {
-  margin: 0;
-  font-size: 16px;
-  font-weight: 400;
-  color: var(--ui-text-color);
-}
-
-.input {
-  box-sizing: border-box;
-  width: 100%;
-  padding: 8px 12px;
-  font-family: monospace;
-  font-size: 16px;
-  border: 1px solid var(--ui-control-border-color-default);
-  border-radius: 8px;
-  background: var(--ui-control-background-color);
-  box-shadow: 0 0 16px 0 var(--ui-control-box-shadow-color);
+.root {
+  display: grid;
+  grid-template-areas:
+    "logo source"
+    "menu menu";
+  grid-template-columns: 1fr auto;
+  grid-template-rows: auto 1fr;
+  gap: 24px;
+  align-items: center;
+  padding: 24px 24px 0;
+  margin: 0 -24px 24px;
+  border-bottom: 1px solid var(--ui-control-border-color-default);
   color: var(--ui-control-text-color);
 
-  &:focus {
-    outline: 3px solid var(--ui-control-outline-color-focus);
-    border-color: var(--ui-control-border-color-focus);
-  }
-
-  // trying to prevent scrollbar overflowing textarea borders =/
-  &::-webkit-scrollbar-corner {
-    display: none;
+  @media (width >= 900px) {
+    grid-template-areas:
+      "logo menu source";
+    grid-template-columns: 1fr auto 1fr;
+    grid-template-rows: 1fr;
+    padding: 0 24px;
   }
 }
 
-.field {
-  margin-top: 24px;
+.link:hover {
+  opacity: .5;
+}
 
-  &:last-child {
-    margin-top: 48px;
+.logo {
+  grid-area: logo;
+}
+
+.menu {
+  grid-area: menu;
+  margin: 0 auto;
+  padding: 0;
+  list-style: none;
+}
+
+.menu-item {
+  display: inline-block;
+  margin-right: 24px;
+}
+
+.menu-link {
+  display: flex;
+  padding: 12px 0;
+  text-decoration: none;
+  color: var(--ui-control-text-color);
+
+  @media (width >= 900px) {
+    padding: 24px 0;
   }
 }
 
-.label {
-  position: relative;
-  z-index: 1;
-  display: block;
-  margin-bottom: 8px;
-  color: var(--ui-text-color);
+.menu-link.active {
+  box-shadow: 0 1px 0 var(--ui-control-border-color-focus);
 }
 
-.button {
-  font-size: 16px;
-  font-family: monospace;
-  line-height: 1;
-  padding: 10px 12px;
-  border: 1px solid var(--ui-control-border-color-default);
-  border-radius: 8px;
-  box-shadow: 0 0 16px 0 var(--ui-control-box-shadow-color);
-  background: var(--ui-action-button-background);
-  color: var(--ui-action-button-text-color);
-  cursor: pointer;
-
-  &:hover, &:focus {
-    outline: 3px solid var(--ui-control-outline-color-focus);
-  }
-
-  &:active {
-    border-color: var(--ui-control-border-color-focus);
-  }
+.source {
+  grid-area: source;
+  margin-left: auto;
+  display: flex;
+  align-items: center;
 }
 
-.result {
+.source-title {
   font-size: 14px;
-  line-height: 18px;
-  font-family: monospace;
-  white-space: pre-wrap;
-}
-
-/*
-  Note: Localization of File Uploader is done via CSS variables.
-  You can change any piece of text of File Uploader this way.
-
-  See more: https://uploadcare.com/docs/file-uploader/localization/
- */
-:host ::ng-deep .file-uploader {
-  --l10n-locale-name: 'en-US';
-
-  --l10n-photo__one: 'photo';
-  --l10n-photo__many: 'photos';
-  --l10n-photo__other: 'photos';
-
-  --l10n-upload-file: 'Upload photo';
-  --l10n-upload-files: 'Upload photos';
-  --l10n-choose-file: 'Choose photo';
-  --l10n-choose-files: 'Choose photos';
-  --l10n-drop-files-here: 'Drop photos here';
-  --l10n-select-file-source: 'Select photo source';
-  --l10n-edit-image: 'Edit photo';
-  --l10n-no-files: 'No photos selected';
-  --l10n-caption-edit-file: 'Edit photo';
-  --l10n-files-count-allowed: 'Only {{count}} {{plural:photo(count)}} allowed';
-  --l10n-files-max-size-limit-error: 'Photo is too big. Max photo size is {{maxFileSize}}.';
-  --l10n-header-uploading: 'Uploading {{count}} {{plural:photo(count)}}';
-  --l10n-header-succeed: '{{count}} {{plural:photo(count)}} uploaded';
-  --l10n-header-total: '{{count}} {{plural:photo(count)}} selected';
+  margin-right: 24px;
+  color: var(--ui-text-color);
 }

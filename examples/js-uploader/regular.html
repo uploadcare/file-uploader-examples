@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Uploadcare JS Regular Example</title>
+  <meta name="description" content="Uploading files with HTML and JS using Uploadcare"/>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+</head>
+<body>
+  <script type="module">
+      import * as LR from 'https://cdn.jsdelivr.net/npm/@uploadcare/blocks@0.30.0/web/lr-file-uploader-regular.min.js';
+
+      LR.registerBlocks(LR);
+  </script>
+  <lr-config
+    ctx-name="my-uploader"
+    pubkey="2b7f257e8ea0817ba746"
+    sourceList="local, url, camera, dropbox"
+  ></lr-config>
+  <lr-file-uploader-regular
+    ctx-name="my-uploader"
+    css-src="https://cdn.jsdelivr.net/npm/@uploadcare/blocks@0.30.0/web/lr-file-uploader-regular.min.css"
+  ></lr-file-uploader-regular>
+
+  <p>
+    <a href="/">← All JS Examples</a>
+  </p>
+</body>
+</html>

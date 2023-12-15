@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://uploadcare.com/?ref=github-vue-example-readme">
+  <a href="https://uploadcare.com?ref=github-vue-example-readme">
     <picture>
       <source media="(prefers-color-scheme: light)" srcset="https://ucarecdn.com/1b4714cd-53be-447b-bbde-e061f1e5a22f/logo-safespace-transparent.svg">
       <source media="(prefers-color-scheme: dark)" srcset="https://ucarecdn.com/3b610a0a-780c-4750-a8b4-3bf4a8c90389/logo-transparent-inverted.svg">
@@ -8,12 +8,12 @@
   </a>
 </p>
 <p align="center">
-  <a href="https://uploadcare.com?ref=github-readme">Website</a> • 
-  <a href="https://uploadcare.com/docs/start/quickstart?ref=github-readme">Quick Start</a> • 
-  <a href="https://uploadcare.com/docs?ref=github-readme">Docs</a> • 
-  <a href="https://uploadcare.com/blog?ref=github-readme">Blog</a> • 
-  <a href="https://discord.gg/mKWRgRsVz8?ref=github-readme">Discord</a> •
-  <a href="https://twitter.com/Uploadcare?ref=github-readme">Twitter</a>
+  <a href="https://uploadcare.com?ref=github-vue-example-readme">Website</a> • 
+  <a href="https://uploadcare.com/docs/start/quickstart?ref=github-vue-example-readme">Quick Start</a> • 
+  <a href="https://uploadcare.com/docs?ref=github-vue-example-readme">Docs</a> • 
+  <a href="https://uploadcare.com/blog?ref=github-vue-example-readme">Blog</a> • 
+  <a href="https://discord.gg/mKWRgRsVz8?ref=github-vue-example-readme">Discord</a> •
+  <a href="https://twitter.com/Uploadcare?ref=github-vue-example-readme">Twitter</a>
 </p>
 
 # Vue File Uploader with Uploadcare Blocks
@@ -58,22 +58,22 @@ to work properly with it.
 
 To help Vue to figure out where you're using Web Components, you have to specify 
 [`compilerOptions.isCustomElement` option](https://vuejs.org/api/application.html#app-config-compileroptions). 
-In this example we have done it inside [the Vite config file](./vite.config.js).
+In this example we have done it inside [the Vite config file](vite.config.js).
 
 You may like to read [Vue and Web Components](https://vuejs.org/guide/extras/web-components.html) doc, 
 if you want to know more about using custom elements in Vue.
 
 ### Options API vs. Composition API
 
-In this example we created a [FileUploader](./src/components/FileUploader) component
-which provides Vue-friendly API for the rest of the app. There are Blocks inside of this component and nowhere else.
+One of the examples, “Real-life form”, contains a [FileUploader](src/components/FileUploader) component
+which provides Vue-friendly API for the rest of the example. There are Blocks inside of this component and nowhere else.
 
 However, Vue 3 supports two different API styles: Options API and Composition API. We do not know which one you prefer,
 so we have implemented the example twice.
 
 By default we use Options API because the whole app is built with it. But you're free to switch the `import` path 
-in [App.vue](./src/App.vue) from [FileUploader.options.vue](./src/components/FileUploader/FileUploader.options.vue)
-to [FileUploader.composition.vue](./src/components/FileUploader/FileUploader.composition.vue) to ensure that it works too.
+in [FormView.vue](src/views/FormView/FormView.vue) from [FileUploader.options.vue](src/components/FileUploader/FileUploader.options.vue)
+to [FileUploader.composition.vue](src/components/FileUploader/FileUploader.composition.vue) to ensure that it works too.
 
 ### Styling
 
@@ -88,7 +88,7 @@ Otherwise you may go “full override” way and pass a string with styles to a 
 
 You’re always welcome to contribute:
 
-* Create [issues](https://github.com/uploadcare/blocks/issues) every time you feel something is missing or goes wrong.
+* Create [issues](https://github.com/uploadcare/blocks-examples/issues) every time you feel something is missing or goes wrong.
 * Provide your feedback or drop us a support request at <a href="mailto:hello@uploadcare.com">hello@uploadcare.com</a>.
 * Ask questions on [Stack Overflow](https://stackoverflow.com/questions/tagged/uploadcare) with "uploadcare" tag if others can have these questions as well.
 * Star this repo if you like it ⭐️

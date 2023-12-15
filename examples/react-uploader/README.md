@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://uploadcare.com/?ref=github-react-example-readme">
+  <a href="https://uploadcare.com?ref=github-react-example-readme">
     <picture>
       <source media="(prefers-color-scheme: light)" srcset="https://ucarecdn.com/1b4714cd-53be-447b-bbde-e061f1e5a22f/logo-safespace-transparent.svg">
       <source media="(prefers-color-scheme: dark)" srcset="https://ucarecdn.com/3b610a0a-780c-4750-a8b4-3bf4a8c90389/logo-transparent-inverted.svg">
@@ -8,12 +8,12 @@
   </a>
 </p>
 <p align="center">
-  <a href="https://uploadcare.com?ref=github-readme">Website</a> • 
-  <a href="https://uploadcare.com/docs/start/quickstart?ref=github-readme">Quick Start</a> • 
-  <a href="https://uploadcare.com/docs?ref=github-readme">Docs</a> • 
-  <a href="https://uploadcare.com/blog?ref=github-readme">Blog</a> • 
-  <a href="https://discord.gg/mKWRgRsVz8?ref=github-readme">Discord</a> •
-  <a href="https://twitter.com/Uploadcare?ref=github-readme">Twitter</a>
+  <a href="https://uploadcare.com?ref=github-react-example-readme">Website</a> • 
+  <a href="https://uploadcare.com/docs/start/quickstart?ref=github-react-example-readme">Quick Start</a> • 
+  <a href="https://uploadcare.com/docs?ref=github-react-example-readme">Docs</a> • 
+  <a href="https://uploadcare.com/blog?ref=github-react-example-readme">Blog</a> • 
+  <a href="https://discord.gg/mKWRgRsVz8?ref=github-react-example-readme">Discord</a> •
+  <a href="https://twitter.com/Uploadcare?ref=github-react-example-readme">Twitter</a>
 </p>
 
 # React File Uploader with Uploadcare Blocks
@@ -42,6 +42,13 @@ All you need to do is to install [`@uploadcare/blocks`](https://www.npmjs.com/pa
 via your favorite Node package manager.
 
 The package provides TypeScript types, so you do not need to install `@types/anything` if you need a proper typing.
+However, if you want to get JSX types right, add `@uploadcare/blocks/types/jsx` in the `types` array of your tsconfig.json:
+
+```json
+{
+  "types": ["@uploadcare/blocks/types/jsx"]
+}
+```
 
 [Read more about installation](https://uploadcare.com/docs/file-uploader/installation/) in the Uploadcare documentation.
 
@@ -53,8 +60,8 @@ Please, read the [File Uploader documentation](https://uploadcare.com/docs/file-
 
 Blocks are native to the Web but not to React. It's easy to use Blocks in a React app, but note that a part of your solution will encapsulate non-React code.
 
-In this example we created a [FileUploader](./src/FileUploader/FileUploader.tsx) component 
-which provides React-friendly API for the rest of the app. There are Blocks inside of this component and nowhere else.
+E.g. in one of the examples we created a [FileUploader](src/components/FileUploader/FileUploader.tsx) component 
+which provides React-friendly API for the rest of the view. There are Blocks inside of this component and nowhere else.
 
 ### Non-React things you should know about
 
@@ -81,7 +88,7 @@ Otherwise you may go “full override” way and pass a string with styles to a 
 
 You’re always welcome to contribute:
 
-* Create [issues](https://github.com/uploadcare/blocks/issues) every time you feel something is missing or goes wrong.
+* Create [issues](https://github.com/uploadcare/blocks-examples/issues) every time you feel something is missing or goes wrong.
 * Provide your feedback or drop us a support request at <a href="mailto:hello@uploadcare.com">hello@uploadcare.com</a>.
 * Ask questions on [Stack Overflow](https://stackoverflow.com/questions/tagged/uploadcare) with "uploadcare" tag if others can have these questions as well.
 * Star this repo if you like it ⭐️

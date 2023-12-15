@@ -1,258 +1,128 @@
-<script>
-import sunImage from './assets/sun.png';
-import moonImage from './assets/moon.png';
-
-import FileUploader from './components/FileUploader/FileUploader.options.vue';
-
-import MOCK_DATA from './mocks';
-
-export default {
-  components: {
-    FileUploader,
-  },
-
-  data() {
-    return {
-      title: MOCK_DATA.title,
-      text: MOCK_DATA.text,
-      photos: MOCK_DATA.photos,
-
-      sentFormObject: null,
-
-      theme: 'light',
-
-      sunImage,
-      moonImage,
-    }
-  },
-
-  methods: {
-    handleFormSubmit() {
-      this.sentFormObject = {
-        title: this.title,
-        text: this.text,
-        photos: this.photos,
-      };
-    },
-  },
-
-  watch: {
-    theme: {
-      handler() {
-        document.body.classList.remove('theme--light');
-        document.body.classList.remove('theme--dark');
-        document.body.classList.add(`theme--${this.theme}`);
-      },
-      immediate: true,
-    }
-  },
-}
-</script>
-
 <template>
-  <div class="app">
-    <header class="header">
-      <h1 class="view-title">New blog post</h1>
+  <nav class="root">
+    <a class="link logo" href="https://uploadcare.com">
+      <svg xmlns="http://www.w3.org/2000/svg" focusable="false" viewBox="0 0 18 18" width="30" height="30">
+        <circle cx="9" cy="9" r="9" fill="url(#gradient)"></circle>
+        <defs>
+          <radialGradient id="gradient" cx="0" cy="0" r="1" gradientTransform="rotate(149.216 9.368 7.42) scale(17.5848 20.2492)" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#FFC700"></stop>
+            <stop offset="1" stop-color="#FFEDAB"></stop>
+          </radialGradient>
+        </defs>
+      </svg>
+    </a>
 
-      <label class="theme-toggle">
-        <input
-          type="checkbox"
-          v-model="theme"
-          true-value="light"
-          false-value="dark"
-        />
-        <img
-          :src="theme === 'light' ? sunImage : moonImage"
-          width="18"
-          height="18"
-          :alt="`Switch to ${theme === 'light' ? 'dark' : 'light'} theme`"
-        />
-      </label>
-    </header>
+    <ul class="menu">
+      <li class="menu-item">
+        <router-link
+          to="/form"
+          class="link menu-link"
+          active-class="active"
+        >Real-life form</router-link>
+      </li>
 
-    <form
-      class="form"
-      v-if="!sentFormObject"
-      @submit.prevent="handleFormSubmit"
-    >
-      <div class="field">
-        <label class="label" for="title">Title</label>
-        <input
-          class="input"
-          type="text"
-          id="title"
-          v-model="title"
-        />
-      </div>
+      <li class="menu-item">
+        <router-link
+          to="/minimal"
+          class="link menu-link"
+          active-class="active"
+        >Minimal uploader</router-link>
+      </li>
 
-      <div class="field">
-        <label class="label" for="text">Text</label>
-        <textarea
-          class="input"
-          id="text"
-          rows="10"
-          v-model="text"
-        ></textarea>
-      </div>
+      <li class="menu-item">
+        <router-link
+          to="/regular"
+          class="link menu-link"
+          active-class="active"
+        >Regular uploader</router-link>
+      </li>
+    </ul>
 
-      <div class="field">
-        <p class="label">Photos</p>
-        <FileUploader
-          uploader-class-name="file-uploader"
-          v-model:files="photos"
-          :theme="theme"
-        />
-      </div>
+    <div class="source">
+    <span class="source-title">
+      Built with Uploadcare Blocks and Angular
+    </span>
 
-      <div class="field">
-        <button class="button" type="submit">Publish</button>
-      </div>
-    </form>
+      <a class="link" href="https://github.com/uploadcare/blocks-examples/tree/main/examples/angular-uploader">
+        <svg xmlns="http://www.w3.org/2000/svg" focusable="false" viewBox="0 0 24 24" width="30" height="30">
+          <path fill="#24292f" style="fill: var(--ui-control-text-color)" stroke="none" d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path>
+        </svg>
+      </a>
+    </div>
+  </nav>
 
-    <pre
-      class="result"
-      v-if="!!sentFormObject"
-    ><code>{{ JSON.stringify(sentFormObject, null, 2) }}</code></pre>
-  </div>
+  <router-view/>
 </template>
 
 <style scoped lang="scss">
-.app {
-  padding: 16px 24px;
-  max-width: 480px;
-  margin: 0 auto;
-}
+  .root {
+    display: grid;
+    grid-template-areas:
+      "logo source"
+      "menu menu";
+    grid-template-columns: 1fr auto;
+    grid-template-rows: auto 1fr;
+    gap: 24px;
+    align-items: center;
+    padding: 24px 24px 0;
+    margin: 0 -24px 24px;
+    border-bottom: 1px solid var(--ui-control-border-color-default);
+    color: var(--ui-control-text-color);
 
-.header {
-  margin-bottom: 48px;
-  display: flex;
-  justify-content: space-between;
-}
-
-.theme-toggle {
-  padding: 6px;
-  box-shadow: 0 0 16px 0 var(--ui-control-box-shadow-color);
-  background-color: var(--ui-control-background-color);
-  border: 1px solid var(--ui-control-border-color-default);
-  border-radius: 100%;
-  cursor: pointer;
-  user-select: none;
-
-  &:hover {
-    background-color: var(--ui-control-background-color);
-    border: 1px solid var(--ui-control-border-color-default);
-    outline: 2px solid var(--ui-control-outline-color-focus);
+    @media (width >= 900px) {
+      grid-template-areas:
+        "logo menu source";
+      grid-template-columns: 1fr auto 1fr;
+      grid-template-rows: 1fr;
+      padding: 0 24px;
+    }
   }
 
-  input {
-    display: none;
+  .link:hover {
+    opacity: .5;
   }
 
-  img {
-    display: block;
-  }
-}
-
-.view-title {
-  margin: 0;
-  font-size: 16px;
-  font-weight: 400;
-  color: var(--ui-text-color);
-}
-
-.input {
-  box-sizing: border-box;
-  width: 100%;
-  padding: 8px 12px;
-  font-family: monospace;
-  font-size: 16px;
-  border: 1px solid var(--ui-control-border-color-default);
-  border-radius: 8px;
-  background: var(--ui-control-background-color);
-  box-shadow: 0 0 16px 0 var(--ui-control-box-shadow-color);
-  color: var(--ui-control-text-color);
-
-  &:focus {
-    outline: 3px solid var(--ui-control-outline-color-focus);
-    border-color: var(--ui-control-border-color-focus);
+  .logo {
+    grid-area: logo;
   }
 
-  // trying to prevent scrollbar overflowing textarea borders =/
-  &::-webkit-scrollbar-corner {
-    display: none;
-  }
-}
-
-.field {
-  margin-top: 24px;
-
-  &:last-child {
-    margin-top: 48px;
-  }
-}
-
-.label {
-  position: relative;
-  z-index: 1;
-  display: block;
-  margin-bottom: 8px;
-  color: var(--ui-text-color);
-}
-
-.button {
-  font-size: 16px;
-  font-family: monospace;
-  line-height: 1;
-  padding: 10px 12px;
-  border: 1px solid var(--ui-control-border-color-default);
-  border-radius: 8px;
-  box-shadow: 0 0 16px 0 var(--ui-control-box-shadow-color);
-  background: var(--ui-action-button-background);
-  color: var(--ui-action-button-text-color);
-  cursor: pointer;
-
-  &:hover, &:focus {
-    outline: 3px solid var(--ui-control-outline-color-focus);
+  .menu {
+    grid-area: menu;
+    margin: 0 auto;
+    padding: 0;
+    list-style: none;
   }
 
-  &:active {
-    border-color: var(--ui-control-border-color-focus);
+  .menu-item {
+    display: inline-block;
+    margin-right: 24px;
   }
-}
 
-.result {
-  font-size: 14px;
-  line-height: 18px;
-  font-family: monospace;
-  white-space: pre-wrap;
-}
+  .menu-link {
+    display: flex;
+    padding: 12px 0;
+    text-decoration: none;
+    color: var(--ui-control-text-color);
 
-/*
-  Note: Localization of File Uploader is done via CSS variables.
-  You can change any piece of text of File Uploader this way.
+    @media (width >= 900px) {
+      padding: 24px 0;
+    }
+  }
 
-  See more: https://uploadcare.com/docs/file-uploader/localization/
- */
-:global(.file-uploader) {
-  --l10n-locale-name: 'en-US';
+  .menu-link.active {
+    box-shadow: 0 1px 0 var(--ui-control-border-color-focus);
+  }
 
-  --l10n-photo__one: 'photo';
-  --l10n-photo__many: 'photos';
-  --l10n-photo__other: 'photos';
+  .source {
+    grid-area: source;
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+  }
 
-  --l10n-upload-file: 'Upload photo';
-  --l10n-upload-files: 'Upload photos';
-  --l10n-choose-file: 'Choose photo';
-  --l10n-choose-files: 'Choose photos';
-  --l10n-drop-files-here: 'Drop photos here';
-  --l10n-select-file-source: 'Select photo source';
-  --l10n-edit-image: 'Edit photo';
-  --l10n-no-files: 'No photos selected';
-  --l10n-caption-edit-file: 'Edit photo';
-  --l10n-files-count-allowed: 'Only {{count}} {{plural:photo(count)}} allowed';
-  --l10n-files-max-size-limit-error: 'Photo is too big. Max photo size is {{maxFileSize}}.';
-  --l10n-header-uploading: 'Uploading {{count}} {{plural:photo(count)}}';
-  --l10n-header-succeed: '{{count}} {{plural:photo(count)}} uploaded';
-  --l10n-header-total: '{{count}} {{plural:photo(count)}} selected';
-}
+  .source-title {
+    font-size: 14px;
+    margin-right: 24px;
+    color: var(--ui-text-color);
+  }
 </style>

@@ -11,16 +11,6 @@ import blocksStyles from '@uploadcare/blocks/web/lr-file-uploader-regular.min.cs
 
 import cssOverrides from './FileUploader.overrides.css?inline';
 
-/*
-  Note: File Uploader styles are scoped due to ShadowDOM usage.
-  There are two ways to override them. One way is used on the line below,
-  another one is to set a custom class to File Uploader,
-  and use CSS variables to update styles.
-
-  See more: https://uploadcare.com/docs/file-uploader/styling/
- */
-LR.FileUploaderRegular.shadowStyles = cssOverrides;
-
 LR.registerBlocks(LR);
 
 export default {
@@ -78,6 +68,16 @@ export default {
 
   mounted() {
     /*
+      Note: File Uploader styles are scoped due to ShadowDOM usage.
+      There are two ways to override them. One way is used on the line below,
+      another one is to set a custom class to File Uploader,
+      and use CSS variables to update styles.
+
+      See more: https://uploadcare.com/docs/file-uploader/styling/
+     */
+    LR.FileUploaderRegular.shadowStyles = cssOverrides;
+
+    /*
       Note: Event binding is the main way to get data and other info from File Uploader.
       There plenty of events you may use.
 
@@ -88,6 +88,12 @@ export default {
   },
 
   beforeUnmount() {
+    /*
+      Note: We're resetting styles here just to be sure they do not affect other examples.
+      You probably do not need to do it in your app.
+     */
+    LR.FileUploaderRegular.shadowStyles = '';
+
     this.$refs.ctxProviderRef.removeEventListener('data-output', this.handleUploadEvent);
     this.$refs.ctxProviderRef.removeEventListener('done-flow', this.handleDoneFlow);
   }
@@ -110,7 +116,7 @@ export default {
     -->
     <lr-config
       ctx-name="my-uploader"
-      pubkey="demopublickey"
+      pubkey="2b7f257e8ea0817ba746"
       multiple
       sourceList="local, url, camera, dropbox, gdrive"
       confirmUpload

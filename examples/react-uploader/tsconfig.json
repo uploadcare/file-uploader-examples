@@ -17,6 +17,8 @@
     "jsx": "react-jsx",
     "types": ["@uploadcare/blocks/types/jsx"]
   },
-  "include": ["src"],
-  "references": [{ "path": "./tsconfig.node.json" }]
+  "include": [
+    "src"
+  ],
+  "references": [{ "path": "./tsconfig.node.json"}]
 }

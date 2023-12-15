@@ -1,0 +1,16 @@
+{
+  "name": "next-uploader",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "npm run dev"
+  },
+  "dependencies": {
+    "@uploadcare/blocks": "0.30.0",
+    "next": "^13.5.4",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  }
+}
