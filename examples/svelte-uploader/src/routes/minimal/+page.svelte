@@ -7,12 +7,12 @@
 
 <div>
   <lr-config
-      ctx-name="my-uploader"
-      pubkey="2b7f257e8ea0817ba746"
+    ctx-name="my-uploader"
+    pubkey="2b7f257e8ea0817ba746"
   ></lr-config>
 
   <lr-file-uploader-minimal
-      ctx-name="my-uploader"
-      css-src={blocksStyles}
+    ctx-name="my-uploader"
+    css-src={blocksStyles}
   ></lr-file-uploader-minimal>
 </div>
