@@ -26,10 +26,10 @@ LR.registerBlocks(LR);
 export class FileUploaderComponent {
   @Input({ required: true }) theme!: 'light' | 'dark';
   @Input() uploaderClassName: string | undefined;
-  @Input() files: OutputFileEntry[] = [];
-  @Output() filesChange = new EventEmitter<OutputFileEntry[]>();
+  @Input() files: OutputFileEntry<'success'>[] = [];
+  @Output() filesChange = new EventEmitter<OutputFileEntry<'success'>[]>();
 
-  uploadedFiles: OutputFileEntry[] = [];
+  uploadedFiles: OutputFileEntry<'success'>[] = [];
   @ViewChild('ctxProvider', { static: true }) ctxProviderRef!: ElementRef<
     InstanceType<LR.UploadCtxProvider>
   >;
@@ -51,15 +51,15 @@ export class FileUploaderComponent {
       Note: Event binding is the main way to get data and other info from File Uploader.
       There plenty of events you may use.
 
-      See more: https://uploadcare.com/docs/file-uploader/data-and-events/#events
+      See more: https://uploadcare.com/docs/file-uploader/events/
      */
     this.ctxProviderRef.nativeElement.addEventListener(
-      'data-output',
-      this.handleUploadEvent
+      'change',
+      this.handleChangeEvent
     );
     this.ctxProviderRef.nativeElement.addEventListener(
-      'done-flow',
-      this.handleDoneFlow
+      'done-click',
+      this.handleDoneClick
     );
   }
 
@@ -70,8 +70,8 @@ export class FileUploaderComponent {
      */
     LR.FileUploaderRegular.shadowStyles = '';
 
-    this.ctxProviderRef.nativeElement.removeEventListener('data-output', this.handleUploadEvent);
-    this.ctxProviderRef.nativeElement.removeEventListener('done-flow', this.handleDoneFlow);
+    this.ctxProviderRef.nativeElement.removeEventListener('change', this.handleChangeEvent);
+    this.ctxProviderRef.nativeElement.removeEventListener('done-click', this.handleDoneClick);
   }
 
   /*
@@ -92,11 +92,11 @@ export class FileUploaderComponent {
     this.filesChange.emit(this.files.filter((f) => f.uuid !== uuid));
   }
 
-  handleUploadEvent = (e: LR.EventMap['data-output']) => {
-    this.uploadedFiles = e.detail;
+  handleChangeEvent = (e: LR.EventMap['change']) => {
+    this.uploadedFiles = e.detail.allEntries.filter(f => f.status === 'success') as OutputFileEntry<'success'>[];
   };
 
-  handleDoneFlow = () => {
+  handleDoneClick = () => {
     this.resetUploaderState();
 
     this.filesChange.emit([...this.files, ...this.uploadedFiles]);
