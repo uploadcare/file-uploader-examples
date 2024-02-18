@@ -6,3 +6,26 @@
   ctx-name="my-uploader"
   [attr.css-src]="blocksStyles"
 ></lr-file-uploader-minimal>
+<lr-upload-ctx-provider
+  ctx-name="my-uploader"
+  #ctxProvider
+></lr-upload-ctx-provider>
+
+<div class="previews">
+  @for (file of files; track file.cdnUrl) {
+    <div>
+      <img
+        class="preview-image"
+        src="{{ file.cdnUrl + '/-/preview/-/resize/x400/' }}"
+        height="200"
+        width="200"
+        [alt]="file.fileInfo.originalFilename"
+        [title]="file.fileInfo.originalFilename"
+      />
+
+      <span class="preview-title">
+        {{ file.fileInfo.originalFilename }}, {{ formatSize(file.fileInfo.size) }}
+      </span>
+    </div>
+  }
+</div>
