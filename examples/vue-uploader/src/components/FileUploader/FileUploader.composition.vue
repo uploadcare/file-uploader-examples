@@ -56,7 +56,7 @@ function handleChangeEvent(e) {
   }
 }
 
-function handleDoneClick() {
+function handleModalCloseEvent() {
   resetUploaderState();
 
   emit('update:files', [...props.files, ...uploadedFiles.value]);
@@ -81,7 +81,7 @@ onMounted(() => {
     See more: https://uploadcare.com/docs/file-uploader/events/
    */
   ctxProviderRef.value.addEventListener('change', handleChangeEvent);
-  ctxProviderRef.value.addEventListener('done-click', handleDoneClick);
+  ctxProviderRef.value.addEventListener('modal-close', handleModalCloseEvent);
 });
 
 onBeforeUnmount(() => {
@@ -92,7 +92,7 @@ onBeforeUnmount(() => {
   LR.FileUploaderRegular.shadowStyles = '';
 
   ctxProviderRef.value.removeEventListener('change', handleChangeEvent);
-  ctxProviderRef.value.removeEventListener('done-click', handleDoneClick);
+  ctxProviderRef.value.removeEventListener('modal-close', handleModalCloseEvent);
 });
 </script>
 

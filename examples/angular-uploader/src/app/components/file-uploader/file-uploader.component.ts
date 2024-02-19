@@ -58,8 +58,8 @@ export class FileUploaderComponent {
       this.handleChangeEvent
     );
     this.ctxProviderRef.nativeElement.addEventListener(
-      'done-click',
-      this.handleDoneClick
+      'modal-close',
+      this.handleModalCloseEvent
     );
   }
 
@@ -71,7 +71,7 @@ export class FileUploaderComponent {
     LR.FileUploaderRegular.shadowStyles = '';
 
     this.ctxProviderRef.nativeElement.removeEventListener('change', this.handleChangeEvent);
-    this.ctxProviderRef.nativeElement.removeEventListener('done-click', this.handleDoneClick);
+    this.ctxProviderRef.nativeElement.removeEventListener('modal-close', this.handleModalCloseEvent);
   }
 
   /*
@@ -96,7 +96,7 @@ export class FileUploaderComponent {
     this.uploadedFiles = e.detail.allEntries.filter(f => f.status === 'success') as OutputFileEntry<'success'>[];
   };
 
-  handleDoneClick = () => {
+  handleModalCloseEvent = () => {
     this.resetUploaderState();
 
     this.filesChange.emit([...this.files, ...this.uploadedFiles]);

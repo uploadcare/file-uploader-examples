@@ -81,17 +81,17 @@ export default function FileUploader({ files, uploaderClassName, onChange, theme
      */
     const resetUploaderState = () => ctxProviderRef.current?.uploadCollection.clearAll();
 
-    const handleDoneClick = () => {
+    const handleModalCloseEvent = () => {
       resetUploaderState();
 
       onChange([...files, ...uploadedFiles]);
       setUploadedFiles([]);
     };
 
-    ctxProvider.addEventListener('done-click', handleDoneClick);
+    ctxProvider.addEventListener('modal-close', handleModalCloseEvent);
 
     return () => {
-      ctxProvider.removeEventListener('done-click', handleDoneClick);
+      ctxProvider.removeEventListener('modal-close', handleModalCloseEvent);
     };
   }, [files, onChange, uploadedFiles, setUploadedFiles]);
 

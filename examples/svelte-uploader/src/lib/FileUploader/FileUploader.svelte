@@ -35,7 +35,7 @@
     }
   };
 
-  const handleDoneClick = () => {
+  const handleModalCloseEvent = () => {
     resetUploaderState();
 
     files = [...files, ...uploadedFiles];
@@ -63,11 +63,11 @@
       See more: https://uploadcare.com/docs/file-uploader/events/
      */
     ctxProviderRef.addEventListener('change', handleChangeEvent);
-    ctxProviderRef.addEventListener('done-click', handleDoneClick);
+    ctxProviderRef.addEventListener('modal-close', handleModalCloseEvent);
 
     return () => {
       ctxProviderRef.removeEventListener('change', handleChangeEvent);
-      ctxProviderRef.removeEventListener('done-click', handleDoneClick);
+      ctxProviderRef.removeEventListener('modal-close', handleModalCloseEvent);
 
       /*
         Note: We're resetting styles here just to be sure they do not affect other examples.

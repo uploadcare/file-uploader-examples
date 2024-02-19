@@ -58,7 +58,7 @@ export default {
         this.uploadedFiles = e.detail.allEntries.filter(f => f.status === 'success');
       }
     },
-    handleDoneClick() {
+    handleModalCloseEvent() {
       this.resetUploaderState();
 
       this.$emit('update:files', [...this.files, ...this.uploadedFiles]);
@@ -84,7 +84,7 @@ export default {
       See more: https://uploadcare.com/docs/file-uploader/events/
      */
     this.$refs.ctxProviderRef.addEventListener('change', this.handleChangeEvent);
-    this.$refs.ctxProviderRef.addEventListener('done-click', this.handleDoneClick);
+    this.$refs.ctxProviderRef.addEventListener('modal-close', this.handleModalCloseEvent);
   },
 
   beforeUnmount() {
@@ -95,7 +95,7 @@ export default {
     LR.FileUploaderRegular.shadowStyles = '';
 
     this.$refs.ctxProviderRef.removeEventListener('change', this.handleChangeEvent);
-    this.$refs.ctxProviderRef.removeEventListener('done-click', this.handleDoneClick);
+    this.$refs.ctxProviderRef.removeEventListener('modal-close', this.handleModalCloseEvent);
   }
 }
 </script>
