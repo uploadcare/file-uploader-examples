@@ -9,7 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@uploadcare/blocks": "0.30.5",
+    "@uploadcare/blocks": "0.32.4",
     "vue": "^3.3.4",
     "vue-router": "4.2.5"
   },

@@ -53,12 +53,12 @@ export default {
     handleRemoveClick(uuid) {
       this.$emit('update:files', this.files.filter(f => f.uuid !== uuid));
     },
-    handleUploadEvent(e) {
+    handleChangeEvent(e) {
       if (e.detail) {
-        this.uploadedFiles = e.detail;
+        this.uploadedFiles = e.detail.allEntries.filter(f => f.status === 'success');
       }
     },
-    handleDoneFlow() {
+    handleDoneClick() {
       this.resetUploaderState();
 
       this.$emit('update:files', [...this.files, ...this.uploadedFiles]);
@@ -81,10 +81,10 @@ export default {
       Note: Event binding is the main way to get data and other info from File Uploader.
       There plenty of events you may use.
 
-      See more: https://uploadcare.com/docs/file-uploader/data-and-events/#events
+      See more: https://uploadcare.com/docs/file-uploader/events/
      */
-    this.$refs.ctxProviderRef.addEventListener('data-output', this.handleUploadEvent);
-    this.$refs.ctxProviderRef.addEventListener('done-flow', this.handleDoneFlow);
+    this.$refs.ctxProviderRef.addEventListener('change', this.handleChangeEvent);
+    this.$refs.ctxProviderRef.addEventListener('done-click', this.handleDoneClick);
   },
 
   beforeUnmount() {
@@ -94,8 +94,8 @@ export default {
      */
     LR.FileUploaderRegular.shadowStyles = '';
 
-    this.$refs.ctxProviderRef.removeEventListener('data-output', this.handleUploadEvent);
-    this.$refs.ctxProviderRef.removeEventListener('done-flow', this.handleDoneFlow);
+    this.$refs.ctxProviderRef.removeEventListener('change', this.handleChangeEvent);
+    this.$refs.ctxProviderRef.removeEventListener('done-click', this.handleDoneClick);
   }
 }
 </script>
@@ -119,7 +119,7 @@ export default {
       pubkey="2b7f257e8ea0817ba746"
       multiple
       sourceList="local, url, camera, dropbox, gdrive"
-      confirmUpload
+      confirmUpload="false"
       removeCopyright
       imgOnly
     ></lr-config>
@@ -145,8 +145,8 @@ export default {
           class="preview-image"
           :src="`${file.cdnUrl}/-/preview/-/resize/x200/`"
           width="100"
-          :alt="file.originalFilename"
-          :title="file.originalFilename"
+          :alt="file.fileInfo.originalFilename"
+          :title="file.fileInfo.originalFilename"
         />
 
         <button
