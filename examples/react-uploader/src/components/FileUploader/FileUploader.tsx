@@ -18,7 +18,7 @@ type FileUploaderProps = {
 
 export default function FileUploader({ files, uploaderClassName, onChange, theme }: FileUploaderProps) {
   const [uploadedFiles, setUploadedFiles] = useState<OutputFileEntry[]>([]);
-  const ctxProviderRef = useRef<typeof LR.UploadCtxProvider.prototype & LR.UploadCtxProvider>(null);
+  const ctxProviderRef = useRef<InstanceType<LR.UploadCtxProvider>>(null);
 
   const handleRemoveClick = useCallback(
     (uuid: OutputFileEntry['uuid']) => onChange(files.filter(f => f.uuid !== uuid)),
@@ -46,10 +46,12 @@ export default function FileUploader({ files, uploaderClassName, onChange, theme
   }, []);
 
   useEffect(() => {
-    const handleUploadEvent = (e: CustomEvent<OutputFileEntry[]>) => {
-      if (e.detail) {
-        setUploadedFiles([...e.detail]);
-      }
+    const ctxProvider = ctxProviderRef.current;
+    if (!ctxProvider) return;
+    
+
+    const handleUploadEvent = (e: LR.EventMap['data-output']) => {
+      setUploadedFiles([...e.detail]);
     };
 
     /*
@@ -58,14 +60,15 @@ export default function FileUploader({ files, uploaderClassName, onChange, theme
 
       See more: https://uploadcare.com/docs/file-uploader/data-and-events/#events
      */
-    ctxProviderRef.current?.addEventListener('data-output', handleUploadEvent);
-
+    ctxProvider.addEventListener('data-output', handleUploadEvent);
     return () => {
-      ctxProviderRef.current?.removeEventListener('data-output', handleUploadEvent);
+      ctxProvider.removeEventListener('data-output', handleUploadEvent);
     };
   }, [setUploadedFiles]);
 
   useEffect(() => {
+    const ctxProvider = ctxProviderRef.current;
+    if (!ctxProvider) return;
     /*
       Note: Here we use provider's API to reset File Uploader state.
       It's not necessary though. We use it here to show users
@@ -85,10 +88,10 @@ export default function FileUploader({ files, uploaderClassName, onChange, theme
       setUploadedFiles([]);
     };
 
-    ctxProviderRef.current?.addEventListener('done-flow', handleDoneFlow);
+    ctxProvider.addEventListener('done-flow', handleDoneFlow);
 
     return () => {
-      ctxProviderRef.current?.removeEventListener('done-flow', handleDoneFlow);
+      ctxProvider.removeEventListener('done-flow', handleDoneFlow);
     };
   }, [files, onChange, uploadedFiles, setUploadedFiles]);
 
