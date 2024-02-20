@@ -73,15 +73,6 @@ onMounted(() => {
     See more: https://uploadcare.com/docs/file-uploader/styling/
    */
   LR.FileUploaderRegular.shadowStyles = cssOverrides;
-
-  /*
-    Note: Event binding is the main way to get data and other info from File Uploader.
-    There plenty of events you may use.
-
-    See more: https://uploadcare.com/docs/file-uploader/events/
-   */
-  ctxProviderRef.value.addEventListener('change', handleChangeEvent);
-  ctxProviderRef.value.addEventListener('modal-close', handleModalCloseEvent);
 });
 
 onBeforeUnmount(() => {
@@ -90,9 +81,6 @@ onBeforeUnmount(() => {
     You probably do not need to do it in your app.
    */
   LR.FileUploaderRegular.shadowStyles = '';
-
-  ctxProviderRef.value.removeEventListener('change', handleChangeEvent);
-  ctxProviderRef.value.removeEventListener('modal-close', handleModalCloseEvent);
 });
 </script>
 
@@ -126,9 +114,17 @@ onBeforeUnmount(() => {
       :class="[uploaderClassName, {'dark-mode-enabled': theme === 'dark'}]"
     ></lr-file-uploader-regular>
 
+    <!--
+      Note: Event binding is the main way to get data and other info from File Uploader.
+      There plenty of events you may use.
+
+      See more: https://uploadcare.com/docs/file-uploader/events/
+    -->
     <lr-upload-ctx-provider
       ctx-name="my-uploader"
       ref="ctxProviderRef"
+      @change="handleChangeEvent"
+      @modal-close="handleModalCloseEvent"
     ></lr-upload-ctx-provider>
 
     <div class="previews">
