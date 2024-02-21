@@ -1,0 +1,16 @@
+.previews {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+  margin-top: 32px;
+}
+
+.previewImage {
+  display: block;
+  object-fit: cover;
+}
+
+.previewTitle {
+  margin-top: 4px;
+}

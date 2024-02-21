@@ -5,22 +5,99 @@
   <meta name="description" content="Uploading files with HTML and JS using Uploadcare"/>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <style>
+    .previews {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      width: 100%;
+      margin-top: 32px;
+    }
+
+    .preview-image {
+      display: block;
+      object-fit: cover;
+    }
+
+    .preview-title {
+      margin-top: 4px;
+    }
+  </style>
 </head>
 <body>
-  <script type="module">
-    import * as LR from 'https://cdn.jsdelivr.net/npm/@uploadcare/blocks@0.30.0/web/lr-file-uploader-minimal.min.js';
-
-    LR.registerBlocks(LR);
-  </script>
   <lr-config
     ctx-name="my-uploader"
     pubkey="2b7f257e8ea0817ba746"
-  >
-  </lr-config>
+  ></lr-config>
   <lr-file-uploader-minimal
     ctx-name="my-uploader"
-    css-src="https://cdn.jsdelivr.net/npm/@uploadcare/blocks@0.30.0/web/lr-file-uploader-minimal.min.css"
+    css-src="https://cdn.jsdelivr.net/npm/@uploadcare/blocks@0.33.2/web/lr-file-uploader-minimal.min.css"
   ></lr-file-uploader-minimal>
+  <lr-upload-ctx-provider
+    ctx-name="my-uploader"
+    id="my-uploader-provider"
+  ></lr-upload-ctx-provider>
+
+  <div class="previews" id="previews"></div>
+
+  <script type="module">
+    import * as LR from 'https://cdn.jsdelivr.net/npm/@uploadcare/blocks@0.33.2/web/lr-file-uploader-minimal.min.js';
+
+    LR.registerBlocks(LR);
+
+    const providerNode = document.getElementById('my-uploader-provider');
+    const previewsNode = document.getElementById('previews');
+
+    /*
+      Note: Event binding is the main way to get data and other info from File Uploader.
+      There plenty of events you may use.
+
+      See more: https://uploadcare.com/docs/file-uploader/events/
+     */
+    providerNode.addEventListener('change', handleChangeEvent);
+
+    function handleChangeEvent(e) {
+      console.log('change event payload:', e);
+
+      renderFiles(e.detail.allEntries.filter(f => f.status === 'success'));
+    }
+
+    function renderFiles(files) {
+      const renderedFiles = files.map(file => {
+        const fileNode = document.createElement('div');
+
+        const imgNode = document.createElement('img');
+        imgNode.setAttribute('class', 'preview-image');
+        imgNode.setAttribute('src', file.cdnUrl + '/-/preview/-/resize/x400/');
+        imgNode.setAttribute('width','200');
+        imgNode.setAttribute('height','200');
+        imgNode.setAttribute('alt', file.fileInfo.originalFilename);
+        imgNode.setAttribute('title', file.fileInfo.originalFilename);
+
+        const titleNode = document.createElement('span');
+        titleNode.setAttribute('class', 'preview-title');
+        titleNode.textContent = `${file.fileInfo.originalFilename}, ${formatSize(file.fileInfo.size)}`;
+
+        fileNode.append(imgNode, titleNode);
+
+        return fileNode;
+      });
+
+      previewsNode.replaceChildren(...renderedFiles);
+    }
+
+    function formatSize(bytes) {
+      if (!bytes) return '0 Bytes';
+
+      const k = 1024;
+      const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
+
+      const i = Math.floor(Math.log(bytes) / Math.log(k));
+
+      return `${parseFloat((bytes / k ** i).toFixed(2))} ${sizes[i]}`;
+    }
+  </script>
 
   <p>
     <a href="/">← All JS Examples</a>

@@ -50,13 +50,13 @@ function handleRemoveClick(uuid) {
   emit('update:files', props.files.filter(f => f.uuid !== uuid));
 }
 
-function handleUploadEvent(e) {
+function handleChangeEvent(e) {
   if (e.detail) {
-    uploadedFiles.value = e.detail;
+    uploadedFiles.value = e.detail.allEntries.filter(f => f.status === 'success');
   }
 }
 
-function handleDoneFlow() {
+function handleModalCloseEvent() {
   resetUploaderState();
 
   emit('update:files', [...props.files, ...uploadedFiles.value]);
@@ -73,15 +73,6 @@ onMounted(() => {
     See more: https://uploadcare.com/docs/file-uploader/styling/
    */
   LR.FileUploaderRegular.shadowStyles = cssOverrides;
-
-  /*
-    Note: Event binding is the main way to get data and other info from File Uploader.
-    There plenty of events you may use.
-
-    See more: https://uploadcare.com/docs/file-uploader/data-and-events/#events
-   */
-  ctxProviderRef.value.addEventListener('data-output', handleUploadEvent);
-  ctxProviderRef.value.addEventListener('done-flow', handleDoneFlow);
 });
 
 onBeforeUnmount(() => {
@@ -90,9 +81,6 @@ onBeforeUnmount(() => {
     You probably do not need to do it in your app.
    */
   LR.FileUploaderRegular.shadowStyles = '';
-
-  ctxProviderRef.value.removeEventListener('data-output', handleUploadEvent);
-  ctxProviderRef.value.removeEventListener('done-flow', handleDoneFlow);
 });
 </script>
 
@@ -115,7 +103,7 @@ onBeforeUnmount(() => {
       pubkey="2b7f257e8ea0817ba746"
       multiple
       sourceList="local, url, camera, dropbox, gdrive"
-      confirmUpload
+      confirmUpload="false"
       removeCopyright
       imgOnly
     ></lr-config>
@@ -126,9 +114,17 @@ onBeforeUnmount(() => {
       :class="[uploaderClassName, {'dark-mode-enabled': theme === 'dark'}]"
     ></lr-file-uploader-regular>
 
+    <!--
+      Note: Event binding is the main way to get data and other info from File Uploader.
+      There plenty of events you may use.
+
+      See more: https://uploadcare.com/docs/file-uploader/events/
+    -->
     <lr-upload-ctx-provider
       ctx-name="my-uploader"
       ref="ctxProviderRef"
+      @change="handleChangeEvent"
+      @modal-close="handleModalCloseEvent"
     ></lr-upload-ctx-provider>
 
     <div class="previews">
@@ -141,8 +137,8 @@ onBeforeUnmount(() => {
           class="preview-image"
           :src="`${file.cdnUrl}/-/preview/-/resize/x200/`"
           width="100"
-          :alt="file.originalFilename"
-          :title="file.originalFilename"
+          :alt="file.fileInfo.originalFilename"
+          :title="file.fileInfo.originalFilename"
         />
 
         <button

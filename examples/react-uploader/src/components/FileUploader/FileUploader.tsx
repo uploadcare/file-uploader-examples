@@ -17,7 +17,7 @@ type FileUploaderProps = {
 }
 
 export default function FileUploader({ files, uploaderClassName, onChange, theme }: FileUploaderProps) {
-  const [uploadedFiles, setUploadedFiles] = useState<OutputFileEntry[]>([]);
+  const [uploadedFiles, setUploadedFiles] = useState<OutputFileEntry<'success'>[]>([]);
   const ctxProviderRef = useRef<InstanceType<LR.UploadCtxProvider>>(null);
 
   const handleRemoveClick = useCallback(
@@ -48,27 +48,27 @@ export default function FileUploader({ files, uploaderClassName, onChange, theme
   useEffect(() => {
     const ctxProvider = ctxProviderRef.current;
     if (!ctxProvider) return;
-    
 
-    const handleUploadEvent = (e: LR.EventMap['data-output']) => {
-      setUploadedFiles([...e.detail]);
+    const handleChangeEvent = (e: LR.EventMap['change']) => {
+      setUploadedFiles([...e.detail.allEntries.filter(f => f.status === 'success')] as OutputFileEntry<'success'>[]);
     };
 
     /*
       Note: Event binding is the main way to get data and other info from File Uploader.
       There plenty of events you may use.
 
-      See more: https://uploadcare.com/docs/file-uploader/data-and-events/#events
+      See more: https://uploadcare.com/docs/file-uploader/events/
      */
-    ctxProvider.addEventListener('data-output', handleUploadEvent);
+    ctxProvider.addEventListener('change', handleChangeEvent);
     return () => {
-      ctxProvider.removeEventListener('data-output', handleUploadEvent);
+      ctxProvider.removeEventListener('change', handleChangeEvent);
     };
   }, [setUploadedFiles]);
 
   useEffect(() => {
     const ctxProvider = ctxProviderRef.current;
     if (!ctxProvider) return;
+
     /*
       Note: Here we use provider's API to reset File Uploader state.
       It's not necessary though. We use it here to show users
@@ -81,17 +81,17 @@ export default function FileUploader({ files, uploaderClassName, onChange, theme
      */
     const resetUploaderState = () => ctxProviderRef.current?.uploadCollection.clearAll();
 
-    const handleDoneFlow = () => {
+    const handleModalCloseEvent = () => {
       resetUploaderState();
 
       onChange([...files, ...uploadedFiles]);
       setUploadedFiles([]);
     };
 
-    ctxProvider.addEventListener('done-flow', handleDoneFlow);
+    ctxProvider.addEventListener('modal-close', handleModalCloseEvent);
 
     return () => {
-      ctxProvider.removeEventListener('done-flow', handleDoneFlow);
+      ctxProvider.removeEventListener('modal-close', handleModalCloseEvent);
     };
   }, [files, onChange, uploadedFiles, setUploadedFiles]);
 
@@ -138,8 +138,8 @@ export default function FileUploader({ files, uploaderClassName, onChange, theme
               key={file.uuid}
               src={`${file.cdnUrl}/-/preview/-/resize/x200/`}
               width="100"
-              alt={file.originalFilename || ''}
-              title={file.originalFilename || ''}
+              alt={file.fileInfo?.originalFilename || ''}
+              title={file.fileInfo?.originalFilename || ''}
             />
 
             <button

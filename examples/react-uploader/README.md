@@ -65,7 +65,7 @@ which provides React-friendly API for the rest of the view. There are Blocks ins
 
 ### Non-React things you should know about
 
-1. Communicate with Blocks File Uploader with [events](https://uploadcare.com/docs/file-uploader/data-and-events/).
+1. Communicate with Blocks File Uploader with [events](https://uploadcare.com/docs/file-uploader/events/).
    You will find them in the example. It's easy to handle using hooks like [`useEffect`](https://react.dev/reference/react/useEffect).
 
 2. Use `class` attribute instead of `className`.

@@ -53,12 +53,12 @@ export default {
     handleRemoveClick(uuid) {
       this.$emit('update:files', this.files.filter(f => f.uuid !== uuid));
     },
-    handleUploadEvent(e) {
+    handleChangeEvent(e) {
       if (e.detail) {
-        this.uploadedFiles = e.detail;
+        this.uploadedFiles = e.detail.allEntries.filter(f => f.status === 'success');
       }
     },
-    handleDoneFlow() {
+    handleModalCloseEvent() {
       this.resetUploaderState();
 
       this.$emit('update:files', [...this.files, ...this.uploadedFiles]);
@@ -76,15 +76,6 @@ export default {
       See more: https://uploadcare.com/docs/file-uploader/styling/
      */
     LR.FileUploaderRegular.shadowStyles = cssOverrides;
-
-    /*
-      Note: Event binding is the main way to get data and other info from File Uploader.
-      There plenty of events you may use.
-
-      See more: https://uploadcare.com/docs/file-uploader/data-and-events/#events
-     */
-    this.$refs.ctxProviderRef.addEventListener('data-output', this.handleUploadEvent);
-    this.$refs.ctxProviderRef.addEventListener('done-flow', this.handleDoneFlow);
   },
 
   beforeUnmount() {
@@ -93,9 +84,6 @@ export default {
       You probably do not need to do it in your app.
      */
     LR.FileUploaderRegular.shadowStyles = '';
-
-    this.$refs.ctxProviderRef.removeEventListener('data-output', this.handleUploadEvent);
-    this.$refs.ctxProviderRef.removeEventListener('done-flow', this.handleDoneFlow);
   }
 }
 </script>
@@ -119,7 +107,7 @@ export default {
       pubkey="2b7f257e8ea0817ba746"
       multiple
       sourceList="local, url, camera, dropbox, gdrive"
-      confirmUpload
+      confirmUpload="false"
       removeCopyright
       imgOnly
     ></lr-config>
@@ -130,9 +118,17 @@ export default {
       :class="[uploaderClassName, {'dark-mode-enabled': theme === 'dark'}]"
     ></lr-file-uploader-regular>
 
+    <!--
+      Note: Event binding is the main way to get data and other info from File Uploader.
+      There plenty of events you may use.
+
+      See more: https://uploadcare.com/docs/file-uploader/events/
+    -->
     <lr-upload-ctx-provider
       ctx-name="my-uploader"
       ref="ctxProviderRef"
+      @change="handleChangeEvent"
+      @modal-close="handleModalCloseEvent"
     ></lr-upload-ctx-provider>
 
     <div class="previews">
@@ -145,8 +141,8 @@ export default {
           class="preview-image"
           :src="`${file.cdnUrl}/-/preview/-/resize/x200/`"
           width="100"
-          :alt="file.originalFilename"
-          :title="file.originalFilename"
+          :alt="file.fileInfo.originalFilename"
+          :title="file.fileInfo.originalFilename"
         />
 
         <button
