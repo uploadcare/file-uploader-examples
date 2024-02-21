@@ -9,8 +9,6 @@
   export let uploaderClassName;
   export let theme;
 
-  LR.registerBlocks(LR);
-
   let uploadedFiles = [];
 
   let ctxProviderRef;
@@ -31,13 +29,13 @@
     files = files.filter(f => f.uuid !== uuid);
   };
 
-  const handleUploadEvent = e => {
+  const handleChangeEvent = e => {
     if (e.detail) {
-      uploadedFiles = e.detail;
+      uploadedFiles = e.detail.allEntries.filter(f => f.status === 'success');
     }
   };
 
-  const handleDoneFlow = () => {
+  const handleModalCloseEvent = () => {
     resetUploaderState();
 
     files = [...files, ...uploadedFiles];
@@ -45,6 +43,8 @@
   };
 
   onMount(() => {
+    LR.registerBlocks(LR);
+
     /*
       Note: File Uploader styles are scoped due to ShadowDOM usage.
       There are two ways to override them. One way is used on the line below,
@@ -60,14 +60,14 @@
       Note: Event binding is the main way to get data and other info from File Uploader.
       There plenty of events you may use.
 
-      See more: https://uploadcare.com/docs/file-uploader/data-and-events/#events
+      See more: https://uploadcare.com/docs/file-uploader/events/
      */
-    ctxProviderRef.addEventListener('data-output', handleUploadEvent);
-    ctxProviderRef.addEventListener('done-flow', handleDoneFlow);
+    ctxProviderRef.addEventListener('change', handleChangeEvent);
+    ctxProviderRef.addEventListener('modal-close', handleModalCloseEvent);
 
     return () => {
-      ctxProviderRef.removeEventListener('data-output', handleUploadEvent);
-      ctxProviderRef.removeEventListener('done-flow', handleDoneFlow);
+      ctxProviderRef.removeEventListener('change', handleChangeEvent);
+      ctxProviderRef.removeEventListener('modal-close', handleModalCloseEvent);
 
       /*
         Note: We're resetting styles here just to be sure they do not affect other examples.
@@ -120,8 +120,8 @@
           class="preview-image"
           src={`${file.cdnUrl}/-/preview/-/resize/x200/`}
           width="100"
-          alt={file.originalFilename}
-          title={file.originalFilename}
+          alt={file.fileInfo.originalFilename}
+          title={file.fileInfo.originalFilename}
         />
 
         <button
