@@ -1,16 +1,32 @@
 .previews {
   display: flex;
-  flex-direction: column;
-  gap: 16px;
+  flex-wrap: wrap;
+  gap: 8px;
   width: 100%;
-  margin-top: 32px;
+  margin-top: 20px;
+}
+
+.preview-wrapper {
+  background-color: white;
+  color: darkslategray;
+  border-radius: 12px;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .preview-image {
   display: block;
   object-fit: cover;
+  border-radius: 4px;
+  margin-bottom: 8px;
 }
 
-.preview-title {
-  margin-top: 4px;
+.preview-data {
+  font-size: 13px;
+  max-width: 200px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
