@@ -30,10 +30,8 @@ This is an example project of implementing a file uploader in a Svelte applicati
 $ cd examples/svelte-uploader
 
 $ npm install
-# or `yarn install`, if you wish
 
 $ npm run dev
-# or `yarn dev`
 ```
 
 ## Installation
