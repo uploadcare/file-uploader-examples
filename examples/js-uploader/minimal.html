@@ -6,26 +6,13 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-  <style>
-    .previews {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-      width: 100%;
-      margin-top: 32px;
-    }
-
-    .preview-image {
-      display: block;
-      object-fit: cover;
-    }
-
-    .preview-title {
-      margin-top: 4px;
-    }
-  </style>
+  <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
+  <p>
+    <a href="/">← All JS Examples</a>
+  </p>
+  <hr>
   <lr-config
     ctx-name="my-uploader"
     pubkey="2b7f257e8ea0817ba746"
@@ -66,6 +53,7 @@
     function renderFiles(files) {
       const renderedFiles = files.map(file => {
         const fileNode = document.createElement('div');
+        fileNode.setAttribute('class', 'preview-wrapper');
 
         const imgNode = document.createElement('img');
         imgNode.setAttribute('class', 'preview-image');
@@ -75,11 +63,15 @@
         imgNode.setAttribute('alt', file.fileInfo.originalFilename);
         imgNode.setAttribute('title', file.fileInfo.originalFilename);
 
-        const titleNode = document.createElement('span');
-        titleNode.setAttribute('class', 'preview-title');
-        titleNode.textContent = `${file.fileInfo.originalFilename}, ${formatSize(file.fileInfo.size)}`;
+        const imgNameNode = document.createElement('p');
+        imgNameNode.setAttribute('class', 'preview-data');
+        imgNameNode.textContent = `${file.fileInfo.originalFilename}`;
 
-        fileNode.append(imgNode, titleNode);
+        const imgSizeNode = document.createElement('p');
+        imgSizeNode.setAttribute('class', 'preview-data');
+        imgSizeNode.textContent = `${formatSize(file.fileInfo.size)}`;
+
+        fileNode.append(imgNode, imgNameNode, imgSizeNode);
 
         return fileNode;
       });
@@ -98,9 +90,5 @@
       return `${parseFloat((bytes / k ** i).toFixed(2))} ${sizes[i]}`;
     }
   </script>
-
-  <p>
-    <a href="/">← All JS Examples</a>
-  </p>
 </body>
 </html>

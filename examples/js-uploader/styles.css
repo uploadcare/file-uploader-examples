@@ -1,0 +1,58 @@
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Roboto, Arial, sans-serif;
+    font-size: 14px;
+    padding: 12px;
+}
+
+p {
+    margin: 0;
+    line-height: 1.4em;
+}
+
+a:link, a:hover, a:active, a:visited {
+    color: blue;
+    text-decoration: none;
+}
+
+a:hover {
+    color: darkblue;
+}
+
+hr {
+    border: none;
+    border-top: 1px solid whitesmoke;
+    margin: 20px 0;
+}
+
+.previews {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.preview-wrapper {
+    background-color: whitesmoke;
+    color: darkslategray;
+    border-radius: 12px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.preview-image {
+    display: block;
+    object-fit: cover;
+    border-radius: 4px;
+    margin-bottom: 8px;
+}
+
+.preview-data {
+    font-size: 13px;
+    max-width: 200px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
