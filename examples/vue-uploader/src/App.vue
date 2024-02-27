@@ -40,7 +40,7 @@
 
     <div class="source">
     <span class="source-title">
-      Built with Uploadcare Blocks and Angular
+      Built with Uploadcare Blocks and Vue
     </span>
 
       <a class="link" href="https://github.com/uploadcare/blocks-examples/tree/main/examples/angular-uploader">
