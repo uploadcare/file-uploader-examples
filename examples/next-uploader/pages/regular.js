@@ -33,7 +33,12 @@ function Regular() {
   }, [setFiles]);
 
   return (
-    <div>
+    <div className={st.pageWrapper}>
+      <p className={st.paragraph}>
+        <a href="/" className={st.link}>← All Next.js Examples</a>
+      </p>
+      <hr className={st.separator}/>
+
       <lr-config
         ctx-name="my-uploader"
         pubkey="2b7f257e8ea0817ba746"
@@ -50,7 +55,7 @@ function Regular() {
 
       <div className={st.previews}>
         {files.map((file) => (
-          <div key={file.uuid}>
+          <div key={file.uuid} className={st.previewWrapper}>
             <img
               className={st.previewImage}
               key={file.uuid}
@@ -61,16 +66,15 @@ function Regular() {
               title={file.fileInfo.originalFilename || ''}
             />
 
-            <span className={st.previewTitle}>
-              {file.fileInfo.originalFilename}, {formatSize(file.fileInfo.size)}
-            </span>
+            <p className={st.previewData}>
+              {file.fileInfo.originalFilename}
+            </p>
+            <p className={st.previewData}>
+              {formatSize(file.fileInfo.size)}
+            </p>
           </div>
         ))}
       </div>
-
-      <p>
-        <a href="/">← All Next.js Examples</a>
-      </p>
     </div>
   );
 }
