@@ -61,7 +61,7 @@
 
   <div class="previews">
     {#each files as file (file.cdnUrl)}
-      <div>
+      <div class="preview-wrapper">
         <img
           class="preview-image"
           src={`${file.cdnUrl}/-/preview/-/resize/x400/`}
@@ -71,9 +71,12 @@
           title={file.fileInfo.originalFilename}
         />
 
-        <span class="preview-title">
-          {file.fileInfo.originalFilename}, {formatSize(file.fileInfo.size)}
-        </span>
+        <p class="preview-data">
+          {file.fileInfo.originalFilename}
+        </p>
+        <p class="preview-data">
+          {formatSize(file.fileInfo.size)}
+        </p>
       </div>
     {/each}
   </div>
@@ -82,19 +85,35 @@
 <style>
   .previews {
     display: flex;
-    flex-direction: column;
-    gap: 16px;
+    flex-wrap: wrap;
+    gap: 8px;
     width: 100%;
-    margin-top: 32px;
+    margin-top: 20px;
+  }
+
+  .preview-wrapper {
+    background-color: white;
+    color: darkslategray;
+    border-radius: 12px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
   .preview-image {
     display: block;
     object-fit: cover;
+    border-radius: 4px;
+    margin-bottom: 8px;
   }
 
-  .preview-title {
-    margin-top: 4px;
+  .preview-data {
+    font-size: 13px;
+    max-width: 200px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
   }
 </style>
 
