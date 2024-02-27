@@ -51,7 +51,7 @@ export default function MinimalView() {
 
       <div className={st.previews}>
         {files.map((file) => (
-          <div key={file.uuid}>
+          <div key={file.uuid} className={st.previewWrapper}>
             <img
               className={st.previewImage}
               key={file.uuid}
@@ -62,9 +62,12 @@ export default function MinimalView() {
               title={file.fileInfo.originalFilename || ''}
             />
 
-            <span className={st.previewTitle}>
-              {file.fileInfo.originalFilename}, {formatSize(file.fileInfo.size)}
-            </span>
+            <p className={st.previewData}>
+              {file.fileInfo.originalFilename}
+            </p>
+            <p className={st.previewData}>
+              {formatSize(file.fileInfo.size)}
+            </p>
           </div>
         ))}
       </div>
