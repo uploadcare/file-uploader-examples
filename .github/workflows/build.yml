@@ -18,5 +18,5 @@ jobs:
         env:
           VITE_UNSPLASH_TOKEN: ${{ secrets.UNSPLASH_TOKEN }}
         run: |
-          npm ci
+          npm run install-ci-deps
           npm run build

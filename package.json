@@ -4,11 +4,9 @@
   "type": "module",
   "version": "1.0.0",
   "main": "index.js",
-  "workspaces": [
-    "examples/*"
-  ],
   "scripts": {
-    "build": "npm run build --workspaces",
+    "install-ci-deps": "for dir in ./examples/*; do npm ci --prefix \"${dir}\"; done",
+    "build": "for dir in ./examples/*; do npm run build --prefix \"${dir}\"; done",
     "format": "npx prettier . --write"
   },
   "author": "Uploadcare",
