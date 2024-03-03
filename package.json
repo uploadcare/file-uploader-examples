@@ -8,15 +8,12 @@
     "examples/*"
   ],
   "scripts": {
-    "bump": "npm-check-updates /@uploadcare/ -u --deep",
     "build": "npm run build --workspaces",
-    "serve": "npx serve ./public/",
     "format": "npx prettier . --write"
   },
   "author": "Uploadcare",
   "license": "MIT",
   "devDependencies": {
-    "npm-check-updates": "^16.10.8",
     "prettier": "3.1.0"
   }
 }
