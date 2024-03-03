@@ -3,15 +3,10 @@
   "private": true,
   "type": "module",
   "version": "1.0.0",
-  "main": "index.js",
   "scripts": {
     "install-ci-deps": "for dir in ./examples/*; do npm ci --prefix \"${dir}\"; done",
-    "build": "for dir in ./examples/*; do npm run build --prefix \"${dir}\"; done",
-    "format": "npx prettier . --write"
+    "build": "for dir in ./examples/*; do npm run build --prefix \"${dir}\"; done"
   },
   "author": "Uploadcare",
-  "license": "MIT",
-  "devDependencies": {
-    "prettier": "3.1.0"
-  }
+  "license": "MIT"
 }
