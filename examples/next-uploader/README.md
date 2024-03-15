@@ -28,8 +28,10 @@
 $ cd examples/next-uploader
 
 $ npm install
+# or `yarn install`, if you wish
 
-$ npm run dev
+$ npm run start
+# or `yarn start`
 ```
 
 ## Contribution

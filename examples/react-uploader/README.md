@@ -30,8 +30,10 @@ This is an example project of implementing a file uploader in a React applicatio
 $ cd examples/react-uploader
 
 $ npm install
+# or `yarn install`, if you wish
 
-$ npm run dev
+$ npm run start
+# or `yarn start`
 ```
 
 ## Installation

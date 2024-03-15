@@ -30,8 +30,10 @@ This is an example project of implementing a file uploader in an Angular applica
 $ cd examples/angular-uploader
 
 $ npm install
+# or `yarn install`, if you wish
 
 $ npm run start
+# or `yarn start`
 ```
 
 ## Installation

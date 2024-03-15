@@ -3,20 +3,10 @@
   "private": true,
   "type": "module",
   "version": "1.0.0",
-  "main": "index.js",
-  "workspaces": [
-    "examples/*"
-  ],
   "scripts": {
-    "bump": "npm-check-updates /@uploadcare/ -u --deep",
-    "build": "npm run build --workspaces",
-    "serve": "npx serve ./public/",
-    "format": "npx prettier . --write"
+    "install-ci-deps": "for dir in ./examples/*; do npm ci --prefix \"${dir}\"; done",
+    "build": "for dir in ./examples/*; do npm run build --prefix \"${dir}\"; done"
   },
   "author": "Uploadcare",
-  "license": "MIT",
-  "devDependencies": {
-    "npm-check-updates": "^16.10.8",
-    "prettier": "3.1.0"
-  }
+  "license": "MIT"
 }

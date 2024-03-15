@@ -20,6 +20,21 @@
 
 [![Edit js-uploader](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/github/uploadcare/blocks-examples/tree/main/examples/js-uploader/)
 
+## Run this demo locally
+
+```bash
+# clone this repo and go to the cloned folder
+
+$ cd examples/js-uploader
+
+$ npm install
+# or `yarn install`, if you wish
+
+$ npm run start
+# or `yarn start`
+```
+
+
 ## Contribution
 
 You’re always welcome to contribute:
