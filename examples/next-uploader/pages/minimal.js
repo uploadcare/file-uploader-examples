@@ -41,7 +41,7 @@ function Minimal() {
 
       <lr-config
         ctx-name="my-uploader"
-        pubkey="2b7f257e8ea0817ba746"
+        pubkey="a6ca334c3520777c0045"
       ></lr-config>
       <lr-file-uploader-minimal
         ctx-name="my-uploader"
