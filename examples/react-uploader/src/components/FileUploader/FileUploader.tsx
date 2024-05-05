@@ -19,6 +19,7 @@ type FileUploaderProps = {
 export default function FileUploader({ files, uploaderClassName, onChange, theme }: FileUploaderProps) {
   const [uploadedFiles, setUploadedFiles] = useState<OutputFileEntry<'success'>[]>([]);
   const ctxProviderRef = useRef<InstanceType<LR.UploadCtxProvider>>(null);
+  const configRef = useRef<InstanceType<LR.Config>>(null);
 
   const handleRemoveClick = useCallback(
     (uuid: OutputFileEntry['uuid']) => onChange(files.filter(f => f.uuid !== uuid)),
@@ -62,6 +63,43 @@ export default function FileUploader({ files, uploaderClassName, onChange, theme
     ctxProvider.addEventListener('change', handleChangeEvent);
     return () => {
       ctxProvider.removeEventListener('change', handleChangeEvent);
+    };
+  }, [setUploadedFiles]);
+
+  useEffect(() => {
+    const config = configRef.current;
+    if (!config) return;
+
+    /*
+     Note: Localization of File Uploader is done via DOM property on the config node.
+     You can change any piece of text of File Uploader this way.
+
+     See more: https://uploadcare.com/docs/file-uploader/localization/
+    */
+    config.localeDefinitionOverride = {
+      en: {
+        'photo__one': 'photo',
+        'photo__many': 'photos',
+        'photo__other': 'photos',
+
+        'upload-file': 'Upload photo',
+        'upload-files': 'Upload photos',
+        'choose-file': 'Choose photo',
+        'choose-files': 'Choose photos',
+        'drop-files-here': 'Drop photos here',
+        'select-file-source': 'Select photo source',
+        'edit-image': 'Edit photo',
+        'no-files': 'No photos selected',
+        'caption-edit-file': 'Edit photo',
+        'files-count-allowed': 'Only {{count}} {{plural:photo(count)}} allowed',
+        'files-max-size-limit-error': 'Photo is too big. Max photo size is {{maxFileSize}}.',
+        'header-uploading': 'Uploading {{count}} {{plural:photo(count)}}',
+        'header-succeed': '{{count}} {{plural:photo(count)}} uploaded',
+        'header-total': '{{count}} {{plural:photo(count)}} selected',
+      }
+    }
+    return () => {
+      config.localeDefinitionOverride = null;
     };
   }, [setUploadedFiles]);
 
@@ -110,6 +148,7 @@ export default function FileUploader({ files, uploaderClassName, onChange, theme
          Here they are: https://github.com/uploadcare/blocks/blob/main/blocks/themes/lr-basic/config.css
       */}
       <lr-config
+        ref={configRef}
         ctx-name="my-uploader"
         pubkey="a6ca334c3520777c0045"
         multiple={true}
@@ -126,8 +165,8 @@ export default function FileUploader({ files, uploaderClassName, onChange, theme
       ></lr-file-uploader-regular>
 
       <lr-upload-ctx-provider
-        ctx-name="my-uploader"
         ref={ctxProviderRef}
+        ctx-name="my-uploader"
       />
 
       <div className={st.previews}>
