@@ -34,6 +34,10 @@ export class FileUploaderComponent {
     InstanceType<LR.UploadCtxProvider>
   >;
 
+  @ViewChild('config', { static: true }) configRef!: ElementRef<
+    InstanceType<LR.Config>
+  >;
+
   blocksStyles = blocksStyles;
 
   ngOnInit() {
@@ -61,6 +65,35 @@ export class FileUploaderComponent {
       'modal-close',
       this.handleModalCloseEvent
     );
+
+    /*
+      Note: Localization of File Uploader is done via DOM property on the config node.
+      You can change any piece of text of File Uploader this way.
+
+      See more: https://uploadcare.com/docs/file-uploader/localization/
+     */
+    this.configRef.nativeElement.localeDefinitionOverride = {
+      en: {
+        'photo__one': 'photo',
+        'photo__many': 'photos',
+        'photo__other': 'photos',
+
+        'upload-file': 'Upload photo',
+        'upload-files': 'Upload photos',
+        'choose-file': 'Choose photo',
+        'choose-files': 'Choose photos',
+        'drop-files-here': 'Drop photos here',
+        'select-file-source': 'Select photo source',
+        'edit-image': 'Edit photo',
+        'no-files': 'No photos selected',
+        'caption-edit-file': 'Edit photo',
+        'files-count-allowed': 'Only {{count}} {{plural:photo(count)}} allowed',
+        'files-max-size-limit-error': 'Photo is too big. Max photo size is {{maxFileSize}}.',
+        'header-uploading': 'Uploading {{count}} {{plural:photo(count)}}',
+        'header-succeed': '{{count}} {{plural:photo(count)}} uploaded',
+        'header-total': '{{count}} {{plural:photo(count)}} selected',
+      }
+    }
   }
 
   ngOnDestroy() {
