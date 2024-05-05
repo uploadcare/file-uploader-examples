@@ -76,6 +76,36 @@ export default {
       See more: https://uploadcare.com/docs/file-uploader/styling/
      */
     LR.FileUploaderRegular.shadowStyles = cssOverrides;
+
+
+    /*
+      Note: Localization of File Uploader is done via DOM property on the config node.
+      You can change any piece of text of File Uploader this way.
+
+      See more: https://uploadcare.com/docs/file-uploader/localization/
+     */
+    this.$refs.ctxProviderRef.localeDefinitionOverride = {
+      en: {
+        'photo__one': 'photo',
+        'photo__many': 'photos',
+        'photo__other': 'photos',
+
+        'upload-file': 'Upload photo',
+        'upload-files': 'Upload photos',
+        'choose-file': 'Choose photo',
+        'choose-files': 'Choose photos',
+        'drop-files-here': 'Drop photos here',
+        'select-file-source': 'Select photo source',
+        'edit-image': 'Edit photo',
+        'no-files': 'No photos selected',
+        'caption-edit-file': 'Edit photo',
+        'files-count-allowed': 'Only {{count}} {{plural:photo(count)}} allowed',
+        'files-max-size-limit-error': 'Photo is too big. Max photo size is {{maxFileSize}}.',
+        'header-uploading': 'Uploading {{count}} {{plural:photo(count)}}',
+        'header-succeed': '{{count}} {{plural:photo(count)}} uploaded',
+        'header-total': '{{count}} {{plural:photo(count)}} selected',
+      }
+    }
   },
 
   beforeUnmount() {
@@ -84,6 +114,8 @@ export default {
       You probably do not need to do it in your app.
      */
     LR.FileUploaderRegular.shadowStyles = '';
+
+    this.$refs.ctxProviderRef.localeDefinitionOverride = null;
   }
 }
 </script>
@@ -103,6 +135,7 @@ export default {
       Here they are: https://github.com/uploadcare/blocks/blob/main/blocks/themes/lr-basic/config.css
     -->
     <lr-config
+      ref="configRef"
       ctx-name="my-uploader"
       pubkey="a6ca334c3520777c0045"
       multiple
@@ -125,8 +158,8 @@ export default {
       See more: https://uploadcare.com/docs/file-uploader/events/
     -->
     <lr-upload-ctx-provider
-      ctx-name="my-uploader"
       ref="ctxProviderRef"
+      ctx-name="my-uploader"
       @change="handleChangeEvent"
       @modal-close="handleModalCloseEvent"
     ></lr-upload-ctx-provider>
