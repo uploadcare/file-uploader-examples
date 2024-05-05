@@ -105,6 +105,8 @@ export class FileUploaderComponent {
 
     this.ctxProviderRef.nativeElement.removeEventListener('change', this.handleChangeEvent);
     this.ctxProviderRef.nativeElement.removeEventListener('modal-close', this.handleModalCloseEvent);
+
+    this.configRef.nativeElement.localeDefinitionOverride = null;
   }
 
   /*
