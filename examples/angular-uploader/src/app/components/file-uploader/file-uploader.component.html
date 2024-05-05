@@ -12,6 +12,7 @@
     Here they are: https://github.com/uploadcare/blocks/blob/main/blocks/themes/lr-basic/config.css
   -->
   <lr-config
+    #config
     ctx-name="my-uploader"
     pubkey="a6ca334c3520777c0045"
     multiple="true"
@@ -19,7 +20,6 @@
     confirmUpload="false"
     removeCopyright="true"
     imgOnly="true"
-    #config
   ></lr-config>
 
   <lr-file-uploader-regular
@@ -30,8 +30,8 @@
   ></lr-file-uploader-regular>
 
   <lr-upload-ctx-provider
-    ctx-name="my-uploader"
     #ctxProvider
+    ctx-name="my-uploader"
   ></lr-upload-ctx-provider>
 
   <div class="previews">
