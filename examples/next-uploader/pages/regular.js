@@ -1,7 +1,7 @@
 import * as LR from '@uploadcare/blocks';
-import { PACKAGE_VERSION } from '@uploadcare/blocks';
 import React, { useEffect, useRef, useState } from 'react';
 
+import '@uploadcare/blocks/web/lr-file-uploader-regular.min.css';
 import st from './styles.module.css';
 
 LR.registerBlocks(LR);
@@ -46,7 +46,6 @@ function Regular() {
       ></lr-config>
       <lr-file-uploader-regular
         ctx-name="my-uploader"
-        css-src={`https://cdn.jsdelivr.net/npm/@uploadcare/blocks@${PACKAGE_VERSION}/web/lr-file-uploader-regular.min.css`}
       ></lr-file-uploader-regular>
       <lr-upload-ctx-provider
         ctx-name="my-uploader"
