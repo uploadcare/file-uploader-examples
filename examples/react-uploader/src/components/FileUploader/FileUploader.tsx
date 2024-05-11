@@ -1,10 +1,8 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import * as LR from '@uploadcare/blocks';
 import { OutputFileEntry } from '@uploadcare/blocks';
-import blocksStyles from '@uploadcare/blocks/web/lr-file-uploader-regular.min.css?url';
 
 import st from './FileUploader.module.scss';
-import cssOverrides from './FileUploader.overrides.css?inline';
 import cs from 'classnames';
 
 LR.registerBlocks(LR);
@@ -25,26 +23,6 @@ export default function FileUploader({ files, uploaderClassName, onChange, theme
     (uuid: OutputFileEntry['uuid']) => onChange(files.filter(f => f.uuid !== uuid)),
     [files, onChange],
   );
-
-  useEffect(() => {
-    /*
-      Note: File Uploader styles are scoped due to ShadowDOM usage.
-      There are two ways to override them. One way is used on the line below,
-      another one is to set a custom class to File Uploader,
-      and use CSS variables to update styles.
-
-      See more: https://uploadcare.com/docs/file-uploader/styling/
-     */
-    LR.FileUploaderRegular.shadowStyles = cssOverrides;
-
-    return () => {
-      /*
-        Note: We're resetting styles here just to be sure they do not affect other examples.
-        You probably do not need to do it in your app.
-       */
-      LR.FileUploaderRegular.shadowStyles = '';
-    }
-  }, []);
 
   useEffect(() => {
     const ctxProvider = ctxProviderRef.current;
@@ -160,7 +138,6 @@ export default function FileUploader({ files, uploaderClassName, onChange, theme
 
       <lr-file-uploader-regular
         ctx-name="my-uploader"
-        css-src={blocksStyles}
         class={cs(uploaderClassName, { [st.darkModeEnabled]: theme === 'dark' })}
       ></lr-file-uploader-regular>
 

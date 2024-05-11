@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 
 import * as LR from '@uploadcare/blocks';
-import blocksStyles from '@uploadcare/blocks/web/lr-file-uploader-minimal.min.css?url';
 import { OutputFileEntry } from '@uploadcare/blocks';
 
 import st from './MinimalView.module.css';
@@ -42,7 +41,6 @@ export default function MinimalView() {
       ></lr-config>
       <lr-file-uploader-minimal
         ctx-name="my-uploader"
-        css-src={blocksStyles}
       ></lr-file-uploader-minimal>
       <lr-upload-ctx-provider
         ctx-name="my-uploader"

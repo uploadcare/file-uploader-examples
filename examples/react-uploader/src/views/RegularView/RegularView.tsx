@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 
 import * as LR from '@uploadcare/blocks';
-import blocksStyles from '@uploadcare/blocks/web/lr-file-uploader-regular.min.css?url';
 import { OutputFileEntry } from '@uploadcare/blocks';
 
 import st from './RegularView.module.css';
@@ -43,7 +42,6 @@ export default function RegularView() {
       ></lr-config>
       <lr-file-uploader-regular
         ctx-name="my-uploader"
-        css-src={blocksStyles}
       ></lr-file-uploader-regular>
       <lr-upload-ctx-provider
         ctx-name="my-uploader"
