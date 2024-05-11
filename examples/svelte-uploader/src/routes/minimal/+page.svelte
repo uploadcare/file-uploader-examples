@@ -1,6 +1,5 @@
 <script>
   import * as LR from '@uploadcare/blocks';
-  import blocksStyles from '@uploadcare/blocks/web/lr-file-uploader-minimal.min.css?url';
   import { onMount } from 'svelte';
 
   export let files = [];
@@ -50,7 +49,6 @@
 
   <lr-file-uploader-minimal
     ctx-name="my-uploader"
-    css-src={blocksStyles}
   ></lr-file-uploader-minimal>
 
   <lr-upload-ctx-provider
