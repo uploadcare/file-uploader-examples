@@ -1,13 +1,11 @@
 <script>
 import * as LR from '@uploadcare/blocks';
-import blocksStyles from '@uploadcare/blocks/web/lr-file-uploader-minimal.min.css?url';
 
 LR.registerBlocks(LR);
 
 export default {
   data() {
     return {
-      blocksStyles,
       files: [],
     }
   },
@@ -43,7 +41,6 @@ export default {
 
     <lr-file-uploader-minimal
       ctx-name="my-uploader"
-      :css-src="blocksStyles"
     ></lr-file-uploader-minimal>
 
     <!--

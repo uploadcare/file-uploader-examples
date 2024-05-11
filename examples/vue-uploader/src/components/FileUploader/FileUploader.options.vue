@@ -7,9 +7,6 @@
  */
 
 import * as LR from '@uploadcare/blocks';
-import blocksStyles from '@uploadcare/blocks/web/lr-file-uploader-regular.min.css?url';
-
-import cssOverrides from './FileUploader.overrides.css?inline';
 
 LR.registerBlocks(LR);
 
@@ -31,7 +28,6 @@ export default {
 
   data() {
     return {
-      blocksStyles,
       uploadedFiles: [],
     }
   },
@@ -68,17 +64,6 @@ export default {
 
   mounted() {
     /*
-      Note: File Uploader styles are scoped due to ShadowDOM usage.
-      There are two ways to override them. One way is used on the line below,
-      another one is to set a custom class to File Uploader,
-      and use CSS variables to update styles.
-
-      See more: https://uploadcare.com/docs/file-uploader/styling/
-     */
-    LR.FileUploaderRegular.shadowStyles = cssOverrides;
-
-
-    /*
       Note: Localization of File Uploader is done via DOM property on the config node.
       You can change any piece of text of File Uploader this way.
 
@@ -109,12 +94,6 @@ export default {
   },
 
   beforeUnmount() {
-    /*
-      Note: We're resetting styles here just to be sure they do not affect other examples.
-      You probably do not need to do it in your app.
-     */
-    LR.FileUploaderRegular.shadowStyles = '';
-
     this.$refs.ctxProviderRef.localeDefinitionOverride = null;
   }
 }
@@ -147,7 +126,6 @@ export default {
 
     <lr-file-uploader-regular
       ctx-name="my-uploader"
-      :css-src="blocksStyles"
       :class="[uploaderClassName, {'dark-mode-enabled': theme === 'dark'}]"
     ></lr-file-uploader-regular>
 
@@ -246,5 +224,32 @@ export default {
   height: 100px;
   border-radius: 8px;
   object-fit: cover;
+}
+
+.root:deep(lr-simple-btn button) {
+  height: auto;
+  padding: 10px 12px !important;
+  font-family: monospace;
+  line-height: 1;
+  font-size: 16px;
+  border: 1px solid var(--ui-control-border-color-default);
+  border-radius: 8px;
+  background: var(--ui-control-background-color);
+  box-shadow: 0 0 16px 0 var(--ui-control-box-shadow-color);
+  color: var(--ui-control-text-color);
+}
+
+.root:deep(lr-simple-btn lr-icon) {
+  display: none;
+}
+
+.root:deep(lr-simple-btn button:hover),
+.root:deep(lr-simple-btn button:focus) {
+  background: var(--ui-control-background-color);
+  outline: 3px solid var(--ui-control-outline-color-focus);
+}
+
+.root:deep(lr-simple-btn button:active) {
+  border-color: var(--ui-control-border-color-focus);
 }
 </style>
