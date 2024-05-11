@@ -7,8 +7,13 @@ import st from './styles.module.css';
 LR.registerBlocks(LR);
 
 function Minimal() {
+  const [isClient, setIsClient] = useState(false)
   const [files, setFiles] = useState([]);
   const ctxProviderRef = useRef(null);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
 
   useEffect(() => {
     const ctxProvider = ctxProviderRef.current;
@@ -39,17 +44,21 @@ function Minimal() {
       </p>
       <hr className={st.separator}/>
 
-      <lr-config
-        ctx-name="my-uploader"
-        pubkey="a6ca334c3520777c0045"
-      ></lr-config>
-      <lr-file-uploader-minimal
-        ctx-name="my-uploader"
-      ></lr-file-uploader-minimal>
-      <lr-upload-ctx-provider
-        ctx-name="my-uploader"
-        ref={ctxProviderRef}
-      ></lr-upload-ctx-provider>
+      {isClient && (
+        <>
+          <lr-config
+            ctx-name="my-uploader"
+            pubkey="a6ca334c3520777c0045"
+          ></lr-config>
+          <lr-file-uploader-minimal
+            ctx-name="my-uploader"
+          ></lr-file-uploader-minimal>
+          <lr-upload-ctx-provider
+            ctx-name="my-uploader"
+            ref={ctxProviderRef}
+          ></lr-upload-ctx-provider>
+        </>
+      )}
 
       <div className={st.previews}>
         {files.map((file) => (
