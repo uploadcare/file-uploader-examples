@@ -6,6 +6,7 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@uploadcare/blocks@0.39.0/web/lr-file-uploader-regular.min.css">
   <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
@@ -20,7 +21,6 @@
   ></lr-config>
   <lr-file-uploader-regular
     ctx-name="my-uploader"
-    css-src="https://cdn.jsdelivr.net/npm/@uploadcare/blocks@0.33.2/web/lr-file-uploader-regular.min.css"
   ></lr-file-uploader-regular>
   <lr-upload-ctx-provider
     ctx-name="my-uploader"
@@ -30,7 +30,7 @@
   <div class="previews" id="previews"></div>
 
   <script type="module">
-    import * as LR from 'https://cdn.jsdelivr.net/npm/@uploadcare/blocks@0.33.2/web/lr-file-uploader-regular.min.js';
+    import * as LR from 'https://cdn.jsdelivr.net/npm/@uploadcare/blocks@0.39.0/web/lr-file-uploader-regular.min.js';
 
     LR.registerBlocks(LR);
 
