@@ -2,8 +2,6 @@ import { Component, CUSTOM_ELEMENTS_SCHEMA, ElementRef, EventEmitter, Input, Out
 import * as LR from '@uploadcare/blocks';
 import { OutputFileEntry } from '@uploadcare/blocks';
 
-import blocksStyles from '@uploadcare/blocks/web/lr-file-uploader-regular.min.css?url';
-
 LR.registerBlocks(LR);
 
 @Component({
@@ -20,8 +18,6 @@ export class RegularViewComponent {
   @ViewChild('ctxProvider', { static: true }) ctxProviderRef!: ElementRef<
     InstanceType<LR.UploadCtxProvider>
   >;
-
-  blocksStyles = blocksStyles;
 
   ngOnInit() {
     /*

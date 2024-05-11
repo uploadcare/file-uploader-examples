@@ -10,8 +10,6 @@ import {
 import * as LR from '@uploadcare/blocks';
 import { OutputFileEntry } from '@uploadcare/blocks';
 
-import blocksStyles from '@uploadcare/blocks/web/lr-file-uploader-minimal.min.css?url';
-
 LR.registerBlocks(LR);
 
 @Component({
@@ -28,8 +26,6 @@ export class MinimalViewComponent {
   @ViewChild('ctxProvider', { static: true }) ctxProviderRef!: ElementRef<
     InstanceType<LR.UploadCtxProvider>
   >;
-
-  blocksStyles = blocksStyles;
 
   ngOnInit() {
     /*
