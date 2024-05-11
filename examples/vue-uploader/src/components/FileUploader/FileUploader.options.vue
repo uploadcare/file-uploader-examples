@@ -12,6 +12,7 @@ LR.registerBlocks(LR);
 
 export default {
   props: {
+    uploaderCtxName: String,
     uploaderClassName: String,
     files: {
       type: Array,
@@ -115,7 +116,7 @@ export default {
     -->
     <lr-config
       ref="configRef"
-      ctx-name="my-uploader"
+      :ctx-name="uploaderCtxName"
       pubkey="a6ca334c3520777c0045"
       multiple
       sourceList="local, url, camera, dropbox, gdrive"
@@ -125,7 +126,7 @@ export default {
     ></lr-config>
 
     <lr-file-uploader-regular
-      ctx-name="my-uploader"
+      :ctx-name="uploaderCtxName"
       :class="[uploaderClassName, {'dark-mode-enabled': theme === 'dark'}]"
     ></lr-file-uploader-regular>
 
@@ -137,7 +138,7 @@ export default {
     -->
     <lr-upload-ctx-provider
       ref="ctxProviderRef"
-      ctx-name="my-uploader"
+      :ctx-name="uploaderCtxName"
       @change="handleChangeEvent"
       @modal-close="handleModalCloseEvent"
     ></lr-upload-ctx-provider>

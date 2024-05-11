@@ -23,6 +23,7 @@ LR.registerBlocks(LR);
 export class FileUploaderComponent {
   @Input({ required: true }) theme!: 'light' | 'dark';
   @Input() uploaderClassName: string | undefined;
+  @Input() uploaderCtxName: string = 'my-uploader';
   @Input() files: OutputFileEntry<'success'>[] = [];
   @Output() filesChange = new EventEmitter<OutputFileEntry<'success'>[]>();
 

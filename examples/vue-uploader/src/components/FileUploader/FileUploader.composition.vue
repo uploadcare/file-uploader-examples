@@ -12,6 +12,7 @@ import { onBeforeUnmount, onMounted, ref } from 'vue';
 LR.registerBlocks(LR);
 
 const props = defineProps({
+  uploaderCtxName: String,
   uploaderClassName: String,
   files: {
     type: Array,
@@ -113,7 +114,7 @@ onBeforeUnmount(() => {
     -->
     <lr-config
       ref="configRef"
-      ctx-name="my-uploader"
+      :ctx-name="uploaderCtxName"
       pubkey="a6ca334c3520777c0045"
       multiple
       sourceList="local, url, camera, dropbox, gdrive"
@@ -123,7 +124,7 @@ onBeforeUnmount(() => {
     ></lr-config>
 
     <lr-file-uploader-regular
-      ctx-name="my-uploader"
+      :ctx-name="uploaderCtxName"
       :class="[uploaderClassName, {'dark-mode-enabled': theme === 'dark'}]"
     ></lr-file-uploader-regular>
 
@@ -135,7 +136,7 @@ onBeforeUnmount(() => {
     -->
     <lr-upload-ctx-provider
       ref="ctxProviderRef"
-      ctx-name="my-uploader"
+      :ctx-name="uploaderCtxName"
       @change="handleChangeEvent"
       @modal-close="handleModalCloseEvent"
     ></lr-upload-ctx-provider>

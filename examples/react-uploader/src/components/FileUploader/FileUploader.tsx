@@ -9,12 +9,13 @@ LR.registerBlocks(LR);
 
 type FileUploaderProps = {
   uploaderClassName: string;
+  uploaderCtxName: string;
   files: OutputFileEntry[];
   onChange: (files: OutputFileEntry[]) => void;
   theme: 'light' | 'dark';
 }
 
-export default function FileUploader({ files, uploaderClassName, onChange, theme }: FileUploaderProps) {
+export default function FileUploader({ files, uploaderClassName, uploaderCtxName, onChange, theme }: FileUploaderProps) {
   const [uploadedFiles, setUploadedFiles] = useState<OutputFileEntry<'success'>[]>([]);
   const ctxProviderRef = useRef<InstanceType<LR.UploadCtxProvider>>(null);
   const configRef = useRef<InstanceType<LR.Config>>(null);
@@ -127,7 +128,7 @@ export default function FileUploader({ files, uploaderClassName, onChange, theme
       */}
       <lr-config
         ref={configRef}
-        ctx-name="my-uploader"
+        ctx-name={uploaderCtxName}
         pubkey="a6ca334c3520777c0045"
         multiple={true}
         sourceList="local, url, camera, dropbox, gdrive"
@@ -137,13 +138,13 @@ export default function FileUploader({ files, uploaderClassName, onChange, theme
       ></lr-config>
 
       <lr-file-uploader-regular
-        ctx-name="my-uploader"
+        ctx-name={uploaderCtxName}
         class={cs(uploaderClassName, { [st.darkModeEnabled]: theme === 'dark' })}
       ></lr-file-uploader-regular>
 
       <lr-upload-ctx-provider
         ref={ctxProviderRef}
-        ctx-name="my-uploader"
+        ctx-name={uploaderCtxName}
       />
 
       <div className={st.previews}>

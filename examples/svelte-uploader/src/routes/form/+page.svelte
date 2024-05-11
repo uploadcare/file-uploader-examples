@@ -88,6 +88,7 @@
       <div class="field">
         <p class="label">Photos</p>
         <FileUploader
+          uploaderCtxName="my-uploader-1"
           uploaderClassName="file-uploader"
           bind:files={photos}
           theme={theme}

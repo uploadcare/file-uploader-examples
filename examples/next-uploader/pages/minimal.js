@@ -47,14 +47,14 @@ function Minimal() {
       {isClient && (
         <>
           <lr-config
-            ctx-name="my-uploader"
+            ctx-name="my-uploader-1"
             pubkey="a6ca334c3520777c0045"
           ></lr-config>
           <lr-file-uploader-minimal
-            ctx-name="my-uploader"
+            ctx-name="my-uploader-1"
           ></lr-file-uploader-minimal>
           <lr-upload-ctx-provider
-            ctx-name="my-uploader"
+            ctx-name="my-uploader-1"
             ref={ctxProviderRef}
           ></lr-upload-ctx-provider>
         </>

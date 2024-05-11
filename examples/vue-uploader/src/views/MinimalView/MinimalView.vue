@@ -35,12 +35,12 @@ export default {
 <template>
   <div>
     <lr-config
-      ctx-name="my-uploader"
+      ctx-name="my-uploader-2"
       pubkey="a6ca334c3520777c0045"
     ></lr-config>
 
     <lr-file-uploader-minimal
-      ctx-name="my-uploader"
+      ctx-name="my-uploader-2"
     ></lr-file-uploader-minimal>
 
     <!--
@@ -50,7 +50,7 @@ export default {
       See more: https://uploadcare.com/docs/file-uploader/events/
     -->
     <lr-upload-ctx-provider
-      ctx-name="my-uploader"
+      ctx-name="my-uploader-2"
       @change="handleChangeEvent"
     ></lr-upload-ctx-provider>
 

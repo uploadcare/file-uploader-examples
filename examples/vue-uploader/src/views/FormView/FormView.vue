@@ -98,6 +98,7 @@ export default {
       <div class="field">
         <p class="label">Photos</p>
         <FileUploader
+          uploader-ctx-name="my-uploader-1"
           uploader-class-name="file-uploader"
           v-model:files="photos"
           :theme="theme"

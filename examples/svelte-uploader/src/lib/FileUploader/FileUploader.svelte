@@ -4,6 +4,7 @@
 
   export let files = [];
   export let uploaderClassName;
+  export let uploaderCtxName;
   export let theme;
 
   let uploadedFiles = [];
@@ -105,7 +106,7 @@
   -->
   <lr-config
     bind:this={configRef}
-    ctx-name="my-uploader"
+    ctx-name={uploaderCtxName}
     pubkey="a6ca334c3520777c0045"
     multiple={true}
     sourceList="local, url, camera, dropbox, gdrive"
@@ -115,14 +116,14 @@
   ></lr-config>
 
   <lr-file-uploader-regular
-    ctx-name="my-uploader"
+    ctx-name={uploaderCtxName}
     class={uploaderClassName}
     class:dark-mode-enabled={theme === 'dark'}
   ></lr-file-uploader-regular>
 
   <lr-upload-ctx-provider
     bind:this={ctxProviderRef}
-    ctx-name="my-uploader"
+    ctx-name={uploaderCtxName}
   ></lr-upload-ctx-provider>
 
   <div class="previews">
