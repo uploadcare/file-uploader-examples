@@ -57,7 +57,7 @@
   object-fit: cover;
 }
 
-lr-simple-btn button {
+.root::ng-deep lr-simple-btn button {
   height: auto;
   padding: 10px 12px !important;
   font-family: monospace;
@@ -70,16 +70,16 @@ lr-simple-btn button {
   color: var(--ui-control-text-color);
 }
 
-lr-simple-btn lr-icon {
+.root::ng-deep lr-simple-btn lr-icon {
   display: none;
 }
 
-lr-simple-btn button:hover,
-lr-simple-btn button:focus {
+.root::ng-deep lr-simple-btn button:hover,
+.root::ng-deep lr-simple-btn button:focus {
   background: var(--ui-control-background-color);
   outline: 3px solid var(--ui-control-outline-color-focus);
 }
 
-lr-simple-btn button:active {
+.root::ng-deep lr-simple-btn button:active {
   border-color: var(--ui-control-border-color-focus);
 }
