@@ -1,0 +1,57 @@
+body {
+  margin: 0;
+  padding: 0 24px 24px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  background: var(--background-color);
+  color: var(--text-color);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* setting vars on body too, to prevent unstyled state when theme is not picked yet */
+body, body.theme--light {
+  color-scheme: light;
+
+  --background-color: #F7F9FA;
+  --text-color: #000;
+
+  --ui-text-color: #9393a6;
+  --ui-control-border-color-default: #CBCDD7;
+  --ui-control-border-color-focus: #0059C8;
+  --ui-control-background-color: #fcfcfe;
+  --ui-control-box-shadow-color: rgba(199, 215, 255, .5);
+  --ui-control-outline-color-focus: #98cbff;
+  --ui-control-text-color: #323236;
+
+  --ui-action-button-background: #0059C8;
+  --ui-action-button-text-color: #fff;
+}
+
+body.theme--dark {
+  /* restyle browser controls */
+  color-scheme: dark;
+
+  --background-color: #080605;
+  --text-color: #fff;
+
+  --ui-text-color: #6c6c59;
+  --ui-control-border-color-default: #343228;
+  --ui-control-border-color-focus: #ffa637;
+  --ui-control-background-color: #030301;
+  --ui-control-box-shadow-color: rgba(56, 40, 0, .5);
+  --ui-control-outline-color-focus: #673400;
+  --ui-control-text-color: #cdcdc9;
+
+  --ui-action-button-background: #ffa637;
+  --ui-action-button-text-color: #000;
+}
+
+a {
+  text-decoration: none;
+}
+
+img, svg {
+  display: block;
+}
