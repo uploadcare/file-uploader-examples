@@ -10,7 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@uploadcare/blocks": "0.33.2"
+    "@uploadcare/blocks": "0.39.0"
   },
   "devDependencies": {
     "@sveltejs/kit": "1.30.4",

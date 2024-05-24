@@ -1,6 +1,5 @@
 <script>
   import * as LR from '@uploadcare/blocks';
-  import blocksStyles from '@uploadcare/blocks/web/lr-file-uploader-regular.min.css?url';
   import { onMount } from 'svelte';
 
   export let files = [];
@@ -44,18 +43,17 @@
 
 <div>
   <lr-config
-    ctx-name="my-uploader"
+    ctx-name="my-uploader-3"
     pubkey="a6ca334c3520777c0045"
     sourceList="local, url, camera, dropbox"
   ></lr-config>
 
   <lr-file-uploader-regular
-    ctx-name="my-uploader"
-    css-src={blocksStyles}
+    ctx-name="my-uploader-3"
   ></lr-file-uploader-regular>
 
   <lr-upload-ctx-provider
-    ctx-name="my-uploader"
+    ctx-name="my-uploader-3"
     bind:this={ctxProviderRef}
   ></lr-upload-ctx-provider>
 

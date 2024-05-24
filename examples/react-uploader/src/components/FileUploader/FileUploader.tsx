@@ -1,49 +1,29 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import * as LR from '@uploadcare/blocks';
 import { OutputFileEntry } from '@uploadcare/blocks';
-import blocksStyles from '@uploadcare/blocks/web/lr-file-uploader-regular.min.css?url';
 
 import st from './FileUploader.module.scss';
-import cssOverrides from './FileUploader.overrides.css?inline';
 import cs from 'classnames';
 
 LR.registerBlocks(LR);
 
 type FileUploaderProps = {
   uploaderClassName: string;
+  uploaderCtxName: string;
   files: OutputFileEntry[];
   onChange: (files: OutputFileEntry[]) => void;
   theme: 'light' | 'dark';
 }
 
-export default function FileUploader({ files, uploaderClassName, onChange, theme }: FileUploaderProps) {
+export default function FileUploader({ files, uploaderClassName, uploaderCtxName, onChange, theme }: FileUploaderProps) {
   const [uploadedFiles, setUploadedFiles] = useState<OutputFileEntry<'success'>[]>([]);
   const ctxProviderRef = useRef<InstanceType<LR.UploadCtxProvider>>(null);
+  const configRef = useRef<InstanceType<LR.Config>>(null);
 
   const handleRemoveClick = useCallback(
     (uuid: OutputFileEntry['uuid']) => onChange(files.filter(f => f.uuid !== uuid)),
     [files, onChange],
   );
-
-  useEffect(() => {
-    /*
-      Note: File Uploader styles are scoped due to ShadowDOM usage.
-      There are two ways to override them. One way is used on the line below,
-      another one is to set a custom class to File Uploader,
-      and use CSS variables to update styles.
-
-      See more: https://uploadcare.com/docs/file-uploader/styling/
-     */
-    LR.FileUploaderRegular.shadowStyles = cssOverrides;
-
-    return () => {
-      /*
-        Note: We're resetting styles here just to be sure they do not affect other examples.
-        You probably do not need to do it in your app.
-       */
-      LR.FileUploaderRegular.shadowStyles = '';
-    }
-  }, []);
 
   useEffect(() => {
     const ctxProvider = ctxProviderRef.current;
@@ -62,6 +42,43 @@ export default function FileUploader({ files, uploaderClassName, onChange, theme
     ctxProvider.addEventListener('change', handleChangeEvent);
     return () => {
       ctxProvider.removeEventListener('change', handleChangeEvent);
+    };
+  }, [setUploadedFiles]);
+
+  useEffect(() => {
+    const config = configRef.current;
+    if (!config) return;
+
+    /*
+     Note: Localization of File Uploader is done via DOM property on the config node.
+     You can change any piece of text of File Uploader this way.
+
+     See more: https://uploadcare.com/docs/file-uploader/localization/
+    */
+    config.localeDefinitionOverride = {
+      en: {
+        'photo__one': 'photo',
+        'photo__many': 'photos',
+        'photo__other': 'photos',
+
+        'upload-file': 'Upload photo',
+        'upload-files': 'Upload photos',
+        'choose-file': 'Choose photo',
+        'choose-files': 'Choose photos',
+        'drop-files-here': 'Drop photos here',
+        'select-file-source': 'Select photo source',
+        'edit-image': 'Edit photo',
+        'no-files': 'No photos selected',
+        'caption-edit-file': 'Edit photo',
+        'files-count-allowed': 'Only {{count}} {{plural:photo(count)}} allowed',
+        'files-max-size-limit-error': 'Photo is too big. Max photo size is {{maxFileSize}}.',
+        'header-uploading': 'Uploading {{count}} {{plural:photo(count)}}',
+        'header-succeed': '{{count}} {{plural:photo(count)}} uploaded',
+        'header-total': '{{count}} {{plural:photo(count)}} selected',
+      }
+    }
+    return () => {
+      config.localeDefinitionOverride = null;
     };
   }, [setUploadedFiles]);
 
@@ -110,7 +127,8 @@ export default function FileUploader({ files, uploaderClassName, onChange, theme
          Here they are: https://github.com/uploadcare/blocks/blob/main/blocks/themes/lr-basic/config.css
       */}
       <lr-config
-        ctx-name="my-uploader"
+        ref={configRef}
+        ctx-name={uploaderCtxName}
         pubkey="a6ca334c3520777c0045"
         multiple={true}
         sourceList="local, url, camera, dropbox, gdrive"
@@ -120,14 +138,13 @@ export default function FileUploader({ files, uploaderClassName, onChange, theme
       ></lr-config>
 
       <lr-file-uploader-regular
-        ctx-name="my-uploader"
-        css-src={blocksStyles}
+        ctx-name={uploaderCtxName}
         class={cs(uploaderClassName, { [st.darkModeEnabled]: theme === 'dark' })}
       ></lr-file-uploader-regular>
 
       <lr-upload-ctx-provider
-        ctx-name="my-uploader"
         ref={ctxProviderRef}
+        ctx-name={uploaderCtxName}
       />
 
       <div className={st.previews}>

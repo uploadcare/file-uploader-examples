@@ -1,13 +1,11 @@
 <script>
 import * as LR from '@uploadcare/blocks';
-import blocksStyles from '@uploadcare/blocks/web/lr-file-uploader-minimal.min.css?url';
 
 LR.registerBlocks(LR);
 
 export default {
   data() {
     return {
-      blocksStyles,
       files: [],
     }
   },
@@ -37,13 +35,12 @@ export default {
 <template>
   <div>
     <lr-config
-      ctx-name="my-uploader"
+      ctx-name="my-uploader-2"
       pubkey="a6ca334c3520777c0045"
     ></lr-config>
 
     <lr-file-uploader-minimal
-      ctx-name="my-uploader"
-      :css-src="blocksStyles"
+      ctx-name="my-uploader-2"
     ></lr-file-uploader-minimal>
 
     <!--
@@ -53,7 +50,7 @@ export default {
       See more: https://uploadcare.com/docs/file-uploader/events/
     -->
     <lr-upload-ctx-provider
-      ctx-name="my-uploader"
+      ctx-name="my-uploader-2"
       @change="handleChangeEvent"
     ></lr-upload-ctx-provider>
 

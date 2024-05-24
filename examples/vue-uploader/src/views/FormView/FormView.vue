@@ -98,6 +98,7 @@ export default {
       <div class="field">
         <p class="label">Photos</p>
         <FileUploader
+          uploader-ctx-name="my-uploader-1"
           uploader-class-name="file-uploader"
           v-model:files="photos"
           :theme="theme"
@@ -225,34 +226,5 @@ export default {
   line-height: 18px;
   font-family: monospace;
   white-space: pre-wrap;
-}
-
-/*
-  Note: Localization of File Uploader is done via CSS variables.
-  You can change any piece of text of File Uploader this way.
-
-  See more: https://uploadcare.com/docs/file-uploader/localization/
- */
-:global(.file-uploader) {
-  --l10n-locale-name: 'en-US';
-
-  --l10n-photo__one: 'photo';
-  --l10n-photo__many: 'photos';
-  --l10n-photo__other: 'photos';
-
-  --l10n-upload-file: 'Upload photo';
-  --l10n-upload-files: 'Upload photos';
-  --l10n-choose-file: 'Choose photo';
-  --l10n-choose-files: 'Choose photos';
-  --l10n-drop-files-here: 'Drop photos here';
-  --l10n-select-file-source: 'Select photo source';
-  --l10n-edit-image: 'Edit photo';
-  --l10n-no-files: 'No photos selected';
-  --l10n-caption-edit-file: 'Edit photo';
-  --l10n-files-count-allowed: 'Only {{count}} {{plural:photo(count)}} allowed';
-  --l10n-files-max-size-limit-error: 'Photo is too big. Max photo size is {{maxFileSize}}.';
-  --l10n-header-uploading: 'Uploading {{count}} {{plural:photo(count)}}';
-  --l10n-header-succeed: '{{count}} {{plural:photo(count)}} uploaded';
-  --l10n-header-total: '{{count}} {{plural:photo(count)}} selected';
 }
 </style>

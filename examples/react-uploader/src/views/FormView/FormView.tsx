@@ -95,6 +95,7 @@ export default function FormView() {
           <div className={st.field}>
             <label className={st.label}>Photos</label>
             <FileUploader
+              uploaderCtxName="my-uploader-1"
               uploaderClassName={st.fileUploader}
               files={photos}
               onChange={setPhotos}

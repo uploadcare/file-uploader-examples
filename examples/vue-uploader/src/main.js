@@ -1,6 +1,9 @@
 import { createApp } from 'vue';
 import { createRouter, createWebHistory } from 'vue-router';
 
+import '@uploadcare/blocks/web/lr-file-uploader-regular.min.css';
+import '@uploadcare/blocks/web/lr-file-uploader-minimal.min.css';
+
 import './assets/main.css'
 
 import FormView from './views/FormView/FormView.vue';

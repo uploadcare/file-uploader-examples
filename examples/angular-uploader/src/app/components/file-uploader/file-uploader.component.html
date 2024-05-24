@@ -12,7 +12,8 @@
     Here they are: https://github.com/uploadcare/blocks/blob/main/blocks/themes/lr-basic/config.css
   -->
   <lr-config
-    ctx-name="my-uploader"
+    #config
+    [attr.ctx-name]="uploaderCtxName"
     pubkey="a6ca334c3520777c0045"
     multiple="true"
     sourceList="local, url, camera, dropbox, gdrive"
@@ -22,15 +23,14 @@
   ></lr-config>
 
   <lr-file-uploader-regular
-    ctx-name="my-uploader"
-    [attr.css-src]="blocksStyles"
+    [attr.ctx-name]="uploaderCtxName"
     [class]="uploaderClassName"
     [class.dark-mode-enabled]="theme === 'dark'"
   ></lr-file-uploader-regular>
 
   <lr-upload-ctx-provider
-    ctx-name="my-uploader"
     #ctxProvider
+    [attr.ctx-name]="uploaderCtxName"
   ></lr-upload-ctx-provider>
 
   <div class="previews">

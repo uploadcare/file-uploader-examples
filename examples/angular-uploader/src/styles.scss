@@ -1,3 +1,10 @@
+/*
+  Go to https://uploadcare.com/docs/file-uploader/styling/
+  to read more about Blocks styling
+ */
+@import '@uploadcare/blocks/web/lr-file-uploader-regular.min.css';
+@import '@uploadcare/blocks/web/lr-file-uploader-minimal.min.css';
+
 body {
   margin: 0;
   padding: 0 24px 24px;

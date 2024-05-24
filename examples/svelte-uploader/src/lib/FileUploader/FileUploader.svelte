@@ -1,17 +1,16 @@
 <script>
   import { onMount } from 'svelte';
   import * as LR from '@uploadcare/blocks';
-  import blocksStyles from '@uploadcare/blocks/web/lr-file-uploader-regular.min.css?url';
-
-  import cssOverrides from './FileUploader.overrides.css?inline';
 
   export let files = [];
   export let uploaderClassName;
+  export let uploaderCtxName;
   export let theme;
 
   let uploadedFiles = [];
 
   let ctxProviderRef;
+  let configRef;
 
   /*
     Note: Here we use provider's API to reset File Uploader state.
@@ -46,17 +45,6 @@
     LR.registerBlocks(LR);
 
     /*
-      Note: File Uploader styles are scoped due to ShadowDOM usage.
-      There are two ways to override them. One way is used on the line below,
-      another one is to set a custom class to File Uploader,
-      and use CSS variables to update styles.
-
-      See more: https://uploadcare.com/docs/file-uploader/styling/
-     */
-    LR.FileUploaderRegular.shadowStyles = cssOverrides;
-
-
-    /*
       Note: Event binding is the main way to get data and other info from File Uploader.
       There plenty of events you may use.
 
@@ -65,15 +53,40 @@
     ctxProviderRef.addEventListener('change', handleChangeEvent);
     ctxProviderRef.addEventListener('modal-close', handleModalCloseEvent);
 
+    /*
+     Note: Localization of File Uploader is done via DOM property on the config node.
+     You can change any piece of text of File Uploader this way.
+
+     See more: https://uploadcare.com/docs/file-uploader/localization/
+    */
+    configRef.localeDefinitionOverride = {
+      en: {
+        'photo__one': 'photo',
+        'photo__many': 'photos',
+        'photo__other': 'photos',
+
+        'upload-file': 'Upload photo',
+        'upload-files': 'Upload photos',
+        'choose-file': 'Choose photo',
+        'choose-files': 'Choose photos',
+        'drop-files-here': 'Drop photos here',
+        'select-file-source': 'Select photo source',
+        'edit-image': 'Edit photo',
+        'no-files': 'No photos selected',
+        'caption-edit-file': 'Edit photo',
+        'files-count-allowed': 'Only {{count}} {{plural:photo(count)}} allowed',
+        'files-max-size-limit-error': 'Photo is too big. Max photo size is {{maxFileSize}}.',
+        'header-uploading': 'Uploading {{count}} {{plural:photo(count)}}',
+        'header-succeed': '{{count}} {{plural:photo(count)}} uploaded',
+        'header-total': '{{count}} {{plural:photo(count)}} selected',
+      }
+    }
+
     return () => {
       ctxProviderRef.removeEventListener('change', handleChangeEvent);
       ctxProviderRef.removeEventListener('modal-close', handleModalCloseEvent);
 
-      /*
-        Note: We're resetting styles here just to be sure they do not affect other examples.
-        You probably do not need to do it in your app.
-       */
-      LR.FileUploaderRegular.shadowStyles = '';
+      configRef.localeDefinitionOverride = null;
     };
   });
 </script>
@@ -92,7 +105,8 @@
     Here they are: https://github.com/uploadcare/blocks/blob/main/blocks/themes/lr-basic/config.css
   -->
   <lr-config
-    ctx-name="my-uploader"
+    bind:this={configRef}
+    ctx-name={uploaderCtxName}
     pubkey="a6ca334c3520777c0045"
     multiple={true}
     sourceList="local, url, camera, dropbox, gdrive"
@@ -102,15 +116,14 @@
   ></lr-config>
 
   <lr-file-uploader-regular
-    ctx-name="my-uploader"
-    css-src={blocksStyles}
+    ctx-name={uploaderCtxName}
     class={uploaderClassName}
     class:dark-mode-enabled={theme === 'dark'}
   ></lr-file-uploader-regular>
 
   <lr-upload-ctx-provider
-    ctx-name="my-uploader"
     bind:this={ctxProviderRef}
+    ctx-name={uploaderCtxName}
   ></lr-upload-ctx-provider>
 
   <div class="previews">
@@ -192,5 +205,32 @@
     height: 100px;
     border-radius: 8px;
     object-fit: cover;
+  }
+
+  lr-file-uploader-regular :global(lr-simple-btn button) {
+    height: auto;
+    padding: 10px 12px !important;
+    font-family: monospace;
+    line-height: 1;
+    font-size: 16px;
+    border: 1px solid var(--ui-control-border-color-default);
+    border-radius: 8px;
+    background: var(--ui-control-background-color);
+    box-shadow: 0 0 16px 0 var(--ui-control-box-shadow-color);
+    color: var(--ui-control-text-color);
+  }
+
+  lr-file-uploader-regular :global(lr-simple-btn lr-icon) {
+    display: none;
+  }
+
+  lr-file-uploader-regular :global(lr-simple-btn button:hover),
+  lr-file-uploader-regular :global(lr-simple-btn button:focus) {
+    background: var(--ui-control-background-color);
+    outline: 3px solid var(--ui-control-outline-color-focus);
+  }
+
+  lr-file-uploader-regular :global(lr-simple-btn button:active) {
+    border-color: var(--ui-control-border-color-focus);
   }
 </style>

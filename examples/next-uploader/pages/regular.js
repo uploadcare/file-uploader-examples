@@ -1,14 +1,19 @@
 import * as LR from '@uploadcare/blocks';
-import { PACKAGE_VERSION } from '@uploadcare/blocks';
 import React, { useEffect, useRef, useState } from 'react';
 
+import '@uploadcare/blocks/web/lr-file-uploader-regular.min.css';
 import st from './styles.module.css';
 
 LR.registerBlocks(LR);
 
 function Regular() {
+  const [isClient, setIsClient] = useState(false)
   const [files, setFiles] = useState([]);
   const ctxProviderRef = useRef(null);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
 
   useEffect(() => {
     const ctxProvider = ctxProviderRef.current;
@@ -39,19 +44,22 @@ function Regular() {
       </p>
       <hr className={st.separator}/>
 
-      <lr-config
-        ctx-name="my-uploader"
-        pubkey="a6ca334c3520777c0045"
-        sourceList="local, url, camera, dropbox"
-      ></lr-config>
-      <lr-file-uploader-regular
-        ctx-name="my-uploader"
-        css-src={`https://cdn.jsdelivr.net/npm/@uploadcare/blocks@${PACKAGE_VERSION}/web/lr-file-uploader-regular.min.css`}
-      ></lr-file-uploader-regular>
-      <lr-upload-ctx-provider
-        ctx-name="my-uploader"
-        ref={ctxProviderRef}
-      ></lr-upload-ctx-provider>
+      {isClient && (
+        <>
+          <lr-config
+            ctx-name="my-uploader-2"
+            pubkey="a6ca334c3520777c0045"
+            sourceList="local, url, camera, dropbox"
+          ></lr-config>
+          <lr-file-uploader-regular
+            ctx-name="my-uploader-2"
+          ></lr-file-uploader-regular>
+          <lr-upload-ctx-provider
+            ctx-name="my-uploader-2"
+            ref={ctxProviderRef}
+          ></lr-upload-ctx-provider>
+        </>
+      )}
 
       <div className={st.previews}>
         {files.map((file) => (
