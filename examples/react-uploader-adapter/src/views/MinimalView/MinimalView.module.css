@@ -1,0 +1,34 @@
+.previews {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.previewWrapper {
+  background-color: white;
+  color: darkslategray;
+  border-radius: 12px;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.previewImage {
+  display: block;
+  object-fit: cover;
+  border-radius: 4px;
+  margin-bottom: 8px;
+}
+
+.previewData {
+  margin: 0;
+  line-height: 1.4em;
+  font-size: 13px;
+  max-width: 200px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
