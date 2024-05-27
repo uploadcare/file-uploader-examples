@@ -27,7 +27,7 @@ This is an example project of implementing a file uploader in a React applicatio
 ```bash
 # clone this repo and go to the cloned folder
 
-$ cd examples/react-uploader
+$ cd examples/react-uploader-adapter
 
 $ npm install
 # or `yarn install`, if you wish
@@ -38,19 +38,10 @@ $ npm run start
 
 ## Installation
 
-All you need to do is to install [`@uploadcare/blocks`](https://www.npmjs.com/package/@uploadcare/blocks) from npm
+All you need to do is to install [`@uploadcare/react-uploader`](https://www.npmjs.com/package/@uploadcare/react-uploader) from npm
 via your favorite Node package manager.
 
-The package provides TypeScript types, so you do not need to install `@types/anything` if you need a proper typing.
-However, if you want to get JSX types right, add `@uploadcare/blocks/types/jsx` in the `types` array of your tsconfig.json:
-
-```json
-{
-  "types": ["@uploadcare/blocks/types/jsx"]
-}
-```
-
-[Read more about installation](https://uploadcare.com/docs/file-uploader/installation/) in the Uploadcare documentation.
+[Read more about installation](https://www.npmjs.com/package/@uploadcare/react-uploader/) in the Uploadcare documentation.
 
 ## Configuration
 
@@ -62,18 +53,6 @@ Blocks are native to the Web but not to React. It's easy to use Blocks in a Reac
 
 E.g. in one of the examples we created a [FileUploader](src/components/FileUploader/FileUploader.tsx) component 
 which provides React-friendly API for the rest of the view. There are Blocks inside of this component and nowhere else.
-
-### Non-React things you should know about
-
-1. Communicate with Blocks File Uploader with [events](https://uploadcare.com/docs/file-uploader/events/).
-   You will find them in the example. It's easy to handle using hooks like [`useEffect`](https://react.dev/reference/react/useEffect).
-
-2. Use `class` attribute instead of `className`.
-
-3. Some attributes required by Blocks are kebab-cased, not camelCased as usual for React world.
-
-4. You are able to invoke [some methods of File Uploader](https://uploadcare.com/docs/file-uploader/api/) 
-   to control its behavior.
 
 ### Styling
 

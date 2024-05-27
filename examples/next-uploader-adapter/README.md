@@ -25,7 +25,7 @@
 ```bash
 # clone this repo and go to the cloned folder
 
-$ cd examples/next-uploader
+$ cd examples/next-uploader-adapter
 
 $ npm install
 # or `yarn install`, if you wish

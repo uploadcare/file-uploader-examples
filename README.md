@@ -26,10 +26,13 @@ Each directory in this repository represents a different framework maintained by
 
 * [JavaScript](./examples/js-uploader/)
 * [React](./examples/react-uploader/)
+* [React via Adapter](./examples/react-uploader-adapter/)
 * [Angular](./examples/angular-uploader/)
 * [Vue](./examples/vue-uploader/)
 * [Svelte](./examples/svelte-uploader/)
 * [Next.js](./examples/next-uploader/)
+* [Next.js via Adapter](./examples/next-uploader-adapter/)
+
 
 Each example provides a live demo, instructions to run it locally, and helpful tips right in the code.
 
