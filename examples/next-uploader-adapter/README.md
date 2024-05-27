@@ -18,7 +18,7 @@
 
 # Next.js File Uploader with Uploadcare Blocks
 
-[![Edit next-uploader](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/github/uploadcare/blocks-examples/tree/main/examples/next-uploader/)
+[![Edit next-uploader](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/github/uploadcare/blocks-examples/tree/main/examples/next-uploader-adapter/)
 
 ## Run this demo locally
 

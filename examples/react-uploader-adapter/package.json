@@ -10,7 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@uploadcare/react-uploader": "0.3.0-alpha.6",
+    "@uploadcare/react-uploader": "^0.5.0",
     "classnames": "2.3.2",
     "react": "18.2.0",
     "react-dom": "18.2.0",
