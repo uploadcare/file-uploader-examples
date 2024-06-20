@@ -7,9 +7,9 @@
     Available options: https://uploadcare.com/docs/file-uploader/options/
 
     Also note: Some options currently are not available via `lr-config`,
-    but may be set via CSS properties. E.g. `darkmode`.
+    but may be set via CSS properties or CSS classes. E.g. accent colors or darkmode
 
-    Here they are: https://github.com/uploadcare/blocks/blob/main/blocks/themes/lr-basic/config.css
+    Here they are: https://uploadcare.com/docs/file-uploader/styling/
   -->
   <lr-config
     #config
@@ -25,7 +25,8 @@
   <lr-file-uploader-regular
     [attr.ctx-name]="uploaderCtxName"
     [class]="uploaderClassName"
-    [class.dark-mode-enabled]="theme === 'dark'"
+    [class.uc-dark]="theme === 'dark'"
+    [class.uc-light]="theme === 'light'"
   ></lr-file-uploader-regular>
 
   <lr-upload-ctx-provider
