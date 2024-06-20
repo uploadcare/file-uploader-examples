@@ -52,6 +52,7 @@ function Minimal() {
           ></lr-config>
           <lr-file-uploader-minimal
             ctx-name="my-uploader-1"
+            class="uc-light"
           ></lr-file-uploader-minimal>
           <lr-upload-ctx-provider
             ctx-name="my-uploader-1"

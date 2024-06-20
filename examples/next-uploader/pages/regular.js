@@ -53,6 +53,7 @@ function Regular() {
           ></lr-config>
           <lr-file-uploader-regular
             ctx-name="my-uploader-2"
+            class="uc-light"
           ></lr-file-uploader-regular>
           <lr-upload-ctx-provider
             ctx-name="my-uploader-2"
