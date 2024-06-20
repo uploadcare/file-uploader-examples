@@ -10,12 +10,7 @@ p {
 }
 
 a:link, a:hover, a:active, a:visited {
-    color: blue;
     text-decoration: none;
-}
-
-a:hover {
-    color: darkblue;
 }
 
 hr {

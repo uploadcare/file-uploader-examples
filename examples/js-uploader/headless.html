@@ -7,9 +7,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <link rel="stylesheet"
-    href="https://cdn.jsdelivr.net/npm/@uploadcare/blocks@0.42.1/web/lr-file-uploader-regular.min.css">
-  <link rel="stylesheet" href="./styles.css">
+  <script type="module" src="./headless.js"></script>
 </head>
 
 <body>
@@ -20,86 +18,11 @@
   <hr>
 
   <lr-config ctx-name="my-uploader" pubkey="a6ca334c3520777c0045" sourceList="local, url, camera, dropbox"></lr-config>
-  <lr-file-uploader-regular headless ctx-name="my-uploader"></lr-file-uploader-regular>
+  <lr-file-uploader-regular headless ctx-name="my-uploader" class="uc-light"></lr-file-uploader-regular>
   <lr-upload-ctx-provider ctx-name="my-uploader" id="my-uploader-provider"></lr-upload-ctx-provider>
   <button id="custom-button">Custom button</button>
 
   <div class="previews" id="previews"></div>
-
-  <script type="module">
-    import * as LR from 'https://cdn.jsdelivr.net/npm/@uploadcare/blocks@0.42.1/web/lr-file-uploader-regular.min.js';
-
-    LR.registerBlocks(LR);
-
-    const providerNode = document.getElementById('my-uploader-provider');
-    const previewsNode = document.getElementById('previews');
-    const customButtonNode = document.getElementById('custom-button')
-
-
-    /*
-      Note: Here we use provider's API to init flow File Uploader state.
-      We use it here to show users how to use headless mode and work with File Uploader.
- 
-      See more: https://uploadcare.com/docs/file-uploader/api/
-     */
-
-    const initFlow = () => providerNode.initFlow()
-    customButtonNode.addEventListener('click', initFlow)
-
-    /*
-      Note: Event binding is the main way to get data and other info from File Uploader.
-      There plenty of events you may use.
- 
-      See more: https://uploadcare.com/docs/file-uploader/events/
-     */
-    providerNode.addEventListener('change', handleChangeEvent);
-
-    function handleChangeEvent(e) {
-      console.log('change event payload:', e);
-
-      renderFiles(e.detail.allEntries.filter(f => f.status === 'success'));
-    }
-
-    function renderFiles(files) {
-      const renderedFiles = files.map(file => {
-        const fileNode = document.createElement('div');
-        fileNode.setAttribute('class', 'preview-wrapper');
-
-        const imgNode = document.createElement('img');
-        imgNode.setAttribute('class', 'preview-image');
-        imgNode.setAttribute('src', file.cdnUrl + '/-/preview/-/resize/x400/');
-        imgNode.setAttribute('width', '200');
-        imgNode.setAttribute('height', '200');
-        imgNode.setAttribute('alt', file.fileInfo.originalFilename);
-        imgNode.setAttribute('title', file.fileInfo.originalFilename);
-
-        const imgNameNode = document.createElement('p');
-        imgNameNode.setAttribute('class', 'preview-data');
-        imgNameNode.textContent = `${file.fileInfo.originalFilename}`;
-
-        const imgSizeNode = document.createElement('p');
-        imgSizeNode.setAttribute('class', 'preview-data');
-        imgSizeNode.textContent = `${formatSize(file.fileInfo.size)}`;
-
-        fileNode.append(imgNode, imgNameNode, imgSizeNode);
-
-        return fileNode;
-      });
-
-      previewsNode.replaceChildren(...renderedFiles);
-    }
-
-    function formatSize(bytes) {
-      if (!bytes) return '0 Bytes';
-
-      const k = 1024;
-      const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
-
-      const i = Math.floor(Math.log(bytes) / Math.log(k));
-
-      return `${parseFloat((bytes / k ** i).toFixed(2))} ${sizes[i]}`;
-    }
-  </script>
 </body>
 
 </html>
