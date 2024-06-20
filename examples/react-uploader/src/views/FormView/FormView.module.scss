@@ -10,6 +10,16 @@
   justify-content: space-between;
 }
 
+/*
+  CSS variables are used to customize the appearance of the file uploader.
+
+  See more: https://uploadcare.com/docs/file-uploader/styling/
+ */
+.fileUploader {
+  --uc-primary-dark: var(--ui-action-button-background);
+  --uc-primary-foreground-dark: var(--ui-action-button-text-color);
+}
+
 .themeToggle {
   :global(.react-toggle-track) {
     box-shadow: 0 0 16px 0 var(--ui-control-box-shadow-color);
@@ -25,7 +35,8 @@
     outline: 2px solid var(--ui-control-outline-color-focus);
   }
 
-  :global(.react-toggle-track-check), :global(.react-toggle-track-x) {
+  :global(.react-toggle-track-check),
+  :global(.react-toggle-track-x) {
     width: auto;
     height: auto;
     display: flex;
@@ -120,7 +131,8 @@
   color: var(--ui-action-button-text-color);
   cursor: pointer;
 
-  &:hover, &:focus {
+  &:hover,
+  &:focus {
     outline: 3px solid var(--ui-control-outline-color-focus);
   }
 
