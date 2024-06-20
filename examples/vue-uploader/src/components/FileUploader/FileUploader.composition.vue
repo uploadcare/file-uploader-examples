@@ -6,8 +6,8 @@
   See more: https://vuejs.org/guide/introduction.html#api-styles
  */
 
-import * as LR from '@uploadcare/blocks';
-import { onBeforeUnmount, onMounted, ref } from 'vue';
+import * as LR from "@uploadcare/blocks";
+import { onBeforeUnmount, onMounted, ref } from "vue";
 
 LR.registerBlocks(LR);
 
@@ -20,12 +20,12 @@ const props = defineProps({
   },
   theme: {
     validator(value) {
-      return ['light', 'dark'].includes(value);
-    }
+      return ["light", "dark"].includes(value);
+    },
   },
 });
 
-const emit = defineEmits(['update:files']);
+const emit = defineEmits(["update:files"]);
 
 const uploadedFiles = ref([]);
 const ctxProviderRef = ref(null);
@@ -46,19 +46,24 @@ function resetUploaderState() {
 }
 
 function handleRemoveClick(uuid) {
-  emit('update:files', props.files.filter(f => f.uuid !== uuid));
+  emit(
+    "update:files",
+    props.files.filter((f) => f.uuid !== uuid)
+  );
 }
 
 function handleChangeEvent(e) {
   if (e.detail) {
-    uploadedFiles.value = e.detail.allEntries.filter(f => f.status === 'success');
+    uploadedFiles.value = e.detail.allEntries.filter(
+      (f) => f.status === "success"
+    );
   }
 }
 
 function handleModalCloseEvent() {
   resetUploaderState();
 
-  emit('update:files', [...props.files, ...uploadedFiles.value]);
+  emit("update:files", [...props.files, ...uploadedFiles.value]);
   uploadedFiles.value = [];
 }
 
@@ -71,26 +76,27 @@ onMounted(() => {
    */
   configRef.localeDefinitionOverride = {
     en: {
-      'photo__one': 'photo',
-      'photo__many': 'photos',
-      'photo__other': 'photos',
+      photo__one: "photo",
+      photo__many: "photos",
+      photo__other: "photos",
 
-      'upload-file': 'Upload photo',
-      'upload-files': 'Upload photos',
-      'choose-file': 'Choose photo',
-      'choose-files': 'Choose photos',
-      'drop-files-here': 'Drop photos here',
-      'select-file-source': 'Select photo source',
-      'edit-image': 'Edit photo',
-      'no-files': 'No photos selected',
-      'caption-edit-file': 'Edit photo',
-      'files-count-allowed': 'Only {{count}} {{plural:photo(count)}} allowed',
-      'files-max-size-limit-error': 'Photo is too big. Max photo size is {{maxFileSize}}.',
-      'header-uploading': 'Uploading {{count}} {{plural:photo(count)}}',
-      'header-succeed': '{{count}} {{plural:photo(count)}} uploaded',
-      'header-total': '{{count}} {{plural:photo(count)}} selected',
-    }
-  }
+      "upload-file": "Upload photo",
+      "upload-files": "Upload photos",
+      "choose-file": "Choose photo",
+      "choose-files": "Choose photos",
+      "drop-files-here": "Drop photos here",
+      "select-file-source": "Select photo source",
+      "edit-image": "Edit photo",
+      "no-files": "No photos selected",
+      "caption-edit-file": "Edit photo",
+      "files-count-allowed": "Only {{count}} {{plural:photo(count)}} allowed",
+      "files-max-size-limit-error":
+        "Photo is too big. Max photo size is {{maxFileSize}}.",
+      "header-uploading": "Uploading {{count}} {{plural:photo(count)}}",
+      "header-succeed": "{{count}} {{plural:photo(count)}} uploaded",
+      "header-total": "{{count}} {{plural:photo(count)}} selected",
+    },
+  };
 });
 
 onBeforeUnmount(() => {
@@ -125,7 +131,11 @@ onBeforeUnmount(() => {
 
     <lr-file-uploader-regular
       :ctx-name="uploaderCtxName"
-      :class="[uploaderClassName, {'dark-mode-enabled': theme === 'dark'}]"
+      :class="[
+        uploaderClassName,
+        'file-uploader',
+        { 'uc-dark': theme === 'dark', 'uc-light': theme === 'light' },
+      ]"
     ></lr-file-uploader-regular>
 
     <!--
@@ -142,11 +152,7 @@ onBeforeUnmount(() => {
     ></lr-upload-ctx-provider>
 
     <div class="previews">
-      <div
-        class="preview"
-        v-for="file in files"
-        :key="file.cdnUrl"
-      >
+      <div class="preview" v-for="file in files" :key="file.cdnUrl">
         <img
           class="preview-image"
           :src="`${file.cdnUrl}/-/preview/-/resize/x200/`"
@@ -159,7 +165,9 @@ onBeforeUnmount(() => {
           class="preview-remove-button"
           type="button"
           @click="handleRemoveClick(file.uuid)"
-        >×</button>
+        >
+          ×
+        </button>
       </div>
     </div>
   </div>
@@ -175,20 +183,13 @@ onBeforeUnmount(() => {
 }
 
 /*
-  Note: We set this class manually when we want File Uploader to join the dark side.
-  The main option here is `darkmore`. The rest ones are used to tune the theme to match the website.
+  CSS variables are used to customize the appearance of the file uploader.
 
-  See more: https://uploadcare.com/docs/file-uploader/styling/#base-values
+  See more: https://uploadcare.com/docs/file-uploader/styling/
  */
-.dark-mode-enabled {
-  --darkmode: 1;
-
-  --h-accent: 33.3;
-  --s-accent: 100%;
-  --l-accent: 60.78%;
-
-  --clr-btn-bgr-primary: var(--ui-action-button-background);
-  --clr-btn-txt-primary: var(--ui-action-button-text-color);
+.file-uploader {
+  --uc-primary-dark: var(--ui-action-button-background);
+  --uc-primary-foreground-dark: var(--ui-action-button-text-color);
 }
 
 .preview {
@@ -212,7 +213,8 @@ onBeforeUnmount(() => {
   color: var(--ui-control-text-color);
   cursor: pointer;
 
-  &:hover, &:focus {
+  &:hover,
+  &:focus {
     background: var(--ui-control-background-color);
     outline: 1px solid var(--ui-control-outline-color-focus);
   }
