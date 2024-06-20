@@ -1,9 +1,8 @@
 <script>
-  import { onMount } from 'svelte';
-  import * as LR from '@uploadcare/blocks';
+  import { onMount } from "svelte";
+  import * as LR from "@uploadcare/blocks";
 
   export let files = [];
-  export let uploaderClassName;
   export let uploaderCtxName;
   export let theme;
 
@@ -24,13 +23,13 @@
    */
   const resetUploaderState = () => ctxProviderRef.uploadCollection.clearAll();
 
-  const handleRemoveClick = uuid => {
-    files = files.filter(f => f.uuid !== uuid);
+  const handleRemoveClick = (uuid) => {
+    files = files.filter((f) => f.uuid !== uuid);
   };
 
-  const handleChangeEvent = e => {
+  const handleChangeEvent = (e) => {
     if (e.detail) {
-      uploadedFiles = e.detail.allEntries.filter(f => f.status === 'success');
+      uploadedFiles = e.detail.allEntries.filter((f) => f.status === "success");
     }
   };
 
@@ -50,8 +49,8 @@
 
       See more: https://uploadcare.com/docs/file-uploader/events/
      */
-    ctxProviderRef.addEventListener('change', handleChangeEvent);
-    ctxProviderRef.addEventListener('modal-close', handleModalCloseEvent);
+    ctxProviderRef.addEventListener("change", handleChangeEvent);
+    ctxProviderRef.addEventListener("modal-close", handleModalCloseEvent);
 
     /*
      Note: Localization of File Uploader is done via DOM property on the config node.
@@ -61,30 +60,31 @@
     */
     configRef.localeDefinitionOverride = {
       en: {
-        'photo__one': 'photo',
-        'photo__many': 'photos',
-        'photo__other': 'photos',
+        photo__one: "photo",
+        photo__many: "photos",
+        photo__other: "photos",
 
-        'upload-file': 'Upload photo',
-        'upload-files': 'Upload photos',
-        'choose-file': 'Choose photo',
-        'choose-files': 'Choose photos',
-        'drop-files-here': 'Drop photos here',
-        'select-file-source': 'Select photo source',
-        'edit-image': 'Edit photo',
-        'no-files': 'No photos selected',
-        'caption-edit-file': 'Edit photo',
-        'files-count-allowed': 'Only {{count}} {{plural:photo(count)}} allowed',
-        'files-max-size-limit-error': 'Photo is too big. Max photo size is {{maxFileSize}}.',
-        'header-uploading': 'Uploading {{count}} {{plural:photo(count)}}',
-        'header-succeed': '{{count}} {{plural:photo(count)}} uploaded',
-        'header-total': '{{count}} {{plural:photo(count)}} selected',
-      }
-    }
+        "upload-file": "Upload photo",
+        "upload-files": "Upload photos",
+        "choose-file": "Choose photo",
+        "choose-files": "Choose photos",
+        "drop-files-here": "Drop photos here",
+        "select-file-source": "Select photo source",
+        "edit-image": "Edit photo",
+        "no-files": "No photos selected",
+        "caption-edit-file": "Edit photo",
+        "files-count-allowed": "Only {{count}} {{plural:photo(count)}} allowed",
+        "files-max-size-limit-error":
+          "Photo is too big. Max photo size is {{maxFileSize}}.",
+        "header-uploading": "Uploading {{count}} {{plural:photo(count)}}",
+        "header-succeed": "{{count}} {{plural:photo(count)}} uploaded",
+        "header-total": "{{count}} {{plural:photo(count)}} selected",
+      },
+    };
 
     return () => {
-      ctxProviderRef.removeEventListener('change', handleChangeEvent);
-      ctxProviderRef.removeEventListener('modal-close', handleModalCloseEvent);
+      ctxProviderRef.removeEventListener("change", handleChangeEvent);
+      ctxProviderRef.removeEventListener("modal-close", handleModalCloseEvent);
 
       configRef.localeDefinitionOverride = null;
     };
@@ -117,13 +117,12 @@
 
   <lr-file-uploader-regular
     ctx-name={uploaderCtxName}
-    class={uploaderClassName}
-    class:dark-mode-enabled={theme === 'dark'}
+    class="file-uploader"
+    class:uc-dark={theme === "dark"}
+    class:uc-light={theme === "light"}
   ></lr-file-uploader-regular>
 
-  <lr-upload-ctx-provider
-    bind:this={ctxProviderRef}
-    ctx-name={uploaderCtxName}
+  <lr-upload-ctx-provider bind:this={ctxProviderRef} ctx-name={uploaderCtxName}
   ></lr-upload-ctx-provider>
 
   <div class="previews">
@@ -140,37 +139,30 @@
         <button
           class="preview-remove-button"
           type="button"
-          on:click={() => handleRemoveClick(file.uuid)}
-        >×</button>
+          on:click={() => handleRemoveClick(file.uuid)}>×</button
+        >
       </div>
     {/each}
   </div>
 </div>
 
 <style lang="scss">
+  /*
+  CSS variables are used to customize the appearance of the file uploader.
+
+  See more: https://uploadcare.com/docs/file-uploader/styling/
+ */
+  .file-uploader {
+    --uc-primary-dark: var(--ui-action-button-background);
+    --uc-primary-foreground-dark: var(--ui-action-button-text-color);
+  }
+
   .previews {
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
     width: 100%;
     margin-top: 12px;
-  }
-
-  /*
-    Note: We set this class manually when we want File Uploader to join the dark side.
-    The main option here is `darkmore`. The rest ones are used to tune the theme to match the website.
-
-    See more: https://uploadcare.com/docs/file-uploader/styling/#base-values
-   */
-  .dark-mode-enabled {
-    --darkmode: 1;
-
-    --h-accent: 33.3;
-    --s-accent: 100%;
-    --l-accent: 60.78%;
-
-    --clr-btn-bgr-primary: var(--ui-action-button-background);
-    --clr-btn-txt-primary: var(--ui-action-button-text-color);
   }
 
   .preview {
@@ -194,7 +186,8 @@
     color: var(--ui-control-text-color);
     cursor: pointer;
 
-    &:hover, &:focus {
+    &:hover,
+    &:focus {
       background: var(--ui-control-background-color);
       outline: 1px solid var(--ui-control-outline-color-focus);
     }
