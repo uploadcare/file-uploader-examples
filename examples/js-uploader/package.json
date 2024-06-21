@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "@codesandbox/nodebox": "0.1.9",
-    "@uploadcare/blocks": "^0.44.0-alpha.14"
+    "@uploadcare/blocks": "0.44.0"
   },
   "devDependencies": {
     "serve": "^14.2.3"
