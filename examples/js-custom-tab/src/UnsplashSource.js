@@ -17,7 +17,7 @@ const getRandomImages = async (token) => {
 
 export class UnsplashSource extends UploaderBlock {
   activityType = "unsplash";
-  _currentItemId = null
+  _currentItemId = null;
 
   init$ = {
     handleNext: () => {
@@ -28,21 +28,16 @@ export class UnsplashSource extends UploaderBlock {
     },
   };
 
-  cssInit$ = {
-    "--cfg-unsplash-token": null,
-  };
-
-  get token() {
-    return this.getCssData("--cfg-unsplash-token");
-  }
-
   async fetch() {
-    const items = await getRandomImages(this.token);
+    const items = await getRandomImages(this.$.token);
     this._items.push(...items);
     for (const item of items) {
-      this._splide.add(
-        /* HTML */ `<li data-id="${item.id}" class="splide__slide"><img src="${item.url}" /></li>`
-      );
+      this._splide.add(/* HTML */ `<li
+        data-id="${item.id}"
+        class="splide__slide"
+      >
+        <img src="${item.url}" />
+      </li>`);
     }
   }
 
@@ -60,10 +55,10 @@ export class UnsplashSource extends UploaderBlock {
       this._items.shift();
     });
 
-    this._splide.on("active", ({slide}) => {
+    this._splide.on("active", ({ slide }) => {
       const itemId = slide.dataset.id;
       this._currentItemId = itemId;
-    })
+    });
   }
 
   unmount() {
@@ -78,7 +73,7 @@ export class UnsplashSource extends UploaderBlock {
   }
 
   pick() {
-    const item = this._items.find(item => item.id === this._currentItemId)
+    const item = this._items.find((item) => item.id === this._currentItemId);
 
     this.uploadCollection.add({
       externalUrl: item.rawUrl,
@@ -101,6 +96,19 @@ export class UnsplashSource extends UploaderBlock {
   }
 
   static template = /* HTML */ `
+    <svg width="0" height="0" style="position:absolute">
+      <symbol
+        viewBox="0 0 24 24"
+        id="uc-icon-unsplash"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          fill="currentColor"
+          fill-rule="evenodd"
+          d="M15 4.5H9v4h6v-4ZM4 10.5h5v4h6v-4h5v9H4v-9Z"
+        />
+      </symbol>
+    </svg>
     <lr-activity-header>
       <button
         type="button"
@@ -146,3 +154,7 @@ export class UnsplashSource extends UploaderBlock {
     </div>
   `;
 }
+
+UnsplashSource.bindAttributes({
+  token: "token",
+});
