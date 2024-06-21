@@ -4,14 +4,14 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "start": "serve -p 8080",
-    "build": "rm -rf dist && mkdir dist && cp index.html minimal.html regular.html dist"
+    "start": "vite --port 8080",
+    "build": "vite build --base ./"
   },
   "dependencies": {
     "@codesandbox/nodebox": "0.1.9",
     "@uploadcare/blocks": "0.44.0"
   },
   "devDependencies": {
-    "serve": "^14.2.3"
+    "vite": "^5.3.1"
   }
 }
