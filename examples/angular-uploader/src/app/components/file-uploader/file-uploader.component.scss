@@ -7,20 +7,13 @@
 }
 
 /*
-  Note: We set this class manually when we want File Uploader to join the dark side.
-  The main option here is `darkmore`. The rest ones are used to tune the theme to match the website.
+  CSS variables are used to customize the appearance of the file uploader.
 
-  See more: https://uploadcare.com/docs/file-uploader/styling/#base-values
+  See more: https://uploadcare.com/docs/file-uploader/styling/
  */
-.dark-mode-enabled {
-  --darkmode: 1;
-
-  --h-accent: 33.3;
-  --s-accent: 100%;
-  --l-accent: 60.78%;
-
-  --clr-btn-bgr-primary: var(--ui-action-button-background);
-  --clr-btn-txt-primary: var(--ui-action-button-text-color);
+.file-uploader {
+  --uc-primary-dark: var(--ui-action-button-background);
+  --uc-primary-foreground-dark: var(--ui-action-button-text-color);
 }
 
 .preview {

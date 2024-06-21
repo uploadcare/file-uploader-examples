@@ -139,7 +139,7 @@ export default function FileUploader({ files, uploaderClassName, uploaderCtxName
 
       <lr-file-uploader-regular
         ctx-name={uploaderCtxName}
-        class={cs(uploaderClassName, { [st.darkModeEnabled]: theme === 'dark' })}
+        class={cs(uploaderClassName, { 'uc-dark': theme === 'dark', 'uc-light': theme === 'light' })}
       ></lr-file-uploader-regular>
 
       <lr-upload-ctx-provider

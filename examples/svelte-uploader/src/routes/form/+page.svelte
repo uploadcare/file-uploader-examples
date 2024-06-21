@@ -1,12 +1,12 @@
 <script>
-  import { browser } from '$app/environment';
+  import { browser } from "$app/environment";
 
-  import sunImage from '../../assets/sun.png';
-  import moonImage from '../../assets/moon.png';
+  import sunImage from "../../assets/sun.png";
+  import moonImage from "../../assets/moon.png";
 
-  import FileUploader from '$lib/FileUploader/FileUploader.svelte';
+  import FileUploader from "$lib/FileUploader/FileUploader.svelte";
 
-  import MOCK_DATA from './mocks';
+  import MOCK_DATA from "./mocks";
 
   let title = MOCK_DATA.title;
   let text = MOCK_DATA.text;
@@ -14,31 +14,33 @@
 
   let sentFormObject = null;
 
-  const handleFormSubmit = e => {
+  const handleFormSubmit = (e) => {
     e.preventDefault();
     sentFormObject = {
       title,
       text,
       photos,
     };
-  }
+  };
 
-  let theme = 'light';
+  let theme = "light";
 
   $: {
     if (browser) {
-      theme = document.body.classList.contains('theme--dark') ? 'dark' : 'light';
+      theme = document.body.classList.contains("theme--dark")
+        ? "dark"
+        : "light";
     }
   }
 
-  const handleThemeChange = e => {
-    theme = e.target.checked ? 'light' : 'dark';
-  }
+  const handleThemeChange = (e) => {
+    theme = e.target.checked ? "light" : "dark";
+  };
 
   $: {
     if (browser) {
-      document.body.classList.remove('theme--light');
-      document.body.classList.remove('theme--dark');
+      document.body.classList.remove("theme--light");
+      document.body.classList.remove("theme--dark");
       document.body.classList.add(`theme--${theme}`);
     }
   }
@@ -51,14 +53,14 @@
     <label class="theme-toggle">
       <input
         type="checkbox"
-        checked={theme === 'light'}
+        checked={theme === "light"}
         on:change={handleThemeChange}
-      >
+      />
       <img
-        src={theme === 'light' ? sunImage : moonImage}
+        src={theme === "light" ? sunImage : moonImage}
         width="18"
         height="18"
-        alt={`Switch to ${theme === 'light' ? 'dark' : 'light'} theme`}
+        alt={`Switch to ${theme === "light" ? "dark" : "light"} theme`}
       />
     </label>
   </header>
@@ -67,21 +69,12 @@
     <form class="form" on:submit={handleFormSubmit}>
       <div class="field">
         <label class="label" for="title">Title</label>
-        <input
-          class="input"
-          type="text"
-          id="title"
-          bind:value={title}
-        />
+        <input class="input" type="text" id="title" bind:value={title} />
       </div>
 
       <div class="field">
         <label class="label" for="text">Text</label>
-        <textarea
-          class="input"
-          id="text"
-          rows={10}
-          bind:value={text}
+        <textarea class="input" id="text" rows={10} bind:value={text}
         ></textarea>
       </div>
 
@@ -89,9 +82,8 @@
         <p class="label">Photos</p>
         <FileUploader
           uploaderCtxName="my-uploader-1"
-          uploaderClassName="file-uploader"
           bind:files={photos}
-          theme={theme}
+          {theme}
         />
       </div>
 
@@ -100,7 +92,8 @@
       </div>
     </form>
   {:else}
-    <pre class="result"><code>{JSON.stringify(sentFormObject, null, 2)}</code></pre>
+    <pre class="result"><code>{JSON.stringify(sentFormObject, null, 2)}</code
+      ></pre>
   {/if}
 </div>
 
@@ -195,7 +188,8 @@
     color: var(--ui-action-button-text-color);
     cursor: pointer;
 
-    &:hover, &:focus {
+    &:hover,
+    &:focus {
       outline: 3px solid var(--ui-control-outline-color-focus);
     }
 

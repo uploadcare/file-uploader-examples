@@ -4,6 +4,7 @@
   "type": "module",
   "version": "1.0.0",
   "scripts": {
+    "install-deps": "for dir in ./examples/*; do npm install --prefix \"${dir}\"; done",
     "install-ci-deps": "for dir in ./examples/*; do npm ci --prefix \"${dir}\"; done",
     "build": "for dir in ./examples/*; do npm run build --prefix \"${dir}\"; done"
   },
