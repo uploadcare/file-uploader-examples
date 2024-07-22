@@ -1,11 +1,11 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
-import * as LR from '@uploadcare/blocks';
-import { OutputFileEntry } from '@uploadcare/blocks';
+import * as UC from '@uploadcare/file-uploader';
+import { OutputFileEntry } from '@uploadcare/file-uploader';
 
 import st from './FileUploader.module.scss';
 import cs from 'classnames';
 
-LR.registerBlocks(LR);
+UC.registerBlocks(UC);
 
 type FileUploaderProps = {
   uploaderClassName: string;
@@ -17,8 +17,8 @@ type FileUploaderProps = {
 
 export default function FileUploader({ files, uploaderClassName, uploaderCtxName, onChange, theme }: FileUploaderProps) {
   const [uploadedFiles, setUploadedFiles] = useState<OutputFileEntry<'success'>[]>([]);
-  const ctxProviderRef = useRef<InstanceType<LR.UploadCtxProvider>>(null);
-  const configRef = useRef<InstanceType<LR.Config>>(null);
+  const ctxProviderRef = useRef<InstanceType<UC.UploadCtxProvider>>(null);
+  const configRef = useRef<InstanceType<UC.Config>>(null);
 
   const handleRemoveClick = useCallback(
     (uuid: OutputFileEntry['uuid']) => onChange(files.filter(f => f.uuid !== uuid)),
@@ -29,7 +29,7 @@ export default function FileUploader({ files, uploaderClassName, uploaderCtxName
     const ctxProvider = ctxProviderRef.current;
     if (!ctxProvider) return;
 
-    const handleChangeEvent = (e: LR.EventMap['change']) => {
+    const handleChangeEvent = (e: UC.EventMap['change']) => {
       setUploadedFiles([...e.detail.allEntries.filter(f => f.status === 'success')] as OutputFileEntry<'success'>[]);
     };
 
@@ -115,18 +115,18 @@ export default function FileUploader({ files, uploaderClassName, uploaderCtxName
   return (
     <div className={st.root}>
       {/*
-         Note: `lr-config` is the main block we use to configure File Uploader.
+         Note: `uc-config` is the main block we use to configure File Uploader.
          It's important to all the context-related blocks to have the same `ctx-name` attribute.
 
          See more: https://uploadcare.com/docs/file-uploader/configuration/
          Available options: https://uploadcare.com/docs/file-uploader/options/
 
-         Also note: Some options currently are not available via `lr-config`,
+         Also note: Some options currently are not available via `uc-config`,
          but may be set via CSS properties. E.g. `darkmode`.
 
-         Here they are: https://github.com/uploadcare/blocks/blob/main/blocks/themes/lr-basic/config.css
+         Here they are: https://github.com/uploadcare/file-uploader/blob/main/blocks/themes/uc-basic/config.css
       */}
-      <lr-config
+      <uc-config
         ref={configRef}
         ctx-name={uploaderCtxName}
         pubkey="a6ca334c3520777c0045"
@@ -135,14 +135,14 @@ export default function FileUploader({ files, uploaderClassName, uploaderCtxName
         confirmUpload={false}
         removeCopyright={true}
         imgOnly={true}
-      ></lr-config>
+      ></uc-config>
 
-      <lr-file-uploader-regular
+      <uc-file-uploader-regular
         ctx-name={uploaderCtxName}
         class={cs(uploaderClassName, { 'uc-dark': theme === 'dark', 'uc-light': theme === 'light' })}
-      ></lr-file-uploader-regular>
+      ></uc-file-uploader-regular>
 
-      <lr-upload-ctx-provider
+      <uc-upload-ctx-provider
         ref={ctxProviderRef}
         ctx-name={uploaderCtxName}
       />

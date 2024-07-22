@@ -7,7 +7,7 @@
   See more: https://uploadcare.com/docs/file-uploader/styling/
  */
 
-.fileUploader :global(lr-simple-btn button) {
+.fileUploader :global(uc-simple-btn button) {
   height: auto;
   padding: 10px 12px !important;
   font-family: monospace;
@@ -20,16 +20,16 @@
   color: var(--ui-control-text-color);
 }
 
-.fileUploader :global(lr-simple-btn lr-icon) {
+.fileUploader :global(uc-simple-btn uc-icon) {
   display: none;
 }
 
-.fileUploader :global(lr-simple-btn button:hover),
-.fileUploader :global(lr-simple-btn button:focus) {
+.fileUploader :global(uc-simple-btn button:hover),
+.fileUploader :global(uc-simple-btn button:focus) {
   background: var(--ui-control-background-color);
   outline: 3px solid var(--ui-control-outline-color-focus);
 }
 
-.fileUploader :global(lr-simple-btn button:active) {
+.fileUploader :global(uc-simple-btn button:active) {
   border-color: var(--ui-control-border-color-focus);
 }

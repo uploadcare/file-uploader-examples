@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
-import { OutputFileEntry } from '@uploadcare/blocks';
+import { OutputFileEntry } from '@uploadcare/file-uploader';
 import { FileUploaderRegular, type UploadCtxProvider } from '@uploadcare/react-uploader';
 
 import st from './FileUploader.module.scss';

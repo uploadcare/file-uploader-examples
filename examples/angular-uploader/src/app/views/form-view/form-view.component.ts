@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { JsonPipe } from '@angular/common';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
-import { OutputFileEntry } from '@uploadcare/blocks';
+import { OutputFileEntry } from '@uploadcare/file-uploader';
 
 import { FileUploaderComponent } from '../../components/file-uploader/file-uploader.component';
 

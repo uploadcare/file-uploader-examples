@@ -15,7 +15,7 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
-    "types": ["@uploadcare/blocks/types/jsx"]
+    "types": ["@uploadcare/file-uploader/types/jsx"]
   },
   "include": [
     "src"

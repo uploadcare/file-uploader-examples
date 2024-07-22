@@ -1,6 +1,6 @@
 <script>
   import { onMount } from "svelte";
-  import * as LR from "@uploadcare/blocks";
+  import * as UC from "@uploadcare/file-uploader";
 
   export let files = [];
   export let uploaderCtxName;
@@ -41,7 +41,7 @@
   };
 
   onMount(() => {
-    LR.registerBlocks(LR);
+    UC.registerBlocks(UC);
 
     /*
       Note: Event binding is the main way to get data and other info from File Uploader.
@@ -93,18 +93,18 @@
 
 <div class="root">
   <!--
-    Note: `lr-config` is the main block we use to configure File Uploader.
+    Note: `uc-config` is the main block we use to configure File Uploader.
     It's important to all the context-related blocks to have the same `ctx-name` attribute.
 
     See more: https://uploadcare.com/docs/file-uploader/configuration/
     Available options: https://uploadcare.com/docs/file-uploader/options/
 
-    Also note: Some options currently are not available via `lr-config`,
+    Also note: Some options currently are not available via `uc-config`,
     but may be set via CSS properties. E.g. `darkmode`.
 
-    Here they are: https://github.com/uploadcare/blocks/blob/main/blocks/themes/lr-basic/config.css
+    Here they are: https://github.com/uploadcare/file-uploader/blob/main/blocks/themes/uc-basic/config.css
   -->
-  <lr-config
+  <uc-config
     bind:this={configRef}
     ctx-name={uploaderCtxName}
     pubkey="a6ca334c3520777c0045"
@@ -113,17 +113,17 @@
     confirmUpload={false}
     removeCopyright={true}
     imgOnly={true}
-  ></lr-config>
+  ></uc-config>
 
-  <lr-file-uploader-regular
+  <uc-file-uploader-regular
     ctx-name={uploaderCtxName}
     class="file-uploader"
     class:uc-dark={theme === "dark"}
     class:uc-light={theme === "light"}
-  ></lr-file-uploader-regular>
+  ></uc-file-uploader-regular>
 
-  <lr-upload-ctx-provider bind:this={ctxProviderRef} ctx-name={uploaderCtxName}
-  ></lr-upload-ctx-provider>
+  <uc-upload-ctx-provider bind:this={ctxProviderRef} ctx-name={uploaderCtxName}
+  ></uc-upload-ctx-provider>
 
   <div class="previews">
     {#each files as file (file.cdnUrl)}
@@ -200,7 +200,7 @@
     object-fit: cover;
   }
 
-  lr-file-uploader-regular :global(lr-simple-btn button) {
+  uc-file-uploader-regular :global(uc-simple-btn button) {
     height: auto;
     padding: 10px 12px !important;
     font-family: monospace;
@@ -213,17 +213,17 @@
     color: var(--ui-control-text-color);
   }
 
-  lr-file-uploader-regular :global(lr-simple-btn lr-icon) {
+  uc-file-uploader-regular :global(uc-simple-btn uc-icon) {
     display: none;
   }
 
-  lr-file-uploader-regular :global(lr-simple-btn button:hover),
-  lr-file-uploader-regular :global(lr-simple-btn button:focus) {
+  uc-file-uploader-regular :global(uc-simple-btn button:hover),
+  uc-file-uploader-regular :global(uc-simple-btn button:focus) {
     background: var(--ui-control-background-color);
     outline: 3px solid var(--ui-control-outline-color-focus);
   }
 
-  lr-file-uploader-regular :global(lr-simple-btn button:active) {
+  uc-file-uploader-regular :global(uc-simple-btn button:active) {
     border-color: var(--ui-control-border-color-focus);
   }
 </style>

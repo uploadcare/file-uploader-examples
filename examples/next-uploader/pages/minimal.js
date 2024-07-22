@@ -1,10 +1,10 @@
-import * as LR from '@uploadcare/blocks';
+import * as UC from '@uploadcare/file-uploader';
 import React, { useEffect, useRef, useState } from 'react';
 
-import '@uploadcare/blocks/web/lr-file-uploader-minimal.min.css';
+import '@uploadcare/file-uploader/web/uc-file-uploader-minimal.min.css';
 import st from './styles.module.css';
 
-LR.registerBlocks(LR);
+UC.registerBlocks(UC);
 
 function Minimal() {
   const [isClient, setIsClient] = useState(false)
@@ -46,18 +46,18 @@ function Minimal() {
 
       {isClient && (
         <>
-          <lr-config
+          <uc-config
             ctx-name="my-uploader-1"
             pubkey="a6ca334c3520777c0045"
-          ></lr-config>
-          <lr-file-uploader-minimal
+          ></uc-config>
+          <uc-file-uploader-minimal
             ctx-name="my-uploader-1"
             class="uc-light"
-          ></lr-file-uploader-minimal>
-          <lr-upload-ctx-provider
+          ></uc-file-uploader-minimal>
+          <uc-upload-ctx-provider
             ctx-name="my-uploader-1"
             ref={ctxProviderRef}
-          ></lr-upload-ctx-provider>
+          ></uc-upload-ctx-provider>
         </>
       )}
 

@@ -1,10 +1,10 @@
-import * as LR from '@uploadcare/blocks';
+import * as UC from '@uploadcare/file-uploader';
 import React, { useEffect, useRef, useState } from 'react';
 
-import '@uploadcare/blocks/web/lr-file-uploader-regular.min.css';
+import '@uploadcare/file-uploader/web/uc-file-uploader-regular.min.css';
 import st from './styles.module.css';
 
-LR.registerBlocks(LR);
+UC.registerBlocks(UC);
 
 function Regular() {
   const [isClient, setIsClient] = useState(false)
@@ -46,19 +46,19 @@ function Regular() {
 
       {isClient && (
         <>
-          <lr-config
+          <uc-config
             ctx-name="my-uploader-2"
             pubkey="a6ca334c3520777c0045"
             sourceList="local, url, camera, dropbox"
-          ></lr-config>
-          <lr-file-uploader-regular
+          ></uc-config>
+          <uc-file-uploader-regular
             ctx-name="my-uploader-2"
             class="uc-light"
-          ></lr-file-uploader-regular>
-          <lr-upload-ctx-provider
+          ></uc-file-uploader-regular>
+          <uc-upload-ctx-provider
             ctx-name="my-uploader-2"
             ref={ctxProviderRef}
-          ></lr-upload-ctx-provider>
+          ></uc-upload-ctx-provider>
         </>
       )}
 

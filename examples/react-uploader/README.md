@@ -38,15 +38,15 @@ $ npm run start
 
 ## Installation
 
-All you need to do is to install [`@uploadcare/blocks`](https://www.npmjs.com/package/@uploadcare/blocks) from npm
+All you need to do is to install [`@uploadcare/file-uploader`](https://www.npmjs.com/package/@uploadcare/file-uploader) from npm
 via your favorite Node package manager.
 
 The package provides TypeScript types, so you do not need to install `@types/anything` if you need a proper typing.
-However, if you want to get JSX types right, add `@uploadcare/blocks/types/jsx` in the `types` array of your tsconfig.json:
+However, if you want to get JSX types right, add `@uploadcare/file-uploader/types/jsx` in the `types` array of your tsconfig.json:
 
 ```json
 {
-  "types": ["@uploadcare/blocks/types/jsx"]
+  "types": ["@uploadcare/file-uploader/types/jsx"]
 }
 ```
 
@@ -78,7 +78,7 @@ which provides React-friendly API for the rest of the view. There are Blocks ins
 ### Styling
 
 If your styling solution may provide class string or style object, feel free to use them on blocks like 
-`lr-file-uploader-regular` and override default class using CSS variables.
+`uc-file-uploader-regular` and override default class using CSS variables.
 
 Otherwise you may go “full override” way and pass a string with styles to a File Uploader type of your choice.
 

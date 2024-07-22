@@ -9,8 +9,8 @@ export default defineConfig({
     vue({
       template: {
         compilerOptions: {
-          // treat all tags with `lr-`` as custom elements
-          isCustomElement: (tag) => tag.includes('lr-')
+          // treat all tags with `uc-`` as custom elements
+          isCustomElement: (tag) => tag.includes('uc-')
         }
       }
     }),

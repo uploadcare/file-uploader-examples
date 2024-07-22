@@ -1,21 +1,21 @@
 import React, { useEffect, useRef, useState } from 'react';
 
-import * as LR from '@uploadcare/blocks';
-import { OutputFileEntry } from '@uploadcare/blocks';
+import * as UC from '@uploadcare/file-uploader';
+import { OutputFileEntry } from '@uploadcare/file-uploader';
 
 import st from './MinimalView.module.css';
 
-LR.registerBlocks(LR);
+UC.registerBlocks(UC);
 
 export default function MinimalView() {
   const [files, setFiles] = useState<OutputFileEntry<'success'>[]>([]);
-  const ctxProviderRef = useRef<InstanceType<LR.UploadCtxProvider>>(null);
+  const ctxProviderRef = useRef<InstanceType<UC.UploadCtxProvider>>(null);
 
   useEffect(() => {
     const ctxProvider = ctxProviderRef.current;
     if (!ctxProvider) return;
 
-    const handleChangeEvent = (e: LR.EventMap['change']) => {
+    const handleChangeEvent = (e: UC.EventMap['change']) => {
       console.log('change event payload:', e);
 
       setFiles([...e.detail.allEntries.filter(f => f.status === 'success')] as OutputFileEntry<'success'>[]);
@@ -35,17 +35,17 @@ export default function MinimalView() {
 
   return (
     <div>
-      <lr-config
+      <uc-config
         ctx-name="my-uploader-2"
         pubkey="a6ca334c3520777c0045"
-      ></lr-config>
-      <lr-file-uploader-minimal
+      ></uc-config>
+      <uc-file-uploader-minimal
         ctx-name="my-uploader-2"
-      ></lr-file-uploader-minimal>
-      <lr-upload-ctx-provider
+      ></uc-file-uploader-minimal>
+      <uc-upload-ctx-provider
         ctx-name="my-uploader-2"
         ref={ctxProviderRef}
-      ></lr-upload-ctx-provider>
+      ></uc-upload-ctx-provider>
 
       <div className={st.previews}>
         {files.map((file) => (

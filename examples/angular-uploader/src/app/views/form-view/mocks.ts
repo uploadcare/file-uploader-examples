@@ -1,4 +1,4 @@
-import { OutputFileEntry } from '@uploadcare/blocks';
+import { OutputFileEntry } from '@uploadcare/file-uploader';
 
 type MocksType = {
   title: string;

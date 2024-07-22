@@ -1,8 +1,8 @@
 import { Component, CUSTOM_ELEMENTS_SCHEMA, ElementRef, EventEmitter, Input, Output, ViewChild } from '@angular/core';
-import * as LR from '@uploadcare/blocks';
-import { OutputFileEntry } from '@uploadcare/blocks';
+import * as UC from '@uploadcare/file-uploader';
+import { OutputFileEntry } from '@uploadcare/file-uploader';
 
-LR.registerBlocks(LR);
+UC.registerBlocks(UC);
 
 @Component({
   selector: 'regular-view',
@@ -16,7 +16,7 @@ export class RegularViewComponent {
   @Output() filesChange = new EventEmitter<OutputFileEntry<'success'>[]>();
 
   @ViewChild('ctxProvider', { static: true }) ctxProviderRef!: ElementRef<
-    InstanceType<LR.UploadCtxProvider>
+    InstanceType<UC.UploadCtxProvider>
   >;
 
   ngOnInit() {
@@ -39,7 +39,7 @@ export class RegularViewComponent {
     );
   }
 
-  handleChangeEvent = (e: LR.EventMap['change']) => {
+  handleChangeEvent = (e: UC.EventMap['change']) => {
     console.log('change event payload:', e);
 
     this.files = e.detail.allEntries.filter(f => f.status === 'success') as OutputFileEntry<'success'>[];

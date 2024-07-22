@@ -1,15 +1,15 @@
-<lr-config
+<uc-config
   ctx-name="my-uploader-3"
   pubkey="a6ca334c3520777c0045"
   source-list="local, url, camera, dropbox"
-></lr-config>
-<lr-file-uploader-regular
+></uc-config>
+<uc-file-uploader-regular
   ctx-name="my-uploader-3"
-></lr-file-uploader-regular>
-<lr-upload-ctx-provider
+></uc-file-uploader-regular>
+<uc-upload-ctx-provider
   ctx-name="my-uploader-3"
   #ctxProvider
-></lr-upload-ctx-provider>
+></uc-upload-ctx-provider>
 
 <div class="previews">
   @for (file of files; track file.cdnUrl) {

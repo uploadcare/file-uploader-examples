@@ -1,4 +1,4 @@
-import { OutputFileEntry } from '@uploadcare/blocks';
+import { OutputFileEntry } from '@uploadcare/file-uploader';
 import { ChangeEventHandler, FormEventHandler, useCallback, useEffect, useState } from 'react';
 import Toggle from 'react-toggle';
 import 'react-toggle/style.css';

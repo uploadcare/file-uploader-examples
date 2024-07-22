@@ -7,10 +7,10 @@ import {
   Output,
   ViewChild
 } from '@angular/core';
-import * as LR from '@uploadcare/blocks';
-import { OutputFileEntry } from '@uploadcare/blocks';
+import * as UC from '@uploadcare/file-uploader';
+import { OutputFileEntry } from '@uploadcare/file-uploader';
 
-LR.registerBlocks(LR);
+UC.registerBlocks(UC);
 
 @Component({
   selector: 'file-uploader',
@@ -29,11 +29,11 @@ export class FileUploaderComponent {
 
   uploadedFiles: OutputFileEntry<'success'>[] = [];
   @ViewChild('ctxProvider', { static: true }) ctxProviderRef!: ElementRef<
-    InstanceType<LR.UploadCtxProvider>
+    InstanceType<UC.UploadCtxProvider>
   >;
 
   @ViewChild('config', { static: true }) configRef!: ElementRef<
-    InstanceType<LR.Config>
+    InstanceType<UC.Config>
   >;
 
   ngOnInit() {
@@ -107,7 +107,7 @@ export class FileUploaderComponent {
     this.filesChange.emit(this.files.filter((f) => f.uuid !== uuid));
   }
 
-  handleChangeEvent = (e: LR.EventMap['change']) => {
+  handleChangeEvent = (e: UC.EventMap['change']) => {
     this.uploadedFiles = e.detail.allEntries.filter(f => f.status === 'success') as OutputFileEntry<'success'>[];
   };
 

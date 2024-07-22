@@ -1,8 +1,8 @@
-import * as LR from "@uploadcare/blocks/web/lr-file-uploader-minimal.min.js";
-import "@uploadcare/blocks/web/lr-file-uploader-minimal.min.css";
+import * as UC from "@uploadcare/file-uploader/web/uc-file-uploader-minimal.min.js";
+import "@uploadcare/file-uploader/web/uc-file-uploader-minimal.min.css";
 import "./styles.css";
 
-LR.registerBlocks(LR);
+UC.registerBlocks(UC);
 
 const providerNode = document.getElementById("my-uploader-provider");
 const previewsNode = document.getElementById("previews");

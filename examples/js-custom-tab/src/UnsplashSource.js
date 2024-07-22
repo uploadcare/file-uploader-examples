@@ -1,4 +1,4 @@
-import { UploaderBlock, ActivityBlock } from "@uploadcare/blocks";
+import { UploaderBlock, ActivityBlock } from "@uploadcare/file-uploader";
 import Splide from "@splidejs/splide";
 
 const getRandomImages = async (token) => {
@@ -109,16 +109,16 @@ export class UnsplashSource extends UploaderBlock {
         />
       </symbol>
     </svg>
-    <lr-activity-header>
+    <uc-activity-header>
       <button
         type="button"
         class="mini-btn close-btn"
         set="onclick: *historyBack"
       >
-        <lr-icon name="back"></lr-icon>
+        <uc-icon name="back"></uc-icon>
       </button>
       <div>
-        <lr-icon name="unsplash"></lr-icon>
+        <uc-icon name="unsplash"></uc-icon>
         <span>Unsplash</span>
       </div>
       <button
@@ -126,9 +126,9 @@ export class UnsplashSource extends UploaderBlock {
         class="mini-btn close-btn"
         set="onclick: *historyBack"
       >
-        <lr-icon name="close"></lr-icon>
+        <uc-icon name="close"></uc-icon>
       </button>
-    </lr-activity-header>
+    </uc-activity-header>
     <div class="content">
       <div ref="slider" class="splide">
         <div class="splide__track">

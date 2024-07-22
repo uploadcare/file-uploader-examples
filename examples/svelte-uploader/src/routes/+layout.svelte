@@ -1,6 +1,6 @@
 <script>
-  import '@uploadcare/blocks/web/lr-file-uploader-regular.min.css';
-  import '@uploadcare/blocks/web/lr-file-uploader-minimal.min.css';
+  import '@uploadcare/file-uploader/web/uc-file-uploader-regular.min.css';
+  import '@uploadcare/file-uploader/web/uc-file-uploader-minimal.min.css';
 
   import { page } from '$app/stores';
 </script>

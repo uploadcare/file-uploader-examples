@@ -1,5 +1,5 @@
 <script>
-  import * as LR from '@uploadcare/blocks';
+  import * as UC from '@uploadcare/file-uploader';
   import { onMount } from 'svelte';
 
   export let files = [];
@@ -15,7 +15,7 @@
   };
 
   onMount(() => {
-    LR.registerBlocks(LR);
+    UC.registerBlocks(UC);
 
     /*
       Note: Event binding is the main way to get data and other info from File Uploader.
@@ -42,20 +42,20 @@
 </script>
 
 <div>
-  <lr-config
+  <uc-config
     ctx-name="my-uploader-3"
     pubkey="a6ca334c3520777c0045"
     sourceList="local, url, camera, dropbox"
-  ></lr-config>
+  ></uc-config>
 
-  <lr-file-uploader-regular
+  <uc-file-uploader-regular
     ctx-name="my-uploader-3"
-  ></lr-file-uploader-regular>
+  ></uc-file-uploader-regular>
 
-  <lr-upload-ctx-provider
+  <uc-upload-ctx-provider
     ctx-name="my-uploader-3"
     bind:this={ctxProviderRef}
-  ></lr-upload-ctx-provider>
+  ></uc-upload-ctx-provider>
 
   <div class="previews">
     {#each files as file (file.cdnUrl)}
