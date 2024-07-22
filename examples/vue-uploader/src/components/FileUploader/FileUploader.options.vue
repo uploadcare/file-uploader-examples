@@ -45,7 +45,7 @@ export default {
 
         See more: https://uploadcare.com/docs/file-uploader/api/
        */
-      this.$refs.ctxProviderRef.uploadCollection.clearAll();
+      this.$refs.ctxProviderRef.getAPI().removeAllFiles();
     },
     handleRemoveClick(uuid) {
       this.$emit(

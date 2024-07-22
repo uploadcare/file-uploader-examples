@@ -42,7 +42,7 @@ function resetUploaderState() {
 
     See more: https://uploadcare.com/docs/file-uploader/api/
    */
-  ctxProviderRef.value.uploadCollection.clearAll();
+  ctxProviderRef.value.getAPI().removeAllFiles();
 }
 
 function handleRemoveClick(uuid) {

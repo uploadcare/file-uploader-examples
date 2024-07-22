@@ -100,7 +100,7 @@ export class FileUploaderComponent {
     See more: https://uploadcare.com/docs/file-uploader/api/
    */
   resetUploaderState() {
-    this.ctxProviderRef.nativeElement.uploadCollection.clearAll();
+    this.ctxProviderRef.nativeElement.getAPI().removeAllFiles();
   }
 
   handleRemoveClick(uuid: OutputFileEntry['uuid']) {

@@ -21,7 +21,11 @@
 
     See more: https://uploadcare.com/docs/file-uploader/api/
    */
-  const resetUploaderState = () => ctxProviderRef.uploadCollection.clearAll();
+
+  const resetUploaderState = () => {
+    const api = ctxProviderRef.getAPI()
+    api.removeAllFiles()
+  };
 
   const handleRemoveClick = (uuid) => {
     files = files.filter((f) => f.uuid !== uuid);
