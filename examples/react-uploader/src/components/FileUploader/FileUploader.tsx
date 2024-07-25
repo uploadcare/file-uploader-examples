@@ -96,8 +96,10 @@ export default function FileUploader({ files, uploaderClassName, uploaderCtxName
 
       See more: https://uploadcare.com/docs/file-uploader/api/
      */
-    const api = ctxProviderRef.current.getAPI()
-    const resetUploaderState = () => api.removeAllFiles();
+    const resetUploaderState = () => {
+      const api = ctxProviderRef.current.getAPI()
+      api.removeAllFiles()
+    };
 
     const handleModalCloseEvent = () => {
       resetUploaderState();

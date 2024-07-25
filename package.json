@@ -6,8 +6,7 @@
   "scripts": {
     "install-deps": "for dir in ./examples/*; do npm install --prefix \"${dir}\"; done",
     "install-ci-deps": "for dir in ./examples/*; do npm ci --prefix \"${dir}\"; done",
-    "build": "for dir in ./examples/*; do npm run build --prefix \"${dir}\"; done",
-    "install-file-upload": "for dir in ./examples/*; do npm install  @uploadcare/file-uploader@0.50.1-alpha.2 --prefix \"${dir}\"; done"
+    "build": "for dir in ./examples/*; do npm run build --prefix \"${dir}\"; done"
   },
   "author": "Uploadcare",
   "license": "MIT"

@@ -1,5 +1,0 @@
-{
-  "dependencies": {
-    "@uploadcare/file-uploader": "^0.50.1-alpha.2"
-  }
-}

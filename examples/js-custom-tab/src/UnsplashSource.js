@@ -112,7 +112,7 @@ export class UnsplashSource extends UploaderBlock {
     <uc-activity-header>
       <button
         type="button"
-        class="mini-btn close-btn"
+        class="uc-mini-btn uc-close-btn"
         set="onclick: *historyBack"
       >
         <uc-icon name="back"></uc-icon>
@@ -123,30 +123,30 @@ export class UnsplashSource extends UploaderBlock {
       </div>
       <button
         type="button"
-        class="mini-btn close-btn"
+        class="uc-mini-btn uc-close-btn"
         set="onclick: *historyBack"
       >
         <uc-icon name="close"></uc-icon>
       </button>
     </uc-activity-header>
-    <div class="content">
-      <div ref="slider" class="splide">
-        <div class="splide__track">
-          <ul class="splide__list"></ul>
+    <div class="uc-content">
+      <div ref="slider" class="uc-splide">
+        <div class="uc-splide__track">
+          <ul class="uc-splide__list"></ul>
         </div>
       </div>
     </div>
-    <div class="toolbar">
+    <div class="uc-toolbar">
       <button
         type="button"
-        class="done-btn primary-btn w-30"
+        class="uc-done-btn uc-primary-btn w-30"
         set="onclick: handlePick"
       >
         Pick
       </button>
       <button
         type="button"
-        class="cancel-btn secondary-btn"
+        class="uc-cancel-btn uc-secondary-btn"
         set="onclick: handleNext"
       >
         Next →
