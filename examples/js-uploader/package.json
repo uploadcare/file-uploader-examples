@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "@codesandbox/nodebox": "0.1.9",
-    "@uploadcare/file-uploader": "^0.50.1-alpha.2"
+    "@uploadcare/file-uploader": "^1.1.0"
   },
   "devDependencies": {
     "vite": "^5.3.4"
