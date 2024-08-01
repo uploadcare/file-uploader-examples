@@ -5,7 +5,7 @@ import { OutputFileEntry } from '@uploadcare/file-uploader';
 import st from './FileUploader.module.scss';
 import cs from 'classnames';
 
-UC.registerBlocks(UC);
+UC.defineComponents(UC);
 
 type FileUploaderProps = {
   uploaderClassName: string;

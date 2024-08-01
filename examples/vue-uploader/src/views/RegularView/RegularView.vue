@@ -1,7 +1,7 @@
 <script>
 import * as UC from '@uploadcare/file-uploader';
 
-UC.registerBlocks(UC);
+UC.defineComponents(UC);
 
 export default {
   data() {

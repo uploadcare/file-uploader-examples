@@ -2,7 +2,7 @@ import * as UC from "@uploadcare/file-uploader/web/uc-file-uploader-regular.min.
 import "@uploadcare/file-uploader/web/uc-file-uploader-regular.min.css";
 import "./styles.css";
 
-UC.registerBlocks(UC);
+UC.defineComponents(UC);
 
 const providerNode = document.getElementById("my-uploader-provider");
 const previewsNode = document.getElementById("previews");

@@ -5,7 +5,7 @@ import { OutputFileEntry } from '@uploadcare/file-uploader';
 
 import st from './RegularView.module.css';
 
-UC.registerBlocks(UC);
+UC.defineComponents(UC);
 
 export default function RegularView() {
   const [files, setFiles] = useState<OutputFileEntry<'success'>[]>([]);

@@ -4,7 +4,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import '@uploadcare/file-uploader/web/uc-file-uploader-minimal.min.css';
 import st from './styles.module.css';
 
-UC.registerBlocks(UC);
+UC.defineComponents(UC);
 
 function Minimal() {
   const [isClient, setIsClient] = useState(false)

@@ -15,7 +15,7 @@
   };
 
   onMount(() => {
-    UC.registerBlocks(UC);
+    UC.defineComponents(UC);
 
     /*
       Note: Event binding is the main way to get data and other info from File Uploader.

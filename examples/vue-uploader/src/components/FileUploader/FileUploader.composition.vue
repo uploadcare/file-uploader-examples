@@ -9,7 +9,7 @@
 import * as UC from "@uploadcare/file-uploader";
 import { onBeforeUnmount, onMounted, ref } from "vue";
 
-UC.registerBlocks(UC);
+UC.defineComponents(UC);
 
 const props = defineProps({
   uploaderCtxName: String,

@@ -5,7 +5,7 @@ import { OutputFileEntry } from '@uploadcare/file-uploader';
 
 import st from './MinimalView.module.css';
 
-UC.registerBlocks(UC);
+UC.defineComponents(UC);
 
 export default function MinimalView() {
   const [files, setFiles] = useState<OutputFileEntry<'success'>[]>([]);

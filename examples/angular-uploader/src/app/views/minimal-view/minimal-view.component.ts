@@ -10,7 +10,7 @@ import {
 import * as UC from '@uploadcare/file-uploader';
 import { OutputFileEntry } from '@uploadcare/file-uploader';
 
-UC.registerBlocks(UC);
+UC.defineComponents(UC);
 
 @Component({
   selector: 'minimal-view',

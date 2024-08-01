@@ -4,7 +4,7 @@ import { CustomSourceBtn } from "./CustomSourceBtn.js";
 import { UnsplashSource } from "./UnsplashSource.js";
 import './style.css';
 
-UC.registerBlocks({
+UC.defineComponents({
   ...UC,
   CustomFileUploader,
   UnsplashSource,
