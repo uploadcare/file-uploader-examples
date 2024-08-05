@@ -38,7 +38,7 @@ $ npm run start
 
 ## Installation
 
-All you need to do is to install [`@uploadcare/blocks`](https://www.npmjs.com/package/@uploadcare/blocks) from npm
+All you need to do is to install [`@uploadcare/file-uploader`](https://www.npmjs.com/package/@uploadcare/file-uploader) from npm
 via your favorite Node package manager.
 
 [Read more about installation](https://uploadcare.com/docs/file-uploader/installation/) in the Uploadcare documentation.
@@ -65,7 +65,7 @@ if you want to know more about using custom elements in Angular.
 ### Styling
 
 If your styling solution may provide class string or style object, feel free to use them on blocks like
-`lr-file-uploader-regular` and override default class using CSS variables.
+`uc-file-uploader-regular` and override default class using CSS variables.
 
 Otherwise you may go “full override” way and pass a string with styles to a File Uploader type of your choice.
 
@@ -75,7 +75,7 @@ Otherwise you may go “full override” way and pass a string with styles to a 
 
 You’re always welcome to contribute:
 
-* Create [issues](https://github.com/uploadcare/blocks/issues) every time you feel something is missing or goes wrong.
+* Create [issues](https://github.com/uploadcare/file-uploader/issues) every time you feel something is missing or goes wrong.
 * Provide your feedback or drop us a support request at <a href="mailto:hello@uploadcare.com">hello@uploadcare.com</a>.
 * Ask questions on [Stack Overflow](https://stackoverflow.com/questions/tagged/uploadcare) with "uploadcare" tag if others can have these questions as well.
 * Star this repo if you like it ⭐️

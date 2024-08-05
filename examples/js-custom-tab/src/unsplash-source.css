@@ -1,6 +1,6 @@
 @import "@splidejs/splide/dist/css/splide-core.min.css";
 
-lr-unsplash-source {
+uc-unsplash-source {
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -9,7 +9,7 @@ lr-unsplash-source {
   overflow: hidden;
 }
 
-lr-modal lr-unsplash-source {
+uc-modal uc-unsplash-source {
   width: min(
     calc(var(--uc-dialog-max-width) - var(--uc-padding) * 2),
     calc(var(--uc-dialog-max-width) - var(--uc-padding) * 2)
@@ -17,7 +17,7 @@ lr-modal lr-unsplash-source {
   height: var(--modal-content-height-fill, 100%);
   max-height: var(--modal-max-content-height);}
 
-lr-unsplash-source .toolbar {
+uc-unsplash-source .uc-toolbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -25,43 +25,43 @@ lr-unsplash-source .toolbar {
   padding: var(--uc-padding);
 }
 
-lr-unsplash-source .content {
+uc-unsplash-source .uc-content {
   display: flex;
   overflow: hidden;
   flex: 1 1 0;
   min-height: 0;
 }
 
-lr-unsplash-source .image-slider {
+uc-unsplash-source .uc-image-slider {
   display: flex;
   height: 100%;
   width: 100%;
   transition: all 0.3s;
 }
 
-lr-unsplash-source .image-slider img {
+uc-unsplash-source .uc-image-slider img {
   max-width: 100%;
   max-height: 100%;
   object-fit: cover;
   flex: 0 0 100%;
 }
 
-lr-unsplash-source .splide {
+uc-unsplash-source .uc-splide {
   width: 100%;
 }
 
-lr-unsplash-source .splide__track {
+uc-unsplash-source .uc-splide__track {
   height: 100%;
 }
 
-lr-unsplash-source .splide__slide {
+uc-unsplash-source .uc-splide__slide {
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
 }
 
-lr-unsplash-source .splide__slide img {
+uc-unsplash-source .uc-splide__slide img {
   height: 100%;
   object-fit: cover;
   flex: 0 1 100%;

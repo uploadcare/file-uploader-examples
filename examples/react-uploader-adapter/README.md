@@ -57,7 +57,7 @@ which provides React-friendly API for the rest of the view. There are Blocks ins
 ### Styling
 
 If your styling solution may provide class string or style object, feel free to use them on blocks like 
-`lr-file-uploader-regular` and override default class using CSS variables.
+`uc-file-uploader-regular` and override default class using CSS variables.
 
 Otherwise you may go “full override” way and pass a string with styles to a File Uploader type of your choice.
 

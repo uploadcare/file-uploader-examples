@@ -38,7 +38,7 @@ $ npm run start
 
 ## Installation
 
-All you need to do is to install [`@uploadcare/blocks`](https://www.npmjs.com/package/@uploadcare/blocks) from npm
+All you need to do is to install [`@uploadcare/file-uploader`](https://www.npmjs.com/package/@uploadcare/file-uploader) from npm
 via your favorite Node package manager.
 
 The package provides TypeScript types, so you do not need to install `@types/anything` if you need a proper typing.
@@ -59,7 +59,7 @@ which provides Svelte-friendly API for the rest of the view. There are Blocks in
 ### Styling
 
 If your styling solution may provide class string or style object, feel free to use them on blocks like
-`lr-file-uploader-regular` and override default class using CSS variables.
+`uc-file-uploader-regular` and override default class using CSS variables.
 
 Otherwise you may go “full override” way and pass a string with styles to a File Uploader type of your choice.
 

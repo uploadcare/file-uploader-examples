@@ -1,11 +1,11 @@
-import * as LR from "@uploadcare/blocks";
+import * as UC from "@uploadcare/file-uploader";
 import { CustomFileUploader } from "./CustomFileUploader.js";
 import { CustomSourceBtn } from "./CustomSourceBtn.js";
 import { UnsplashSource } from "./UnsplashSource.js";
 import './style.css';
 
-LR.registerBlocks({
-  ...LR,
+UC.defineComponents({
+  ...UC,
   CustomFileUploader,
   UnsplashSource,
   SourceBtn: CustomSourceBtn,

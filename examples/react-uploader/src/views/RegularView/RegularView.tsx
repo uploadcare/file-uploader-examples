@@ -1,21 +1,21 @@
 import React, { useEffect, useRef, useState } from 'react';
 
-import * as LR from '@uploadcare/blocks';
-import { OutputFileEntry } from '@uploadcare/blocks';
+import * as UC from '@uploadcare/file-uploader';
+import { OutputFileEntry } from '@uploadcare/file-uploader';
 
 import st from './RegularView.module.css';
 
-LR.registerBlocks(LR);
+UC.defineComponents(UC);
 
 export default function RegularView() {
   const [files, setFiles] = useState<OutputFileEntry<'success'>[]>([]);
-  const ctxProviderRef = useRef<InstanceType<LR.UploadCtxProvider>>(null);
+  const ctxProviderRef = useRef<InstanceType<UC.UploadCtxProvider>>(null);
 
   useEffect(() => {
     const ctxProvider = ctxProviderRef.current;
     if (!ctxProvider) return;
 
-    const handleChangeEvent = (e: LR.EventMap['change']) => {
+    const handleChangeEvent = (e: UC.EventMap['change']) => {
       console.log('change event payload:', e);
 
       setFiles([...e.detail.allEntries.filter(f => f.status === 'success')] as OutputFileEntry<'success'>[]);
@@ -35,18 +35,18 @@ export default function RegularView() {
 
   return (
     <div>
-      <lr-config
+      <uc-config
         ctx-name="my-uploader-3"
         pubkey="a6ca334c3520777c0045"
         sourceList="local, url, camera, dropbox"
-      ></lr-config>
-      <lr-file-uploader-regular
+      ></uc-config>
+      <uc-file-uploader-regular
         ctx-name="my-uploader-3"
-      ></lr-file-uploader-regular>
-      <lr-upload-ctx-provider
+      ></uc-file-uploader-regular>
+      <uc-upload-ctx-provider
         ctx-name="my-uploader-3"
         ref={ctxProviderRef}
-      ></lr-upload-ctx-provider>
+      ></uc-upload-ctx-provider>
 
       <div className={st.previews}>
         {files.map((file) => (

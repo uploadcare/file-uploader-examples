@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 import { FileUploaderRegular } from '@uploadcare/react-uploader';
-import { OutputFileEntry } from '@uploadcare/blocks';
+import { OutputFileEntry } from '@uploadcare/file-uploader';
 import "@uploadcare/react-uploader/core.css"
 
 import st from './RegularView.module.css';

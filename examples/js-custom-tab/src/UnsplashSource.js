@@ -1,4 +1,4 @@
-import { UploaderBlock, ActivityBlock } from "@uploadcare/blocks";
+import { UploaderBlock, ActivityBlock } from "@uploadcare/file-uploader";
 import Splide from "@splidejs/splide";
 
 const getRandomImages = async (token) => {
@@ -109,44 +109,44 @@ export class UnsplashSource extends UploaderBlock {
         />
       </symbol>
     </svg>
-    <lr-activity-header>
+    <uc-activity-header>
       <button
         type="button"
-        class="mini-btn close-btn"
+        class="uc-mini-btn uc-close-btn"
         set="onclick: *historyBack"
       >
-        <lr-icon name="back"></lr-icon>
+        <uc-icon name="back"></uc-icon>
       </button>
       <div>
-        <lr-icon name="unsplash"></lr-icon>
+        <uc-icon name="unsplash"></uc-icon>
         <span>Unsplash</span>
       </div>
       <button
         type="button"
-        class="mini-btn close-btn"
+        class="uc-mini-btn uc-close-btn"
         set="onclick: *historyBack"
       >
-        <lr-icon name="close"></lr-icon>
+        <uc-icon name="close"></uc-icon>
       </button>
-    </lr-activity-header>
-    <div class="content">
-      <div ref="slider" class="splide">
-        <div class="splide__track">
-          <ul class="splide__list"></ul>
+    </uc-activity-header>
+    <div class="uc-content">
+      <div ref="slider" class="uc-splide">
+        <div class="uc-splide__track">
+          <ul class="uc-splide__list"></ul>
         </div>
       </div>
     </div>
-    <div class="toolbar">
+    <div class="uc-toolbar">
       <button
         type="button"
-        class="done-btn primary-btn w-30"
+        class="uc-done-btn uc-primary-btn w-30"
         set="onclick: handlePick"
       >
         Pick
       </button>
       <button
         type="button"
-        class="cancel-btn secondary-btn"
+        class="uc-cancel-btn uc-secondary-btn"
         set="onclick: handleNext"
       >
         Next →

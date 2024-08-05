@@ -1,4 +1,4 @@
-import { SourceBtn } from "@uploadcare/blocks";
+import { SourceBtn } from "@uploadcare/file-uploader";
 
 export class CustomSourceBtn extends SourceBtn {
   initTypes() {

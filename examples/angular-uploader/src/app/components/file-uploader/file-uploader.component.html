@@ -1,17 +1,17 @@
 <div class="root">
   <!--
-    Note: `lr-config` is the main block we use to configure File Uploader.
+    Note: `uc-config` is the main block we use to configure File Uploader.
     It's important to all the context-related blocks to have the same `ctx-name` attribute.
 
     See more: https://uploadcare.com/docs/file-uploader/configuration/
     Available options: https://uploadcare.com/docs/file-uploader/options/
 
-    Also note: Some options currently are not available via `lr-config`,
+    Also note: Some options currently are not available via `uc-config`,
     but may be set via CSS properties or CSS classes. E.g. accent colors or darkmode
 
     Here they are: https://uploadcare.com/docs/file-uploader/styling/
   -->
-  <lr-config
+  <uc-config
     #config
     [attr.ctx-name]="uploaderCtxName"
     pubkey="a6ca334c3520777c0045"
@@ -20,19 +20,19 @@
     confirmUpload="false"
     removeCopyright="true"
     imgOnly="true"
-  ></lr-config>
+  ></uc-config>
 
-  <lr-file-uploader-regular
+  <uc-file-uploader-regular
     [attr.ctx-name]="uploaderCtxName"
     [class]="uploaderClassName"
     [class.uc-dark]="theme === 'dark'"
     [class.uc-light]="theme === 'light'"
-  ></lr-file-uploader-regular>
+  ></uc-file-uploader-regular>
 
-  <lr-upload-ctx-provider
+  <uc-upload-ctx-provider
     #ctxProvider
     [attr.ctx-name]="uploaderCtxName"
-  ></lr-upload-ctx-provider>
+  ></uc-upload-ctx-provider>
 
   <div class="previews">
     @for (file of files; track file.cdnUrl) {

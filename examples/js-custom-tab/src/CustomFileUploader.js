@@ -1,23 +1,23 @@
-import { FileUploaderRegular } from "@uploadcare/blocks";
+import { FileUploaderRegular } from "@uploadcare/file-uploader";
 
 export class CustomFileUploader extends FileUploaderRegular {}
 CustomFileUploader.template = /* HTML */ `
-  <lr-simple-btn></lr-simple-btn>
+  <uc-simple-btn></uc-simple-btn>
 
-  <lr-modal strokes block-body-scrolling>
-    <lr-start-from>
-      <lr-drop-area with-icon clickable></lr-drop-area>
-      <lr-source-list wrap></lr-source-list>
-      <lr-copyright></lr-copyright>
-    </lr-start-from>
-    <lr-upload-list></lr-upload-list>
-    <lr-camera-source></lr-camera-source>
-    <lr-url-source></lr-url-source>
-    <lr-external-source></lr-external-source>
-    <lr-cloud-image-editor-activity></lr-cloud-image-editor-activity>
-    <lr-unsplash-source token="${import.meta.env.VITE_UNSPLASH_TOKEN}"></lr-unsplash-source>
-  </lr-modal>
+  <uc-modal strokes block-body-scrolling>
+    <uc-start-from>
+      <uc-drop-area with-icon clickable></uc-drop-area>
+      <uc-source-list wrap></uc-source-list>
+      <uc-copyright></uc-copyright>
+    </uc-start-from>
+    <uc-upload-list></uc-upload-list>
+    <uc-camera-source></uc-camera-source>
+    <uc-url-source></uc-url-source>
+    <uc-external-source></uc-external-source>
+    <uc-cloud-image-editor-activity></uc-cloud-image-editor-activity>
+    <uc-unsplash-source token="${import.meta.env.VITE_UNSPLASH_TOKEN}"></uc-unsplash-source>
+  </uc-modal>
 
-  <lr-message-box></lr-message-box>
-  <lr-progress-bar-common></lr-progress-bar-common>
+  <uc-message-box></uc-message-box>
+  <uc-progress-bar-common></uc-progress-bar-common>
 `;

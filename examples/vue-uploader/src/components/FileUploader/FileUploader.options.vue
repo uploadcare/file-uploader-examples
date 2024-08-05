@@ -6,9 +6,9 @@
   See more: https://vuejs.org/guide/introduction.html#api-styles
  */
 
-import * as LR from "@uploadcare/blocks";
+import * as UC from "@uploadcare/file-uploader";
 
-LR.registerBlocks(LR);
+UC.defineComponents(UC);
 
 export default {
   props: {
@@ -45,7 +45,7 @@ export default {
 
         See more: https://uploadcare.com/docs/file-uploader/api/
        */
-      this.$refs.ctxProviderRef.uploadCollection.clearAll();
+      this.$refs.ctxProviderRef.getAPI().removeAllFiles();
     },
     handleRemoveClick(uuid) {
       this.$emit(
@@ -109,18 +109,18 @@ export default {
 <template>
   <div class="root">
     <!--
-      Note: `lr-config` is the main block we use to configure File Uploader.
+      Note: `uc-config` is the main block we use to configure File Uploader.
       It's important to all the context-related blocks to have the same `ctx-name` attribute.
 
       See more: https://uploadcare.com/docs/file-uploader/configuration/
       Available options: https://uploadcare.com/docs/file-uploader/options/
 
-      Also note: Some options currently are not available via `lr-config`,
+      Also note: Some options currently are not available via `uc-config`,
       but may be set via CSS properties. E.g. `darkmode`.
 
-      Here they are: https://github.com/uploadcare/blocks/blob/main/blocks/themes/lr-basic/config.css
+      Here they are: https://github.com/uploadcare/file-uploader/blob/main/blocks/themes/uc-basic/config.css
     -->
-    <lr-config
+    <uc-config
       ref="configRef"
       :ctx-name="uploaderCtxName"
       pubkey="a6ca334c3520777c0045"
@@ -129,16 +129,16 @@ export default {
       confirmUpload="false"
       removeCopyright
       imgOnly
-    ></lr-config>
+    ></uc-config>
 
-    <lr-file-uploader-regular
+    <uc-file-uploader-regular
       :ctx-name="uploaderCtxName"
       :class="[
         uploaderClassName,
         'file-uploader',
         { 'uc-dark': theme === 'dark', 'uc-light': theme === 'light' },
       ]"
-    ></lr-file-uploader-regular>
+    ></uc-file-uploader-regular>
 
     <!--
       Note: Event binding is the main way to get data and other info from File Uploader.
@@ -146,12 +146,12 @@ export default {
 
       See more: https://uploadcare.com/docs/file-uploader/events/
     -->
-    <lr-upload-ctx-provider
+    <uc-upload-ctx-provider
       ref="ctxProviderRef"
       :ctx-name="uploaderCtxName"
       @change="handleChangeEvent"
       @modal-close="handleModalCloseEvent"
-    ></lr-upload-ctx-provider>
+    ></uc-upload-ctx-provider>
 
     <div class="previews">
       <div class="preview" v-for="file in files" :key="file.cdnUrl">
@@ -229,7 +229,7 @@ export default {
   object-fit: cover;
 }
 
-.root:deep(lr-simple-btn button) {
+.root:deep(uc-simple-btn button) {
   height: auto;
   padding: 10px 12px !important;
   font-family: monospace;
@@ -242,17 +242,17 @@ export default {
   color: var(--ui-control-text-color);
 }
 
-.root:deep(lr-simple-btn lr-icon) {
+.root:deep(uc-simple-btn uc-icon) {
   display: none;
 }
 
-.root:deep(lr-simple-btn button:hover),
-.root:deep(lr-simple-btn button:focus) {
+.root:deep(uc-simple-btn button:hover),
+.root:deep(uc-simple-btn button:focus) {
   background: var(--ui-control-background-color);
   outline: 3px solid var(--ui-control-outline-color-focus);
 }
 
-.root:deep(lr-simple-btn button:active) {
+.root:deep(uc-simple-btn button:active) {
   border-color: var(--ui-control-border-color-focus);
 }
 </style>

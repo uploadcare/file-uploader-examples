@@ -41,7 +41,7 @@
 }
 
 .root {
-  lr-simple-btn button {
+  uc-simple-btn button {
     height: auto;
     padding: 10px 12px !important;
     font-family: monospace;
@@ -54,17 +54,17 @@
     color: var(--ui-control-text-color);
   }
 
-  lr-simple-btn lr-icon {
+  uc-simple-btn uc-icon {
     display: none;
   }
 
-  lr-simple-btn button:hover,
-  lr-simple-btn button:focus {
+  uc-simple-btn button:hover,
+  uc-simple-btn button:focus {
     background: var(--ui-control-background-color);
     outline: 3px solid var(--ui-control-outline-color-focus);
   }
 
-  lr-simple-btn button:active {
+  uc-simple-btn button:active {
     border-color: var(--ui-control-border-color-focus);
   }
 }

@@ -1,8 +1,8 @@
 import { createApp } from 'vue';
 import { createRouter, createWebHistory } from 'vue-router';
 
-import '@uploadcare/blocks/web/lr-file-uploader-regular.min.css';
-import '@uploadcare/blocks/web/lr-file-uploader-minimal.min.css';
+import '@uploadcare/file-uploader/web/uc-file-uploader-regular.min.css';
+import '@uploadcare/file-uploader/web/uc-file-uploader-minimal.min.css';
 
 import './assets/main.css'
 

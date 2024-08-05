@@ -1,7 +1,7 @@
 <script>
-import * as LR from '@uploadcare/blocks';
+import * as UC from '@uploadcare/file-uploader';
 
-LR.registerBlocks(LR);
+UC.defineComponents(UC);
 
 export default {
   data() {
@@ -34,14 +34,14 @@ export default {
 
 <template>
   <div>
-    <lr-config
+    <uc-config
       ctx-name="my-uploader-2"
       pubkey="a6ca334c3520777c0045"
-    ></lr-config>
+    ></uc-config>
 
-    <lr-file-uploader-minimal
+    <uc-file-uploader-minimal
       ctx-name="my-uploader-2"
-    ></lr-file-uploader-minimal>
+    ></uc-file-uploader-minimal>
 
     <!--
       Note: Event binding is the main way to get data and other info from File Uploader.
@@ -49,10 +49,10 @@ export default {
 
       See more: https://uploadcare.com/docs/file-uploader/events/
     -->
-    <lr-upload-ctx-provider
+    <uc-upload-ctx-provider
       ctx-name="my-uploader-2"
       @change="handleChangeEvent"
-    ></lr-upload-ctx-provider>
+    ></uc-upload-ctx-provider>
 
     <div class="previews">
       <div
