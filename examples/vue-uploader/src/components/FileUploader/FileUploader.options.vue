@@ -75,7 +75,7 @@ export default {
 
       See more: https://uploadcare.com/docs/file-uploader/localization/
      */
-    this.$refs.ctxProviderRef.localeDefinitionOverride = {
+    this.$refs.configRef.localeDefinitionOverride = {
       en: {
         photo__one: "photo",
         photo__many: "photos",
@@ -101,7 +101,7 @@ export default {
   },
 
   beforeUnmount() {
-    this.$refs.ctxProviderRef.localeDefinitionOverride = null;
+    this.$refs.configRef.localeDefinitionOverride = null;
   },
 };
 </script>
