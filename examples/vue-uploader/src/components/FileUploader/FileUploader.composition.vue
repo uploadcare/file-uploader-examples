@@ -74,7 +74,7 @@ onMounted(() => {
 
     See more: https://uploadcare.com/docs/file-uploader/localization/
    */
-  configRef.localeDefinitionOverride = {
+  configRef.value.localeDefinitionOverride = {
     en: {
       photo__one: "photo",
       photo__many: "photos",
@@ -100,7 +100,7 @@ onMounted(() => {
 });
 
 onBeforeUnmount(() => {
-  configRef.localeDefinitionOverride = null;
+  configRef.value.localeDefinitionOverride = null;
 });
 </script>
 
