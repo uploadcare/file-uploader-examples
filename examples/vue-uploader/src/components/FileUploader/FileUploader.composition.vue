@@ -107,8 +107,8 @@ onBeforeUnmount(() => {
 <template>
   <div class="root">
     <!--
-      Note: `uc-config` is the main block we use to configure File Uploader.
-      It's important to all the context-related blocks to have the same `ctx-name` attribute.
+      Note: `uc-config` is the main component we use to configure File Uploader.
+      It's important to all the context-related File Uploader to have the same `ctx-name` attribute.
 
       See more: https://uploadcare.com/docs/file-uploader/configuration/
       Available options: https://uploadcare.com/docs/file-uploader/options/

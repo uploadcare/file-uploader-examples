@@ -1,6 +1,6 @@
-# Blocks composition examples
+# File Uploader composition examples
 
-[![Edit composition](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/github/uploadcare/blocks-examples/tree/main/examples/composition/)
+[![Edit composition](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/github/uploadcare/file-uploader-examples/tree/main/examples/composition/)
 
 
 ## Run this demo locally

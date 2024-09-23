@@ -16,11 +16,11 @@
   <a href="https://twitter.com/Uploadcare?ref=github-vue-example-readme">Twitter</a>
 </p>
 
-# Vue File Uploader with Uploadcare Blocks
+# Vue File Uploader with Uploadcare File Uploader
 
-[![Edit vue-uploader](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/github/uploadcare/blocks-examples/tree/main/examples/vue-uploader/)
+[![Edit vue-uploader](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/github/uploadcare/file-uploader-examples/tree/main/examples/vue-uploader/)
 
-This is an example project of implementing a file uploader in a Vue application with [Uploadcare Blocks](https://github.com/uploadcare/blocks).
+This is an example project of implementing a file uploader in a Vue application with [Uploadcare File Uploader](https://github.com/uploadcare/file-uploader).
 
 ## Run this demo locally
 
@@ -53,7 +53,7 @@ Please, read the [File Uploader documentation](https://uploadcare.com/docs/file-
 
 ### Vue + Web Components
 
-Blocks are native to the Web but not to Vue. However, Vue does everything to make solutions based on Web Components
+File Uploader is native to the Web but not to Vue. However, Vue does everything to make solutions based on Web Components
 to work properly with it. 
 
 To help Vue to figure out where you're using Web Components, you have to specify 
@@ -66,7 +66,7 @@ if you want to know more about using custom elements in Vue.
 ### Options API vs. Composition API
 
 One of the examples, “Real-life form”, contains a [FileUploader](src/components/FileUploader) component
-which provides Vue-friendly API for the rest of the example. There are Blocks inside of this component and nowhere else.
+which provides Vue-friendly API for the rest of the example. There are File Uploader inside of this component and nowhere else.
 
 However, Vue 3 supports two different API styles: Options API and Composition API. We do not know which one you prefer,
 so we have implemented the example twice.
@@ -77,7 +77,7 @@ to [FileUploader.composition.vue](src/components/FileUploader/FileUploader.compo
 
 ### Styling
 
-If your styling solution may provide class string or style object, feel free to use them on blocks like
+If your styling solution may provide class string or style object, feel free to use them on components like
 `uc-file-uploader-regular` and override default class using CSS variables.
 
 Otherwise you may go “full override” way and pass a string with styles to a File Uploader type of your choice.
@@ -88,7 +88,7 @@ Otherwise you may go “full override” way and pass a string with styles to a 
 
 You’re always welcome to contribute:
 
-* Create [issues](https://github.com/uploadcare/blocks-examples/issues) every time you feel something is missing or goes wrong.
+* Create [issues](https://github.com/uploadcare/file-uploader-examples/issues) every time you feel something is missing or goes wrong.
 * Provide your feedback or drop us a support request at <a href="mailto:hello@uploadcare.com">hello@uploadcare.com</a>.
 * Ask questions on [Stack Overflow](https://stackoverflow.com/questions/tagged/uploadcare) with "uploadcare" tag if others can have these questions as well.
 * Star this repo if you like it ⭐️

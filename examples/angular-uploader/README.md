@@ -16,11 +16,11 @@
   <a href="https://twitter.com/Uploadcare?ref=github-angular-example-readme">Twitter</a>
 </p>
 
-# Angular File Uploader with Uploadcare Blocks
+# Angular File Uploader with Uploadcare File Uploader
 
-[![Edit angular-uploader](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/github/uploadcare/blocks-examples/tree/main/examples/angular-uploader/)
+[![Edit angular-uploader](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/github/uploadcare/file-uploader-examples/tree/main/examples/angular-uploader/)
 
-This is an example project of implementing a file uploader in an Angular application with [Uploadcare Blocks](https://github.com/uploadcare/blocks).
+This is an example project of implementing a file uploader in an Angular application with [Uploadcare File Uploader](https://github.com/uploadcare/file-uploader).
 
 ## Run this demo locally
 
@@ -51,7 +51,7 @@ Please, read the [File Uploader documentation](https://uploadcare.com/docs/file-
 
 ### Angular + Web Components
 
-Blocks are native to the Web but not to Angular. However, Angular does everything to make solutions based on Web Components
+File Uploader is native to the Web but not to Angular. However, Angular does everything to make solutions based on Web Components
 to work properly with it. 
 
 To help Angular to figure out where you're using Web Components, you have to set
@@ -64,7 +64,7 @@ if you want to know more about using custom elements in Angular.
 
 ### Styling
 
-If your styling solution may provide class string or style object, feel free to use them on blocks like
+If your styling solution may provide class string or style object, feel free to use them on components like
 `uc-file-uploader-regular` and override default class using CSS variables.
 
 Otherwise you may go “full override” way and pass a string with styles to a File Uploader type of your choice.
