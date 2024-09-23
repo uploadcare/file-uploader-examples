@@ -54,7 +54,7 @@ Please, read the [File Uploader documentation](https://uploadcare.com/docs/file-
 File Uploader is native to the Web, which makes them native to Svelte too.
 
 E.g. in this example we created a [FileUploader](src/lib/FileUploader/FileUploader.svelte) component
-which provides Svelte-friendly API for the rest of the view. There are File Uploader inside of this component and nowhere else.
+which provides Svelte-friendly API for the rest of the view. There is a File Uploader inside this component and nowhere else.
 
 ### Styling
 

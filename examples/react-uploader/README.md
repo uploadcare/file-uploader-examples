@@ -61,7 +61,7 @@ Please, read the [File Uploader documentation](https://uploadcare.com/docs/file-
 File Uploader is native to the Web but not to React. It's easy to use File Uploader in a React app, but note that a part of your solution will encapsulate non-React code.
 
 E.g. in one of the examples we created a [FileUploader](src/components/FileUploader/FileUploader.tsx) component 
-which provides React-friendly API for the rest of the view. There are File Uploader inside of this component and nowhere else.
+which provides React-friendly API for the rest of the view. There is a File Uploader inside this component and nowhere else.
 
 ### Non-React things you should know about
 

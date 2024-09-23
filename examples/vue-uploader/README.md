@@ -66,7 +66,7 @@ if you want to know more about using custom elements in Vue.
 ### Options API vs. Composition API
 
 One of the examples, “Real-life form”, contains a [FileUploader](src/components/FileUploader) component
-which provides Vue-friendly API for the rest of the example. There are File Uploader inside of this component and nowhere else.
+which provides Vue-friendly API for the rest of the example. There is a File Uploader inside this component and nowhere else.
 
 However, Vue 3 supports two different API styles: Options API and Composition API. We do not know which one you prefer,
 so we have implemented the example twice.
