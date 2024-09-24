@@ -16,11 +16,11 @@
   <a href="https://twitter.com/Uploadcare?ref=github-svelte-example-readme">Twitter</a>
 </p>
 
-# Svelte File Uploader with Uploadcare Blocks
+# Svelte file uploading example
 
-[![Edit svelte-uploader](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/github/uploadcare/blocks-examples/tree/main/examples/svelte-uploader/)
+[![Edit svelte-uploader](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/github/uploadcare/file-uploader-examples/tree/main/examples/svelte-uploader/)
 
-This is an example project of implementing a file uploader in a Svelte application with [Uploadcare Blocks](https://github.com/uploadcare/blocks).
+This is an example project of implementing a file uploader in a Svelte application with [Uploadcare File Uploader](https://github.com/uploadcare/file-uploader).
 
 ## Run this demo locally
 
@@ -51,14 +51,14 @@ Please, read the [File Uploader documentation](https://uploadcare.com/docs/file-
 
 ## Integration notes
 
-Blocks are native to the Web, which makes them native to Svelte too.
+File Uploader is native to the Web, which makes them native to Svelte too.
 
 E.g. in this example we created a [FileUploader](src/lib/FileUploader/FileUploader.svelte) component
-which provides Svelte-friendly API for the rest of the view. There are Blocks inside of this component and nowhere else.
+which provides Svelte-friendly API for the rest of the view. There is a File Uploader inside this component and nowhere else.
 
 ### Styling
 
-If your styling solution may provide class string or style object, feel free to use them on blocks like
+If your styling solution may provide class string or style object, feel free to use them on components like
 `uc-file-uploader-regular` and override default class using CSS variables.
 
 Otherwise you may go “full override” way and pass a string with styles to a File Uploader type of your choice.
@@ -69,7 +69,7 @@ Otherwise you may go “full override” way and pass a string with styles to a 
 
 You’re always welcome to contribute:
 
-* Create [issues](https://github.com/uploadcare/blocks-examples/issues) every time you feel something is missing or goes wrong.
+* Create [issues](https://github.com/uploadcare/file-uploader-examples/issues) every time you feel something is missing or goes wrong.
 * Provide your feedback or drop us a support request at <a href="mailto:hello@uploadcare.com">hello@uploadcare.com</a>.
 * Ask questions on [Stack Overflow](https://stackoverflow.com/questions/tagged/uploadcare) with "uploadcare" tag if others can have these questions as well.
 * Star this repo if you like it ⭐️

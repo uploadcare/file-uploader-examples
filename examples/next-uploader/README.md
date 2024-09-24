@@ -16,9 +16,11 @@
   <a href="https://twitter.com/Uploadcare?ref=github-next-example-readme">Twitter</a>
 </p>
 
-# Next.js File Uploader with Uploadcare Blocks
+# Next.js file uploading example
 
-[![Edit next-uploader](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/github/uploadcare/blocks-examples/tree/main/examples/next-uploader/)
+[![Edit next-uploader](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/github/uploadcare/file-uploader-examples/tree/main/examples/next-uploader/)
+
+This is an example project of implementing a file uploader in a Next.js application with [Uploadcare File Uploader](https://github.com/uploadcare/file-uploader)
 
 ## Run this demo locally
 
@@ -38,7 +40,7 @@ $ npm run start
 
 You’re always welcome to contribute:
 
-* Create [issues](https://github.com/uploadcare/blocks-examples/issues) every time you feel something is missing or goes wrong.
+* Create [issues](https://github.com/uploadcare/file-uploader-examples/issues) every time you feel something is missing or goes wrong.
 * Provide your feedback or drop us a support request at <a href="mailto:hello@uploadcare.com">hello@uploadcare.com</a>.
 * Ask questions on [Stack Overflow](https://stackoverflow.com/questions/tagged/uploadcare) with "uploadcare" tag if others can have these questions as well.
 * Star this repo if you like it ⭐️
