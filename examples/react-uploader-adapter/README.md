@@ -16,11 +16,11 @@
   <a href="https://twitter.com/Uploadcare?ref=github-react-example-readme">Twitter</a>
 </p>
 
-# React File Uploader with Uploadcare File Uploader
+# React file uploading example
 
 [![Edit react-uploader](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/github/uploadcare/file-uploader-examples/tree/main/examples/react-uploader-adapter/)
 
-This is an example project of implementing a file uploader in a React application with [Uploadcare File Uploader](https://github.com/uploadcare/file-uploader).
+This is an example project of implementing a file uploader in a Next.js application with [Uploadcare React Uploader](https://github.com/uploadcare/react-components/blob/main/packages/react-uploader)
 
 ## Run this demo locally
 

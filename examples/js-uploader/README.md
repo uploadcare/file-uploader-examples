@@ -16,9 +16,11 @@
   <a href="https://twitter.com/Uploadcare?ref=github-js-example-readme">Twitter</a>
 </p>
 
-# JS File Uploader with Uploadcare File Uploader
+# JS file uploading example
 
 [![Edit js-uploader](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/github/uploadcare/file-uploader-examples/tree/main/examples/js-uploader/)
+
+This is an example project of implementing a file uploader in an JacaScript application with [Uploadcare File Uploader](https://github.com/uploadcare/file-uploader)
 
 ## Run this demo locally
 

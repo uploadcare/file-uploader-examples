@@ -16,7 +16,7 @@
   <a href="https://twitter.com/Uploadcare?ref=github-vue-example-readme">Twitter</a>
 </p>
 
-# Vue File Uploader with Uploadcare File Uploader
+# Vue file uploading examples
 
 [![Edit vue-uploader](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/github/uploadcare/file-uploader-examples/tree/main/examples/vue-uploader/)
 

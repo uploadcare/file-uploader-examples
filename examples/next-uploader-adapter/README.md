@@ -16,9 +16,11 @@
   <a href="https://twitter.com/Uploadcare?ref=github-next-example-readme">Twitter</a>
 </p>
 
-# Next.js File Uploader with Uploadcare File Uploader
+# Next.js file uploading example
 
 [![Edit next-uploader](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/github/uploadcare/file-uploader-examples/tree/main/examples/next-uploader-adapter/)
+
+This is an example project of implementing a file uploader in a Next.js application with [Uploadcare React Uploader](https://github.com/uploadcare/react-components/blob/main/packages/react-uploader)
 
 ## Run this demo locally
 

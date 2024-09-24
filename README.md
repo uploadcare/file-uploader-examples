@@ -16,25 +16,27 @@
   <a href="https://twitter.com/Uploadcare?ref=github-file-uploader-examples-readme">Twitter</a>
 </p>
 
-# 📦 Uploadcare File Uploader Examples
+# Uploadcare File Uploader Examples
 
-This repository contains a collection of examples demonstrating the integration of the [Uploadcare File Uploader](https://github.com/uploadcare/file-uploader) library with various front-end stacks. Each example is designed to provide a clear and practical guide on implementing file-uploading features using File Uploader in your projects.
+This repository provides examples of integrating the [Uploadcare File Uploader](https://github.com/uploadcare/file-uploader) into various environments and frameworks.
 
-## Examples
-
-Each directory in this repository represents a different framework maintained by File Uploader and contains fully functional file-uploading applications:
+Our File Uploader is built using Web Components, which makes it **framework-agnostic**. That means you can integrate it into any project, whether working with React, Vue, Angular, or a plain JavaScript setup. The examples aim to help you implement the uploader into any workflows and use cases, regardless of the specific tech stack.
 
 * [JavaScript](./examples/js-uploader/)
 * [React](./examples/react-uploader/)
-* [React via Adapter](./examples/react-uploader-adapter/)
 * [Angular](./examples/angular-uploader/)
 * [Vue](./examples/vue-uploader/)
 * [Svelte](./examples/svelte-uploader/)
 * [Next.js](./examples/next-uploader/)
+
+We’re always looking to improve and find the best solutions. That’s why we created the [React wrapper](https://github.com/uploadcare/react-components/blob/main/packages/react-uploader/README.md)—to support familiar development patterns and approaches:
+
+* [React via Adapter](./examples/react-uploader-adapter/)
 * [Next.js via Adapter](./examples/next-uploader-adapter/)
 
+## Lack an example?
 
-Each example provides a live demo, instructions to run it locally, and helpful tips right in the code.
+If you need help with your stack or have a specific question or use case, feel free to [create an issue](https://github.com/uploadcare/file-uploader-examples/issues). We’re here to explore more integrations and help you out.
 
 ## Contribution
 

@@ -16,7 +16,7 @@
   <a href="https://twitter.com/Uploadcare?ref=github-react-example-readme">Twitter</a>
 </p>
 
-# React File Uploader with Uploadcare File Uploader
+# React file uploading example
 
 [![Edit react-uploader](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/github/uploadcare/file-uploader-examples/tree/main/examples/react-uploader/)
 

@@ -16,7 +16,7 @@
   <a href="https://twitter.com/Uploadcare?ref=github-angular-example-readme">Twitter</a>
 </p>
 
-# Angular File Uploader with Uploadcare File Uploader
+# Angular file uploading examples
 
 [![Edit angular-uploader](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/github/uploadcare/file-uploader-examples/tree/main/examples/angular-uploader/)
 

@@ -16,7 +16,7 @@
   <a href="https://twitter.com/Uploadcare?ref=github-svelte-example-readme">Twitter</a>
 </p>
 
-# Svelte File Uploader with Uploadcare File Uploader
+# Svelte file uploading example
 
 [![Edit svelte-uploader](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/github/uploadcare/file-uploader-examples/tree/main/examples/svelte-uploader/)
 
