@@ -130,9 +130,9 @@ export class UnsplashSource extends UploaderBlock {
       </button>
     </uc-activity-header>
     <div class="uc-content">
-      <div ref="slider" class="uc-splide">
-        <div class="uc-splide__track">
-          <ul class="uc-splide__list"></ul>
+      <div ref="slider" class="splide">
+        <div class="splide__track">
+          <ul class="splide__list"></ul>
         </div>
       </div>
     </div>

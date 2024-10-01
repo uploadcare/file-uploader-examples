@@ -46,22 +46,22 @@ uc-unsplash-source .uc-image-slider img {
   flex: 0 0 100%;
 }
 
-uc-unsplash-source .uc-splide {
+uc-unsplash-source .splide {
   width: 100%;
 }
 
-uc-unsplash-source .uc-splide__track {
+uc-unsplash-source .splide__track {
   height: 100%;
 }
 
-uc-unsplash-source .uc-splide__slide {
+uc-unsplash-source .splide__slide {
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
 }
 
-uc-unsplash-source .uc-splide__slide img {
+uc-unsplash-source .splide__slide img {
   height: 100%;
   object-fit: cover;
   flex: 0 1 100%;
