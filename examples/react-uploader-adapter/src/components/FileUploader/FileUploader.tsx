@@ -71,7 +71,7 @@ export default function FileUploader({ files, uploaderClassName, onChange, theme
         apiRef={ctxProviderRef}
         onModalClose={handleModalCloseEvent}
         onChange={handleChangeEvent}
-        pubkey="a6ca334c3520777c0045"
+        pubkey="demopublickey"
         className={cs(uploaderClassName)}
         classNameUploader={cs(cssOverrides.fileUploader, { [st.darkModeEnabled]: theme === 'dark' })}
       />

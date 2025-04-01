@@ -123,7 +123,7 @@ export default {
     <uc-config
       ref="configRef"
       :ctx-name="uploaderCtxName"
-      pubkey="a6ca334c3520777c0045"
+      pubkey="demopublickey"
       multiple
       sourceList="local, url, camera, dropbox, gdrive"
       confirmUpload="false"

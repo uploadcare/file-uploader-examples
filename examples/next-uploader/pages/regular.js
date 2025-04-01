@@ -48,7 +48,7 @@ function Regular() {
         <>
           <uc-config
             ctx-name="my-uploader-2"
-            pubkey="a6ca334c3520777c0045"
+            pubkey="demopublickey"
             sourceList="local, url, camera, dropbox"
           ></uc-config>
           <uc-file-uploader-regular

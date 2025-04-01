@@ -17,7 +17,7 @@ export default function MinimalView() {
 
   return (
     <div>
-      <FileUploaderMinimal onChange={handleChangeEvent} pubkey="a6ca334c3520777c0045"/>
+      <FileUploaderMinimal onChange={handleChangeEvent} pubkey="demopublickey"/>
 
       <div className={st.previews}>
         {files.map((file) => (

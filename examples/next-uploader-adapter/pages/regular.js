@@ -22,7 +22,7 @@ function Regular() {
       </p>
       <hr className={st.separator} />
 
-      <FileUploaderRegular onChange={handleChangeEvent} pubkey="a6ca334c3520777c0045" />
+      <FileUploaderRegular onChange={handleChangeEvent} pubkey="demopublickey" />
 
       <div className={st.previews}>
         {files.map((file) => (

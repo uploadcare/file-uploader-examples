@@ -36,7 +36,7 @@ export default {
   <div>
     <uc-config
       ctx-name="my-uploader-2"
-      pubkey="a6ca334c3520777c0045"
+      pubkey="demopublickey"
     ></uc-config>
 
     <uc-file-uploader-minimal

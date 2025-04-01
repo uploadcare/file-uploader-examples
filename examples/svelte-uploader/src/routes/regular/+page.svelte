@@ -44,7 +44,7 @@
 <div>
   <uc-config
     ctx-name="my-uploader-3"
-    pubkey="a6ca334c3520777c0045"
+    pubkey="demopublickey"
     sourceList="local, url, camera, dropbox"
   ></uc-config>
 
