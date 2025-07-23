@@ -4,11 +4,13 @@
   "type": "module",
   "version": "1.0.0",
   "scripts": {
-    "install-deps": "for dir in ./examples/*; do npm install --prefix \"${dir}\"; done",
+    "install-deps": "for dir in ./examples/*; do npm i @uploadcare/file-uploader --prefix \"${dir}\"; done",
     "install-ci-deps": "for dir in ./examples/*; do npm ci --prefix \"${dir}\"; done",
     "build": "for dir in ./examples/*; do npm run build --prefix \"${dir}\"; done"
-
   },
   "author": "Uploadcare",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "install-deps": "^1.1.0"
+  }
 }
