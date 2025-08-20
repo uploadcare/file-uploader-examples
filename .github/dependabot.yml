@@ -6,6 +6,7 @@ updates:
       interval: "daily"
     allow:
       - dependency-name: "@uploadcare/file-uploader"
+      - dependency-name: "@uploadcare/react-uploader"
     versioning-strategy: increase
     assignees:
       - egordidenko
