@@ -15,6 +15,6 @@
   },
   "dependencies": {
     "@splidejs/splide": "4.1.4",
-    "@uploadcare/file-uploader": "^1.2.0"
+    "@uploadcare/file-uploader": "^1.21.0"
   }
 }
