@@ -29,11 +29,11 @@ export class FileUploaderComponent {
 
   uploadedFiles: OutputFileEntry<'success'>[] = [];
   @ViewChild('ctxProvider', { static: true }) ctxProviderRef!: ElementRef<
-    InstanceType<UC.UploadCtxProvider>
+    UC.UploadCtxProvider
   >;
 
   @ViewChild('config', { static: true }) configRef!: ElementRef<
-    InstanceType<UC.Config>
+    UC.Config
   >;
 
   ngOnInit() {

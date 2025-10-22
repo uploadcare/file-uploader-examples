@@ -17,8 +17,8 @@ type FileUploaderProps = {
 
 export default function FileUploader({ files, uploaderClassName, uploaderCtxName, onChange, theme }: FileUploaderProps) {
   const [uploadedFiles, setUploadedFiles] = useState<OutputFileEntry<'success'>[]>([]);
-  const ctxProviderRef = useRef<InstanceType<UC.UploadCtxProvider>>(null);
-  const configRef = useRef<InstanceType<UC.Config>>(null);
+  const ctxProviderRef = useRef<UC.UploadCtxProvider>(null);
+  const configRef = useRef<UC.Config>(null);
 
   const handleRemoveClick = useCallback(
     (uuid: OutputFileEntry['uuid']) => onChange(files.filter(f => f.uuid !== uuid)),

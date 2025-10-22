@@ -37,7 +37,7 @@ const localeDefinitionOverride = {
 
 export default function FileUploader({ files, uploaderClassName, onChange, theme }: FileUploaderProps) {
   const [uploadedFiles, setUploadedFiles] = useState<OutputFileEntry<'success'>[]>([]);
-  const ctxProviderRef = useRef<InstanceType<UploadCtxProvider>>(null);
+  const ctxProviderRef = useRef<UploadCtxProvider>(null);
 
 
   const handleRemoveClick = useCallback(

@@ -1,0 +1,24 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "jsx": "react",
+    "jsxFactory": "__h",
+    "jsxFragmentFactory": "Fragment",
+    "types": [
+      "../types/jsx"
+    ],
+    "allowJs": true,
+    "checkJs": false,
+    "strict": true,
+    "noEmit": true,
+    "skipLibCheck": true
+  },
+  "include": [
+    "./main.js",
+    "./preview.js",
+    "../stories",
+    "../types"
+  ]
+}
