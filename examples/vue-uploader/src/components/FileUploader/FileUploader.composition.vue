@@ -60,7 +60,10 @@ function handleChangeEvent(e) {
   }
 }
 
-function handleModalCloseEvent() {
+function handleModalCloseEvent(e) {
+  if (e.detail.hasActiveModals) {
+    return;
+  }
   resetUploaderState();
 
   emit("update:files", [...props.files, ...uploadedFiles.value]);

@@ -60,7 +60,10 @@ export default {
         );
       }
     },
-    handleModalCloseEvent() {
+    handleModalCloseEvent(e) {
+      if (e.detail.hasActiveModals) {
+        return;
+      }
       this.resetUploaderState();
 
       this.$emit("update:files", [...this.files, ...this.uploadedFiles]);
