@@ -4,7 +4,7 @@ type MocksType = {
   title: string;
   text: string;
   photos: OutputFileEntry<'success'>[];
-}
+};
 
 const mocks: MocksType = {
   title: 'A Romantic Weekend Getaway in Paris',
@@ -17,6 +17,8 @@ const mocks: MocksType = {
     {
       uuid: '1be82782-2cfe-4269-8ea3-da4279a1c7f4',
       internalId: '6GYw7vtML-Z6K',
+      isValidationPending: false,
+      source: null,
       name: 'arthur-humeau-3xwdarHxHqI-unsplash.jpg',
       size: 1657550,
       isImage: true,
@@ -38,10 +40,7 @@ const mocks: MocksType = {
         s3Url: null,
         originalFilename: 'arthur-humeau-3xwdarHxHqI-unsplash.jpg',
         imageInfo: {
-          dpi: [
-            72,
-            72
-          ],
+          dpi: [72, 72],
           width: 2400,
           format: 'JPEG',
           height: 3600,
@@ -49,20 +48,17 @@ const mocks: MocksType = {
           colorMode: 'RGB',
           orientation: null,
           geoLocation: null,
-          datetimeOriginal: null
+          datetimeOriginal: null,
         },
         videoInfo: null,
         contentInfo: {
           mime: {
             mime: 'image/jpeg',
             type: 'image',
-            subtype: 'jpeg'
+            subtype: 'jpeg',
           },
           image: {
-            dpi: [
-              72,
-              72
-            ],
+            dpi: [72, 72],
             width: 2400,
             format: 'JPEG',
             height: 3600,
@@ -70,12 +66,12 @@ const mocks: MocksType = {
             colorMode: 'RGB',
             orientation: null,
             geoLocation: null,
-            datetimeOriginal: null
-          }
+            datetimeOriginal: null,
+          },
         },
         metadata: {},
         s3Bucket: null,
-        defaultEffects: null
+        defaultEffects: null,
       },
       metadata: {},
       isSuccess: true,
@@ -83,11 +79,13 @@ const mocks: MocksType = {
       isFailed: false,
       isRemoved: false,
       errors: [],
-      status: 'success'
+      status: 'success',
     },
     {
       uuid: '57a9505d-1118-4f0b-8417-0efa780e35f6',
       internalId: 'qOqnI0Svy-nMY',
+      isValidationPending: false,
+      source: null,
       name: 'bharat-patil-WR5_Ev_bh-I-unsplash.jpg',
       size: 974188,
       isImage: true,
@@ -109,10 +107,7 @@ const mocks: MocksType = {
         s3Url: null,
         originalFilename: 'bharat-patil-WR5_Ev_bh-I-unsplash.jpg',
         imageInfo: {
-          dpi: [
-            72,
-            72
-          ],
+          dpi: [72, 72],
           width: 2400,
           format: 'JPEG',
           height: 1600,
@@ -120,20 +115,17 @@ const mocks: MocksType = {
           colorMode: 'RGB',
           orientation: null,
           geoLocation: null,
-          datetimeOriginal: null
+          datetimeOriginal: null,
         },
         videoInfo: null,
         contentInfo: {
           mime: {
             mime: 'image/jpeg',
             type: 'image',
-            subtype: 'jpeg'
+            subtype: 'jpeg',
           },
           image: {
-            dpi: [
-              72,
-              72
-            ],
+            dpi: [72, 72],
             width: 2400,
             format: 'JPEG',
             height: 1600,
@@ -141,12 +133,12 @@ const mocks: MocksType = {
             colorMode: 'RGB',
             orientation: null,
             geoLocation: null,
-            datetimeOriginal: null
-          }
+            datetimeOriginal: null,
+          },
         },
         metadata: {},
         s3Bucket: null,
-        defaultEffects: null
+        defaultEffects: null,
       },
       metadata: {},
       isSuccess: true,
@@ -154,11 +146,13 @@ const mocks: MocksType = {
       isFailed: false,
       isRemoved: false,
       errors: [],
-      status: 'success'
+      status: 'success',
     },
     {
       uuid: '040b5f13-ff2c-4d06-995a-3f8e3ece1ae7',
       internalId: '38Mr9577M-2JE',
+      isValidationPending: false,
+      source: null,
       name: 'chris-karidis-nnzkZNYWHaU-unsplash.jpg',
       size: 535450,
       isImage: true,
@@ -180,10 +174,7 @@ const mocks: MocksType = {
         s3Url: null,
         originalFilename: 'chris-karidis-nnzkZNYWHaU-unsplash.jpg',
         imageInfo: {
-          dpi: [
-            72,
-            72
-          ],
+          dpi: [72, 72],
           width: 2400,
           format: 'JPEG',
           height: 1596,
@@ -191,20 +182,17 @@ const mocks: MocksType = {
           colorMode: 'RGB',
           orientation: null,
           geoLocation: null,
-          datetimeOriginal: null
+          datetimeOriginal: null,
         },
         videoInfo: null,
         contentInfo: {
           mime: {
             mime: 'image/jpeg',
             type: 'image',
-            subtype: 'jpeg'
+            subtype: 'jpeg',
           },
           image: {
-            dpi: [
-              72,
-              72
-            ],
+            dpi: [72, 72],
             width: 2400,
             format: 'JPEG',
             height: 1596,
@@ -212,12 +200,12 @@ const mocks: MocksType = {
             colorMode: 'RGB',
             orientation: null,
             geoLocation: null,
-            datetimeOriginal: null
-          }
+            datetimeOriginal: null,
+          },
         },
         metadata: {},
         s3Bucket: null,
-        defaultEffects: null
+        defaultEffects: null,
       },
       metadata: {},
       isSuccess: true,
@@ -225,11 +213,13 @@ const mocks: MocksType = {
       isFailed: false,
       isRemoved: false,
       errors: [],
-      status: 'success'
+      status: 'success',
     },
     {
       uuid: '8fbd0e17-51ff-4804-a4cf-09c228a8526a',
       internalId: 'NxiT0MrhJ-oXS',
+      isValidationPending: false,
+      source: null,
       name: 'earth-DXuxHw3S5ak-unsplash.jpg',
       size: 673331,
       isImage: true,
@@ -251,10 +241,7 @@ const mocks: MocksType = {
         s3Url: null,
         originalFilename: 'earth-DXuxHw3S5ak-unsplash.jpg',
         imageInfo: {
-          dpi: [
-            72,
-            72
-          ],
+          dpi: [72, 72],
           width: 1600,
           format: 'JPEG',
           height: 2000,
@@ -262,20 +249,17 @@ const mocks: MocksType = {
           colorMode: 'RGB',
           orientation: null,
           geoLocation: null,
-          datetimeOriginal: null
+          datetimeOriginal: null,
         },
         videoInfo: null,
         contentInfo: {
           mime: {
             mime: 'image/jpeg',
             type: 'image',
-            subtype: 'jpeg'
+            subtype: 'jpeg',
           },
           image: {
-            dpi: [
-              72,
-              72
-            ],
+            dpi: [72, 72],
             width: 1600,
             format: 'JPEG',
             height: 2000,
@@ -283,12 +267,12 @@ const mocks: MocksType = {
             colorMode: 'RGB',
             orientation: null,
             geoLocation: null,
-            datetimeOriginal: null
-          }
+            datetimeOriginal: null,
+          },
         },
         metadata: {},
         s3Bucket: null,
-        defaultEffects: null
+        defaultEffects: null,
       },
       metadata: {},
       isSuccess: true,
@@ -296,11 +280,13 @@ const mocks: MocksType = {
       isFailed: false,
       isRemoved: false,
       errors: [],
-      status: 'success'
+      status: 'success',
     },
     {
       uuid: 'b127ad22-c76b-4712-9f7a-c76561b61610',
       internalId: 'uWUiPJQTo-YlY',
+      isValidationPending: false,
+      source: null,
       name: 'john-towner-Hf4Ap1-ef40-unsplash.jpg',
       size: 1868140,
       isImage: true,
@@ -322,10 +308,7 @@ const mocks: MocksType = {
         s3Url: null,
         originalFilename: 'john-towner-Hf4Ap1-ef40-unsplash.jpg',
         imageInfo: {
-          dpi: [
-            72,
-            72
-          ],
+          dpi: [72, 72],
           width: 2400,
           format: 'JPEG',
           height: 3438,
@@ -333,20 +316,17 @@ const mocks: MocksType = {
           colorMode: 'RGB',
           orientation: null,
           geoLocation: null,
-          datetimeOriginal: null
+          datetimeOriginal: null,
         },
         videoInfo: null,
         contentInfo: {
           mime: {
             mime: 'image/jpeg',
             type: 'image',
-            subtype: 'jpeg'
+            subtype: 'jpeg',
           },
           image: {
-            dpi: [
-              72,
-              72
-            ],
+            dpi: [72, 72],
             width: 2400,
             format: 'JPEG',
             height: 3438,
@@ -354,12 +334,12 @@ const mocks: MocksType = {
             colorMode: 'RGB',
             orientation: null,
             geoLocation: null,
-            datetimeOriginal: null
-          }
+            datetimeOriginal: null,
+          },
         },
         metadata: {},
         s3Bucket: null,
-        defaultEffects: null
+        defaultEffects: null,
       },
       metadata: {},
       isSuccess: true,
@@ -367,11 +347,13 @@ const mocks: MocksType = {
       isFailed: false,
       isRemoved: false,
       errors: [],
-      status: 'success'
+      status: 'success',
     },
     {
       uuid: '0b1cf64b-ffba-4866-bd1a-4f7c0c6b71d8',
       internalId: 'Hb2KdscDC-69e',
+      isValidationPending: false,
+      source: null,
       name: 'sebastien-gabriel-gyUVNafCIG8-unsplash.jpg',
       size: 1021096,
       isImage: true,
@@ -393,10 +375,7 @@ const mocks: MocksType = {
         s3Url: null,
         originalFilename: 'sebastien-gabriel-gyUVNafCIG8-unsplash.jpg',
         imageInfo: {
-          dpi: [
-            72,
-            72
-          ],
+          dpi: [72, 72],
           width: 2400,
           format: 'JPEG',
           height: 3600,
@@ -404,20 +383,17 @@ const mocks: MocksType = {
           colorMode: 'RGB',
           orientation: null,
           geoLocation: null,
-          datetimeOriginal: null
+          datetimeOriginal: null,
         },
         videoInfo: null,
         contentInfo: {
           mime: {
             mime: 'image/jpeg',
             type: 'image',
-            subtype: 'jpeg'
+            subtype: 'jpeg',
           },
           image: {
-            dpi: [
-              72,
-              72
-            ],
+            dpi: [72, 72],
             width: 2400,
             format: 'JPEG',
             height: 3600,
@@ -425,12 +401,12 @@ const mocks: MocksType = {
             colorMode: 'RGB',
             orientation: null,
             geoLocation: null,
-            datetimeOriginal: null
-          }
+            datetimeOriginal: null,
+          },
         },
         metadata: {},
         s3Bucket: null,
-        defaultEffects: null
+        defaultEffects: null,
       },
       metadata: {},
       isSuccess: true,
@@ -438,9 +414,9 @@ const mocks: MocksType = {
       isFailed: false,
       isRemoved: false,
       errors: [],
-      status: 'success'
-    }
-  ]
-}
+      status: 'success',
+    },
+  ],
+};
 
 export default mocks;
