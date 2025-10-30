@@ -8,7 +8,7 @@
     "start": "npm run dev"
   },
   "dependencies": {
-    "@uploadcare/react-uploader": "^1.10.1",
+    "@uploadcare/react-uploader": "^1.11.0",
     "next": "14.1.4",
     "react": "^18",
     "react-dom": "^18"
