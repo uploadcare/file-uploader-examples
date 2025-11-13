@@ -9,7 +9,7 @@
     "lint": "eslint"
   },
   "dependencies": {
-    "@uploadcare/file-uploader": "^1.24.0-alpha.2",
+    "@uploadcare/file-uploader": "^1.24.3",
     "next": "16.0.0",
     "react": "19.2.0",
     "react-dom": "19.2.0"
