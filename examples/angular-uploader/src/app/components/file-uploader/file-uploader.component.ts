@@ -5,7 +5,7 @@ import {
   EventEmitter,
   Input,
   Output,
-  ViewChild
+  ViewChild,
 } from '@angular/core';
 import * as UC from '@uploadcare/file-uploader';
 import { OutputFileEntry } from '@uploadcare/file-uploader';
@@ -28,13 +28,10 @@ export class FileUploaderComponent {
   @Output() filesChange = new EventEmitter<OutputFileEntry<'success'>[]>();
 
   uploadedFiles: OutputFileEntry<'success'>[] = [];
-  @ViewChild('ctxProvider', { static: true }) ctxProviderRef!: ElementRef<
-    InstanceType<UC.UploadCtxProvider>
-  >;
+  @ViewChild('ctxProvider', { static: true })
+  ctxProviderRef!: ElementRef<UC.UploadCtxProvider>;
 
-  @ViewChild('config', { static: true }) configRef!: ElementRef<
-    InstanceType<UC.Config>
-  >;
+  @ViewChild('config', { static: true }) configRef!: ElementRef<UC.Config>;
 
   ngOnInit() {
     /*
@@ -60,9 +57,9 @@ export class FileUploaderComponent {
      */
     this.configRef.nativeElement.localeDefinitionOverride = {
       en: {
-        'photo__one': 'photo',
-        'photo__many': 'photos',
-        'photo__other': 'photos',
+        photo__one: 'photo',
+        photo__many: 'photos',
+        photo__other: 'photos',
 
         'upload-file': 'Upload photo',
         'upload-files': 'Upload photos',
@@ -74,17 +71,24 @@ export class FileUploaderComponent {
         'no-files': 'No photos selected',
         'caption-edit-file': 'Edit photo',
         'files-count-allowed': 'Only {{count}} {{plural:photo(count)}} allowed',
-        'files-max-size-limit-error': 'Photo is too big. Max photo size is {{maxFileSize}}.',
+        'files-max-size-limit-error':
+          'Photo is too big. Max photo size is {{maxFileSize}}.',
         'header-uploading': 'Uploading {{count}} {{plural:photo(count)}}',
         'header-succeed': '{{count}} {{plural:photo(count)}} uploaded',
         'header-total': '{{count}} {{plural:photo(count)}} selected',
-      }
-    }
+      },
+    };
   }
 
   ngOnDestroy() {
-    this.ctxProviderRef.nativeElement.removeEventListener('change', this.handleChangeEvent);
-    this.ctxProviderRef.nativeElement.removeEventListener('modal-close', this.handleModalCloseEvent);
+    this.ctxProviderRef.nativeElement.removeEventListener(
+      'change',
+      this.handleChangeEvent
+    );
+    this.ctxProviderRef.nativeElement.removeEventListener(
+      'modal-close',
+      this.handleModalCloseEvent
+    );
 
     this.configRef.nativeElement.localeDefinitionOverride = null;
   }
@@ -108,10 +112,15 @@ export class FileUploaderComponent {
   }
 
   handleChangeEvent = (e: UC.EventMap['change']) => {
-    this.uploadedFiles = e.detail.allEntries.filter(f => f.status === 'success') as OutputFileEntry<'success'>[];
+    this.uploadedFiles = e.detail.allEntries.filter(
+      (f) => f.status === 'success'
+    ) as OutputFileEntry<'success'>[];
   };
 
-  handleModalCloseEvent = () => {
+  handleModalCloseEvent = (e: UC.EventMap['modal-close']) => {
+    if (e.detail.hasActiveModals) {
+      return;
+    }
     this.resetUploaderState();
 
     this.filesChange.emit([...this.files, ...this.uploadedFiles]);

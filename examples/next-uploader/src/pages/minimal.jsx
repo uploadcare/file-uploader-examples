@@ -1,13 +1,12 @@
-import * as UC from '@uploadcare/file-uploader';
-import React, { useEffect, useRef, useState } from 'react';
+import * as UC from "@uploadcare/file-uploader";
+import { useEffect, useRef, useState } from "react";
 
-import '@uploadcare/file-uploader/web/uc-file-uploader-minimal.min.css';
-import st from './styles.module.css';
+import st from "./styles.module.css";
 
 UC.defineComponents(UC);
 
 function Minimal() {
-  const [isClient, setIsClient] = useState(false)
+  const [isClient, setIsClient] = useState(false);
   const [files, setFiles] = useState([]);
   const ctxProviderRef = useRef(null);
 
@@ -20,9 +19,9 @@ function Minimal() {
     if (!ctxProvider) return;
 
     const handleChangeEvent = (e) => {
-      console.log('change event payload:', e);
+      console.log("change event payload:", e);
 
-      setFiles([...e.detail.allEntries.filter(f => f.status === 'success')]);
+      setFiles([...e.detail.allEntries.filter((f) => f.status === "success")]);
     };
 
     /*
@@ -31,18 +30,20 @@ function Minimal() {
 
       See more: https://uploadcare.com/docs/file-uploader/events/
      */
-    ctxProvider.addEventListener('change', handleChangeEvent);
+    ctxProvider.addEventListener("change", handleChangeEvent);
     return () => {
-      ctxProvider.removeEventListener('change', handleChangeEvent);
+      ctxProvider.removeEventListener("change", handleChangeEvent);
     };
   }, [setFiles]);
 
   return (
     <div className={st.pageWrapper}>
       <p className={st.paragraph}>
-        <a href="/" className={st.link}>← All Next.js Examples</a>
+        <a href="/" className={st.link}>
+          ← All Next.js Examples
+        </a>
       </p>
-      <hr className={st.separator}/>
+      <hr className={st.separator} />
 
       {isClient && (
         <>
@@ -70,16 +71,12 @@ function Minimal() {
               src={`${file.cdnUrl}/-/preview/-/resize/x400/`}
               width="200"
               height="200"
-              alt={file.fileInfo.originalFilename || ''}
-              title={file.fileInfo.originalFilename || ''}
+              alt={file.fileInfo.originalFilename || ""}
+              title={file.fileInfo.originalFilename || ""}
             />
 
-            <p className={st.previewData}>
-              {file.fileInfo.originalFilename}
-            </p>
-            <p className={st.previewData}>
-              {formatSize(file.fileInfo.size)}
-            </p>
+            <p className={st.previewData}>{file.fileInfo.originalFilename}</p>
+            <p className={st.previewData}>{formatSize(file.fileInfo.size)}</p>
           </div>
         ))}
       </div>
@@ -90,10 +87,10 @@ function Minimal() {
 export default Minimal;
 
 function formatSize(bytes) {
-  if (!bytes) return '0 Bytes';
+  if (!bytes) return "0 Bytes";
 
   const k = 1024;
-  const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
+  const sizes = ["Bytes", "KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB"];
 
   const i = Math.floor(Math.log(bytes) / Math.log(k));
 

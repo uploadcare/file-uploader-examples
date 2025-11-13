@@ -37,7 +37,10 @@
     }
   };
 
-  const handleModalCloseEvent = () => {
+  const handleModalCloseEvent = (e) => {
+    if (e.detail.hasActiveModals) {
+      return;
+    }
     resetUploaderState();
 
     files = [...files, ...uploadedFiles];

@@ -1,0 +1,24 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+  // Use classic JSX factory names to avoid react/jsx-runtime requirements
+  "jsx": "react",
+  "jsxFactory": "__h",
+  "jsxFragmentFactory": "Fragment",
+    "types": [
+      "./types/jsx",
+      "./types/react-jsx-runtime"
+    ],
+    "allowJs": true,
+    "checkJs": false,
+    "strict": true,
+    "noEmit": true,
+    "skipLibCheck": true
+  },
+  "include": [
+    "./stories",
+    "./types"
+  ]
+}

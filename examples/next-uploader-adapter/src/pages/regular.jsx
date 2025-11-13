@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 
-import { FileUploaderRegular } from "@uploadcare/react-uploader";
-import "@uploadcare/react-uploader/core.css"
+import { FileUploaderRegular } from "@uploadcare/react-uploader/next";
 
 import st from './styles.module.css';
 

@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
 
 import st from './styles.module.css';
-import { FileUploaderMinimal } from "@uploadcare/react-uploader"
-import "@uploadcare/react-uploader/core.css"
-
+import { FileUploaderMinimal } from "@uploadcare/react-uploader/next"
 
 function Minimal() {
   const [files, setFiles] = useState([]);

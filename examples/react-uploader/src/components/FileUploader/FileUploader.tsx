@@ -1,9 +1,9 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react';
-import * as UC from '@uploadcare/file-uploader';
-import { OutputFileEntry } from '@uploadcare/file-uploader';
+import React, { useCallback, useEffect, useRef, useState } from "react";
+import * as UC from "@uploadcare/file-uploader";
+import { OutputFileEntry } from "@uploadcare/file-uploader";
 
-import st from './FileUploader.module.scss';
-import cs from 'classnames';
+import st from "./FileUploader.module.scss";
+import cs from "classnames";
 
 UC.defineComponents(UC);
 
@@ -12,25 +12,36 @@ type FileUploaderProps = {
   uploaderCtxName: string;
   files: OutputFileEntry[];
   onChange: (files: OutputFileEntry[]) => void;
-  theme: 'light' | 'dark';
-}
+  theme: "light" | "dark";
+};
 
-export default function FileUploader({ files, uploaderClassName, uploaderCtxName, onChange, theme }: FileUploaderProps) {
-  const [uploadedFiles, setUploadedFiles] = useState<OutputFileEntry<'success'>[]>([]);
-  const ctxProviderRef = useRef<InstanceType<UC.UploadCtxProvider>>(null);
-  const configRef = useRef<InstanceType<UC.Config>>(null);
+export default function FileUploader({
+  files,
+  uploaderClassName,
+  uploaderCtxName,
+  onChange,
+  theme,
+}: FileUploaderProps) {
+  const [uploadedFiles, setUploadedFiles] = useState<
+    OutputFileEntry<"success">[]
+  >([]);
+  const ctxProviderRef = useRef<UC.UploadCtxProvider>(null);
+  const configRef = useRef<UC.Config>(null);
 
   const handleRemoveClick = useCallback(
-    (uuid: OutputFileEntry['uuid']) => onChange(files.filter(f => f.uuid !== uuid)),
-    [files, onChange],
+    (uuid: OutputFileEntry["uuid"]) =>
+      onChange(files.filter((f) => f.uuid !== uuid)),
+    [files, onChange]
   );
 
   useEffect(() => {
     const ctxProvider = ctxProviderRef.current;
     if (!ctxProvider) return;
 
-    const handleChangeEvent = (e: UC.EventMap['change']) => {
-      setUploadedFiles([...e.detail.allEntries.filter(f => f.status === 'success')] as OutputFileEntry<'success'>[]);
+    const handleChangeEvent = (e: UC.EventMap["change"]) => {
+      setUploadedFiles([
+        ...e.detail.allEntries.filter((f) => f.status === "success"),
+      ] as OutputFileEntry<"success">[]);
     };
 
     /*
@@ -39,9 +50,9 @@ export default function FileUploader({ files, uploaderClassName, uploaderCtxName
 
       See more: https://uploadcare.com/docs/file-uploader/events/
      */
-    ctxProvider.addEventListener('change', handleChangeEvent);
+    ctxProvider.addEventListener("change", handleChangeEvent);
     return () => {
-      ctxProvider.removeEventListener('change', handleChangeEvent);
+      ctxProvider.removeEventListener("change", handleChangeEvent);
     };
   }, [setUploadedFiles]);
 
@@ -57,26 +68,27 @@ export default function FileUploader({ files, uploaderClassName, uploaderCtxName
     */
     config.localeDefinitionOverride = {
       en: {
-        'photo__one': 'photo',
-        'photo__many': 'photos',
-        'photo__other': 'photos',
+        photo__one: "photo",
+        photo__many: "photos",
+        photo__other: "photos",
 
-        'upload-file': 'Upload photo',
-        'upload-files': 'Upload photos',
-        'choose-file': 'Choose photo',
-        'choose-files': 'Choose photos',
-        'drop-files-here': 'Drop photos here',
-        'select-file-source': 'Select photo source',
-        'edit-image': 'Edit photo',
-        'no-files': 'No photos selected',
-        'caption-edit-file': 'Edit photo',
-        'files-count-allowed': 'Only {{count}} {{plural:photo(count)}} allowed',
-        'files-max-size-limit-error': 'Photo is too big. Max photo size is {{maxFileSize}}.',
-        'header-uploading': 'Uploading {{count}} {{plural:photo(count)}}',
-        'header-succeed': '{{count}} {{plural:photo(count)}} uploaded',
-        'header-total': '{{count}} {{plural:photo(count)}} selected',
-      }
-    }
+        "upload-file": "Upload photo",
+        "upload-files": "Upload photos",
+        "choose-file": "Choose photo",
+        "choose-files": "Choose photos",
+        "drop-files-here": "Drop photos here",
+        "select-file-source": "Select photo source",
+        "edit-image": "Edit photo",
+        "no-files": "No photos selected",
+        "caption-edit-file": "Edit photo",
+        "files-count-allowed": "Only {{count}} {{plural:photo(count)}} allowed",
+        "files-max-size-limit-error":
+          "Photo is too big. Max photo size is {{maxFileSize}}.",
+        "header-uploading": "Uploading {{count}} {{plural:photo(count)}}",
+        "header-succeed": "{{count}} {{plural:photo(count)}} uploaded",
+        "header-total": "{{count}} {{plural:photo(count)}} selected",
+      },
+    };
     return () => {
       config.localeDefinitionOverride = null;
     };
@@ -97,21 +109,24 @@ export default function FileUploader({ files, uploaderClassName, uploaderCtxName
       See more: https://uploadcare.com/docs/file-uploader/api/
      */
     const resetUploaderState = () => {
-      const api = ctxProviderRef.current.getAPI()
-      api.removeAllFiles()
+      const api = ctxProviderRef.current?.getAPI();
+      api?.removeAllFiles();
     };
 
-    const handleModalCloseEvent = () => {
+    const handleModalCloseEvent = (e: UC.EventMap["modal-close"]) => {
+      if (e.detail.hasActiveModals) {
+        return;
+      }
       resetUploaderState();
 
       onChange([...files, ...uploadedFiles]);
       setUploadedFiles([]);
     };
 
-    ctxProvider.addEventListener('modal-close', handleModalCloseEvent);
+    ctxProvider.addEventListener("modal-close", handleModalCloseEvent);
 
     return () => {
-      ctxProvider.removeEventListener('modal-close', handleModalCloseEvent);
+      ctxProvider.removeEventListener("modal-close", handleModalCloseEvent);
     };
   }, [files, onChange, uploadedFiles, setUploadedFiles]);
 
@@ -142,13 +157,13 @@ export default function FileUploader({ files, uploaderClassName, uploaderCtxName
 
       <uc-file-uploader-regular
         ctx-name={uploaderCtxName}
-        class={cs(uploaderClassName, { 'uc-dark': theme === 'dark', 'uc-light': theme === 'light' })}
+        class={cs(uploaderClassName, {
+          "uc-dark": theme === "dark",
+          "uc-light": theme === "light",
+        })}
       ></uc-file-uploader-regular>
 
-      <uc-upload-ctx-provider
-        ref={ctxProviderRef}
-        ctx-name={uploaderCtxName}
-      />
+      <uc-upload-ctx-provider ref={ctxProviderRef} ctx-name={uploaderCtxName} />
 
       <div className={st.previews}>
         {files.map((file) => (
@@ -158,15 +173,17 @@ export default function FileUploader({ files, uploaderClassName, uploaderCtxName
               key={file.uuid}
               src={`${file.cdnUrl}/-/preview/-/resize/x200/`}
               width="100"
-              alt={file.fileInfo?.originalFilename || ''}
-              title={file.fileInfo?.originalFilename || ''}
+              alt={file.fileInfo?.originalFilename || ""}
+              title={file.fileInfo?.originalFilename || ""}
             />
 
             <button
               className={st.previewRemoveButton}
               type="button"
               onClick={() => handleRemoveClick(file.uuid)}
-            >×</button>
+            >
+              ×
+            </button>
           </div>
         ))}
       </div>

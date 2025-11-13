@@ -9,7 +9,7 @@ UC.defineComponents(UC);
 
 export default function MinimalView() {
   const [files, setFiles] = useState<OutputFileEntry<'success'>[]>([]);
-  const ctxProviderRef = useRef<InstanceType<UC.UploadCtxProvider>>(null);
+  const ctxProviderRef = useRef<UC.UploadCtxProvider>(null);
 
   useEffect(() => {
     const ctxProvider = ctxProviderRef.current;
