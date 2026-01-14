@@ -14,7 +14,6 @@ UC.defineComponents(UC);
 
 @Component({
   selector: 'file-uploader',
-  standalone: true,
   imports: [],
   templateUrl: './file-uploader.component.html',
   styleUrl: './file-uploader.component.scss',
