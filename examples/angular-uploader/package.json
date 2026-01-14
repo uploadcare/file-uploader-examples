@@ -10,24 +10,23 @@
     "test": "ng test"
   },
   "dependencies": {
-    "@angular/common": "17.0.9",
-    "@angular/compiler": "17.0.9",
-    "@angular/core": "17.0.9",
-    "@angular/forms": "17.0.9",
-    "@angular/platform-browser": "17.0.9",
-    "@angular/platform-browser-dynamic": "17.0.9",
-    "@angular/router": "17.0.9",
+    "@angular/common": "18.2.14",
+    "@angular/compiler": "18.2.14",
+    "@angular/core": "18.2.14",
+    "@angular/forms": "18.2.14",
+    "@angular/platform-browser": "18.2.14",
+    "@angular/platform-browser-dynamic": "18.2.14",
+    "@angular/router": "18.2.14",
     "@uploadcare/file-uploader": "^1.2.0",
     "rxjs": "7.4.0",
-    "tslib": "2.3.1",
-    "zone.js": "0.14.4"
+    "tslib": "2.3.1"
   },
   "devDependencies": {
-    "@angular-builders/custom-webpack": "17.0.1",
-    "@angular-devkit/build-angular": "17.2.2",
-    "@angular/cli": "17.0.9",
-    "@angular/compiler-cli": "17.0.9",
+    "@angular-builders/custom-webpack": "18.0.0",
+    "@angular/build": "18.2.21",
+    "@angular/cli": "18.2.21",
+    "@angular/compiler-cli": "18.2.14",
     "@types/node": "18.15.3",
-    "typescript": "5.2.2"
+    "typescript": "5.5.4"
   }
 }
