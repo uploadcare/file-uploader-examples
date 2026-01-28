@@ -15,7 +15,6 @@ type FormType = {
 
 @Component({
   selector: 'form-view',
-  standalone: true,
   imports: [
     FileUploaderComponent,
     ReactiveFormsModule,
