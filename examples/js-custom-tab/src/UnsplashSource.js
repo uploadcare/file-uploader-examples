@@ -30,6 +30,7 @@ export class UnsplashSource extends UploaderBlock {
 
   async fetch() {
     const items = await getRandomImages(this.$.token);
+
     this._items.push(...items);
     for (const item of items) {
       this._splide.add(/* HTML */ `<li
@@ -44,7 +45,7 @@ export class UnsplashSource extends UploaderBlock {
   mount() {
     this.unmount();
     const slider = this.ref.slider;
-    this._items = [];
+    this._items = this._items || [];
     this._splide = new Splide(slider).mount();
 
     this._splide.options = {
