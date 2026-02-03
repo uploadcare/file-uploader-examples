@@ -50,6 +50,7 @@ export class UnsplashSource extends UploaderBlock {
 
     this._splide.options = {
       arrows: false,
+      drag: false,
     };
 
     this._splide.on("move", () => {
