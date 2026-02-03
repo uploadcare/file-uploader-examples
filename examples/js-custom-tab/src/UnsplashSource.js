@@ -44,14 +44,12 @@ export class UnsplashSource extends UploaderBlock {
 
   mount() {
     this.unmount();
-    const slider = this.ref.slider;
-    this._items = this._items || [];
-    this._splide = new Splide(slider).mount();
 
-    this._splide.options = {
+    const slider = this.ref.slider;
+    this._splide = new Splide(slider, {
       arrows: false,
       drag: false,
-    };
+    }).mount();
 
     this._splide.on("active", ({ slide }) => {
       const itemId = slide.dataset.id;
