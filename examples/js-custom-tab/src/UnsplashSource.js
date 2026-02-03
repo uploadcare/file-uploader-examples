@@ -80,6 +80,7 @@ export class UnsplashSource extends UploaderBlock {
     this.uploadCollection.add({
       externalUrl: item.rawUrl,
     });
+    this.modalManager.open(ActivityBlock.activities.UPLOAD_LIST);
     this.$["*currentActivity"] = ActivityBlock.activities.UPLOAD_LIST;
   }
 
