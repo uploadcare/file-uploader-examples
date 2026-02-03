@@ -29,11 +29,7 @@ export class UnsplashSource extends UploaderBlock {
     },
   };
 
-  async fetchIfNecessary() {
-    if (this._items.length > 4) {
-      return;
-    }
-
+  async fetch() {
     const items = await getRandomImages(this.$.token);
 
     this._items.push(...items);
@@ -57,6 +53,13 @@ export class UnsplashSource extends UploaderBlock {
       drag: false,
     }).mount();
 
+    this._splide.on("moved", (newIndex) => {
+      // lazy load the rest of the images when we have only 2 left to show
+      if (this._items.length - newIndex < 3) {
+        this.fetch();
+      }
+    });
+
     this._splide.on("active", ({ slide }) => {
       const itemId = slide.dataset.id;
       this._currentItemId = itemId;
@@ -68,7 +71,6 @@ export class UnsplashSource extends UploaderBlock {
   }
 
   next() {
-    this.fetchIfNecessary();
     this._splide.go(">");
   }
 
@@ -88,7 +90,7 @@ export class UnsplashSource extends UploaderBlock {
     this.registerActivity(this.activityType, {
       onActivate: () => {
         this.mount();
-        this.fetchIfNecessary();
+        this.fetch();
       },
       onDeactivate: () => {
         this.unmount();
