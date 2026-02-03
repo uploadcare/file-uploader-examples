@@ -53,10 +53,6 @@ export class UnsplashSource extends UploaderBlock {
       drag: false,
     };
 
-    this._splide.on("move", () => {
-      this._items.shift();
-    });
-
     this._splide.on("active", ({ slide }) => {
       const itemId = slide.dataset.id;
       this._currentItemId = itemId;
