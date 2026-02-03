@@ -18,6 +18,7 @@ const getRandomImages = async (token) => {
 export class UnsplashSource extends UploaderBlock {
   activityType = "unsplash";
   _currentItemId = null;
+  _items = [];
 
   init$ = {
     handleNext: () => {
@@ -28,10 +29,15 @@ export class UnsplashSource extends UploaderBlock {
     },
   };
 
-  async fetch() {
+  async fetchIfNecessary() {
+    if (this._items.length > 4) {
+      return;
+    }
+
     const items = await getRandomImages(this.$.token);
 
     this._items.push(...items);
+
     for (const item of items) {
       this._splide.add(/* HTML */ `<li
         data-id="${item.id}"
@@ -62,9 +68,7 @@ export class UnsplashSource extends UploaderBlock {
   }
 
   next() {
-    if (this._items.length < 3) {
-      this.fetch();
-    }
+    this.fetchIfNecessary();
     this._splide.go(">");
   }
 
@@ -83,8 +87,8 @@ export class UnsplashSource extends UploaderBlock {
 
     this.registerActivity(this.activityType, {
       onActivate: () => {
-        this.fetch();
         this.mount();
+        this.fetchIfNecessary();
       },
       onDeactivate: () => {
         this.unmount();
