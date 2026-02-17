@@ -18,6 +18,7 @@ const getRandomImages = async (token) => {
 export class UnsplashSource extends UploaderBlock {
   activityType = "unsplash";
   _currentItemId = null;
+  _items = [];
 
   init$ = {
     handleNext: () => {
@@ -30,7 +31,9 @@ export class UnsplashSource extends UploaderBlock {
 
   async fetch() {
     const items = await getRandomImages(this.$.token);
+
     this._items.push(...items);
+
     for (const item of items) {
       this._splide.add(/* HTML */ `<li
         data-id="${item.id}"
@@ -43,16 +46,18 @@ export class UnsplashSource extends UploaderBlock {
 
   mount() {
     this.unmount();
+
     const slider = this.ref.slider;
-    this._items = [];
-    this._splide = new Splide(slider).mount();
-
-    this._splide.options = {
+    this._splide = new Splide(slider, {
       arrows: false,
-    };
+      drag: false,
+    }).mount();
 
-    this._splide.on("move", () => {
-      this._items.shift();
+    this._splide.on("moved", (newIndex) => {
+      // lazy load the rest of the images when we have only 2 left to show
+      if (this._items.length - newIndex < 3) {
+        this.fetch();
+      }
     });
 
     this._splide.on("active", ({ slide }) => {
@@ -66,9 +71,6 @@ export class UnsplashSource extends UploaderBlock {
   }
 
   next() {
-    if (this._items.length < 3) {
-      this.fetch();
-    }
     this._splide.go(">");
   }
 
@@ -78,6 +80,7 @@ export class UnsplashSource extends UploaderBlock {
     this.uploadCollection.add({
       externalUrl: item.rawUrl,
     });
+    this.modalManager.open(ActivityBlock.activities.UPLOAD_LIST);
     this.$["*currentActivity"] = ActivityBlock.activities.UPLOAD_LIST;
   }
 
@@ -86,8 +89,8 @@ export class UnsplashSource extends UploaderBlock {
 
     this.registerActivity(this.activityType, {
       onActivate: () => {
-        this.fetch();
         this.mount();
+        this.fetch();
       },
       onDeactivate: () => {
         this.unmount();
