@@ -8,10 +8,9 @@
     "build": "vite build --base ./"
   },
   "dependencies": {
-    "@codesandbox/nodebox": "0.1.9",
-    "@uploadcare/file-uploader": "^1.2.0"
+    "@uploadcare/file-uploader": "1.19.4"
   },
   "devDependencies": {
-    "vite": "^5.3.4"
+    "vite": "7.3.1"
   }
 }
