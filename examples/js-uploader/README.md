@@ -20,7 +20,7 @@
 
 [![Edit js-uploader](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/github/uploadcare/file-uploader-examples/tree/main/examples/js-uploader/)
 
-This is an example project of implementing a file uploader in an JacaScript application with [Uploadcare File Uploader](https://github.com/uploadcare/file-uploader)
+This is an example project of implementing a file uploader in a JavaScript application with [Uploadcare File Uploader](https://github.com/uploadcare/file-uploader)
 
 ## Run this demo locally
 
