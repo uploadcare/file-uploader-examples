@@ -1,12 +1,14 @@
+"use client";
+
 import * as UC from '@uploadcare/file-uploader';
 import React, { useEffect, useRef, useState } from 'react';
 
 import '@uploadcare/file-uploader/web/uc-file-uploader-regular.min.css';
-import st from './styles.module.css';
+import st from '../styles.module.css';
 
 UC.defineComponents(UC);
 
-function Regular() {
+function Page() {
   const [isClient, setIsClient] = useState(false)
   const [files, setFiles] = useState([]);
   const ctxProviderRef = useRef(null);
@@ -88,7 +90,7 @@ function Regular() {
   );
 }
 
-export default Regular;
+export default Page;
 
 function formatSize(bytes) {
   if (!bytes) return '0 Bytes';
