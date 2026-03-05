@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import * as UC from '@uploadcare/file-uploader';
 import React, { useEffect, useRef, useState } from 'react';

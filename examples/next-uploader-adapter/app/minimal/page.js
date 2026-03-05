@@ -1,11 +1,13 @@
+'use client';
+
 import React, { useState } from 'react';
 
-import st from './styles.module.css';
-import { FileUploaderMinimal } from "@uploadcare/react-uploader"
-import "@uploadcare/react-uploader/core.css"
+import { FileUploaderMinimal } from '@uploadcare/react-uploader/next';
+import '@uploadcare/react-uploader/core.css';
 
+import st from '../styles.module.css';
 
-function Minimal() {
+function Page() {
   const [files, setFiles] = useState([]);
 
   const handleChangeEvent = (files) => {
@@ -21,7 +23,10 @@ function Minimal() {
       </p>
       <hr className={st.separator} />
 
-      <FileUploaderMinimal onChange={handleChangeEvent} pubkey="a6ca334c3520777c0045" />
+      <FileUploaderMinimal
+        onChange={handleChangeEvent}
+        pubkey="a6ca334c3520777c0045"
+      />
 
       <div className={st.previews}>
         {files.map((file) => (
@@ -49,7 +54,7 @@ function Minimal() {
   );
 }
 
-export default Minimal;
+export default Page;
 
 function formatSize(bytes) {
   if (!bytes) return '0 Bytes';

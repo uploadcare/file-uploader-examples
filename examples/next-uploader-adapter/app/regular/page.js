@@ -1,12 +1,13 @@
+'use client';
+
 import React, { useState } from 'react';
 
-import { FileUploaderRegular } from "@uploadcare/react-uploader";
-import "@uploadcare/react-uploader/core.css"
+import { FileUploaderRegular } from '@uploadcare/react-uploader/next';
+import '@uploadcare/react-uploader/core.css';
 
-import st from './styles.module.css';
+import st from '../styles.module.css';
 
-
-function Regular() {
+function Page() {
   const [files, setFiles] = useState([]);
 
   const handleChangeEvent = (files) => {
@@ -50,7 +51,7 @@ function Regular() {
   );
 }
 
-export default Regular;
+export default Page;
 
 function formatSize(bytes) {
   if (!bytes) return '0 Bytes';
