@@ -6,7 +6,7 @@ import moonImage from '../../assets/moon.png';
 
 import FileUploader from '../../components/FileUploader/FileUploader';
 
-import st from './FormView.module.scss';
+import st from './FormView.module.css';
 import MOCK_DATA from './mocks';
 
 type FormType = {
