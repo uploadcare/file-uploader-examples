@@ -1,7 +1,5 @@
 import { OutputFileEntry } from '@uploadcare/file-uploader';
-import { ChangeEventHandler, FormEventHandler, useCallback, useEffect, useState } from 'react';
-import Toggle from 'react-toggle';
-import 'react-toggle/style.css';
+import { ChangeEventHandler, MouseEventHandler, FormEventHandler, useCallback, useEffect, useState } from 'react';
 
 import sunImage from '../../assets/sun.png';
 import moonImage from '../../assets/moon.png';
@@ -43,8 +41,8 @@ export default function FormView() {
 
   const [theme, setTheme] = useState<'light' | 'dark'>(document.body.classList.contains('theme--dark') ? 'dark' : 'light');
 
-  const handleThemeChange = useCallback<ChangeEventHandler<HTMLInputElement>>(e => {
-    setTheme(e.target.checked ? 'light' : 'dark');
+  const handleThemeChange = useCallback<MouseEventHandler<HTMLButtonElement>>(() => {
+    setTheme(theme => theme === 'dark' ? 'light' : 'dark');
   }, [setTheme]);
 
   useEffect(() => {
@@ -57,19 +55,28 @@ export default function FormView() {
     <div className={st.root}>
       <header className={st.header}>
         <h1 className={st.viewTitle}>New blog post</h1>
-        <Toggle
-          checked={theme === 'light'}
+        <button
           className={st.themeToggle}
-          icons={{
-            checked: <img src={sunImage} width="16" height="16"/>,
-            unchecked: <img src={moonImage} width="14" height="14"/>,
-          }}
-          onChange={handleThemeChange}
-        />
+          type="button"
+          onClick={handleThemeChange}
+        >
+          <img
+            style={{ display: theme === 'dark' ? 'none' : 'block '}}
+            src={sunImage as string}
+            width="16"
+            height="16"
+          />
+          <img
+            style={{ display: theme === 'light' ? 'none' : 'block '}}
+            src={moonImage as string}
+            width="14"
+            height="14"
+          />
+        </button>
       </header>
 
       {!sentFormObject && (
-        <form className={st.form} onSubmit={handleFormSubmit}>
+        <form onSubmit={handleFormSubmit}>
           <div className={st.field}>
             <label className={st.label} htmlFor="title">Title</label>
             <input
