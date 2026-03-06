@@ -173,7 +173,7 @@ onBeforeUnmount(() => {
   </div>
 </template>
 
-<style scoped lang="scss">
+<style scoped>
 .previews {
   display: flex;
   flex-wrap: wrap;

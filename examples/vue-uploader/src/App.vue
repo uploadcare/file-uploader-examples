@@ -54,7 +54,7 @@
   <router-view/>
 </template>
 
-<style scoped lang="scss">
+<style scoped>
   .root {
     display: grid;
     grid-template-areas:
