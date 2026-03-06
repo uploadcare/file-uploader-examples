@@ -5,14 +5,14 @@
   "version": "1.0.0",
   "workspaces": [
     "examples/angular-uploader",
-    "examples/js-uploader",
-    "examples/next-uploader-adapter",
-    "examples/react-uploader-adapter",
-    "examples/vue-uploader",
     "examples/js-custom-tab",
+    "examples/js-uploader",
     "examples/next-uploader",
+    "examples/next-uploader-adapter",
     "examples/react-uploader",
-    "examples/svelte-uploader"
+    "examples/react-uploader-adapter",
+    "examples/svelte-uploader",
+    "examples/vue-uploader"
   ],
   "scripts": {
     "install-deps": "for dir in ./examples/*; do npm install --prefix \"${dir}\"; done",
