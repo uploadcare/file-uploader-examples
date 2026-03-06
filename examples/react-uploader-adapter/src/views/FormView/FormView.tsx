@@ -75,8 +75,6 @@ export default function FormView() {
         </button>
       </header>
 
-      <pre>{theme}</pre>
-
       {!sentFormObject && (
         <form onSubmit={handleFormSubmit}>
           <div className={st.field}>
