@@ -97,7 +97,7 @@
   {/if}
 </div>
 
-<style lang="scss">
+<style>
   .app {
     padding: 16px 24px;
     max-width: 480px;
@@ -154,7 +154,7 @@
       border-color: var(--ui-control-border-color-focus);
     }
 
-    // trying to prevent scrollbar overflowing textarea borders =/
+    /* trying to prevent scrollbar overflowing textarea borders =/ */
     &::-webkit-scrollbar-corner {
       display: none;
     }

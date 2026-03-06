@@ -59,7 +59,7 @@
 
 <slot/>
 
-<style lang="scss">
+<style>
   .root {
     display: grid;
     grid-template-areas:

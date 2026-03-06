@@ -150,7 +150,7 @@
   </div>
 </div>
 
-<style lang="scss">
+<style>
   /*
   CSS variables are used to customize the appearance of the file uploader.
 

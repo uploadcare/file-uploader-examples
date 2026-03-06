@@ -14,9 +14,7 @@
   },
   "devDependencies": {
     "@sveltejs/kit": "2.53.4",
-    "sass": "1.97.3",
     "svelte": "5.53.7",
-    "svelte-preprocess": "6.0.3",
     "vite": "7.3.1"
   }
 }
