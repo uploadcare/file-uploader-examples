@@ -8,11 +8,10 @@
   </a>
 </p>
 <p align="center">
-  <a href="https://uploadcare.com?ref=github-react-example-readme">Website</a> • 
-  <a href="https://uploadcare.com/docs/start/quickstart?ref=github-react-example-readme">Quick Start</a> • 
-  <a href="https://uploadcare.com/docs?ref=github-react-example-readme">Docs</a> • 
-  <a href="https://uploadcare.com/blog?ref=github-react-example-readme">Blog</a> • 
-  <a href="https://discord.gg/mKWRgRsVz8?ref=github-react-example-readme">Discord</a> •
+  <a href="https://uploadcare.com?ref=github-react-example-readme">Website</a> •
+  <a href="https://uploadcare.com/docs/start/quickstart?ref=github-react-example-readme">Quick Start</a> •
+  <a href="https://uploadcare.com/docs?ref=github-react-example-readme">Docs</a> •
+  <a href="https://uploadcare.com/blog?ref=github-react-example-readme">Blog</a> •
   <a href="https://twitter.com/Uploadcare?ref=github-react-example-readme">Twitter</a>
 </p>
 
@@ -51,12 +50,12 @@ Please, read the [File Uploader documentation](https://uploadcare.com/docs/file-
 
 File Uploader is native to the Web but not to React. It's easy to use File Uploader in a React app, but note that a part of your solution will encapsulate non-React code.
 
-E.g. in one of the examples we created a [FileUploader](src/components/FileUploader/FileUploader.tsx) component 
+E.g. in one of the examples we created a [FileUploader](src/components/FileUploader/FileUploader.tsx) component
 which provides React-friendly API for the rest of the view. There is a File Uploader inside this component and nowhere else.
 
 ### Styling
 
-If your styling solution may provide class string or style object, feel free to use them on components like 
+If your styling solution may provide class string or style object, feel free to use them on components like
 `uc-file-uploader-regular` and override default class using CSS variables.
 
 Otherwise you may go “full override” way and pass a string with styles to a File Uploader type of your choice.
