@@ -17,7 +17,7 @@
     "@angular/platform-browser": "21.2.1",
     "@angular/platform-browser-dynamic": "21.2.1",
     "@angular/router": "21.2.1",
-    "@uploadcare/file-uploader": "1.19.4"
+    "@uploadcare/file-uploader": "1.27.1"
   },
   "devDependencies": {
     "@angular-builders/custom-webpack": "21.0.3",
