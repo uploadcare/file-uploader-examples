@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useRef, useState } from 'react';
 import * as UC from '@uploadcare/file-uploader';
 import { OutputFileEntry } from '@uploadcare/file-uploader';
 
-import st from './FileUploader.module.scss';
+import st from './FileUploader.module.css';
 import cs from 'classnames';
 
 UC.defineComponents(UC);
