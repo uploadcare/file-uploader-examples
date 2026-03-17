@@ -3,22 +3,19 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next",
-    "build": "next build",
+    "dev": "next dev --turbopack",
+    "build": "next build --turbopack",
     "start": "npm run dev"
   },
   "dependencies": {
-    "@uploadcare/react-uploader": "^1.10.1",
-    "next": "14.1.4",
-    "react": "^18",
-    "react-dom": "^18"
+    "@uploadcare/react-uploader": "1.13.0",
+    "next": "16.1.6",
+    "react": "19.2.4",
+    "react-dom": "19.2.4"
   },
   "devDependencies": {
-    "@types/node": "^20",
-    "@types/react": "^18",
-    "@types/react-dom": "^18",
-    "eslint": "^8",
-    "eslint-config-next": "14.1.4",
-    "typescript": "^5"
+    "@types/node": "20.19.35",
+    "@types/react": "19.2.14",
+    "@types/react-dom": "19.2.3"
   }
 }
