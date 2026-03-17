@@ -2,7 +2,7 @@ import React from 'react';
 import { NavLink, Outlet } from 'react-router-dom';
 import cs from 'classnames';
 
-import st from './Layout.module.scss';
+import st from './Layout.module.css';
 
 const getMenuLinkClassName = ({ isActive }: { isActive: boolean }) => {
   return cs(st.link, st.menuLink, { [st.active]: isActive });

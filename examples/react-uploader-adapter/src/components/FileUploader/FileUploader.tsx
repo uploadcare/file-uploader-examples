@@ -1,8 +1,8 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React, { useCallback, useRef, useState } from 'react';
 import { OutputFileEntry } from '@uploadcare/file-uploader';
 import { FileUploaderRegular, type UploadCtxProvider } from '@uploadcare/react-uploader';
 
-import st from './FileUploader.module.scss';
+import st from './FileUploader.module.css';
 import cssOverrides from './FileUploader.overrides.module.css';
 import cs from 'classnames';
 
@@ -61,7 +61,7 @@ export default function FileUploader({ files, uploaderClassName, onChange, theme
   }
 
   return (
-    <div className={st.root}>
+    <div>
       <FileUploaderRegular
         imgOnly
         multiple

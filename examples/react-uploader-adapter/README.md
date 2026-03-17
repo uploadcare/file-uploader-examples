@@ -18,7 +18,7 @@
 
 # React file uploading example
 
-[![Edit react-uploader](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/github/uploadcare/file-uploader-examples/tree/main/examples/react-uploader-adapter/)
+[![Edit react-uploader-adapter](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/github/uploadcare/file-uploader-examples/tree/main/examples/react-uploader-adapter/)
 
 This is an example project of implementing a file uploader in a Next.js application with [Uploadcare React Uploader](https://github.com/uploadcare/react-components/blob/main/packages/react-uploader)
 
