@@ -8,11 +8,10 @@
   </a>
 </p>
 <p align="center">
-  <a href="https://uploadcare.com?ref=github-vue-example-readme">Website</a> • 
-  <a href="https://uploadcare.com/docs/start/quickstart?ref=github-vue-example-readme">Quick Start</a> • 
-  <a href="https://uploadcare.com/docs?ref=github-vue-example-readme">Docs</a> • 
-  <a href="https://uploadcare.com/blog?ref=github-vue-example-readme">Blog</a> • 
-  <a href="https://discord.gg/mKWRgRsVz8?ref=github-vue-example-readme">Discord</a> •
+  <a href="https://uploadcare.com?ref=github-vue-example-readme">Website</a> •
+  <a href="https://uploadcare.com/docs/start/quickstart?ref=github-vue-example-readme">Quick Start</a> •
+  <a href="https://uploadcare.com/docs?ref=github-vue-example-readme">Docs</a> •
+  <a href="https://uploadcare.com/blog?ref=github-vue-example-readme">Blog</a> •
   <a href="https://twitter.com/Uploadcare?ref=github-vue-example-readme">Twitter</a>
 </p>
 
@@ -54,13 +53,13 @@ Please, read the [File Uploader documentation](https://uploadcare.com/docs/file-
 ### Vue + Web Components
 
 File Uploader is native to the Web but not to Vue. However, Vue does everything to make solutions based on Web Components
-to work properly with it. 
+to work properly with it.
 
-To help Vue to figure out where you're using Web Components, you have to specify 
-[`compilerOptions.isCustomElement` option](https://vuejs.org/api/application.html#app-config-compileroptions). 
+To help Vue to figure out where you're using Web Components, you have to specify
+[`compilerOptions.isCustomElement` option](https://vuejs.org/api/application.html#app-config-compileroptions).
 In this example we have done it inside [the Vite config file](vite.config.js).
 
-You may like to read [Vue and Web Components](https://vuejs.org/guide/extras/web-components.html) doc, 
+You may like to read [Vue and Web Components](https://vuejs.org/guide/extras/web-components.html) doc,
 if you want to know more about using custom elements in Vue.
 
 ### Options API vs. Composition API
@@ -71,7 +70,7 @@ which provides Vue-friendly API for the rest of the example. There is a File Upl
 However, Vue 3 supports two different API styles: Options API and Composition API. We do not know which one you prefer,
 so we have implemented the example twice.
 
-By default we use Options API because the whole app is built with it. But you're free to switch the `import` path 
+By default we use Options API because the whole app is built with it. But you're free to switch the `import` path
 in [FormView.vue](src/views/FormView/FormView.vue) from [FileUploader.options.vue](src/components/FileUploader/FileUploader.options.vue)
 to [FileUploader.composition.vue](src/components/FileUploader/FileUploader.composition.vue) to ensure that it works too.
 

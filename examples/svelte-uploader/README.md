@@ -8,11 +8,10 @@
   </a>
 </p>
 <p align="center">
-  <a href="https://uploadcare.com?ref=github-svelte-example-readme">Website</a> • 
-  <a href="https://uploadcare.com/docs/start/quickstart?ref=github-svelte-example-readme">Quick Start</a> • 
-  <a href="https://uploadcare.com/docs?ref=github-svelte-example-readme">Docs</a> • 
-  <a href="https://uploadcare.com/blog?ref=github-svelte-example-readme">Blog</a> • 
-  <a href="https://discord.gg/mKWRgRsVz8?ref=github-svelte-example-readme">Discord</a> •
+  <a href="https://uploadcare.com?ref=github-svelte-example-readme">Website</a> •
+  <a href="https://uploadcare.com/docs/start/quickstart?ref=github-svelte-example-readme">Quick Start</a> •
+  <a href="https://uploadcare.com/docs?ref=github-svelte-example-readme">Docs</a> •
+  <a href="https://uploadcare.com/blog?ref=github-svelte-example-readme">Blog</a> •
   <a href="https://twitter.com/Uploadcare?ref=github-svelte-example-readme">Twitter</a>
 </p>
 

@@ -8,11 +8,10 @@
   </a>
 </p>
 <p align="center">
-  <a href="https://uploadcare.com?ref=github-file-uploader-examples-readme">Website</a> • 
-  <a href="https://uploadcare.com/docs/start/quickstart?ref=github-file-uploader-examples-readme">Quick Start</a> • 
-  <a href="https://uploadcare.com/docs?ref=github-file-uploader-examples-readme">Docs</a> • 
-  <a href="https://uploadcare.com/blog?ref=github-file-uploader-examples-readme">Blog</a> • 
-  <a href="https://discord.gg/mKWRgRsVz8?ref=github-file-uploader-examples-readme">Discord</a> •
+  <a href="https://uploadcare.com?ref=github-file-uploader-examples-readme">Website</a> •
+  <a href="https://uploadcare.com/docs/start/quickstart?ref=github-file-uploader-examples-readme">Quick Start</a> •
+  <a href="https://uploadcare.com/docs?ref=github-file-uploader-examples-readme">Docs</a> •
+  <a href="https://uploadcare.com/blog?ref=github-file-uploader-examples-readme">Blog</a> •
   <a href="https://twitter.com/Uploadcare?ref=github-file-uploader-examples-readme">Twitter</a>
 </p>
 
