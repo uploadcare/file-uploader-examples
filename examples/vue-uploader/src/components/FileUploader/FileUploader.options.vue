@@ -60,7 +60,11 @@ export default {
         );
       }
     },
-    handleModalCloseEvent() {
+    handleModalCloseEvent(e) {
+      if (e.detail.hasActiveModals) {
+        return;
+      }
+
       this.resetUploaderState();
 
       this.$emit("update:files", [...this.files, ...this.uploadedFiles]);
@@ -77,9 +81,8 @@ export default {
      */
     this.$refs.configRef.localeDefinitionOverride = {
       en: {
-        photo__one: "photo",
-        photo__many: "photos",
-        photo__other: "photos",
+        "file__one": "photo",
+        "file__other": "photos",
 
         "upload-file": "Upload photo",
         "upload-files": "Upload photos",
@@ -90,12 +93,11 @@ export default {
         "edit-image": "Edit photo",
         "no-files": "No photos selected",
         "caption-edit-file": "Edit photo",
-        "files-count-allowed": "Only {{count}} {{plural:photo(count)}} allowed",
-        "files-max-size-limit-error":
-          "Photo is too big. Max photo size is {{maxFileSize}}.",
-        "header-uploading": "Uploading {{count}} {{plural:photo(count)}}",
-        "header-succeed": "{{count}} {{plural:photo(count)}} uploaded",
-        "header-total": "{{count}} {{plural:photo(count)}} selected",
+        "files-count-limit-error-too-many": "You\u2019ve chosen too many photos. {{max}} {{plural:file(max)}} is maximum.",
+        "files-max-size-limit-error": "Photo is too big. Max photo size is {{maxFileSize}}.",
+        "header-uploading": "Uploading {{count}} {{plural:file(count)}}",
+        "header-succeed": "{{count}} {{plural:file(count)}} uploaded",
+        "header-total": "{{count}} {{plural:file(count)}} selected",
       },
     };
   },
@@ -125,6 +127,7 @@ export default {
       :ctx-name="uploaderCtxName"
       pubkey="a6ca334c3520777c0045"
       multiple
+      multipleMax="2"
       sourceList="local, url, camera, dropbox, gdrive"
       confirmUpload="false"
       removeCopyright
