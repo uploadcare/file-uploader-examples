@@ -15,7 +15,7 @@ export class RegularViewComponent {
   @Input() files: OutputFileEntry<'success'>[] = [];
   @Output() filesChange = new EventEmitter<OutputFileEntry<'success'>[]>();
 
-  @ViewChild('ctxProvider', { static: true }) ctxProviderRef!: ElementRef;
+  @ViewChild('ctxProvider', { static: true }) ctxProviderRef!: ElementRef<UC.UploadCtxProvider>;
 
   ngOnInit() {
     /*
