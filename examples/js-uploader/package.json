@@ -8,7 +8,7 @@
     "build": "vite build --base ./"
   },
   "dependencies": {
-    "@uploadcare/file-uploader": "1.19.4"
+    "@uploadcare/file-uploader": "^1.29.0"
   },
   "devDependencies": {
     "vite": "7.3.1"
