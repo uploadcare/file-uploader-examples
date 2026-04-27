@@ -1,6 +1,6 @@
 import React, { useCallback, useRef, useState } from 'react';
 import { OutputFileEntry } from '@uploadcare/file-uploader';
-import { FileUploaderRegular, type UploadCtxProvider } from '@uploadcare/react-uploader';
+import { FileUploaderRegular, type UploadCtxProvider, type TEventsSchema } from '@uploadcare/react-uploader';
 
 import st from './FileUploader.module.css';
 import cssOverrides from './FileUploader.overrides.module.css';
@@ -15,23 +15,23 @@ type FileUploaderProps = {
 
 const localeDefinitionOverride = {
   en: {
-    "upload-file": "Upload photo",
-    "upload-files": 'Upload photos',
-    "choose-file": 'Choose photo',
-    "choose-files": 'Choose photos',
-    "drop-files-here": 'Drop photos here',
-    "select-file-source": 'Select photo source',
-    "edit-image": 'Edit photo',
-    "no-files": 'No photos selected',
-    "caption-edit-file": 'Edit photo',
-    "files-count-allowed": 'Only {{count}} {{plural:photo(count)}} allowed',
-    "files-max-size-limit-error": 'Photo is too big. Max photo size is {{maxFileSize}}.',
-    "header-uploading": 'Uploading {{count}} {{plural:photo(count)}}',
-    "header-succeed": '{{count}} {{plural:photo(count)}} uploaded',
-    "header-total": '{{count}} {{plural:photo(count)}} selected',
-    "photo__one": 'photo',
-    "photo__many": 'photos',
-    "photo__other": 'photos',
+    'file__one': 'photo',
+    'file__other': 'photos',
+
+    'upload-file': 'Upload photo',
+    'upload-files': 'Upload photos',
+    'choose-file': 'Choose photo',
+    'choose-files': 'Choose photos',
+    'drop-files-here': 'Drop photos here',
+    'select-file-source': 'Select photo source',
+    'edit-image': 'Edit photo',
+    'no-files': 'No photos selected',
+    'caption-edit-file': 'Edit photo',
+    'files-count-limit-error-too-many': 'You\u2019ve chosen too many photos. {{max}} {{plural:file(max)}} is maximum.',
+    'files-max-size-limit-error': 'Photo is too big. Max photo size is {{maxFileSize}}.',
+    'header-uploading': 'Uploading {{count}} {{plural:file(count)}}',
+    'header-succeed': '{{count}} {{plural:file(count)}} uploaded',
+    'header-total': '{{count}} {{plural:file(count)}} selected',
   }
 }
 
@@ -47,7 +47,11 @@ export default function FileUploader({ files, uploaderClassName, onChange, theme
 
   const resetUploaderState = () => ctxProviderRef.current?.uploadCollection.clearAll();
 
-  const handleModalCloseEvent = () => {
+  const handleModalCloseEvent = (e: TEventsSchema['modal-close']) => {
+    if (e.hasActiveModals) {
+      return;
+    }
+
     resetUploaderState();
 
     onChange([...files, ...uploadedFiles])
@@ -65,6 +69,7 @@ export default function FileUploader({ files, uploaderClassName, onChange, theme
       <FileUploaderRegular
         imgOnly
         multiple
+        multipleMax={2}
         removeCopyright
         confirmUpload={false}
         localeDefinitionOverride={localeDefinitionOverride}
