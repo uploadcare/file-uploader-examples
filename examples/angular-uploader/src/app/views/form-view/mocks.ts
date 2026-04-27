@@ -17,6 +17,7 @@ const mocks: MocksType = {
     {
       uuid: '1be82782-2cfe-4269-8ea3-da4279a1c7f4',
       internalId: '6GYw7vtML-Z6K',
+      isValidationPending: false,
       source: 'local',
       name: 'arthur-humeau-3xwdarHxHqI-unsplash.jpg',
       size: 1657550,
@@ -89,6 +90,7 @@ const mocks: MocksType = {
     {
       uuid: '57a9505d-1118-4f0b-8417-0efa780e35f6',
       internalId: 'qOqnI0Svy-nMY',
+      isValidationPending: false,
       source: 'local',
       name: 'bharat-patil-WR5_Ev_bh-I-unsplash.jpg',
       size: 974188,
@@ -161,6 +163,7 @@ const mocks: MocksType = {
     {
       uuid: '040b5f13-ff2c-4d06-995a-3f8e3ece1ae7',
       internalId: '38Mr9577M-2JE',
+      isValidationPending: false,
       source: 'local',
       name: 'chris-karidis-nnzkZNYWHaU-unsplash.jpg',
       size: 535450,
@@ -233,6 +236,7 @@ const mocks: MocksType = {
     {
       uuid: '8fbd0e17-51ff-4804-a4cf-09c228a8526a',
       internalId: 'NxiT0MrhJ-oXS',
+      isValidationPending: false,
       source: 'local',
       name: 'earth-DXuxHw3S5ak-unsplash.jpg',
       size: 673331,
@@ -305,6 +309,7 @@ const mocks: MocksType = {
     {
       uuid: 'b127ad22-c76b-4712-9f7a-c76561b61610',
       internalId: 'uWUiPJQTo-YlY',
+      isValidationPending: false,
       source: 'local',
       name: 'john-towner-Hf4Ap1-ef40-unsplash.jpg',
       size: 1868140,
@@ -377,6 +382,7 @@ const mocks: MocksType = {
     {
       uuid: '0b1cf64b-ffba-4866-bd1a-4f7c0c6b71d8',
       internalId: 'Hb2KdscDC-69e',
+      isValidationPending: false,
       source: 'local',
       name: 'sebastien-gabriel-gyUVNafCIG8-unsplash.jpg',
       size: 1021096,
