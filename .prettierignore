@@ -1,3 +1,8 @@
-.angular
-dist
-build
+**/node_modules/**
+**/dist/**
+**/.next/**
+**/.svelte-kit/**
+**/coverage/**
+**/.angular/**
+**/out/**
+**/tmp/**
