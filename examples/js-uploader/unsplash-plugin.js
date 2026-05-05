@@ -135,16 +135,22 @@ function mountUnsplashActivity(host, pluginApi, uploaderApi) {
       button.type = 'button';
       button.className = 'unsplash-item';
       button.title = `${item.description} — by ${item.author}`;
-      button.innerHTML = `
-        <img
-          src="${item.thumbUrl}"
-          alt="${item.description}"
-          width="${item.width}"
-          height="${item.height}"
-          loading="lazy"
-        />
-        <span class="unsplash-author">${item.author}</span>
-      `;
+
+      // Build the card with DOM APIs rather than innerHTML so the
+      // remote `description`/`author`/`thumbUrl` values can never break
+      // out of the attribute or inject HTML (DOM XSS).
+      const img = document.createElement('img');
+      img.src = item.thumbUrl;
+      img.alt = item.description;
+      img.width = item.width;
+      img.height = item.height;
+      img.loading = 'lazy';
+
+      const author = document.createElement('span');
+      author.className = 'unsplash-author';
+      author.textContent = item.author;
+
+      button.append(img, author);
       button.addEventListener('click', () => {
         uploaderApi.addFileFromUrl(item.fullUrl, {
           fileName: `unsplash-${item.id}.jpg`,
