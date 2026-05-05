@@ -6,10 +6,12 @@ import '@uploadcare/react-uploader/core.css';
 
 import { unsplashPlugin } from '../regular/unsplashPlugin.js';
 import st from '../styles.module.css';
+import { useTheme } from '../_lib/ThemeProvider.js';
 
 function Page() {
   const [files, setFiles] = useState([]);
   const [errors, setErrors] = useState([]);
+  const { theme } = useTheme();
 
   // The adapter exposes `onChange` instead of the raw `change` event.
   // The collection delivers all entries on every transition, so we re-derive
@@ -29,28 +31,14 @@ function Page() {
 
   return (
     <div className={st.pageWrapper}>
-      <p className={st.paragraph}>
-        <a href="/" className={st.link}>
-          ← All Next.js Examples
-        </a>
-        {' · '}
-        <a
-          href="https://uploadcare.com/docs/integrations/nextjs-file-uploader/"
-          className={st.link}
-        >
-          Integration docs
-        </a>
-      </p>
-      <hr className={st.separator} />
-
       <FileUploaderMinimal
-        // Register custom Unsplash source plugin.
         // Plugin docs: https://uploadcare.com/docs/file-uploader/plugins/example/
         onChange={handleChangeEvent}
         pubkey="a6ca334c3520777c0045"
         sourceList="local, url, camera, dropbox, unsplash"
         plugins={[unsplashPlugin]}
         unsplashAccessKey={process.env.NEXT_PUBLIC_UNSPLASH_ACCESS_KEY}
+        classNameUploader={`uc-${theme}`}
       />
 
       {errors.length > 0 && (
@@ -68,7 +56,6 @@ function Page() {
           <div key={file.uuid} className={st.previewWrapper}>
             <img
               className={st.previewImage}
-              key={file.uuid}
               src={`${file.cdnUrl}/-/preview/-/resize/x400/`}
               width="200"
               height="200"

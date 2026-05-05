@@ -1,32 +1,7 @@
 .pageWrapper {
-  font-family:
-    -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
-  font-size: 14px;
-  padding: 12px;
-}
-
-.paragraph,
-.previewData {
-  margin: 0;
-  line-height: 1.4em;
-}
-
-.link:link,
-.link:hover,
-.link:active,
-.link:visited {
-  color: blue;
-  text-decoration: none;
-}
-
-.link:hover {
-  color: darkblue;
-}
-
-.separator {
-  border: none;
-  border-top: 1px solid whitesmoke;
-  margin: 20px 0;
+  padding: 16px 24px;
+  max-width: 480px;
+  margin: 0 auto;
 }
 
 .previews {
@@ -38,8 +13,8 @@
 }
 
 .previewWrapper {
-  background-color: whitesmoke;
-  color: darkslategray;
+  background-color: var(--ui-control-background-color);
+  color: var(--ui-control-text-color);
   border-radius: 12px;
   padding: 15px;
   display: flex;
@@ -49,6 +24,8 @@
 
 .previewImage {
   display: block;
+  width: 200px;
+  height: 200px;
   object-fit: cover;
   border-radius: 4px;
   margin-bottom: 8px;
@@ -56,6 +33,8 @@
 
 .previewData {
   font-size: 13px;
+  margin: 0;
+  line-height: 1.4em;
   max-width: 200px;
   overflow: hidden;
   white-space: nowrap;
