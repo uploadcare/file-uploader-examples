@@ -1,15 +1,20 @@
 .pageWrapper {
-  font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Roboto, Arial, sans-serif;
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
   font-size: 14px;
   padding: 12px;
 }
 
-.paragraph, .previewData {
+.paragraph,
+.previewData {
   margin: 0;
   line-height: 1.4em;
 }
 
-.link:link, .link:hover, .link:active, .link:visited {
+.link:link,
+.link:hover,
+.link:active,
+.link:visited {
   color: blue;
   text-decoration: none;
 }
@@ -55,4 +60,20 @@
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+}
+
+.errors {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.error {
+  margin: 0;
+  padding: 10px 12px;
+  border-radius: 8px;
+  background: #fee2e2;
+  color: #991b1b;
+  font-size: 13px;
 }
