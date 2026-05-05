@@ -87,6 +87,29 @@
 
     <a
       class="link"
+      href="https://stackblitz.com/github/uploadcare/file-uploader-examples/tree/main/examples/svelte-uploader"
+      aria-label="Svelte example on StackBlitz"
+      title="Svelte example on StackBlitz"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        focusable="false"
+        viewBox="0 0 24 24"
+        width="30"
+        height="30"
+      >
+        <title>StackBlitz</title>
+        <path
+          fill="currentColor"
+          style="fill: var(--ui-control-text-color)"
+          stroke="none"
+          d="M10.797 14.182H3.635L16.728 0l-3.525 9.818h7.162L7.272 24l3.524-9.818Z"
+        ></path>
+      </svg>
+    </a>
+
+    <a
+      class="link"
       href="https://github.com/uploadcare/file-uploader-examples/tree/main/examples/svelte-uploader"
       aria-label="Svelte example source code"
       title="Svelte example source code"
