@@ -26,7 +26,7 @@
             "polyfills": [],
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
-            "assets": [{ "glob": "**/*", "input": "src/assets" }],
+            "assets": [{ "glob": "**/*", "input": "src/assets", "output": "assets" }],
             "styles": ["src/styles.scss"],
             "scripts": []
           },
