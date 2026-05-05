@@ -110,6 +110,10 @@
     }
   }
 
+  .link {
+    color: inherit;
+  }
+
   .link:hover {
     opacity: 0.5;
   }
@@ -150,11 +154,11 @@
     margin-left: auto;
     display: flex;
     align-items: center;
+    gap: 24px;
   }
 
   .source-title {
     font-size: 14px;
-    margin-right: 24px;
     color: var(--ui-text-color);
   }
 </style>
