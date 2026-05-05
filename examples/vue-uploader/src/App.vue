@@ -48,7 +48,7 @@
     <div class="source">
       <span class="source-title"> Built with Uploadcare File Uploader and Vue </span>
 
-      <a class="link" href="https://uploadcare.com/docs/integrations/vue/">Docs</a>
+      <a class="link" href="https://uploadcare.com/docs/integrations/vue-file-uploader/">Docs</a>
 
       <a
         class="link"

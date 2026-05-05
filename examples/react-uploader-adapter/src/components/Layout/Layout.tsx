@@ -60,7 +60,7 @@ export default function Layout() {
             Built with Uploadcare File Uploader and React Adapter
           </span>
 
-          <a className={st.link} href="https://uploadcare.com/docs/integrations/react/">
+          <a className={st.link} href="https://uploadcare.com/docs/integrations/react-file-uploader/">
             Docs
           </a>
 

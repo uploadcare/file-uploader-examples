@@ -59,7 +59,7 @@
   <div class="source">
     <span class="source-title"> Built with Uploadcare File Uploader and Svelte </span>
 
-    <a class="link" href="https://uploadcare.com/docs/integrations/svelte/">Docs</a>
+    <a class="link" href="https://uploadcare.com/docs/integrations/svelte-file-uploader/">Docs</a>
 
     <a
       class="link"

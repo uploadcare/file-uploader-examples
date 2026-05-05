@@ -58,7 +58,7 @@ export default function Layout() {
         <div className={st.source}>
           <span className={st.sourceTitle}>Built with Uploadcare File Uploader and React</span>
 
-          <a className={st.link} href="https://uploadcare.com/docs/integrations/react/">
+          <a className={st.link} href="https://uploadcare.com/docs/integrations/react-file-uploader/">
             Docs
           </a>
 
