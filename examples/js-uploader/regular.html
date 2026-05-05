@@ -11,12 +11,15 @@
 <body>
   <p>
     <a href="/">← All JS Examples</a>
+    ·
+    <a href="https://uploadcare.com/docs/integrations/javascript-file-uploader/">Integration docs</a>
   </p>
   <hr>
   <uc-config
+    id="my-uploader-config"
     ctx-name="my-uploader"
     pubkey="a6ca334c3520777c0045"
-    sourceList="local, url, camera, dropbox"
+    sourceList="local, url, camera, dropbox, unsplash"
   ></uc-config>
   <uc-file-uploader-regular
     ctx-name="my-uploader"
@@ -27,6 +30,7 @@
     id="my-uploader-provider"
   ></uc-upload-ctx-provider>
 
+  <div class="errors" id="errors"></div>
   <div class="previews" id="previews"></div>
 </body>
 </html>
