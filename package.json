@@ -15,6 +15,7 @@
 	],
 	"scripts": {
 		"build": "for dir in ./examples/*; do npm run build --prefix \"${dir}\"; done",
+		"build:pages": "node scripts/build-pages.js",
 		"lint": "npm run lint --workspaces --if-present",
 		"lint:fix": "npm run lint:fix --workspaces --if-present",
 		"format": "npm run format --workspaces --if-present",
