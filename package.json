@@ -22,7 +22,7 @@
 		"format:check": "npm run format:check --workspaces --if-present"
 	},
 	"overrides": {
-		"@uploadcare/file-uploader": "1.29.1-alpha.0"
+		"@uploadcare/file-uploader": "1.29.1"
 	},
 	"devDependencies": {
 		"@biomejs/biome": "^2.4.13",
