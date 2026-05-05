@@ -71,41 +71,22 @@ export default function Layout() {
           className={st.link}
           href="https://codesandbox.io/p/devbox/github/uploadcare/file-uploader-examples/tree/main/examples/next-uploader-adapter"
         >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            focusable="false"
-            viewBox="0 0 300 300"
-            width="30"
+          <img
+            src="https://codesandbox.io/static/img/play-codesandbox.svg"
+            alt="Play with CodeSandbox"
             height="30"
-          >
-            <title>CodeSandbox</title>
-            <path
-              fillRule="evenodd"
-              style={{ fill: 'var(--ui-control-text-color)' }}
-              stroke="none"
-              d="M0 0h300v300H0V0Zm270 30v240H30V30h240z"
-            ></path>
-          </svg>
+          />
         </a>
 
         <a
           className={st.link}
           href="https://stackblitz.com/github/uploadcare/file-uploader-examples/tree/main/examples/next-uploader-adapter"
         >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            focusable="false"
-            viewBox="0 0 24 24"
-            width="30"
+          <img
+            src="https://developer.stackblitz.com/img/open_in_stackblitz.svg"
+            alt="Open in StackBlitz"
             height="30"
-          >
-            <title>StackBlitz</title>
-            <path
-              style={{ fill: 'var(--ui-control-text-color)' }}
-              stroke="none"
-              d="M10.797 14.182H3.635L16.728 0l-3.525 9.818h7.162L7.272 24l3.524-9.818Z"
-            ></path>
-          </svg>
+          />
         </a>
 
         <a

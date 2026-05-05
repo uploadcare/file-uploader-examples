@@ -35,27 +35,20 @@ const GITHUB_SVG = /* HTML */ `
   </svg>
 `;
 
-const CODESANDBOX_SVG = /* HTML */ `
-  <svg xmlns="http://www.w3.org/2000/svg" focusable="false" viewBox="0 0 300 300" width="30" height="30">
-    <title>CodeSandbox</title>
-    <path
-      fill-rule="evenodd"
-      style="fill: var(--ui-control-text-color);"
-      stroke="none"
-      d="M0 0h300v300H0V0Zm270 30v240H30V30h240z"
-    ></path>
-  </svg>
+const CODESANDBOX_BADGE = /* HTML */ `
+  <img
+    src="https://codesandbox.io/static/img/play-codesandbox.svg"
+    alt="Play with CodeSandbox"
+    height="30"
+  />
 `;
 
-const STACKBLITZ_SVG = /* HTML */ `
-  <svg xmlns="http://www.w3.org/2000/svg" focusable="false" viewBox="0 0 24 24" width="30" height="30">
-    <title>StackBlitz</title>
-    <path
-      style="fill: var(--ui-control-text-color);"
-      stroke="none"
-      d="M10.797 14.182H3.635L16.728 0l-3.525 9.818h7.162L7.272 24l3.524-9.818Z"
-    ></path>
-  </svg>
+const STACKBLITZ_BADGE = /* HTML */ `
+  <img
+    src="https://developer.stackblitz.com/img/open_in_stackblitz.svg"
+    alt="Open in StackBlitz"
+    height="30"
+  />
 `;
 
 const NAV_ITEMS = [
@@ -87,13 +80,13 @@ export function mountLayout(activePage) {
         class="layout-link"
         href="https://codesandbox.io/p/devbox/github/uploadcare/file-uploader-examples/tree/main/examples/js-uploader"
       >
-        ${CODESANDBOX_SVG}
+        ${CODESANDBOX_BADGE}
       </a>
       <a
         class="layout-link"
         href="https://stackblitz.com/github/uploadcare/file-uploader-examples/tree/main/examples/js-uploader"
       >
-        ${STACKBLITZ_SVG}
+        ${STACKBLITZ_BADGE}
       </a>
       <a
         class="layout-link"
