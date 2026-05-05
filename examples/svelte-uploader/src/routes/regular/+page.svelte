@@ -1,28 +1,37 @@
 <script>
   import * as UC from '@uploadcare/file-uploader';
   import { onMount } from 'svelte';
+  import { unsplashPlugin } from '$lib/Unsplash/unsplashPlugin.svelte.js';
 
   export let files = [];
+  let errors = [];
 
   let ctxProviderRef;
+  let configRef;
 
-  const handleChangeEvent = e => {
-    console.log('change event payload:', e);
-
-    if (e.detail) {
-      files = e.detail.allEntries.filter(f => f.status === 'success');
-    }
+  // Listen for upload-collection updates. The `change` event delivers the
+  // full collection on every transition, so we re-derive both successful
+  // and failed entries on each call.
+  // Events docs: https://uploadcare.com/docs/file-uploader/events/
+  const handleChangeEvent = (e) => {
+    if (!e.detail) return;
+    files = e.detail.allEntries.filter((f) => f.status === 'success');
+    errors = e.detail.allEntries
+      .filter((f) => f.status === 'failed')
+      .map((f) => ({
+        name: f.fileInfo?.originalFilename ?? f.externalUrl ?? 'File',
+        message: f.errors?.[0]?.message ?? 'Upload failed',
+      }));
   };
 
   onMount(() => {
     UC.defineComponents(UC);
 
-    /*
-      Note: Event binding is the main way to get data and other info from File Uploader.
-      There plenty of events you may use.
+    // Register custom Unsplash source plugin on the config element.
+    // Plugin docs: https://uploadcare.com/docs/file-uploader/plugins/example/
+    configRef.plugins = [unsplashPlugin];
+    configRef.unsplashAccessKey = import.meta.env.VITE_UNSPLASH_ACCESS_KEY;
 
-      See more: https://uploadcare.com/docs/file-uploader/events/
-     */
     ctxProviderRef.addEventListener('change', handleChangeEvent);
 
     return () => {
@@ -43,19 +52,24 @@
 
 <div>
   <uc-config
+    bind:this={configRef}
     ctx-name="my-uploader-3"
     pubkey="a6ca334c3520777c0045"
-    sourceList="local, url, camera, dropbox"
+    sourceList="local, url, camera, dropbox, unsplash"
   ></uc-config>
 
-  <uc-file-uploader-regular
-    ctx-name="my-uploader-3"
-  ></uc-file-uploader-regular>
+  <uc-file-uploader-regular ctx-name="my-uploader-3"></uc-file-uploader-regular>
 
-  <uc-upload-ctx-provider
-    ctx-name="my-uploader-3"
-    bind:this={ctxProviderRef}
+  <uc-upload-ctx-provider ctx-name="my-uploader-3" bind:this={ctxProviderRef}
   ></uc-upload-ctx-provider>
+
+  {#if errors.length > 0}
+    <div class="errors">
+      {#each errors as err, i (i)}
+        <p class="error" role="alert">{err.name}: {err.message}</p>
+      {/each}
+    </div>
+  {/if}
 
   <div class="previews">
     {#each files as file (file.cdnUrl)}
@@ -113,5 +127,20 @@
     white-space: nowrap;
     text-overflow: ellipsis;
   }
-</style>
 
+  .errors {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 16px;
+  }
+
+  .error {
+    margin: 0;
+    padding: 10px 12px;
+    border-radius: 8px;
+    background: #fee2e2;
+    color: #991b1b;
+    font-size: 13px;
+  }
+</style>
