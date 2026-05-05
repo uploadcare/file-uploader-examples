@@ -9,9 +9,8 @@ import st from './FileUploader.module.css';
 
 const PHOTO_LOCALE = {
   en: {
-    photo__one: 'photo',
-    photo__many: 'photos',
-    photo__other: 'photos',
+    file__one: 'photo',
+    file__other: 'photos',
 
     'upload-file': 'Upload photo',
     'upload-files': 'Upload photos',
@@ -22,11 +21,12 @@ const PHOTO_LOCALE = {
     'edit-image': 'Edit photo',
     'no-files': 'No photos selected',
     'caption-edit-file': 'Edit photo',
-    'files-count-allowed': 'Only {{count}} {{plural:photo(count)}} allowed',
+    'files-count-limit-error-too-many':
+      'You’ve chosen too many photos. {{max}} {{plural:file(max)}} is maximum.',
     'files-max-size-limit-error': 'Photo is too big. Max photo size is {{maxFileSize}}.',
-    'header-uploading': 'Uploading {{count}} {{plural:photo(count)}}',
-    'header-succeed': '{{count}} {{plural:photo(count)}} uploaded',
-    'header-total': '{{count}} {{plural:photo(count)}} selected',
+    'header-uploading': 'Uploading {{count}} {{plural:file(count)}}',
+    'header-succeed': '{{count}} {{plural:file(count)}} uploaded',
+    'header-total': '{{count}} {{plural:file(count)}} selected',
   },
 };
 
@@ -55,7 +55,13 @@ export default function FileUploader({ files, onChange, theme }) {
     );
   };
 
-  const handleModalCloseEvent = () => {
+  // The Next.js adapter calls `onModalClose` with the event detail
+  // directly (not the full DOM event), so we read `e.hasActiveModals`.
+  const handleModalCloseEvent = (e) => {
+    // A nested modal (e.g. the image editor) closing also fires this
+    // event — bail out so we only commit when the whole flow ends.
+    if (e?.hasActiveModals) return;
+
     /*
       Only commit and reset when there is at least one successful upload.
       Otherwise (modal closed without finishing or all uploads failed)
