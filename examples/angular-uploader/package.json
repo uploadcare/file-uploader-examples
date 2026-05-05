@@ -5,7 +5,7 @@
   "scripts": {
     "ng": "ng",
     "start": "NG_CLI_ANALYTICS=\"false\" ng serve",
-    "build": "ng build",
+    "build": "ng build --base-href \"${BASE_PATH:-/}\"",
     "watch": "ng build --watch --configuration development",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",

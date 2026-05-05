@@ -3,6 +3,7 @@
   import '@uploadcare/file-uploader/web/uc-file-uploader-minimal.min.css';
 
   import { page } from '$app/stores';
+  import { base } from '$app/paths';
 </script>
 
 <nav class="root">
@@ -38,19 +39,19 @@
 
   <ul class="menu">
     <li class="menu-item">
-      <a class="link menu-link" href="/form" class:active={$page.url.pathname === '/form'}
+      <a class="link menu-link" href="{base}/form" class:active={$page.url.pathname === `${base}/form`}
         >Real-life form</a
       >
     </li>
 
     <li class="menu-item">
-      <a class="link menu-link" href="/minimal" class:active={$page.url.pathname === '/minimal'}
+      <a class="link menu-link" href="{base}/minimal" class:active={$page.url.pathname === `${base}/minimal`}
         >Minimal uploader</a
       >
     </li>
 
     <li class="menu-item">
-      <a class="link menu-link" href="/regular" class:active={$page.url.pathname === '/regular'}
+      <a class="link menu-link" href="{base}/regular" class:active={$page.url.pathname === `${base}/regular`}
         >Regular uploader</a
       >
     </li>

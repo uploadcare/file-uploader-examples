@@ -52,9 +52,9 @@ const STACKBLITZ_BADGE = /* HTML */ `
 `;
 
 const NAV_ITEMS = [
-  { id: 'form', href: '/form.html', label: 'Real-life form' },
-  { id: 'minimal', href: '/minimal.html', label: 'Minimal uploader' },
-  { id: 'regular', href: '/regular.html', label: 'Regular uploader' },
+  { id: 'form', href: 'form.html', label: 'Real-life form' },
+  { id: 'minimal', href: 'minimal.html', label: 'Minimal uploader' },
+  { id: 'regular', href: 'regular.html', label: 'Regular uploader' },
 ];
 
 export function mountLayout(activePage) {
