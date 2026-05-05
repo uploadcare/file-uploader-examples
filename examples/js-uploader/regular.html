@@ -10,6 +10,22 @@
 </head>
 <body>
   <main class="page-root">
+    <!--
+      The File Uploader exposes three sibling custom elements that talk
+      to each other via a shared `ctx-name`:
+
+      • <uc-config>             — settings (pubkey, sources, locale, plugins)
+      • <uc-file-uploader-*>    — the visible uploader UI (regular / minimal / inline)
+      • <uc-upload-ctx-provider> — imperative API hook (events, getAPI())
+
+      Same `ctx-name` ties a config to its uploader and provider. Need
+      a second uploader on the page? Use a different ctx-name.
+
+      `pubkey` below points at our public sandbox project; copy your own
+      key from https://app.uploadcare.com/projects/-/api-keys/ for real
+      apps. The custom `unsplash` source comes from unsplash-plugin.js,
+      registered on the config in regular.js.
+    -->
     <uc-config
       id="my-uploader-config"
       ctx-name="my-uploader"

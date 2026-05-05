@@ -1,3 +1,5 @@
+// `minimal` is one of three uploader variants — see regular.js for a
+// breakdown of the imports and `defineComponents()`.
 import * as UC from '@uploadcare/file-uploader/web/uc-file-uploader-minimal.min.js';
 import '@uploadcare/file-uploader/web/uc-file-uploader-minimal.min.css';
 import './styles.css';

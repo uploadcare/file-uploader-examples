@@ -10,6 +10,12 @@
 </head>
 <body>
   <main class="page-root">
+    <!--
+      Three sibling custom elements share `ctx-name` to identify the
+      uploader (config + UI + provider). See regular.html for prose.
+      `pubkey` is the demo sandbox; replace with your own from
+      https://app.uploadcare.com/projects/-/api-keys/.
+    -->
     <uc-config
       id="my-uploader-config"
       ctx-name="my-uploader"

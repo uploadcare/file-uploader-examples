@@ -5,6 +5,9 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import { unsplashPlugin } from '../Unsplash/unsplashPlugin';
 import st from './FileUploader.module.css';
 
+// Registers <uc-config>, <uc-file-uploader-regular> and
+// <uc-upload-ctx-provider> as custom elements with the browser. Skip
+// this and the JSX tags stay inert. Safe to call multiple times.
 UC.defineComponents(UC);
 
 type FileUploaderProps = {
@@ -139,6 +142,18 @@ export default function FileUploader({
 
   return (
     <div className={st.root}>
+      {/*
+        Three custom elements share `ctx-name` to form one uploader:
+
+          • <uc-config>             — settings (pubkey, sources, plugins, locale)
+          • <uc-file-uploader-*>    — the visible UI
+          • <uc-upload-ctx-provider> — events + imperative API via ref.getAPI()
+
+        `pubkey` below is our public sandbox project; copy your own
+        from https://app.uploadcare.com/projects/-/api-keys/. Note the
+        kebab-cased `ctx-name` and `class` (not `className`) — these
+        are HTML attributes on a custom element, not React props.
+      */}
       <uc-config
         ref={configRef}
         ctx-name={uploaderCtxName}
