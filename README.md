@@ -33,6 +33,21 @@ We’re always looking to improve and find the best solutions. That’s why we c
 * [React via Adapter](./examples/react-uploader-adapter/)
 * [Next.js via Adapter](./examples/next-uploader-adapter/)
 
+## Run an example locally
+
+```bash
+git clone https://github.com/uploadcare/file-uploader-examples.git
+cd file-uploader-examples/examples/<example>
+npm install
+npm start
+```
+
+Requirements: **Node ≥ 22, npm ≥ 10**. Every example ships with
+working demo values for both the Uploadcare public key (`pubkey`) and
+the Unsplash access key (in `.env`, or `src/environments/environment.ts`
+for Angular), so the demo runs out of the box. See each example's
+"Setup" section for where to swap in your own keys when forking.
+
 ## Lack an example?
 
 If you need help with your stack or have a specific question or use case, feel free to [create an issue](https://github.com/uploadcare/file-uploader-examples/issues). We’re here to explore more integrations and help you out.

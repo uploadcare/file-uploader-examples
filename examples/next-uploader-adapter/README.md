@@ -21,6 +21,19 @@
 
 This is an example project of implementing a file uploader in a Next.js application with [Uploadcare React Uploader](https://github.com/uploadcare/react-components/blob/main/packages/react-uploader)
 
+## Requirements
+
+- Node ≥ 22 and npm ≥ 10
+
+## Setup
+
+The demo runs out of the box — both keys ship pre-filled with working
+demo values. You'll want to replace them when forking for real use:
+
+1. **Uploadcare public key** — `pubkey="a6ca334c3520777c0045"` in `app/_lib/FileUploader.js` (and the route pages) points at our shared sandbox. Replace it with a key from [your Uploadcare dashboard](https://app.uploadcare.com/projects/-/api-keys/).
+
+2. **Unsplash access key** — `.env` is committed with a working demo Unsplash token. To use your own (free, from <https://unsplash.com/developers>), edit `.env` and replace the `NEXT_PUBLIC_UNSPLASH_ACCESS_KEY` value.
+
 ## Run this demo locally
 
 ```bash
