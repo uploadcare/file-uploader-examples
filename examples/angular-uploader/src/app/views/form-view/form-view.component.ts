@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { JsonPipe } from '@angular/common';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { OutputFileEntry } from '@uploadcare/file-uploader';
@@ -11,41 +11,46 @@ type FormType = {
   title: string;
   text: string;
   photos: OutputFileEntry[];
-}
+};
 
 @Component({
   selector: 'form-view',
-  imports: [
-    FileUploaderComponent,
-    ReactiveFormsModule,
-    JsonPipe,
-  ],
+  imports: [FileUploaderComponent, ReactiveFormsModule, JsonPipe],
   templateUrl: './form-view.component.html',
-  styleUrl: './form-view.component.scss'
+  styleUrl: './form-view.component.scss',
 })
 export class FormViewComponent {
   title = new FormControl<string>(MOCK_DATA.title, { nonNullable: true });
   text = new FormControl<string>(MOCK_DATA.text, { nonNullable: true });
-  photos = MOCK_DATA.photos;
 
-  sentFormObject: FormType | null = null;
+  /*
+    `photos` is a signal so updates from `<file-uploader>`'s `filesChange`
+    output trigger change detection automatically under
+    `provideZonelessChangeDetection`. The plain field assignment that the
+    template binding `[(files)]="photos"` would do does not.
+   */
+  photos = signal<OutputFileEntry<'success'>[]>(MOCK_DATA.photos);
 
-  theme: 'light' | 'dark' = document.body.classList.contains('theme--dark') ? 'dark' : 'light';
+  sentFormObject = signal<FormType | null>(null);
+
+  theme = signal<'light' | 'dark'>(
+    document.body.classList.contains('theme--dark') ? 'dark' : 'light',
+  );
 
   handleFormSubmit(e: SubmitEvent) {
     e.preventDefault();
 
-    this.sentFormObject = {
+    this.sentFormObject.set({
       title: this.title.value,
       text: this.text.value,
-      photos: this.photos,
-    };
+      photos: this.photos(),
+    });
   }
 
   handleThemeChange(e: Event) {
     if (!(e.target instanceof HTMLInputElement)) return;
 
-    this.theme = e.target.checked ? 'light' : 'dark';
+    this.theme.set(e.target.checked ? 'light' : 'dark');
 
     this.updateDocumentTheme();
   }
@@ -53,6 +58,6 @@ export class FormViewComponent {
   updateDocumentTheme() {
     document.body.classList.remove('theme--light');
     document.body.classList.remove('theme--dark');
-    document.body.classList.add(`theme--${this.theme}`);
+    document.body.classList.add(`theme--${this.theme()}`);
   }
 }
