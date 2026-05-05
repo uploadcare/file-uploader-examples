@@ -1,4 +1,4 @@
-const { PHASE_PRODUCTION_BUILD } = require('next/constants')
+const { PHASE_PRODUCTION_BUILD } = require('next/constants');
 
 /**
  * @type {import('next').NextConfig}
@@ -13,4 +13,4 @@ module.exports = (phase) => {
   }
 
   return {};
-}
+};

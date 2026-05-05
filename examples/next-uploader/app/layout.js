@@ -1,6 +1,6 @@
 export default function RootLayout(props) {
   return (
-    <html>
+    <html lang="en">
       <body>{props.children}</body>
     </html>
   );
