@@ -7,11 +7,14 @@
     "start": "npm run dev",
     "dev": "vite --force",
     "build": "tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "lint": "biome lint .",
+    "lint:fix": "biome lint --write .",
+    "format": "biome format --write .",
+    "format:check": "biome format ."
   },
   "dependencies": {
-    "@uploadcare/react-uploader": "1.13.0",
-    "classnames": "2.5.1",
+    "@uploadcare/react-uploader": "1.15.0",
     "react": "19.2.4",
     "react-dom": "19.2.4",
     "react-router-dom": "7.13.1"
@@ -19,9 +22,7 @@
   "devDependencies": {
     "@types/react": "19.2.14",
     "@types/react-dom": "19.2.3",
-    "@types/react-toggle": "4.0.5",
     "@vitejs/plugin-react": "5.1.4",
-    "prop-types": "15.8.1",
     "typescript": "5.9.3",
     "vite": "7.3.1"
   }
