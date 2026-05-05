@@ -1,0 +1,109 @@
+.body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+  color: var(--uc-foreground);
+}
+
+/*
+  The search row uses the uploader's `.uc-ui-toolbar` utility (see
+  https://uploadcare.com/docs/file-uploader/plugins/activity-ui/), which
+  provides flex layout, gap, padding and a background-color. We only need
+  to style the search input — the submit button is `.uc-ui-primary-btn`
+  and inherits the uploader theme.
+ */
+.search input[type="search"] {
+  flex: 1;
+  min-width: 0;
+  height: var(--uc-button-size);
+  padding: 0 calc(var(--uc-padding) - 2px);
+  border: 1px solid var(--uc-border);
+  border-radius: var(--uc-radius);
+  background: var(--uc-background);
+  color: var(--uc-foreground);
+  font: inherit;
+  outline: none;
+}
+
+.search input[type="search"]:focus-visible {
+  border-color: var(--uc-primary);
+}
+
+.status {
+  padding: 0 var(--uc-padding);
+  min-height: 1em;
+  color: var(--uc-muted-foreground);
+  font-size: var(--uc-font-size);
+}
+
+.grid {
+  columns: 140px auto;
+  column-gap: var(--uc-grid-gap, 8px);
+  padding: 0 var(--uc-padding) var(--uc-padding);
+  overflow-y: auto;
+  min-height: 0;
+}
+
+.item {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 0 0 var(--uc-grid-gap, 8px);
+  padding: 0;
+  border: 0;
+  background: var(--uc-secondary);
+  border-radius: var(--uc-radius);
+  overflow: hidden;
+  cursor: pointer;
+  break-inside: avoid;
+  transform: translateZ(0);
+  transition:
+    transform var(--uc-transition),
+    box-shadow var(--uc-transition);
+}
+
+.item img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform var(--uc-transition);
+}
+
+.item:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--uc-dialog-shadow);
+}
+
+.item:hover img {
+  transform: scale(1.04);
+}
+
+.item:focus-visible {
+  outline: 2px solid var(--uc-primary);
+  outline-offset: 2px;
+}
+
+.author {
+  position: absolute;
+  inset: auto 0 0 0;
+  padding: calc(var(--uc-padding) * 1.6) calc(var(--uc-padding) - 2px) calc(var(--uc-padding) - 2px);
+  font-size: calc(var(--uc-font-size) - 2px);
+  font-weight: 500;
+  color: var(--uc-primary-foreground);
+  text-align: left;
+  background: linear-gradient(to top, rgb(0 0 0 / 0.55), rgb(0 0 0 / 0));
+  opacity: 0;
+  transition: opacity var(--uc-transition);
+  pointer-events: none;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.item:hover .author,
+.item:focus-visible .author {
+  opacity: 1;
+}

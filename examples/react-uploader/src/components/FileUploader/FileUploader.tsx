@@ -1,9 +1,9 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import type { OutputFileEntry } from '@uploadcare/file-uploader';
 import * as UC from '@uploadcare/file-uploader';
-import { OutputFileEntry } from '@uploadcare/file-uploader';
+import { useCallback, useEffect, useRef, useState } from 'react';
 
+import { unsplashPlugin } from '../Unsplash/unsplashPlugin';
 import st from './FileUploader.module.css';
-import cs from 'classnames';
 
 UC.defineComponents(UC);
 
@@ -13,15 +13,34 @@ type FileUploaderProps = {
   files: OutputFileEntry[];
   onChange: (files: OutputFileEntry[]) => void;
   theme: 'light' | 'dark';
-}
+};
 
-export default function FileUploader({ files, uploaderClassName, uploaderCtxName, onChange, theme }: FileUploaderProps) {
+type UploadError = { name: string; message: string };
+
+export default function FileUploader({
+  files,
+  uploaderClassName,
+  uploaderCtxName,
+  onChange,
+  theme,
+}: FileUploaderProps) {
   const [uploadedFiles, setUploadedFiles] = useState<OutputFileEntry<'success'>[]>([]);
-  const ctxProviderRef = useRef<InstanceType<UC.UploadCtxProvider>>(null);
-  const configRef = useRef<InstanceType<UC.Config>>(null);
+  const [errors, setErrors] = useState<UploadError[]>([]);
+  const ctxProviderRef = useRef<UC.UploadCtxProvider>(null);
+  const configRef = useRef<UC.Config & { unsplashAccessKey?: string }>(null);
+
+  useEffect(() => {
+    const config = configRef.current;
+    if (!config) return;
+
+    // Register the custom Unsplash source plugin.
+    // Plugin API docs: https://uploadcare.com/docs/file-uploader/plugins/example/
+    config.plugins = [unsplashPlugin];
+    config.unsplashAccessKey = import.meta.env.VITE_UNSPLASH_ACCESS_KEY;
+  }, []);
 
   const handleRemoveClick = useCallback(
-    (uuid: OutputFileEntry['uuid']) => onChange(files.filter(f => f.uuid !== uuid)),
+    (uuid: OutputFileEntry['uuid']) => onChange(files.filter((f) => f.uuid !== uuid)),
     [files, onChange],
   );
 
@@ -29,37 +48,40 @@ export default function FileUploader({ files, uploaderClassName, uploaderCtxName
     const ctxProvider = ctxProviderRef.current;
     if (!ctxProvider) return;
 
+    // Keep only successful entries in local state (committed on `modal-close`),
+    // and surface any failed entries as user-facing errors.
+    // Events docs: https://uploadcare.com/docs/file-uploader/events/
     const handleChangeEvent = (e: UC.EventMap['change']) => {
-      setUploadedFiles([...e.detail.allEntries.filter(f => f.status === 'success')] as OutputFileEntry<'success'>[]);
+      setUploadedFiles([
+        ...e.detail.allEntries.filter((f) => f.status === 'success'),
+      ] as OutputFileEntry<'success'>[]);
+      setErrors(
+        e.detail.allEntries
+          .filter((f) => f.status === 'failed')
+          .map((f) => ({
+            name: f.fileInfo?.originalFilename ?? f.externalUrl ?? 'File',
+            message: f.errors?.[0]?.message ?? 'Upload failed',
+          })),
+      );
     };
 
-    /*
-      Note: Event binding is the main way to get data and other info from File Uploader.
-      There plenty of events you may use.
-
-      See more: https://uploadcare.com/docs/file-uploader/events/
-     */
     ctxProvider.addEventListener('change', handleChangeEvent);
     return () => {
       ctxProvider.removeEventListener('change', handleChangeEvent);
     };
-  }, [setUploadedFiles]);
+  }, []);
 
   useEffect(() => {
     const config = configRef.current;
     if (!config) return;
 
-    /*
-     Note: Localization of File Uploader is done via DOM property on the config node.
-     You can change any piece of text of File Uploader this way.
-
-     See more: https://uploadcare.com/docs/file-uploader/localization/
-    */
+    // Copy tweak for this demo's "photos" vocabulary.
+    // Localization docs: https://uploadcare.com/docs/file-uploader/localization/
     config.localeDefinitionOverride = {
       en: {
-        'photo__one': 'photo',
-        'photo__many': 'photos',
-        'photo__other': 'photos',
+        photo__one: 'photo',
+        photo__many: 'photos',
+        photo__other: 'photos',
 
         'upload-file': 'Upload photo',
         'upload-files': 'Upload photos',
@@ -75,37 +97,37 @@ export default function FileUploader({ files, uploaderClassName, uploaderCtxName
         'header-uploading': 'Uploading {{count}} {{plural:photo(count)}}',
         'header-succeed': '{{count}} {{plural:photo(count)}} uploaded',
         'header-total': '{{count}} {{plural:photo(count)}} selected',
-      }
-    }
+      } as Record<string, string>,
+    };
     return () => {
       config.localeDefinitionOverride = null;
     };
-  }, [setUploadedFiles]);
+  }, []);
 
   useEffect(() => {
     const ctxProvider = ctxProviderRef.current;
     if (!ctxProvider) return;
 
-    /*
-      Note: Here we use provider's API to reset File Uploader state.
-      It's not necessary though. We use it here to show users
-      a fresh version of File Uploader every time they open it.
-
-      Another way is to sync File Uploader state with an external store.
-      You can manipulate File Uploader using API calls like `addFileFromObject`, etc.
-
-      See more: https://uploadcare.com/docs/file-uploader/api/
-     */
+    // The app updates its own form state on modal close, then resets uploader state.
     const resetUploaderState = () => {
-      const api = ctxProviderRef.current.getAPI()
-      api.removeAllFiles()
+      const api = ctxProviderRef.current?.getAPI();
+      api?.setCurrentActivity(null);
+      api?.setModalState(false);
+      api?.removeAllFiles();
     };
 
     const handleModalCloseEvent = () => {
-      resetUploaderState();
+      /*
+        Only commit and reset when there is at least one successful
+        upload. Otherwise (modal closed without finishing or with all
+        uploads failed) we keep whatever in-progress / errored entries
+        the uploader has so the user can retry on next open.
+       */
+      if (uploadedFiles.length === 0) return;
 
       onChange([...files, ...uploadedFiles]);
       setUploadedFiles([]);
+      resetUploaderState();
     };
 
     ctxProvider.addEventListener('modal-close', handleModalCloseEvent);
@@ -113,28 +135,16 @@ export default function FileUploader({ files, uploaderClassName, uploaderCtxName
     return () => {
       ctxProvider.removeEventListener('modal-close', handleModalCloseEvent);
     };
-  }, [files, onChange, uploadedFiles, setUploadedFiles]);
+  }, [files, onChange, uploadedFiles]);
 
   return (
     <div className={st.root}>
-      {/*
-         Note: `uc-config` is the main component we use to configure File Uploader.
-         It's important to all the context-related File Uploader to have the same `ctx-name` attribute.
-
-         See more: https://uploadcare.com/docs/file-uploader/configuration/
-         Available options: https://uploadcare.com/docs/file-uploader/options/
-
-         Also note: Some options currently are not available via `uc-config`,
-         but may be set via CSS properties. E.g. `darkmode`.
-
-         Here they are: https://github.com/uploadcare/file-uploader/blob/main/blocks/themes/uc-basic/config.css
-      */}
       <uc-config
         ref={configRef}
         ctx-name={uploaderCtxName}
         pubkey="a6ca334c3520777c0045"
         multiple={true}
-        sourceList="local, url, camera, dropbox, gdrive"
+        sourceList="local, url, camera, dropbox, gdrive, unsplash"
         confirmUpload={false}
         removeCopyright={true}
         imgOnly={true}
@@ -142,13 +152,20 @@ export default function FileUploader({ files, uploaderClassName, uploaderCtxName
 
       <uc-file-uploader-regular
         ctx-name={uploaderCtxName}
-        class={cs(uploaderClassName, { 'uc-dark': theme === 'dark', 'uc-light': theme === 'light' })}
+        class={`${uploaderClassName} uc-${theme}`}
       ></uc-file-uploader-regular>
 
-      <uc-upload-ctx-provider
-        ref={ctxProviderRef}
-        ctx-name={uploaderCtxName}
-      />
+      <uc-upload-ctx-provider ref={ctxProviderRef} ctx-name={uploaderCtxName} />
+
+      {errors.length > 0 && (
+        <div className={st.errors}>
+          {errors.map((err) => (
+            <p key={`${err.name}:${err.message}`} className={st.error} role="alert">
+              {err.name}: {err.message}
+            </p>
+          ))}
+        </div>
+      )}
 
       <div className={st.previews}>
         {files.map((file) => (
@@ -166,7 +183,9 @@ export default function FileUploader({ files, uploaderClassName, uploaderCtxName
               className={st.previewRemoveButton}
               type="button"
               onClick={() => handleRemoveClick(file.uuid)}
-            >×</button>
+            >
+              ×
+            </button>
           </div>
         ))}
       </div>
