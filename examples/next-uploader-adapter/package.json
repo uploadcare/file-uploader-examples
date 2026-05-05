@@ -8,13 +8,13 @@
     "start": "npm run dev"
   },
   "dependencies": {
-    "@uploadcare/react-uploader": "1.13.0",
-    "next": "16.1.6",
-    "react": "19.2.4",
-    "react-dom": "19.2.4"
+    "@uploadcare/react-uploader": "1.14.0",
+    "next": "16.2.4",
+    "react": "19.2.5",
+    "react-dom": "19.2.5"
   },
   "devDependencies": {
-    "@types/node": "20.19.35",
+    "@types/node": "20.19.39",
     "@types/react": "19.2.14",
     "@types/react-dom": "19.2.3"
   }

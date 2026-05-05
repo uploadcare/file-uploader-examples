@@ -57,9 +57,8 @@ export default function FileUploader({ files, uploaderClassName, uploaderCtxName
     */
     config.localeDefinitionOverride = {
       en: {
-        'photo__one': 'photo',
-        'photo__many': 'photos',
-        'photo__other': 'photos',
+        'file__one': 'photo',
+        'file__other': 'photos',
 
         'upload-file': 'Upload photo',
         'upload-files': 'Upload photos',
@@ -70,11 +69,11 @@ export default function FileUploader({ files, uploaderClassName, uploaderCtxName
         'edit-image': 'Edit photo',
         'no-files': 'No photos selected',
         'caption-edit-file': 'Edit photo',
-        'files-count-allowed': 'Only {{count}} {{plural:photo(count)}} allowed',
+        'files-count-limit-error-too-many': 'You\u2019ve chosen too many photos. {{max}} {{plural:file(max)}} is maximum.',
         'files-max-size-limit-error': 'Photo is too big. Max photo size is {{maxFileSize}}.',
-        'header-uploading': 'Uploading {{count}} {{plural:photo(count)}}',
-        'header-succeed': '{{count}} {{plural:photo(count)}} uploaded',
-        'header-total': '{{count}} {{plural:photo(count)}} selected',
+        'header-uploading': 'Uploading {{count}} {{plural:file(count)}}',
+        'header-succeed': '{{count}} {{plural:file(count)}} uploaded',
+        'header-total': '{{count}} {{plural:file(count)}} selected',
       }
     }
     return () => {
@@ -101,7 +100,11 @@ export default function FileUploader({ files, uploaderClassName, uploaderCtxName
       api.removeAllFiles()
     };
 
-    const handleModalCloseEvent = () => {
+    const handleModalCloseEvent = (e: UC.EventMap['modal-close']) => {
+      if (e.detail.hasActiveModals) {
+        return;
+      }
+
       resetUploaderState();
 
       onChange([...files, ...uploadedFiles]);
@@ -138,6 +141,7 @@ export default function FileUploader({ files, uploaderClassName, uploaderCtxName
         confirmUpload={false}
         removeCopyright={true}
         imgOnly={true}
+        multipleMax="2"
       ></uc-config>
 
       <uc-file-uploader-regular

@@ -27,13 +27,9 @@ export class FileUploaderComponent {
   @Output() filesChange = new EventEmitter<OutputFileEntry<'success'>[]>();
 
   uploadedFiles: OutputFileEntry<'success'>[] = [];
-  @ViewChild('ctxProvider', { static: true }) ctxProviderRef!: ElementRef<
-    InstanceType<UC.UploadCtxProvider>
-  >;
+  @ViewChild('ctxProvider', { static: true }) ctxProviderRef!: ElementRef<UC.UploadCtxProvider>;
 
-  @ViewChild('config', { static: true }) configRef!: ElementRef<
-    InstanceType<UC.Config>
-  >;
+  @ViewChild('config', { static: true }) configRef!: ElementRef<UC.Config>;
 
   ngOnInit() {
     /*
@@ -59,9 +55,8 @@ export class FileUploaderComponent {
      */
     this.configRef.nativeElement.localeDefinitionOverride = {
       en: {
-        'photo__one': 'photo',
-        'photo__many': 'photos',
-        'photo__other': 'photos',
+        'file__one': 'photo',
+        'file__other': 'photos',
 
         'upload-file': 'Upload photo',
         'upload-files': 'Upload photos',
@@ -72,11 +67,11 @@ export class FileUploaderComponent {
         'edit-image': 'Edit photo',
         'no-files': 'No photos selected',
         'caption-edit-file': 'Edit photo',
-        'files-count-allowed': 'Only {{count}} {{plural:photo(count)}} allowed',
+        'files-count-limit-error-too-many': 'You\u2019ve chosen too many photos. {{max}} {{plural:file(max)}} is maximum.',
         'files-max-size-limit-error': 'Photo is too big. Max photo size is {{maxFileSize}}.',
-        'header-uploading': 'Uploading {{count}} {{plural:photo(count)}}',
-        'header-succeed': '{{count}} {{plural:photo(count)}} uploaded',
-        'header-total': '{{count}} {{plural:photo(count)}} selected',
+        'header-uploading': 'Uploading {{count}} {{plural:file(count)}}',
+        'header-succeed': '{{count}} {{plural:file(count)}} uploaded',
+        'header-total': '{{count}} {{plural:file(count)}} selected',
       }
     }
   }
@@ -110,7 +105,11 @@ export class FileUploaderComponent {
     this.uploadedFiles = e.detail.allEntries.filter(f => f.status === 'success') as OutputFileEntry<'success'>[];
   };
 
-  handleModalCloseEvent = () => {
+  handleModalCloseEvent = (e: UC.EventMap['modal-close']) => {
+    if (e.detail.hasActiveModals) {
+      return;
+    }
+
     this.resetUploaderState();
 
     this.filesChange.emit([...this.files, ...this.uploadedFiles]);

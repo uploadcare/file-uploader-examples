@@ -10,12 +10,12 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@uploadcare/file-uploader": "1.19.4",
-    "vue": "3.5.29",
-    "vue-router": "5.0.3"
+    "@uploadcare/file-uploader": "1.29.0",
+    "vue": "3.5.33",
+    "vue-router": "5.0.6"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue": "6.0.4",
-    "vite": "7.3.1"
+    "@vitejs/plugin-vue": "6.0.6",
+    "vite": "8.0.10"
   }
 }
