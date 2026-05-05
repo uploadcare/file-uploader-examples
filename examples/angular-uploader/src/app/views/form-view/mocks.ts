@@ -84,6 +84,7 @@ const mocks: MocksType = {
       isFailed: false,
       isRemoved: false,
       errors: [],
+      isValidationPending: false,
       status: 'success'
     },
     {
@@ -156,6 +157,7 @@ const mocks: MocksType = {
       isFailed: false,
       isRemoved: false,
       errors: [],
+      isValidationPending: false,
       status: 'success'
     },
     {
@@ -228,6 +230,7 @@ const mocks: MocksType = {
       isFailed: false,
       isRemoved: false,
       errors: [],
+      isValidationPending: false,
       status: 'success'
     },
     {
@@ -300,6 +303,7 @@ const mocks: MocksType = {
       isFailed: false,
       isRemoved: false,
       errors: [],
+      isValidationPending: false,
       status: 'success'
     },
     {
@@ -372,6 +376,7 @@ const mocks: MocksType = {
       isFailed: false,
       isRemoved: false,
       errors: [],
+      isValidationPending: false,
       status: 'success'
     },
     {
@@ -444,6 +449,7 @@ const mocks: MocksType = {
       isFailed: false,
       isRemoved: false,
       errors: [],
+      isValidationPending: false,
       status: 'success'
     }
   ]
