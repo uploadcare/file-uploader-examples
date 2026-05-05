@@ -1,30 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>Uploadcare JS Minimal Example</title>
-    <meta
-      name="description"
-      content="Uploading files with HTML and JS using Uploadcare"
-    />
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+  <title>Uploadcare JS Minimal Example</title>
+  <meta name="description" content="Uploading files with HTML and JS using Uploadcare"/>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-    <script type="module" src="./minimal.js"></script>
-  </head>
-  <body>
-    <p>
-      <a href="/">← All JS Examples</a>
-      ·
-      <a href="https://uploadcare.com/docs/integrations/javascript-file-uploader/">Integration docs</a>
-    </p>
-    <hr />
+  <script type="module" src="./minimal.js"></script>
+</head>
+<body>
+  <main class="page-root">
     <uc-config
       id="my-uploader-config"
       ctx-name="my-uploader"
       pubkey="a6ca334c3520777c0045"
       sourceList="local, url, camera, dropbox, unsplash"
     ></uc-config>
-    <uc-file-uploader-minimal ctx-name="my-uploader" class="uc-light"></uc-file-uploader-minimal>
+    <uc-file-uploader-minimal
+      id="my-uploader"
+      ctx-name="my-uploader"
+    ></uc-file-uploader-minimal>
     <uc-upload-ctx-provider
       ctx-name="my-uploader"
       id="my-uploader-provider"
@@ -32,5 +27,6 @@
 
     <div class="errors" id="errors"></div>
     <div class="previews" id="previews"></div>
-  </body>
+  </main>
+</body>
 </html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Uploadcare JS Example - Real-life form</title>
+  <meta name="description" content="Uploading files with HTML and JS using Uploadcare"/>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <script type="module" src="./form.js"></script>
+</head>
+<body>
+  <main class="form-root">
+    <header class="form-header">
+      <h1 class="form-title">New blog post</h1>
+      <button class="theme-toggle" type="button" id="theme-toggle" aria-label="Toggle theme">
+        <img id="theme-toggle-sun" src="./assets/sun.png" alt="Switch to dark theme" width="16" height="16" />
+        <img id="theme-toggle-moon" src="./assets/moon.png" alt="Switch to light theme" width="14" height="14" />
+      </button>
+    </header>
+
+    <form id="post-form">
+      <div class="form-field">
+        <label class="form-label" for="title">Title</label>
+        <input class="form-input" type="text" id="title" />
+      </div>
+
+      <div class="form-field">
+        <label class="form-label" for="text">Text</label>
+        <textarea class="form-input" id="text" rows="10"></textarea>
+      </div>
+
+      <div class="form-field">
+        <label class="form-label" for="photos-uploader">Photos</label>
+        <div class="form-uploader">
+          <uc-config
+            id="my-uploader-config"
+            ctx-name="my-uploader"
+            pubkey="a6ca334c3520777c0045"
+            multiple="true"
+            sourceList="local, url, camera, dropbox, gdrive, unsplash"
+            confirmUpload="false"
+            removeCopyright="true"
+            imgOnly="true"
+          ></uc-config>
+          <uc-file-uploader-regular
+            id="my-uploader"
+            ctx-name="my-uploader"
+          ></uc-file-uploader-regular>
+          <uc-upload-ctx-provider
+            id="my-uploader-provider"
+            ctx-name="my-uploader"
+          ></uc-upload-ctx-provider>
+
+          <div class="errors" id="errors"></div>
+          <div class="previews" id="previews"></div>
+        </div>
+      </div>
+
+      <div class="form-field">
+        <button class="form-button" type="submit">Publish</button>
+      </div>
+    </form>
+
+    <pre class="form-result" id="form-result" hidden></pre>
+  </main>
+</body>
+</html>

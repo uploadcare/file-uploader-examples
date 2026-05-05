@@ -9,28 +9,24 @@
   <script type="module" src="./regular.js"></script>
 </head>
 <body>
-  <p>
-    <a href="/">← All JS Examples</a>
-    ·
-    <a href="https://uploadcare.com/docs/integrations/javascript-file-uploader/">Integration docs</a>
-  </p>
-  <hr>
-  <uc-config
-    id="my-uploader-config"
-    ctx-name="my-uploader"
-    pubkey="a6ca334c3520777c0045"
-    sourceList="local, url, camera, dropbox, unsplash"
-  ></uc-config>
-  <uc-file-uploader-regular
-    ctx-name="my-uploader"
-    class="uc-light"
-  ></uc-file-uploader-regular>
-  <uc-upload-ctx-provider
-    ctx-name="my-uploader"
-    id="my-uploader-provider"
-  ></uc-upload-ctx-provider>
+  <main class="page-root">
+    <uc-config
+      id="my-uploader-config"
+      ctx-name="my-uploader"
+      pubkey="a6ca334c3520777c0045"
+      sourceList="local, url, camera, dropbox, unsplash"
+    ></uc-config>
+    <uc-file-uploader-regular
+      id="my-uploader"
+      ctx-name="my-uploader"
+    ></uc-file-uploader-regular>
+    <uc-upload-ctx-provider
+      ctx-name="my-uploader"
+      id="my-uploader-provider"
+    ></uc-upload-ctx-provider>
 
-  <div class="errors" id="errors"></div>
-  <div class="previews" id="previews"></div>
+    <div class="errors" id="errors"></div>
+    <div class="previews" id="previews"></div>
+  </main>
 </body>
 </html>
