@@ -4,7 +4,7 @@ import { createRouter, createWebHistory } from 'vue-router';
 import '@uploadcare/file-uploader/web/uc-file-uploader-regular.min.css';
 import '@uploadcare/file-uploader/web/uc-file-uploader-minimal.min.css';
 
-import './assets/main.css'
+import './assets/main.css';
 
 import FormView from './views/FormView/FormView.vue';
 import MinimalView from './views/MinimalView/MinimalView.vue';
