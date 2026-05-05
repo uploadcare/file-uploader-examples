@@ -5,10 +5,14 @@
   "type": "module",
   "scripts": {
     "start": "vite --port 8080",
-    "build": "vite build --base ./"
+    "build": "vite build --base ./",
+    "lint": "biome lint .",
+    "lint:fix": "biome lint --write .",
+    "format": "biome format --write .",
+    "format:check": "biome format ."
   },
   "dependencies": {
-    "@uploadcare/file-uploader": "1.29.0"
+    "@uploadcare/file-uploader": "1.29.1-alpha.0"
   },
   "devDependencies": {
     "vite": "7.3.1"
