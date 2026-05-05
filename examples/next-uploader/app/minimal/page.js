@@ -6,6 +6,7 @@ import { useEffect, useRef, useState } from 'react';
 import '@uploadcare/file-uploader/web/uc-file-uploader-minimal.min.css';
 import { unsplashPlugin } from '../regular/unsplashPlugin.js';
 import st from '../styles.module.css';
+import { useTheme } from '../_lib/ThemeProvider.js';
 
 UC.defineComponents(UC);
 
@@ -15,6 +16,7 @@ function Page() {
   const [errors, setErrors] = useState([]);
   const ctxProviderRef = useRef(null);
   const configRef = useRef(null);
+  const { theme } = useTheme();
 
   useEffect(() => {
     setIsClient(true);
@@ -25,7 +27,6 @@ function Page() {
     const config = configRef.current;
     if (!config) return;
 
-    // Register custom Unsplash source plugin.
     // Plugin docs: https://uploadcare.com/docs/file-uploader/plugins/example/
     config.plugins = [unsplashPlugin];
     config.unsplashAccessKey = process.env.NEXT_PUBLIC_UNSPLASH_ACCESS_KEY;
@@ -59,20 +60,6 @@ function Page() {
 
   return (
     <div className={st.pageWrapper}>
-      <p className={st.paragraph}>
-        <a href="/" className={st.link}>
-          ← All Next.js Examples
-        </a>
-        {' · '}
-        <a
-          href="https://uploadcare.com/docs/integrations/nextjs-file-uploader/"
-          className={st.link}
-        >
-          Integration docs
-        </a>
-      </p>
-      <hr className={st.separator} />
-
       {isClient && (
         <>
           <uc-config
@@ -83,7 +70,7 @@ function Page() {
           ></uc-config>
           <uc-file-uploader-minimal
             ctx-name="my-uploader-1"
-            class="uc-light"
+            class={`uc-${theme}`}
           ></uc-file-uploader-minimal>
           <uc-upload-ctx-provider
             ctx-name="my-uploader-1"
@@ -107,7 +94,6 @@ function Page() {
           <div key={file.uuid} className={st.previewWrapper}>
             <img
               className={st.previewImage}
-              key={file.uuid}
               src={`${file.cdnUrl}/-/preview/-/resize/x400/`}
               width="200"
               height="200"
