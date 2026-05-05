@@ -1,4 +1,8 @@
-import type { OutputCollectionState, OutputFileEntry } from '@uploadcare/react-uploader';
+import type {
+  OutputCollectionState,
+  OutputFileEntry,
+  TEventsSchema,
+} from '@uploadcare/react-uploader';
 import {
   FileUploaderRegular as FileUploaderRegularBase,
   type UploadCtxProvider,
@@ -30,6 +34,9 @@ type UploadError = { name: string; message: string };
 // Localization docs: https://uploadcare.com/docs/file-uploader/localization/
 const localeDefinitionOverride = {
   en: {
+    file__one: 'photo',
+    file__other: 'photos',
+
     'upload-file': 'Upload photo',
     'upload-files': 'Upload photos',
     'choose-file': 'Choose photo',
@@ -39,14 +46,12 @@ const localeDefinitionOverride = {
     'edit-image': 'Edit photo',
     'no-files': 'No photos selected',
     'caption-edit-file': 'Edit photo',
-    'files-count-allowed': 'Only {{count}} {{plural:photo(count)}} allowed',
+    'files-count-limit-error-too-many':
+      'You’ve chosen too many photos. {{max}} {{plural:file(max)}} is maximum.',
     'files-max-size-limit-error': 'Photo is too big. Max photo size is {{maxFileSize}}.',
-    'header-uploading': 'Uploading {{count}} {{plural:photo(count)}}',
-    'header-succeed': '{{count}} {{plural:photo(count)}} uploaded',
-    'header-total': '{{count}} {{plural:photo(count)}} selected',
-    photo__one: 'photo',
-    photo__many: 'photos',
-    photo__other: 'photos',
+    'header-uploading': 'Uploading {{count}} {{plural:file(count)}}',
+    'header-succeed': '{{count}} {{plural:file(count)}} uploaded',
+    'header-total': '{{count}} {{plural:file(count)}} selected',
   },
 };
 
@@ -65,16 +70,13 @@ export default function FileUploader({
     [files, onChange],
   );
 
-  const resetUploaderState = () => {
-    const api = ctxProviderRef.current?.getAPI();
-    api?.setCurrentActivity(null);
-    api?.setModalState(false);
-    api?.removeAllFiles();
-  };
+  const resetUploaderState = () => ctxProviderRef.current?.uploadCollection.clearAll();
 
-  const handleModalCloseEvent = () => {
-    // Persist uploaded entries in outer form state when dialog closes.
-    // Events docs: https://uploadcare.com/docs/file-uploader/events/
+  const handleModalCloseEvent: TEventsSchema['onModalClose'] = (e) => {
+    // A nested modal (e.g. the image editor) closing also fires this
+    // event — bail out so we only commit when the whole flow ends.
+    if (e.hasActiveModals) return;
+
     /*
       Only commit and reset when there is at least one successful upload.
       Otherwise (modal closed without finishing or with all uploads failed)

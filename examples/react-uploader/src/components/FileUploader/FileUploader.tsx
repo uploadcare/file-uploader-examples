@@ -82,9 +82,8 @@ export default function FileUploader({
     // Localization docs: https://uploadcare.com/docs/file-uploader/localization/
     config.localeDefinitionOverride = {
       en: {
-        photo__one: 'photo',
-        photo__many: 'photos',
-        photo__other: 'photos',
+        file__one: 'photo',
+        file__other: 'photos',
 
         'upload-file': 'Upload photo',
         'upload-files': 'Upload photos',
@@ -95,11 +94,12 @@ export default function FileUploader({
         'edit-image': 'Edit photo',
         'no-files': 'No photos selected',
         'caption-edit-file': 'Edit photo',
-        'files-count-allowed': 'Only {{count}} {{plural:photo(count)}} allowed',
+        'files-count-limit-error-too-many':
+          'You\u2019ve chosen too many photos. {{max}} {{plural:file(max)}} is maximum.',
         'files-max-size-limit-error': 'Photo is too big. Max photo size is {{maxFileSize}}.',
-        'header-uploading': 'Uploading {{count}} {{plural:photo(count)}}',
-        'header-succeed': '{{count}} {{plural:photo(count)}} uploaded',
-        'header-total': '{{count}} {{plural:photo(count)}} selected',
+        'header-uploading': 'Uploading {{count}} {{plural:file(count)}}',
+        'header-succeed': '{{count}} {{plural:file(count)}} uploaded',
+        'header-total': '{{count}} {{plural:file(count)}} selected',
       } as Record<string, string>,
     };
     return () => {
@@ -119,7 +119,11 @@ export default function FileUploader({
       api?.removeAllFiles();
     };
 
-    const handleModalCloseEvent = () => {
+    const handleModalCloseEvent = (e: UC.EventMap['modal-close']) => {
+      // A nested modal (e.g. the image editor) closing also fires this
+      // event — bail out so we only commit when the whole flow ends.
+      if (e.detail.hasActiveModals) return;
+
       /*
         Only commit and reset when there is at least one successful
         upload. Otherwise (modal closed without finishing or with all

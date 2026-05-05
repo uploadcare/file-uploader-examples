@@ -22,7 +22,7 @@
     #ctxProvider
     [attr.ctx-name]="uploaderCtxName"
     (change)="handleChangeEvent($event)"
-    (modal-close)="handleModalCloseEvent()"
+    (modal-close)="handleModalCloseEvent($event)"
   ></uc-upload-ctx-provider>
 
   @if (errors.length > 0) {
