@@ -7,11 +7,14 @@
     "start": "npm run dev",
     "dev": "vite --force",
     "build": "tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "lint": "biome lint .",
+    "lint:fix": "biome lint --write .",
+    "format": "biome format --write .",
+    "format:check": "biome format ."
   },
   "dependencies": {
-    "@uploadcare/file-uploader": "1.29.0",
-    "classnames": "2.5.1",
+    "@uploadcare/file-uploader": "1.29.1",
     "react": "19.2.5",
     "react-dom": "19.2.5",
     "react-router-dom": "7.14.2"

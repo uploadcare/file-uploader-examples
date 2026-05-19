@@ -1,22 +1,41 @@
-import React, { useCallback, useRef, useState } from 'react';
-import { OutputFileEntry } from '@uploadcare/file-uploader';
-import { FileUploaderRegular, type UploadCtxProvider, type TEventsSchema } from '@uploadcare/react-uploader';
+import type {
+  OutputCollectionState,
+  OutputFileEntry,
+  TEventsSchema,
+} from '@uploadcare/react-uploader';
+import {
+  FileUploaderRegular as FileUploaderRegularBase,
+  type UploadCtxProvider,
+} from '@uploadcare/react-uploader';
+import type React from 'react';
+import { useCallback, useRef, useState } from 'react';
+
+import { unsplashPlugin } from '../Unsplash/unsplashPlugin';
+
+const FileUploaderRegular = FileUploaderRegularBase as React.ComponentType<
+  React.ComponentProps<typeof FileUploaderRegularBase> & {
+    unsplashAccessKey?: string;
+  }
+>;
 
 import st from './FileUploader.module.css';
 import cssOverrides from './FileUploader.overrides.module.css';
-import cs from 'classnames';
 
 type FileUploaderProps = {
   uploaderClassName: string;
   files: OutputFileEntry[];
   onChange: (files: OutputFileEntry[]) => void;
   theme: 'light' | 'dark';
-}
+};
 
+type UploadError = { name: string; message: string };
+
+// Localization override for the demo's "photos" wording.
+// Localization docs: https://uploadcare.com/docs/file-uploader/localization/
 const localeDefinitionOverride = {
   en: {
-    'file__one': 'photo',
-    'file__other': 'photos',
+    file__one: 'photo',
+    file__other: 'photos',
 
     'upload-file': 'Upload photo',
     'upload-files': 'Upload photos',
@@ -27,49 +46,71 @@ const localeDefinitionOverride = {
     'edit-image': 'Edit photo',
     'no-files': 'No photos selected',
     'caption-edit-file': 'Edit photo',
-    'files-count-limit-error-too-many': 'You\u2019ve chosen too many photos. {{max}} {{plural:file(max)}} is maximum.',
+    'files-count-limit-error-too-many':
+      'You’ve chosen too many photos. {{max}} {{plural:file(max)}} is maximum.',
     'files-max-size-limit-error': 'Photo is too big. Max photo size is {{maxFileSize}}.',
     'header-uploading': 'Uploading {{count}} {{plural:file(count)}}',
     'header-succeed': '{{count}} {{plural:file(count)}} uploaded',
     'header-total': '{{count}} {{plural:file(count)}} selected',
-  }
-}
+  },
+};
 
-export default function FileUploader({ files, uploaderClassName, onChange, theme }: FileUploaderProps) {
+export default function FileUploader({
+  files,
+  uploaderClassName,
+  onChange,
+  theme,
+}: FileUploaderProps) {
   const [uploadedFiles, setUploadedFiles] = useState<OutputFileEntry<'success'>[]>([]);
-  const ctxProviderRef = useRef<InstanceType<UploadCtxProvider>>(null);
-
+  const [errors, setErrors] = useState<UploadError[]>([]);
+  const ctxProviderRef = useRef<UploadCtxProvider>(null);
 
   const handleRemoveClick = useCallback(
-    (uuid: OutputFileEntry['uuid']) => onChange(files.filter(f => f.uuid !== uuid)),
+    (uuid: OutputFileEntry['uuid']) => onChange(files.filter((f) => f.uuid !== uuid)),
     [files, onChange],
   );
 
   const resetUploaderState = () => ctxProviderRef.current?.uploadCollection.clearAll();
 
-  const handleModalCloseEvent = (e: TEventsSchema['modal-close']) => {
-    if (e.hasActiveModals) {
-      return;
-    }
+  const handleModalCloseEvent: TEventsSchema['onModalClose'] = (e) => {
+    // A nested modal (e.g. the image editor) closing also fires this
+    // event — bail out so we only commit when the whole flow ends.
+    if (e.hasActiveModals) return;
 
-    resetUploaderState();
+    /*
+      Only commit and reset when there is at least one successful upload.
+      Otherwise (modal closed without finishing or with all uploads failed)
+      we keep whatever in-progress / errored entries the uploader has so
+      the user can retry on next open.
+     */
+    if (uploadedFiles.length === 0) return;
 
-    onChange([...files, ...uploadedFiles])
-
+    onChange([...files, ...uploadedFiles]);
     setUploadedFiles([]);
+    resetUploaderState();
   };
 
-
-  const handleChangeEvent = (files) => {
-    setUploadedFiles([...files.allEntries.filter(f => f.status === 'success')] as OutputFileEntry<'success'>[]);
-  }
+  const handleChangeEvent = (collection: OutputCollectionState) => {
+    setUploadedFiles(
+      collection.allEntries.filter((f) => f.status === 'success') as OutputFileEntry<'success'>[],
+    );
+    setErrors(
+      collection.allEntries
+        .filter((f) => f.status === 'failed')
+        .map((f) => ({
+          name: f.fileInfo?.originalFilename ?? f.externalUrl ?? 'File',
+          message: f.errors?.[0]?.message ?? 'Upload failed',
+        })),
+    );
+  };
 
   return (
     <div>
       <FileUploaderRegular
+        // Register custom Unsplash tab for the adapter-based uploader.
+        // Plugin docs: https://uploadcare.com/docs/file-uploader/plugins/example/
         imgOnly
         multiple
-        multipleMax={2}
         removeCopyright
         confirmUpload={false}
         localeDefinitionOverride={localeDefinitionOverride}
@@ -77,9 +118,21 @@ export default function FileUploader({ files, uploaderClassName, onChange, theme
         onModalClose={handleModalCloseEvent}
         onChange={handleChangeEvent}
         pubkey="a6ca334c3520777c0045"
-        className={cs(uploaderClassName)}
-        classNameUploader={cs(cssOverrides.fileUploader, { [st.darkModeEnabled]: theme === 'dark' })}
+        sourceList="local, url, camera, dropbox, gdrive, unsplash"
+        plugins={[unsplashPlugin]}
+        unsplashAccessKey={import.meta.env.VITE_UNSPLASH_ACCESS_KEY}
+        className={uploaderClassName}
+        classNameUploader={`${cssOverrides.fileUploader} uc-${theme}`}
       />
+      {errors.length > 0 && (
+        <div className={st.errors}>
+          {errors.map((err) => (
+            <p key={`${err.name}:${err.message}`} className={st.error} role="alert">
+              {err.name}: {err.message}
+            </p>
+          ))}
+        </div>
+      )}
       <div className={st.previews}>
         {files.map((file) => (
           <div key={file.uuid} className={st.preview}>
@@ -96,7 +149,8 @@ export default function FileUploader({ files, uploaderClassName, onChange, theme
               className={st.previewRemoveButton}
               type="button"
               onClick={() => handleRemoveClick(file.uuid)}
-            >×
+            >
+              ×
             </button>
           </div>
         ))}

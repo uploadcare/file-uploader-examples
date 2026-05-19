@@ -37,7 +37,8 @@
   color: var(--ui-control-text-color);
   cursor: pointer;
 
-  &:hover, &:focus {
+  &:hover,
+  &:focus {
     background: var(--ui-control-background-color);
     outline: 1px solid var(--ui-control-outline-color-focus);
   }
@@ -48,6 +49,22 @@
   height: 100px;
   border-radius: 8px;
   object-fit: cover;
+}
+
+.errors {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.error {
+  margin: 0;
+  padding: 10px 12px;
+  border-radius: 8px;
+  background: #fee2e2;
+  color: #991b1b;
+  font-size: 13px;
 }
 
 .root::ng-deep uc-simple-btn button {

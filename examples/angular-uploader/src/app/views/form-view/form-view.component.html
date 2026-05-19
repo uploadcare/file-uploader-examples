@@ -3,40 +3,26 @@
     <h1 class="view-title">New blog post</h1>
 
     <label class="theme-toggle">
-      <input
-        type="checkbox"
-        [checked]="theme === 'light'"
-        (change)="handleThemeChange($event)"
-      >
+      <input type="checkbox" [checked]="theme() === 'light'" (change)="handleThemeChange($event)" />
       <img
-        [src]="theme === 'light' ? 'assets/sun.png' : 'assets/moon.png'"
+        [src]="theme() === 'light' ? 'assets/sun.png' : 'assets/moon.png'"
         width="18"
         height="18"
-        alt="Switch to {{theme === 'light' ? 'dark' : 'light'}} theme"
+        alt="Switch to {{ theme() === 'light' ? 'dark' : 'light' }} theme"
       />
     </label>
   </header>
 
-  @if (!sentFormObject) {
+  @if (!sentFormObject()) {
     <form class="form" (submit)="handleFormSubmit($event)">
       <div class="field">
         <label class="label" for="title">Title</label>
-        <input
-          class="input"
-          type="text"
-          id="title"
-          [formControl]="title"
-        />
+        <input class="input" type="text" id="title" [formControl]="title" />
       </div>
 
       <div class="field">
         <label class="label" for="text">Text</label>
-        <textarea
-          class="input"
-          id="text"
-          rows="10"
-          [formControl]="text"
-        ></textarea>
+        <textarea class="input" id="text" rows="10" [formControl]="text"></textarea>
       </div>
 
       <div class="field">
@@ -44,8 +30,9 @@
         <file-uploader
           uploaderCtxName="my-uploader-1"
           uploaderClassName="file-uploader"
-          [theme]="theme"
-          [(files)]="photos"
+          [theme]="theme()"
+          [files]="photos()"
+          (filesChange)="photos.set($event)"
         ></file-uploader>
       </div>
 
@@ -54,6 +41,6 @@
       </div>
     </form>
   } @else {
-    <pre class="result"><code>{{ sentFormObject | json }}</code></pre>
+    <pre class="result"><code>{{ sentFormObject() | json }}</code></pre>
   }
 </div>

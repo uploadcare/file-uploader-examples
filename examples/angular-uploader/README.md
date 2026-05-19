@@ -21,6 +21,19 @@
 
 This is an example project of implementing a file uploader in an Angular application with [Uploadcare File Uploader](https://github.com/uploadcare/file-uploader).
 
+## Requirements
+
+- Node ≥ 22 and npm ≥ 10
+
+## Setup
+
+The demo runs out of the box — both keys ship pre-filled with working
+demo values. You'll want to replace them when forking for real use:
+
+1. **Uploadcare public key** — `pubkey="a6ca334c3520777c0045"` in the view components (`MinimalView`, `RegularView`, `FormView`) points at our shared sandbox. Replace it with a key from [your Uploadcare dashboard](https://app.uploadcare.com/projects/-/api-keys/).
+
+2. **Unsplash access key** — Angular doesn't read `.env` files, so the demo holds keys in `src/environments/environment.ts` with a working demo Unsplash token. To use your own (free, from <https://unsplash.com/developers>), update `unsplashAccessKey` there.
+
 ## Run this demo locally
 
 ```bash
@@ -74,7 +87,7 @@ Otherwise you may go “full override” way and pass a string with styles to a 
 
 You’re always welcome to contribute:
 
-* Create [issues](https://github.com/uploadcare/file-uploader/issues) every time you feel something is missing or goes wrong.
-* Provide your feedback or drop us a support request at <a href="mailto:hello@uploadcare.com">hello@uploadcare.com</a>.
-* Ask questions on [Stack Overflow](https://stackoverflow.com/questions/tagged/uploadcare) with "uploadcare" tag if others can have these questions as well.
-* Star this repo if you like it ⭐️
+- Create [issues](https://github.com/uploadcare/file-uploader/issues) every time you feel something is missing or goes wrong.
+- Provide your feedback or drop us a support request at <a href="mailto:hello@uploadcare.com">hello@uploadcare.com</a>.
+- Ask questions on [Stack Overflow](https://stackoverflow.com/questions/tagged/uploadcare) with "uploadcare" tag if others can have these questions as well.
+- Star this repo if you like it ⭐️

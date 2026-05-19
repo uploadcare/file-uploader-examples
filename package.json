@@ -1,22 +1,43 @@
 {
-  "name": "file-uploader-examples",
-  "private": true,
-  "type": "module",
-  "version": "1.0.0",
-  "workspaces": [
-    "examples/angular-uploader",
-    "examples/js-custom-tab",
-    "examples/js-uploader",
-    "examples/next-uploader",
-    "examples/next-uploader-adapter",
-    "examples/react-uploader",
-    "examples/react-uploader-adapter",
-    "examples/svelte-uploader",
-    "examples/vue-uploader"
-  ],
-  "scripts": {
-    "build": "for dir in ./examples/*; do npm run build --prefix \"${dir}\"; done"
-  },
-  "author": "Uploadcare",
-  "license": "MIT"
+	"name": "file-uploader-examples",
+	"private": true,
+	"type": "module",
+	"version": "1.0.0",
+	"workspaces": [
+		"examples/angular-uploader",
+		"examples/js-uploader",
+		"examples/next-uploader",
+		"examples/next-uploader-adapter",
+		"examples/react-uploader",
+		"examples/react-uploader-adapter",
+		"examples/svelte-uploader",
+		"examples/vue-uploader"
+	],
+	"scripts": {
+		"build": "for dir in ./examples/*; do npm run build --prefix \"${dir}\"; done",
+		"build:pages": "node scripts/build-pages.js",
+		"lint": "npm run lint --workspaces --if-present",
+		"lint:fix": "npm run lint:fix --workspaces --if-present",
+		"format": "npm run format --workspaces --if-present",
+		"format:check": "npm run format:check --workspaces --if-present"
+	},
+	"overrides": {
+		"@uploadcare/file-uploader": "1.29.1"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "^2.4.13",
+		"angular-eslint": "^21.3.1",
+		"@eslint/js": "^9.38.0",
+		"eslint": "^9.38.0",
+		"eslint-config-prettier": "^10.1.8",
+		"eslint-plugin-svelte": "^3.17.1",
+		"eslint-plugin-vue": "^10.5.1",
+		"globals": "^16.4.0",
+		"prettier": "^3.6.2",
+		"prettier-plugin-svelte": "^3.4.0",
+		"svelte-check": "^4.3.3",
+		"typescript-eslint": "^8.46.2"
+	},
+	"author": "Uploadcare",
+	"license": "MIT"
 }

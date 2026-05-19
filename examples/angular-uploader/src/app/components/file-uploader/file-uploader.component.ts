@@ -1,14 +1,21 @@
 import {
+  ApplicationRef,
   Component,
   CUSTOM_ELEMENTS_SCHEMA,
-  ElementRef,
+  type ElementRef,
+  EnvironmentInjector,
   EventEmitter,
   Input,
+  inject,
   Output,
-  ViewChild
+  ViewChild,
+  OnInit,
+  OnDestroy,
 } from '@angular/core';
+import type { OutputFileEntry } from '@uploadcare/file-uploader';
 import * as UC from '@uploadcare/file-uploader';
-import { OutputFileEntry } from '@uploadcare/file-uploader';
+import { environment } from '../../../environments/environment';
+import { createUnsplashPlugin } from '../unsplash/unsplash-plugin';
 
 UC.defineComponents(UC);
 
@@ -19,7 +26,7 @@ UC.defineComponents(UC);
   styleUrl: './file-uploader.component.scss',
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
-export class FileUploaderComponent {
+export class FileUploaderComponent implements OnInit, OnDestroy {
   @Input({ required: true }) theme!: 'light' | 'dark';
   @Input() uploaderClassName: string | undefined;
   @Input() uploaderCtxName: string = 'my-uploader';
@@ -27,36 +34,30 @@ export class FileUploaderComponent {
   @Output() filesChange = new EventEmitter<OutputFileEntry<'success'>[]>();
 
   uploadedFiles: OutputFileEntry<'success'>[] = [];
-  @ViewChild('ctxProvider', { static: true }) ctxProviderRef!: ElementRef<UC.UploadCtxProvider>;
+  errors: { name: string; message: string }[] = [];
+  @ViewChild('ctxProvider', { static: true })
+  ctxProviderRef!: ElementRef<UC.UploadCtxProvider>;
 
-  @ViewChild('config', { static: true }) configRef!: ElementRef<UC.Config>;
+  @ViewChild('config', { static: true }) configRef!: ElementRef<
+    UC.Config & { plugins?: UC.UploaderPlugin[] }
+  >;
+
+  protected unsplashAccessKey = environment.unsplashAccessKey;
+
+  private appRef = inject(ApplicationRef);
+  private injector = inject(EnvironmentInjector);
 
   ngOnInit() {
-    /*
-      Note: Event binding is the main way to get data and other info from File Uploader.
-      There plenty of events you may use.
+    // Register custom Unsplash source plugin.
+    // Plugin docs: https://uploadcare.com/docs/file-uploader/plugins/example/
+    this.configRef.nativeElement.plugins = [createUnsplashPlugin(this.appRef, this.injector)];
 
-      See more: https://uploadcare.com/docs/file-uploader/events/
-     */
-    this.ctxProviderRef.nativeElement.addEventListener(
-      'change',
-      this.handleChangeEvent
-    );
-    this.ctxProviderRef.nativeElement.addEventListener(
-      'modal-close',
-      this.handleModalCloseEvent
-    );
-
-    /*
-      Note: Localization of File Uploader is done via DOM property on the config node.
-      You can change any piece of text of File Uploader this way.
-
-      See more: https://uploadcare.com/docs/file-uploader/localization/
-     */
+    // Demo-specific wording for "photos".
+    // Localization docs: https://uploadcare.com/docs/file-uploader/localization/
     this.configRef.nativeElement.localeDefinitionOverride = {
       en: {
-        'file__one': 'photo',
-        'file__other': 'photos',
+        file__one: 'photo',
+        file__other: 'photos',
 
         'upload-file': 'Upload photo',
         'upload-files': 'Upload photos',
@@ -67,34 +68,25 @@ export class FileUploaderComponent {
         'edit-image': 'Edit photo',
         'no-files': 'No photos selected',
         'caption-edit-file': 'Edit photo',
-        'files-count-limit-error-too-many': 'You\u2019ve chosen too many photos. {{max}} {{plural:file(max)}} is maximum.',
+        'files-count-limit-error-too-many':
+          'You\u2019ve chosen too many photos. {{max}} {{plural:file(max)}} is maximum.',
         'files-max-size-limit-error': 'Photo is too big. Max photo size is {{maxFileSize}}.',
         'header-uploading': 'Uploading {{count}} {{plural:file(count)}}',
         'header-succeed': '{{count}} {{plural:file(count)}} uploaded',
         'header-total': '{{count}} {{plural:file(count)}} selected',
-      }
-    }
+      } as Record<string, string>,
+    };
   }
 
   ngOnDestroy() {
-    this.ctxProviderRef.nativeElement.removeEventListener('change', this.handleChangeEvent);
-    this.ctxProviderRef.nativeElement.removeEventListener('modal-close', this.handleModalCloseEvent);
-
     this.configRef.nativeElement.localeDefinitionOverride = null;
   }
 
-  /*
-    Note: Here we use provider's API to reset File Uploader state.
-    It's not necessary though. We use it here to show users
-    a fresh version of File Uploader every time they open it.
-
-    Another way is to sync File Uploader state with an external store.
-    You can manipulate File Uploader using API calls like `addFileFromObject`, etc.
-
-    See more: https://uploadcare.com/docs/file-uploader/api/
-   */
   resetUploaderState() {
-    this.ctxProviderRef.nativeElement.getAPI().removeAllFiles();
+    const api = this.ctxProviderRef.nativeElement.getAPI();
+    api.setCurrentActivity(null);
+    api.setModalState(false);
+    api.removeAllFiles();
   }
 
   handleRemoveClick(uuid: OutputFileEntry['uuid']) {
@@ -102,17 +94,32 @@ export class FileUploaderComponent {
   }
 
   handleChangeEvent = (e: UC.EventMap['change']) => {
-    this.uploadedFiles = e.detail.allEntries.filter(f => f.status === 'success') as OutputFileEntry<'success'>[];
+    // Keep only successfully uploaded entries (committed on `modal-close`),
+    // and surface any failed entries as user-facing errors.
+    // Events docs: https://uploadcare.com/docs/file-uploader/events/
+    this.uploadedFiles = e.detail.allEntries.filter(
+      (f) => f.status === 'success',
+    ) as OutputFileEntry<'success'>[];
+    this.errors = e.detail.allEntries
+      .filter((f) => f.status === 'failed')
+      .map((f) => ({
+        name: f.fileInfo?.originalFilename ?? f.externalUrl ?? 'File',
+        message: f.errors?.[0]?.message ?? 'Upload failed',
+      }));
   };
 
   handleModalCloseEvent = (e: UC.EventMap['modal-close']) => {
-    if (e.detail.hasActiveModals) {
+    // A nested modal (e.g. the image editor) closing also fires this
+    // event — bail out so we only commit when the whole flow ends.
+    if (e.detail.hasActiveModals) return;
+
+    const justUploaded = this.uploadedFiles;
+    if (!justUploaded.length) {
       return;
     }
 
-    this.resetUploaderState();
-
-    this.filesChange.emit([...this.files, ...this.uploadedFiles]);
     this.uploadedFiles = [];
+    this.filesChange.emit([...this.files, ...justUploaded]);
+    this.resetUploaderState();
   };
 }

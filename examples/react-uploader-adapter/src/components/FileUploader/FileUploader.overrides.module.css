@@ -9,7 +9,7 @@
 
 .fileUploader :global(uc-simple-btn button) {
   height: auto;
-  padding: 10px 12px !important;
+  padding: 10px 12px;
   font-family: monospace;
   line-height: 1;
   font-size: 16px;

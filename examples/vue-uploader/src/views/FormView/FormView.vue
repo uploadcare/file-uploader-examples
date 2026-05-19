@@ -2,7 +2,7 @@
 import sunImage from '../../assets/sun.png';
 import moonImage from '../../assets/moon.png';
 
-import FileUploader from '../../components/FileUploader/FileUploader.options.vue';
+import FileUploader from '../../components/FileUploader/FileUploader.vue';
 
 import MOCK_DATA from './mocks';
 
@@ -23,7 +23,18 @@ export default {
 
       sunImage,
       moonImage,
-    }
+    };
+  },
+
+  watch: {
+    theme: {
+      handler() {
+        document.body.classList.remove('theme--light');
+        document.body.classList.remove('theme--dark');
+        document.body.classList.add(`theme--${this.theme}`);
+      },
+      immediate: true,
+    },
   },
 
   methods: {
@@ -35,18 +46,7 @@ export default {
       };
     },
   },
-
-  watch: {
-    theme: {
-      handler() {
-        document.body.classList.remove('theme--light');
-        document.body.classList.remove('theme--dark');
-        document.body.classList.add(`theme--${this.theme}`);
-      },
-      immediate: true,
-    }
-  },
-}
+};
 </script>
 
 <template>
@@ -55,12 +55,7 @@ export default {
       <h1 class="view-title">New blog post</h1>
 
       <label class="theme-toggle">
-        <input
-          type="checkbox"
-          v-model="theme"
-          true-value="light"
-          false-value="dark"
-        />
+        <input v-model="theme" type="checkbox" true-value="light" false-value="dark" />
         <img
           :src="theme === 'light' ? sunImage : moonImage"
           width="18"
@@ -70,37 +65,23 @@ export default {
       </label>
     </header>
 
-    <form
-      class="form"
-      v-if="!sentFormObject"
-      @submit.prevent="handleFormSubmit"
-    >
+    <form v-if="!sentFormObject" class="form" @submit.prevent="handleFormSubmit">
       <div class="field">
         <label class="label" for="title">Title</label>
-        <input
-          class="input"
-          type="text"
-          id="title"
-          v-model="title"
-        />
+        <input id="title" v-model="title" class="input" type="text" />
       </div>
 
       <div class="field">
         <label class="label" for="text">Text</label>
-        <textarea
-          class="input"
-          id="text"
-          rows="10"
-          v-model="text"
-        ></textarea>
+        <textarea id="text" v-model="text" class="input" rows="10" />
       </div>
 
       <div class="field">
         <p class="label">Photos</p>
         <FileUploader
+          v-model:files="photos"
           uploader-ctx-name="my-uploader-1"
           uploader-class-name="file-uploader"
-          v-model:files="photos"
           :theme="theme"
         />
       </div>
@@ -111,8 +92,8 @@ export default {
     </form>
 
     <pre
-      class="result"
       v-if="!!sentFormObject"
+      class="result"
     ><code>{{ JSON.stringify(sentFormObject, null, 2) }}</code></pre>
   </div>
 </template>
@@ -212,7 +193,8 @@ export default {
   color: var(--ui-action-button-text-color);
   cursor: pointer;
 
-  &:hover, &:focus {
+  &:hover,
+  &:focus {
     outline: 3px solid var(--ui-control-outline-color-focus);
   }
 

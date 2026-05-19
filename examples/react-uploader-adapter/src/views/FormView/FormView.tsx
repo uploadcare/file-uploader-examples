@@ -1,8 +1,14 @@
-import { OutputFileEntry } from '@uploadcare/file-uploader';
-import { ChangeEventHandler, MouseEventHandler, FormEventHandler, useCallback, useEffect, useState } from 'react';
-
-import sunImage from '../../assets/sun.png';
+import type { OutputFileEntry } from '@uploadcare/file-uploader';
+import {
+  type ChangeEventHandler,
+  type FormEventHandler,
+  type MouseEventHandler,
+  useCallback,
+  useEffect,
+  useState,
+} from 'react';
 import moonImage from '../../assets/moon.png';
+import sunImage from '../../assets/sun.png';
 
 import FileUploader from '../../components/FileUploader/FileUploader';
 
@@ -13,7 +19,7 @@ type FormType = {
   title: string;
   text: string;
   photos: OutputFileEntry[];
-}
+};
 
 export default function FormView() {
   const [title, setTitle] = useState<FormType['title']>(MOCK_DATA.title);
@@ -23,27 +29,32 @@ export default function FormView() {
   const [sentFormObject, setSentFormObject] = useState<FormType | null>(null);
 
   const handleTitleChange = useCallback<ChangeEventHandler<HTMLInputElement>>(
-    e => setTitle(e.target.value),
-    [setTitle],
+    (e) => setTitle(e.target.value),
+    [],
   );
   const handleTextChange = useCallback<ChangeEventHandler<HTMLTextAreaElement>>(
-    e => setText(e.target.value),
-    [setText],
+    (e) => setText(e.target.value),
+    [],
   );
-  const handleFormSubmit = useCallback<FormEventHandler<HTMLFormElement>>((e) => {
-    e.preventDefault();
-    setSentFormObject({
-      title,
-      text,
-      photos,
-    });
-  }, [title, text, photos, setSentFormObject]);
+  const handleFormSubmit = useCallback<FormEventHandler<HTMLFormElement>>(
+    (e) => {
+      e.preventDefault();
+      setSentFormObject({
+        title,
+        text,
+        photos,
+      });
+    },
+    [title, text, photos],
+  );
 
-  const [theme, setTheme] = useState<'light' | 'dark'>(document.body.classList.contains('theme--dark') ? 'dark' : 'light');
+  const [theme, setTheme] = useState<'light' | 'dark'>(
+    document.body.classList.contains('theme--dark') ? 'dark' : 'light',
+  );
 
   const handleThemeChange = useCallback<MouseEventHandler<HTMLButtonElement>>(() => {
-    setTheme(theme => theme === 'dark' ? 'light' : 'dark');
-  }, [setTheme]);
+    setTheme((theme) => (theme === 'dark' ? 'light' : 'dark'));
+  }, []);
 
   useEffect(() => {
     document.body.classList.remove('theme--light');
@@ -55,18 +66,16 @@ export default function FormView() {
     <div className={st.root}>
       <header className={st.header}>
         <h1 className={st.viewTitle}>New blog post</h1>
-        <button
-          className={st.themeToggle}
-          type="button"
-          onClick={handleThemeChange}
-        >
+        <button className={st.themeToggle} type="button" onClick={handleThemeChange}>
           <img
+            alt="Switch to dark theme"
             style={{ display: theme === 'dark' ? 'none' : 'block ' }}
             src={sunImage as string}
             width="16"
             height="16"
           />
           <img
+            alt="Switch to light theme"
             style={{ display: theme === 'light' ? 'none' : 'block ' }}
             src={moonImage as string}
             width="14"
@@ -78,7 +87,9 @@ export default function FormView() {
       {!sentFormObject && (
         <form onSubmit={handleFormSubmit}>
           <div className={st.field}>
-            <label className={st.label} htmlFor="title">Title</label>
+            <label className={st.label} htmlFor="title">
+              Title
+            </label>
             <input
               className={st.input}
               type="text"
@@ -89,7 +100,9 @@ export default function FormView() {
           </div>
 
           <div className={st.field}>
-            <label className={st.label} htmlFor="text">Text</label>
+            <label className={st.label} htmlFor="text">
+              Text
+            </label>
             <textarea
               className={st.input}
               id="text"
@@ -100,7 +113,9 @@ export default function FormView() {
           </div>
 
           <div className={st.field}>
-            <label className={st.label}>Photos</label>
+            <label className={st.label} htmlFor="photos-uploader">
+              Photos
+            </label>
             <FileUploader
               uploaderClassName={st.fileUploader}
               files={photos}
@@ -110,16 +125,16 @@ export default function FormView() {
           </div>
 
           <div className={st.field}>
-            <button className={st.button} type="submit">Publish</button>
+            <button className={st.button} type="submit">
+              Publish
+            </button>
           </div>
         </form>
       )}
 
       {!!sentFormObject && (
         <pre className={st.result}>
-          <code>
-            {JSON.stringify(sentFormObject, null, 2)}
-          </code>
+          <code>{JSON.stringify(sentFormObject, null, 2)}</code>
         </pre>
       )}
     </div>

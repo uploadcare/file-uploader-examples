@@ -3,14 +3,8 @@ import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
 
 @Component({
   selector: 'app',
-  imports: [
-    RouterOutlet,
-    RouterLink,
-    RouterLinkActive,
-  ],
+  imports: [RouterOutlet, RouterLink, RouterLinkActive],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  styleUrl: './app.component.scss',
 })
-export class AppComponent {
-
-}
+export class AppComponent {}

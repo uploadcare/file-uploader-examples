@@ -1,14 +1,24 @@
 <uc-config
+  #config
   ctx-name="my-uploader-2"
   pubkey="a6ca334c3520777c0045"
+  source-list="local, url, camera, dropbox, unsplash"
+  [attr.unsplash-access-key]="unsplashAccessKey"
 ></uc-config>
-<uc-file-uploader-minimal
-  ctx-name="my-uploader-2"
-></uc-file-uploader-minimal>
+<uc-file-uploader-minimal ctx-name="my-uploader-2"></uc-file-uploader-minimal>
 <uc-upload-ctx-provider
   ctx-name="my-uploader-2"
   #ctxProvider
+  (change)="handleChangeEvent($event)"
 ></uc-upload-ctx-provider>
+
+@if (errors.length > 0) {
+  <div class="errors">
+    @for (err of errors; track $index) {
+      <p class="error" role="alert">{{ err.name }}: {{ err.message }}</p>
+    }
+  </div>
+}
 
 <div class="previews">
   @for (file of files; track file.cdnUrl) {

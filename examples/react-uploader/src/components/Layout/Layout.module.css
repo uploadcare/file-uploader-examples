@@ -13,16 +13,19 @@
   color: var(--ui-control-text-color);
 
   @media (width >= 900px) {
-    grid-template-areas:
-      "logo menu source";
+    grid-template-areas: "logo menu source";
     grid-template-columns: 1fr auto 1fr;
     grid-template-rows: 1fr;
     padding: 0 24px;
   }
 }
 
+.link {
+  color: inherit;
+}
+
 .link:hover {
-  opacity: .5;
+  opacity: 0.5;
 }
 
 .logo {
@@ -61,10 +64,10 @@
   margin-left: auto;
   display: flex;
   align-items: center;
+  gap: 24px;
 }
 
 .sourceTitle {
   font-size: 14px;
-  margin-right: 24px;
   color: var(--ui-text-color);
 }

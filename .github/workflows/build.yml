@@ -1,4 +1,4 @@
-name: Build
+name: Build and deploy
 on:
   push:
     branches:
@@ -6,17 +6,57 @@ on:
   pull_request:
     branches:
       - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Allow only one concurrent deploy, queueing later runs.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
 jobs:
   build:
-    concurrency: ci-${{ github.ref }}
     runs-on: ubuntu-latest
+    env:
+      # Sub-path of the Pages site. Each example builds with
+      # BASE_PATH/<name>/ via scripts/build-pages.js.
+      BASE_PATH: /${{ github.event.repository.name }}/
+      VITE_UNSPLASH_ACCESS_KEY: ${{ secrets.UNSPLASH_TOKEN }}
+      NEXT_PUBLIC_UNSPLASH_ACCESS_KEY: ${{ secrets.UNSPLASH_TOKEN }}
     steps:
-      - name: Checkout 🛎️
-        uses: actions/checkout@v3
+      - name: Checkout
+        uses: actions/checkout@v4
 
-      - name: Install and Build 🔧
-        env:
-          VITE_UNSPLASH_TOKEN: ${{ secrets.UNSPLASH_TOKEN }}
-        run: |
-          npm ci
-          npm run build
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install
+        run: npm ci
+
+      - name: Build pages
+        run: npm run build:pages
+
+      - name: Upload Pages artifact
+        if: github.event_name != 'pull_request'
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./public
+
+  deploy:
+    if: github.event_name != 'pull_request'
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

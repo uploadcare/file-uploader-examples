@@ -1,96 +1,109 @@
 <script>
-  import { onMount } from "svelte";
-  import * as UC from "@uploadcare/file-uploader";
+  import { onMount } from 'svelte';
+  import * as UC from '@uploadcare/file-uploader';
+  import { unsplashPlugin } from '$lib/Unsplash/unsplashPlugin.svelte.js';
 
   export let files = [];
   export let uploaderCtxName;
   export let theme;
 
   let uploadedFiles = [];
+  let errors = [];
 
   let ctxProviderRef;
   let configRef;
 
-  /*
-    Note: Here we use provider's API to reset File Uploader state.
-    It's not necessary though. We use it here to show users
-    a fresh version of File Uploader every time they open it.
-
-    Another way is to sync File Uploader state with an external store.
-    You can manipulate File Uploader using API calls like `addFileFromObject`, etc.
-
-    See more: https://uploadcare.com/docs/file-uploader/api/
-   */
-
   const resetUploaderState = () => {
-    const api = ctxProviderRef.getAPI()
-    api.removeAllFiles()
+    const api = ctxProviderRef.getAPI();
+    api.setCurrentActivity(null);
+    api.setModalState(false);
+    api.removeAllFiles();
   };
 
   const handleRemoveClick = (uuid) => {
     files = files.filter((f) => f.uuid !== uuid);
   };
 
+  // Keep only successful entries (committed on `modal-close`), and surface
+  // any failed entries as user-facing errors.
   const handleChangeEvent = (e) => {
-    if (e.detail) {
-      uploadedFiles = e.detail.allEntries.filter((f) => f.status === "success");
-    }
+    if (!e.detail) return;
+    uploadedFiles = e.detail.allEntries.filter((f) => f.status === 'success');
+    errors = e.detail.allEntries
+      .filter((f) => f.status === 'failed')
+      .map((f) => ({
+        name: f.fileInfo?.originalFilename ?? f.externalUrl ?? 'File',
+        message: f.errors?.[0]?.message ?? 'Upload failed',
+      }));
   };
 
   const handleModalCloseEvent = (e) => {
-    if (e.detail.hasActiveModals) {
-      return;
-    }
+    // A nested modal (e.g. the image editor) closing also fires this
+    // event — bail out so we only commit when the whole flow ends.
+    if (e.detail.hasActiveModals) return;
 
-    resetUploaderState();
+    const justUploaded = uploadedFiles;
 
-    files = [...files, ...uploadedFiles];
+    /*
+      Only commit and reset when there is at least one successful
+      upload. Otherwise (modal closed without finishing or with all
+      uploads failed) we keep whatever in-progress / errored entries
+      the uploader has so the user can retry on next open.
+     */
+    if (justUploaded.length === 0) return;
+
+    /*
+      Reset our local cache and write to `files` BEFORE calling
+      `resetUploaderState()`. `removeAllFiles()` synchronously fires a
+      `change` event with no entries — that handler would otherwise
+      overwrite `uploadedFiles` with `[]` before we read it.
+     */
     uploadedFiles = [];
+    files = [...files, ...justUploaded];
+    resetUploaderState();
   };
 
   onMount(() => {
     UC.defineComponents(UC);
 
-    /*
-      Note: Event binding is the main way to get data and other info from File Uploader.
-      There plenty of events you may use.
+    // Register custom Unsplash source plugin.
+    // Plugin docs: https://uploadcare.com/docs/file-uploader/plugins/example/
+    configRef.plugins = [unsplashPlugin];
+    configRef.unsplashAccessKey = import.meta.env.VITE_UNSPLASH_ACCESS_KEY;
 
-      See more: https://uploadcare.com/docs/file-uploader/events/
-     */
-    ctxProviderRef.addEventListener("change", handleChangeEvent);
-    ctxProviderRef.addEventListener("modal-close", handleModalCloseEvent);
+    // Listen to uploader events and keep local preview state in sync.
+    // Events docs: https://uploadcare.com/docs/file-uploader/events/
+    ctxProviderRef.addEventListener('change', handleChangeEvent);
+    ctxProviderRef.addEventListener('modal-close', handleModalCloseEvent);
 
-    /*
-     Note: Localization of File Uploader is done via DOM property on the config node.
-     You can change any piece of text of File Uploader this way.
-
-     See more: https://uploadcare.com/docs/file-uploader/localization/
-    */
+    // Demo-specific wording for "photos".
+    // Localization docs: https://uploadcare.com/docs/file-uploader/localization/
     configRef.localeDefinitionOverride = {
       en: {
-        "file__one": "photo",
-        "file__other": "photos",
+        file__one: 'photo',
+        file__other: 'photos',
 
-        "upload-file": "Upload photo",
-        "upload-files": "Upload photos",
-        "choose-file": "Choose photo",
-        "choose-files": "Choose photos",
-        "drop-files-here": "Drop photos here",
-        "select-file-source": "Select photo source",
-        "edit-image": "Edit photo",
-        "no-files": "No photos selected",
-        "caption-edit-file": "Edit photo",
-        "files-count-limit-error-too-many": "You\u2019ve chosen too many photos. {{max}} {{plural:file(max)}} is maximum.",
-        "files-max-size-limit-error": "Photo is too big. Max photo size is {{maxFileSize}}.",
-        "header-uploading": "Uploading {{count}} {{plural:file(count)}}",
-        "header-succeed": "{{count}} {{plural:file(count)}} uploaded",
-        "header-total": "{{count}} {{plural:file(count)}} selected",
+        'upload-file': 'Upload photo',
+        'upload-files': 'Upload photos',
+        'choose-file': 'Choose photo',
+        'choose-files': 'Choose photos',
+        'drop-files-here': 'Drop photos here',
+        'select-file-source': 'Select photo source',
+        'edit-image': 'Edit photo',
+        'no-files': 'No photos selected',
+        'caption-edit-file': 'Edit photo',
+        'files-count-limit-error-too-many':
+          'You\u2019ve chosen too many photos. {{max}} {{plural:file(max)}} is maximum.',
+        'files-max-size-limit-error': 'Photo is too big. Max photo size is {{maxFileSize}}.',
+        'header-uploading': 'Uploading {{count}} {{plural:file(count)}}',
+        'header-succeed': '{{count}} {{plural:file(count)}} uploaded',
+        'header-total': '{{count}} {{plural:file(count)}} selected',
       },
     };
 
     return () => {
-      ctxProviderRef.removeEventListener("change", handleChangeEvent);
-      ctxProviderRef.removeEventListener("modal-close", handleModalCloseEvent);
+      ctxProviderRef.removeEventListener('change', handleChangeEvent);
+      ctxProviderRef.removeEventListener('modal-close', handleModalCloseEvent);
 
       configRef.localeDefinitionOverride = null;
     };
@@ -98,25 +111,12 @@
 </script>
 
 <div class="root">
-  <!--
-    Note: `uc-config` is the main component we use to configure File Uploader.
-    It's important to all the context-related File Uploader to have the same `ctx-name` attribute.
-
-    See more: https://uploadcare.com/docs/file-uploader/configuration/
-    Available options: https://uploadcare.com/docs/file-uploader/options/
-
-    Also note: Some options currently are not available via `uc-config`,
-    but may be set via CSS properties. E.g. `darkmode`.
-
-    Here they are: https://github.com/uploadcare/file-uploader/blob/main/blocks/themes/uc-basic/config.css
-  -->
   <uc-config
     bind:this={configRef}
     ctx-name={uploaderCtxName}
     pubkey="a6ca334c3520777c0045"
     multiple={true}
-    multipleMax={2}
-    sourceList="local, url, camera, dropbox, gdrive"
+    sourceList="local, url, camera, dropbox, gdrive, unsplash"
     confirmUpload={false}
     removeCopyright={true}
     imgOnly={true}
@@ -125,12 +125,20 @@
   <uc-file-uploader-regular
     ctx-name={uploaderCtxName}
     class="file-uploader"
-    class:uc-dark={theme === "dark"}
-    class:uc-light={theme === "light"}
+    class:uc-dark={theme === 'dark'}
+    class:uc-light={theme === 'light'}
   ></uc-file-uploader-regular>
 
   <uc-upload-ctx-provider bind:this={ctxProviderRef} ctx-name={uploaderCtxName}
   ></uc-upload-ctx-provider>
+
+  {#if errors.length > 0}
+    <div class="errors">
+      {#each errors as err, i (i)}
+        <p class="error" role="alert">{err.name}: {err.message}</p>
+      {/each}
+    </div>
+  {/if}
 
   <div class="previews">
     {#each files as file (file.cdnUrl)}
@@ -170,6 +178,22 @@
     gap: 8px;
     width: 100%;
     margin-top: 12px;
+  }
+
+  .errors {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 12px;
+  }
+
+  .error {
+    margin: 0;
+    padding: 10px 12px;
+    border-radius: 8px;
+    background: #fee2e2;
+    color: #991b1b;
+    font-size: 13px;
   }
 
   .preview {

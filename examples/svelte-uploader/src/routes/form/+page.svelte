@@ -1,12 +1,12 @@
 <script>
-  import { browser } from "$app/environment";
+  import { browser } from '$app/environment';
 
-  import sunImage from "../../assets/sun.png";
-  import moonImage from "../../assets/moon.png";
+  import sunImage from '../../assets/sun.png';
+  import moonImage from '../../assets/moon.png';
 
-  import FileUploader from "$lib/FileUploader/FileUploader.svelte";
+  import FileUploader from '$lib/FileUploader/FileUploader.svelte';
 
-  import MOCK_DATA from "./mocks";
+  import MOCK_DATA from './mocks';
 
   let title = MOCK_DATA.title;
   let text = MOCK_DATA.text;
@@ -23,24 +23,22 @@
     };
   };
 
-  let theme = "light";
+  let theme = 'light';
 
   $: {
     if (browser) {
-      theme = document.body.classList.contains("theme--dark")
-        ? "dark"
-        : "light";
+      theme = document.body.classList.contains('theme--dark') ? 'dark' : 'light';
     }
   }
 
   const handleThemeChange = (e) => {
-    theme = e.target.checked ? "light" : "dark";
+    theme = e.target.checked ? 'light' : 'dark';
   };
 
   $: {
     if (browser) {
-      document.body.classList.remove("theme--light");
-      document.body.classList.remove("theme--dark");
+      document.body.classList.remove('theme--light');
+      document.body.classList.remove('theme--dark');
       document.body.classList.add(`theme--${theme}`);
     }
   }
@@ -51,16 +49,12 @@
     <h1 class="view-title">New blog post</h1>
 
     <label class="theme-toggle">
-      <input
-        type="checkbox"
-        checked={theme === "light"}
-        on:change={handleThemeChange}
-      />
+      <input type="checkbox" checked={theme === 'light'} on:change={handleThemeChange} />
       <img
-        src={theme === "light" ? sunImage : moonImage}
+        src={theme === 'light' ? sunImage : moonImage}
         width="18"
         height="18"
-        alt={`Switch to ${theme === "light" ? "dark" : "light"} theme`}
+        alt={`Switch to ${theme === 'light' ? 'dark' : 'light'} theme`}
       />
     </label>
   </header>
@@ -74,17 +68,12 @@
 
       <div class="field">
         <label class="label" for="text">Text</label>
-        <textarea class="input" id="text" rows={10} bind:value={text}
-        ></textarea>
+        <textarea class="input" id="text" rows={10} bind:value={text}></textarea>
       </div>
 
       <div class="field">
         <p class="label">Photos</p>
-        <FileUploader
-          uploaderCtxName="my-uploader-1"
-          bind:files={photos}
-          {theme}
-        />
+        <FileUploader uploaderCtxName="my-uploader-1" bind:files={photos} {theme} />
       </div>
 
       <div class="field">
@@ -92,8 +81,7 @@
       </div>
     </form>
   {:else}
-    <pre class="result"><code>{JSON.stringify(sentFormObject, null, 2)}</code
-      ></pre>
+    <pre class="result"><code>{JSON.stringify(sentFormObject, null, 2)}</code></pre>
   {/if}
 </div>
 

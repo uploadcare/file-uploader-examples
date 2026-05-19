@@ -21,6 +21,19 @@
 
 This is an example project of implementing a file uploader in a JavaScript application with [Uploadcare File Uploader](https://github.com/uploadcare/file-uploader)
 
+## Requirements
+
+- Node ≥ 22 and npm ≥ 10 (matches the `actions/setup-node` version this repo's CI uses)
+
+## Setup
+
+The demo runs out of the box — both keys ship pre-filled with working
+demo values. You'll want to replace them when forking for real use:
+
+1. **Uploadcare public key** — `pubkey="a6ca334c3520777c0045"` in the HTML points at our shared sandbox project (uploads land there and are periodically wiped). Replace it with a key from [your Uploadcare dashboard](https://app.uploadcare.com/projects/-/api-keys/).
+
+2. **Unsplash access key** — `.env` is committed with a working demo Unsplash token used by the custom "Unsplash" source. To use your own (free, from <https://unsplash.com/developers>), edit `.env` and replace the `VITE_UNSPLASH_ACCESS_KEY` value. `.env.example` shows the expected variable name.
+
 ## Run this demo locally
 
 ```bash

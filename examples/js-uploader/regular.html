@@ -9,24 +9,40 @@
   <script type="module" src="./regular.js"></script>
 </head>
 <body>
-  <p>
-    <a href="/">← All JS Examples</a>
-  </p>
-  <hr>
-  <uc-config
-    ctx-name="my-uploader"
-    pubkey="a6ca334c3520777c0045"
-    sourceList="local, url, camera, dropbox"
-  ></uc-config>
-  <uc-file-uploader-regular
-    ctx-name="my-uploader"
-    class="uc-light"
-  ></uc-file-uploader-regular>
-  <uc-upload-ctx-provider
-    ctx-name="my-uploader"
-    id="my-uploader-provider"
-  ></uc-upload-ctx-provider>
+  <main class="page-root">
+    <!--
+      The File Uploader exposes three sibling custom elements that talk
+      to each other via a shared `ctx-name`:
 
-  <div class="previews" id="previews"></div>
+      • <uc-config>             — settings (pubkey, sources, locale, plugins)
+      • <uc-file-uploader-*>    — the visible uploader UI (regular / minimal / inline)
+      • <uc-upload-ctx-provider> — imperative API hook (events, getAPI())
+
+      Same `ctx-name` ties a config to its uploader and provider. Need
+      a second uploader on the page? Use a different ctx-name.
+
+      `pubkey` below points at our public sandbox project; copy your own
+      key from https://app.uploadcare.com/projects/-/api-keys/ for real
+      apps. The custom `unsplash` source comes from unsplash-plugin.js,
+      registered on the config in regular.js.
+    -->
+    <uc-config
+      id="my-uploader-config"
+      ctx-name="my-uploader"
+      pubkey="a6ca334c3520777c0045"
+      sourceList="local, url, camera, dropbox, unsplash"
+    ></uc-config>
+    <uc-file-uploader-regular
+      id="my-uploader"
+      ctx-name="my-uploader"
+    ></uc-file-uploader-regular>
+    <uc-upload-ctx-provider
+      ctx-name="my-uploader"
+      id="my-uploader-provider"
+    ></uc-upload-ctx-provider>
+
+    <div class="errors" id="errors"></div>
+    <div class="previews" id="previews"></div>
+  </main>
 </body>
 </html>
