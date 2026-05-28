@@ -14,7 +14,7 @@
     "format:check": "prettier --check ."
   },
   "dependencies": {
-    "@uploadcare/file-uploader": "1.29.1",
+    "@uploadcare/file-uploader": "1.30.1",
     "vue": "3.5.33",
     "vue-router": "5.0.6"
   },
