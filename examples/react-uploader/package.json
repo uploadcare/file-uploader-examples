@@ -14,7 +14,7 @@
     "format:check": "biome format ."
   },
   "dependencies": {
-    "@uploadcare/file-uploader": "1.29.1",
+    "@uploadcare/file-uploader": "1.31.1",
     "react": "19.2.5",
     "react-dom": "19.2.5",
     "react-router-dom": "7.14.2"
