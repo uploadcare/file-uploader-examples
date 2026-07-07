@@ -20,7 +20,7 @@
     "@angular/platform-browser": "21.2.10",
     "@angular/platform-browser-dynamic": "21.2.10",
     "@angular/router": "21.2.10",
-    "@uploadcare/file-uploader": "1.29.1"
+    "@uploadcare/file-uploader": "1.31.2"
   },
   "devDependencies": {
     "@angular/build": "21.2.9",
