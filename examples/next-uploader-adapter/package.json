@@ -12,7 +12,7 @@
     "format:check": "biome format ."
   },
   "dependencies": {
-    "@uploadcare/react-uploader": "1.15.0",
+    "@uploadcare/react-uploader": "1.17.0",
     "next": "16.2.4",
     "react": "19.2.5",
     "react-dom": "19.2.5"
