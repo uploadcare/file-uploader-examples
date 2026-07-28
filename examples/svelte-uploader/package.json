@@ -15,7 +15,7 @@
     "format:check": "prettier --check ."
   },
   "dependencies": {
-    "@uploadcare/file-uploader": "1.29.1"
+    "@uploadcare/file-uploader": "1.33.0"
   },
   "devDependencies": {
     "@sveltejs/adapter-static": "^3.0.10",
