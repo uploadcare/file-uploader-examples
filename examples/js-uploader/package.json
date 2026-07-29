@@ -12,7 +12,7 @@
     "format:check": "biome format ."
   },
   "dependencies": {
-    "@uploadcare/file-uploader": "1.29.1"
+    "@uploadcare/file-uploader": "1.33.1"
   },
   "devDependencies": {
     "vite": "8.0.10"
